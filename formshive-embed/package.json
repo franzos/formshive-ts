@@ -4,6 +4,8 @@
   "description": "Embeddable JavaScript library for CheckoutBay shop integration",
   "main": "dist/formshive-embed.js",
   "type": "module",
+  "author": "Franz Geffke <mail@gofranz.com>",
+  "license": "MIT",
   "scripts": {
     "dev": "rollup -c --watch",
     "build": "rollup -c",
@@ -14,8 +16,6 @@
   "keywords": [
     "formshive"
   ],
-  "author": "Franz Geffke <mail@gofranz.com>",
-  "license": "MIT",
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.0",
     "@rollup/plugin-node-resolve": "^15.0.0",

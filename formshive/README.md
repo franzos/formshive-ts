@@ -1,4 +1,4 @@
-# Rusty Forms Frontend
+# Formshive Frontend
 
 ## Build and dev scripts
 
@@ -14,10 +14,3 @@
 - `vitest` – runs vitest tests
 - `vitest:watch` – starts vitest watch
 - `test` – runs `vitest`, `prettier:check`, `lint` and `typecheck` scripts
-
-## Distribution
-
-```bash
-docker build --network=host -t rusty.forms.client:latest .
-docker save rusty.forms.client:latest | ssh -C root@virt1.pantherx.org docker load
-```

@@ -1,9 +1,10 @@
 {
-  "name": "rusty.forms.web-client",
+  "name": "@gofranz/formshive-frontend",
   "private": true,
   "version": "0.0.1",
   "type": "module",
   "author": "Franz Geffke <mail@gofranz.com>",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

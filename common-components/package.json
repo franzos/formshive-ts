@@ -5,6 +5,8 @@
   "type": "module",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "author": "Franz Geffke <mail@gofranz.com>",
+  "license": "MIT",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -21,7 +23,6 @@
     "typecheck": "tsc --noEmit"
   },
   "keywords": [],
-  "author": "",
   "peerDependencies": {
     "@mantine/core": "^7.17.5",
     "@mantine/form": "^7.17.5",
