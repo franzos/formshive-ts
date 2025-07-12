@@ -1,0 +1,357 @@
+{
+  "brand": {
+    "logoAlt": "Formshive 标志",
+    "name": "Forms",
+    "nameSecond": "hive",
+    "domain": "formshive.com",
+    "email": "hello@formshive.com"
+  },
+  "welcome": {
+    "tagline": "轻松、灵活的表单数据处理",
+    "description": "从任何表单、脚本或AI代理中捕获、验证、转换和路由数据。",
+    "subDescription": "闪电般快速、隐私优先，构建安全而简单的数据流动体验。",
+    "features": {
+      "noFields": {
+        "title": "无需预定义字段",
+        "description": "发送任何表单数据——即使没有预定义字段。仅在需要时自定义验证和转换。"
+      },
+      "flexible": {
+        "title": "灵活的表单创建", 
+        "description": "使用我们直观的GUI或简单的TOML配置构建表单。轻松嵌入、链接或创建完全自定义的表单。"
+      },
+      "protection": {
+        "title": "智能垃圾邮件和CAPTCHA保护",
+        "description": "友好的自动化CAPTCHA挑战让您的提交保持清洁，而不会让用户感到沮丧。"
+      },
+      "privacy": {
+        "title": "隐私设计",
+        "description": "您的数据属于您。我们不收集个人信息，安全的欧盟托管专注于您的隐私和信任。"
+      },
+      "integrations": {
+        "title": "无缝集成",
+        "description": "通过电子邮件通知、webhook等即时连接——让您的工作流程顺畅运行。"
+      },
+      "pricing": {
+        "title": "简单、透明的定价",
+        "description": "每次提交仅€0.005起或自托管€590/年。无隐藏费用，无投资者，无追加销售。"
+      }
+    },
+    "cta": {
+      "title": "准备让您的表单焕发生机？",
+      "button": "开始使用 Formshive",
+      "credit": "€0.25 欢迎积分",
+      "description": "无复杂入门流程——只有无缝的表单数据处理。",
+      "loginTitle": "已有账户？",
+      "loginDescription": "已经是Formshive大家庭的一员？登录管理您的表单。",
+      "loginButton": "登录"
+    }
+  },
+  "forms": {
+    "title": "表单标题",
+    "titlePlaceholder": "标题",
+    "titleRequired": "标题是必需的",
+    "titleDescription": "对自动回复的收件人可见。",
+    "redirectUrl": "重定向URL",
+    "redirectPlaceholder": "https://my-website.com/thank-you",
+    "invalidUrl": "无效的URL",
+    "redirectDescription": "表单提交后用户将被重定向到的URL。",
+    "redirectWarning": "如果您不设置重定向URL，用户提交后将看到空白页面。只有在您知道自己在做什么时才推荐这样做（例如，使用Javascript处理提交）。",
+    "filterSpam": "过滤垃圾邮件",
+    "filterSpamDescription": "启用垃圾邮件过滤。这将检查消息字段中的常见垃圾邮件模式。垃圾邮件提交将跳过集成和通知。",
+    "filterSpamWarning": "如果表单不包含名为\"message\"的字段或启用了垃圾邮件检查的自定义字段，表单提交将被拒绝。",
+    "checkCaptcha": "检查Captcha",
+    "captchaDescription": "启用Captcha验证。这将要求用户在提交表单前解决验证码。",
+    "captchaWarning": "如果验证码未解决，表单提交将被拒绝。",
+    "setupInstructions": "设置说明",
+    "createForm": "创建表单",
+    "createDescription": "保存后您可以配置集成和电子邮件通知。",
+    "formsDescription": "您接收消息的表单。",
+    "newForm": "新建表单",
+    "formName": "表单名称",
+    "createdAt": "创建时间",
+    "updatedAt": "更新时间",
+    "security": "安全",
+    "redirect": "重定向",
+    "fieldSpecs": "字段",
+    "autoResponse": "自动回复",
+    "spamFilterEnabled": "垃圾邮件过滤器已启用。请确保在表单中包含名为\"message\"的字段，或启用了垃圾邮件检查的表单字段。",
+    "captchaEnabled": "CAPTCHA验证已启用",
+    "noSecurityEnabled": "未启用安全功能",
+    "noRedirectUrl": "未配置重定向URL",
+    "specsEnabled": "字段规范已启用",
+    "specsDisabled": "字段规范已禁用",
+    "autoResponseEnabled": "自动回复已启用",
+    "autoResponseDisabled": "自动回复已禁用",
+    "loading": "加载中...",
+    "noFormsFound": "未找到表单",
+    "deleteAriaLabel": "删除"
+  },
+  "account": {
+    "welcome": "欢迎来到 ",
+    "newHereTitle": "新用户？开始使用：",
+    "createForm": "创建表单",
+    "questions": "有问题？",
+    "formsTitle": "表单",
+    "formsDescription": "创建和管理您的表单",
+    "goToForms": "前往表单",
+    "integrationsTitle": "集成",
+    "integrationsDescription": "将表单连接到您的工具", 
+    "goToIntegrations": "前往集成",
+    "messagesTitle": "消息",
+    "messagesDescription": "查看您的表单提交",
+    "goToMessages": "前往消息",
+    "profileTitle": "个人资料",
+    "profileDescription": "管理账户和计费",
+    "goToProfile": "前往个人资料"
+  },
+  "integrations": {
+    "newIntegration": "新建集成",
+    "description": "使用Webhook与Zapier和其他服务集成",
+    "createIntegration": "创建集成",
+    "createDescription": "目前仅支持webhook。"
+  },
+  "messages": {
+    "chartLabel": "消息",
+    "description": "所有传入的消息都将在此列出。",
+    "messagesSection": "消息"
+  },
+  "billing": {
+    "pricing": "定价",
+    "comparison": "比较",
+    "comparisonNote": "... 基于入门级计划",
+    "totalMessages": "总消息数",
+    "usageDescription": "我们按使用量收费，而非按月；一年需要10条消息？没问题。",
+    "checkSpam": "检查消息垃圾邮件 (~0.005欧元)",
+    "emailNotifications": "接收每条消息的电子邮件通知 (~0.003欧元)",
+    "webhook": "发送webhook (~0.0005欧元)",
+    "cost": "费用：",
+    "costWithDiscount": "费用：",
+    "formshive": "Formshive",
+    "wufoo": "Wufoo",
+    "formspree": "Formspree"
+  },
+  "pricing": {
+    "title": "定价"
+  },
+  "common": {
+    "loading": "加载中...",
+    "unlimited": "无限制"
+  },
+  "formSpec": {
+    "checkFormFields": "检查表单字段",
+    "checkFormFieldsDescription": "在提交前检查表单字段是否有错误。",
+    "formFieldsDisabled": "表单字段未启用，不会产生任何效果。",
+    "spamFilterEnabled": "垃圾邮件过滤器已启用。请确保包含名为",
+    "unsavedChanges": "未保存的更改",
+    "unsavedChangesAlert": "未保存的更改：更改编辑器前请保存更改。",
+    "visualEditor": "可视化编辑器",
+    "toml": "Toml",
+    "specsErrors": "规范错误",
+    "noErrors": "无错误",
+    "specsValid": "规范有效。",
+    "checkValidity": "检查有效性",
+    "prefillExample": "预填充示例",
+    "copyHtmlForm": "复制HTML表单",
+    "htmlCopied": "HTML已复制到剪贴板",
+    "editor": {
+      "addField": "添加字段",
+      "formFields": "表单字段",
+      "fieldSettings": "字段设置",
+      "formSettings": "表单设置",
+      "globalSettings": "全局设置",
+      "selectFieldToEdit": "选择一个字段来编辑其设置，或在下方配置全局表单设置。",
+      "discardAdditionalFields": "丢弃其他字段",
+      "discardAdditionalFieldsDescription": "丢弃表单规范中未定义的其他字段。",
+      "noFieldsAdded": "尚未添加字段。使用左侧的按钮添加您的第一个字段。",
+      "optionsRequired": "选项是必需的！",
+      "fieldNameExists": "此名称的字段已存在。请选择不同的名称。",
+      "fieldTypes": {
+        "text": {
+          "label": "单行文本",
+          "description": "短文本输入"
+        },
+        "textarea": {
+          "label": "段落文本",
+          "description": "多行文本输入"
+        },
+        "number": {
+          "label": "数字",
+          "description": "数字输入"
+        },
+        "email": {
+          "label": "电子邮件",
+          "description": "电子邮件地址输入"
+        },
+        "tel": {
+          "label": "电话",
+          "description": "电话号码输入"
+        },
+        "url": {
+          "label": "URL",
+          "description": "网站URL输入"
+        },
+        "date": {
+          "label": "日期",
+          "description": "日期选择器"
+        },
+        "time": {
+          "label": "时间",
+          "description": "时间选择器"
+        },
+        "datetime": {
+          "label": "日期和时间",
+          "description": "日期和时间选择器"
+        },
+        "select": {
+          "label": "下拉列表",
+          "description": "单选下拉列表"
+        },
+        "radio": {
+          "label": "单选按钮",
+          "description": "单选选项"
+        },
+        "checkbox": {
+          "label": "复选框",
+          "description": "多选选项"
+        },
+        "form": {
+          "label": "文件上传",
+          "description": "文件附件"
+        }
+      }
+    }
+  },
+  "integration": {
+    "delete": "删除"
+  },
+  "accountPages": {
+    "newForm": "新建表单",
+    "formsDescription": "您接收消息的表单。",
+    "newIntegration": "新建集成",
+    "integrationsDescription": "使用Webhook与Zapier和其他服务集成",
+    "messagesDescription": "所有传入的消息都将在此列出。",
+    "messagesChartLabel": "消息"
+  },
+  "formEdit": {
+    "settings": "设置",
+    "general": "常规",
+    "generalDescription": "表单标题、重定向URL、垃圾邮件过滤器和验证码。",
+    "formFieldsOptional": "表单字段（可选）",
+    "formFieldsDescription": "表单字段包括姓名、电子邮件地址等内容。通过表单字段，您可以进行表单验证、数据转换和生成HTML表单。",
+    "readMore": "了解更多。",
+    "emailNotifications": "电子邮件通知",
+    "emailNotificationsDescription": "将传入消息转发到一个或多个电子邮件地址。",
+    "integrations": "集成",
+    "integrationsDescription": "使用集成将传入消息转发到其他服务。",
+    "titleRequired": "标题是必需的",
+    "formSpecsRequired": "表单规范是必需的"
+  },
+  "formIntegration": {
+    "integration": "集成",
+    "manual": "手动",
+    "javascript": "Javascript", 
+    "iframe": "iFrame",
+    "link": "链接",
+    "manualDescription": "已有HTML表单？只需将表单的action指向下面的Formshive URL。如果您启用了验证码，也请包含验证码URL。",
+    "formUrl": "表单URL",
+    "formUrlDescription": "您的表单可以接收表单和JSON提交，用于网站集成以及bash脚本等使用。",
+    "captchaUrl": "Captcha URL",
+    "captchaDescription": "此URL用于验证验证码。",
+    "captchaDisabledDescription": "此URL用于验证验证码。（已禁用，因为您未启用Captcha）",
+    "seeExamples": "查看示例",
+    "examplesFromFields": "示例由表单字段生成。",
+    "simpleHtmlForm": "简单HTML表单",
+    "htmlExample": "HTML示例",
+    "formPreview": "表单预览",
+    "includeScript": "确保包含",
+    "inHtmlHead": "在HTML的",
+    "section": "部分中。",
+    "htmlFormWithFile": "带文件上传的HTML表单",
+    "fileUploadNote": "大多数表单可以直接使用，但对于文件上传，您必须特别注意包含",
+    "formSubmissionCurl": "使用curl提交表单",
+    "formSubmissionCurlFile": "使用curl提交表单，包括文件上传",
+    "fileUploadCurlNote": "大多数提交可以直接使用，但对于文件上传，您必须特别注意包含",
+    "jsonSubmissionCurl": "使用curl的JSON提交",
+    "redirectNotApplicable": "重定向url不适用于JSON格式的提交。",
+    "llmIntegration": "使用LLM（AI）提示集成",
+    "embedDescription": "使用JavaScript将您的Formshive表单嵌入任何网站。完美适用于Squarespace、WordPress或自定义站点。复制代码并粘贴到您的页面中。",
+    "iframeDescription": "使用iFrame显示您的Formshive表单。获取下面的嵌入代码并粘贴到您网站的HTML中，以获得无缝的内联表单。",
+    "linkDescriptionLong": "通过直接链接分享您的Formshive表单。复制下面的URL并在电子邮件、社交媒体或网站按钮中使用。",
+    "needFormFields": "您需要创建",
+    "formFields": "表单字段",
+    "toUseFeature": "来使用",
+    "embedFeature": "嵌入功能。",
+    "iframeFeature": "iframe功能。", 
+    "linkFeature": "链接功能。",
+    "noFileField": "表单不包含文件上传字段。",
+    "htmlTag": "HTML标签",
+    "htmlTagDescription": "在您希望表单出现的HTML位置放置此标签。",
+    "cssFramework": "CSS框架",
+    "selectCssFramework": "选择CSS框架",
+    "scriptTag": "脚本标签",
+    "scriptTagDescription": "在您希望表单出现的位置放置此标签。",
+    "preview": "预览",
+    "linkLabel": "链接",
+    "linkDescription": "使用此URL直接链接到表单。",
+    "formTitle": "表单标题",
+    "formTitlePlaceholder": "输入表单标题",
+    "formTitleDescription": "在表单页面上显示的自定义标题"
+  },
+  "messageTable": {
+    "content": "内容",
+    "form": "表单",
+    "files": "文件",
+    "createdAt": "创建时间",
+    "download": "下载",
+    "downloadJson": "下载JSON", 
+    "downloadTxt": "下载TXT",
+    "markAsHam": "标记为正常邮件",
+    "markAsSpam": "标记为垃圾邮件",
+    "delete": "删除",
+    "messageUpdated": "消息已更新",
+    "markedAsHam": "已标记为正常邮件",
+    "markedAsSpam": "已标记为垃圾邮件",
+    "spamAndHam": "垃圾邮件和正常邮件",
+    "spam": "垃圾邮件",
+    "ham": "正常邮件",
+    "loading": "加载中...",
+    "noMessagesFound": "未找到消息",
+    "couldNotToggleSpam": "无法切换垃圾邮件状态"
+  },
+  "integrationTable": {
+    "integrationName": "集成名称",
+    "createdAt": "创建时间",
+    "updatedAt": "更新时间",
+    "loading": "加载中...",
+    "noIntegrationsFound": "未找到集成"
+  },
+  "specField": {
+    "htmlPreview": "HTML预览",
+    "htmlCode": "HTML代码",
+    "labelField": "标签（显示名称）",
+    "labelPlaceholder": "向用户显示的字段标签",
+    "options": "选项",
+    "optionsDescription": "按回车键添加选项",
+    "addOptionPlaceholder": "添加选项并按回车键",
+    "fieldName": "字段名称（内部标识符）",
+    "fieldNamePlaceholder": "field_name",
+    "fieldNameDescription": "用于表单数据的内部标识。仅使用小写字母、数字和下划线。",
+    "fieldType": "字段类型",
+    "placeholder": "占位符",
+    "placeholderDescription": "预填充字段内容",
+    "helpText": "帮助文本",
+    "helpTextPlaceholder": "帮助文本",
+    "validation": "验证",
+    "onValidationFailure": "验证失败时",
+    "onValidationFailureDescription": "字段验证失败时会发生什么？",
+    "required": "必需",
+    "requiredDescription": "将字段标记为必需",
+    "optionsNote": "* 选项仅适用于html输出，不影响验证。",
+    "onFail": {
+      "spam": "标记为垃圾邮件",
+      "trash": "移至垃圾箱",
+      "reject": "拒绝提交",
+      "pass": "允许提交"
+    }
+  }
+}

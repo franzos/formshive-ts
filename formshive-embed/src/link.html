@@ -1,0 +1,140 @@
+<!-- 
+Formshive LINK
+When linking to a Formshive form, this HTML file is loaded, and fetches the form data from Formshive API.
+-->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS frameworks will be loaded dynamically by embed.js based on framework parameter -->
+    <title>Loading the form ...</title>
+  </head>
+  <body>
+    <section class="section py-5">
+      <div class="container">
+        <div class="row justify-content-center columns is-mobile is-centered">
+          <div class="col-md-6 column is-half">
+            <h1 class="h2 title is-2" id="title">Hold on.</h1>
+            <div id="formshive">Loading the form ...</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+  <script src="embed.min.js"></script>
+</html>
+
+<style>
+  .section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Framework-agnostic container */
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  /* Dual-framework row/columns */
+  .row.columns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  
+  .col-md-6.column {
+    width: 100%;
+    max-width: 600px;
+    flex: 0 0 auto;
+    padding: 0.75rem;
+  }
+  
+  /* Framework-specific overrides */
+  html[data-framework="bootstrap"] .section {
+    padding: 3rem 0;
+  }
+  
+  html[data-framework="bulma"] .section {
+    padding: 3rem 1.5rem;
+  }
+  
+  /* Title styling that works with both frameworks */
+  .h2.title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+  
+  /* Bootstrap-specific title styling */
+  html[data-framework="bootstrap"] .h2.title {
+    margin-bottom: 1rem;
+  }
+  
+  /* Bulma-specific title styling */
+  html[data-framework="bulma"] .title.is-2 {
+    font-size: 2rem;
+  }
+  
+  form.formshive {
+    border: 1px solid var(--border-color, light-dark(#e0e0e0, #444444));
+    border-radius: var(--border-radius, 4px);
+    padding: 1rem;
+    background-color: var(--form-bg, light-dark(#ffffff, #1a1a1a));
+    color: var(--text-color, light-dark(#333333, #ffffff));
+  }
+
+  /* Framework-specific adaptations */
+  html[data-theme="dark"] form.formshive,
+  .theme-dark form.formshive {
+    --border-color: #444444;
+    --form-bg: #2b2b2b;
+    --text-color: #ffffff;
+  }
+
+  /* Bulma dark mode support */
+  html[data-theme="dark"] form.formshive {
+    --border-color: hsl(0, 0%, 29%);
+    --form-bg: hsl(0, 0%, 14%);
+    --text-color: hsl(0, 0%, 96%);
+  }
+
+  /* Bootstrap dark mode support */
+  [data-bs-theme="dark"] form.formshive {
+    --border-color: var(--bs-border-color, #495057);
+    --form-bg: var(--bs-body-bg, #212529);
+    --text-color: var(--bs-body-color, #dee2e6);
+  }
+
+  /* Auto-detect system dark mode */
+  @media (prefers-color-scheme: dark) {
+    form.formshive {
+      --border-color: #444444;
+      --form-bg: #2b2b2b;
+      --text-color: #ffffff;
+    }
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .col-md-6.column {
+      max-width: 100%;
+      padding: 0.5rem;
+    }
+    
+    .container {
+      padding: 0 0.5rem;
+    }
+    
+    .h2.title {
+      font-size: 1.75rem;
+    }
+  }
+</style>

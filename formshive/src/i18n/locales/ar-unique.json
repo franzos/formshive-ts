@@ -1,0 +1,357 @@
+{
+  "brand": {
+    "logoAlt": "شعار Formshive",
+    "name": "Forms",
+    "nameSecond": "hive",
+    "domain": "formshive.com",
+    "email": "hello@formshive.com"
+  },
+  "welcome": {
+    "tagline": "التعامل مع بيانات النماذج بسهولة ومرونة",
+    "description": "احصل على البيانات، تحقق منها، حولها، ووجهها — من أي نموذج أو سكريبت أو وكيل ذكي.",
+    "subDescription": "سريع البرق، يحافظ على الخصوصية أولاً، ومصمم للحفاظ على تدفق بياناتك بأمان وبساطة.",
+    "features": {
+      "noFields": {
+        "title": "لا حاجة لحقول محددة مسبقاً",
+        "description": "أرسل أي بيانات نموذج—حتى بدون حقول محددة مسبقاً. خصص التحققات والتحويلات فقط عندما تحتاجها."
+      },
+      "flexible": {
+        "title": "إنشاء نماذج مرنة", 
+        "description": "قم ببناء النماذج باستخدام واجهتنا البديهية أو ملفات تكوين TOML البسيطة. دمج، ربط، أو إنشاء نماذج مخصصة بالكامل — بكل سهولة."
+      },
+      "protection": {
+        "title": "حماية ذكية من الرسائل المزعجة و Captcha",
+        "description": "تحديات CAPTCHA ودودة وآلية تحافظ على نظافة مشاركاتك دون إزعاج المستخدمين."
+      },
+      "privacy": {
+        "title": "الخصوصية بالتصميم",
+        "description": "بياناتك تبقى ملكك. لا نجمع معلومات شخصية، مع استضافة آمنة في الاتحاد الأوروبي تركز على خصوصيتك وثقتك."
+      },
+      "integrations": {
+        "title": "تكاملات سلسة",
+        "description": "اتصل فوراً مع إشعارات البريد الإلكتروني و webhooks والمزيد — لتحافظ على تدفق سير العمل بسلاسة."
+      },
+      "pricing": {
+        "title": "تسعير بسيط وشفاف",
+        "description": "ابدأ بـ €0.005 فقط لكل مشاركة أو استضافة ذاتية مقابل €590/سنة. لا رسوم مخفية، لا مستثمرين، لا بيع إضافي."
+      }
+    },
+    "cta": {
+      "title": "مستعد لإحياء نماذجك؟",
+      "button": "ابدأ مع Formshive",
+      "credit": "رصيد ترحيبي €0.25",
+      "description": "لا إعداد معقد — فقط التعامل مع بيانات النماذج بسلاسة.",
+      "loginTitle": "لديك حساب؟",
+      "loginDescription": "بالفعل جزء من عائلة Formshive؟ سجل الدخول لإدارة نماذجك.",
+      "loginButton": "تسجيل الدخول"
+    }
+  },
+  "forms": {
+    "title": "عنوان النموذج",
+    "titlePlaceholder": "العنوان",
+    "titleRequired": "العنوان مطلوب",
+    "titleDescription": "مرئي لمتلقي الرد التلقائي.",
+    "redirectUrl": "رابط إعادة التوجيه",
+    "redirectPlaceholder": "https://my-website.com/thank-you",
+    "invalidUrl": "رابط غير صالح",
+    "redirectDescription": "الرابط الذي سيتم توجيه المستخدم إليه بعد إرسال النموذج.",
+    "redirectWarning": "إذا لم تحدد رابط إعادة التوجيه، سيرى المستخدمون صفحة فارغة بعد الإرسال. هذا موصى به فقط إذا كنت تعرف ما تفعله (مثلاً التعامل مع الإرسال بـ Javascript).",
+    "filterSpam": "تصفية الرسائل المزعجة",
+    "filterSpamDescription": "تفعيل تصفية الرسائل المزعجة. سيتم فحص أنماط الرسائل المزعجة الشائعة في حقل الرسالة. يتم تخطي التكامل والإشعارات للمشاركات المزعجة.",
+    "filterSpamWarning": "سيتم رفض إرسالات النماذج إذا لم يحتوي النموذج على حقل بالاسم \"message\" في نموذجك، أو حقل مخصص مع تفعيل فحص الرسائل المزعجة.",
+    "checkCaptcha": "فحص Captcha",
+    "captchaDescription": "تفعيل تحقق Captcha. سيتطلب من المستخدم حل captcha قبل إرسال النموذج.",
+    "captchaWarning": "سيتم رفض إرسالات النماذج إذا لم يتم حل captcha.",
+    "setupInstructions": "تعليمات الإعداد",
+    "createForm": "إنشاء نموذج",
+    "createDescription": "يمكنك تكوين التكاملات وإشعارات البريد الإلكتروني بعد الحفظ.",
+    "formsDescription": "النماذج التي تتلقى من خلالها الرسائل.",
+    "newForm": "نموذج جديد",
+    "formName": "اسم النموذج",
+    "createdAt": "تاريخ الإنشاء",
+    "updatedAt": "تاريخ التحديث",
+    "security": "الأمان",
+    "redirect": "إعادة التوجيه",
+    "fieldSpecs": "الحقول",
+    "autoResponse": "الرد التلقائي",
+    "spamFilterEnabled": "مرشح الرسائل المزعجة مفعل. تأكد من تضمين حقل بالاسم \"message\" في نموذجك، أو حقل نموذج مع تفعيل فحص الرسائل المزعجة.",
+    "captchaEnabled": "تحقق CAPTCHA مفعل",
+    "noSecurityEnabled": "لا توجد ميزات أمان مفعلة",
+    "noRedirectUrl": "لا يوجد رابط إعادة توجيه مكون",
+    "specsEnabled": "مواصفات الحقول مفعلة",
+    "specsDisabled": "مواصفات الحقول معطلة",
+    "autoResponseEnabled": "الرد التلقائي مفعل",
+    "autoResponseDisabled": "الرد التلقائي معطل",
+    "loading": "جاري التحميل...",
+    "noFormsFound": "لم يتم العثور على نماذج",
+    "deleteAriaLabel": "حذف"
+  },
+  "account": {
+    "welcome": "مرحباً بك في ",
+    "newHereTitle": "جديد هنا؟ ابدأ:",
+    "createForm": "إنشاء نموذج",
+    "questions": "أسئلة؟ ",
+    "formsTitle": "النماذج",
+    "formsDescription": "إنشاء وإدارة نماذجك",
+    "goToForms": "الذهاب إلى النماذج",
+    "integrationsTitle": "التكاملات",
+    "integrationsDescription": "ربط النماذج بأدواتك", 
+    "goToIntegrations": "الذهاب إلى التكاملات",
+    "messagesTitle": "الرسائل",
+    "messagesDescription": "عرض مشاركات النماذج",
+    "goToMessages": "الذهاب إلى الرسائل",
+    "profileTitle": "الملف الشخصي",
+    "profileDescription": "إدارة الحساب والفوترة",
+    "goToProfile": "الذهاب إلى الملف الشخصي"
+  },
+  "integrations": {
+    "newIntegration": "تكامل جديد",
+    "description": "استخدم Webhooks للتكامل مع Zapier وغيرها",
+    "createIntegration": "إنشاء تكامل",
+    "createDescription": "في الوقت الحالي فقط webhooks مدعومة."
+  },
+  "messages": {
+    "chartLabel": "الرسائل",
+    "description": "جميع الرسائل الواردة ستُدرج هنا.",
+    "messagesSection": "الرسائل"
+  },
+  "billing": {
+    "pricing": "التسعير",
+    "comparison": "مقارنة",
+    "comparisonNote": "... بناءً على الخطط الأساسية",
+    "totalMessages": "إجمالي الرسائل",
+    "usageDescription": "نحن نحاسب حسب الاستخدام، ليس الشهر؛ تحتاج 10 رسائل في السنة؟ لا مشكلة.",
+    "checkSpam": "فحص الرسائل للمحتوى المزعج (~0.005 يورو)",
+    "emailNotifications": "تلقي إشعارات البريد الإلكتروني حول كل رسالة (~0.003 يورو)",
+    "webhook": "إرسال webhook (~0.0005 يورو)",
+    "cost": "التكلفة: ",
+    "costWithDiscount": "التكلفة: ",
+    "formshive": "Formshive",
+    "wufoo": "Wufoo",
+    "formspree": "Formspree"
+  },
+  "pricing": {
+    "title": "التسعير"
+  },
+  "common": {
+    "loading": "جاري التحميل...",
+    "unlimited": "غير محدود"
+  },
+  "formSpec": {
+    "checkFormFields": "فحص حقول النموذج",
+    "checkFormFieldsDescription": "فحص حقول النموذج للأخطاء قبل الإرسال.",
+    "formFieldsDisabled": "حقول النموذج غير مفعلة ولن تؤثر.",
+    "spamFilterEnabled": "مرشح الرسائل المزعجة مفعل. تأكد من تضمين حقل بالاسم",
+    "unsavedChanges": "تغييرات غير محفوظة",
+    "unsavedChangesAlert": "تغييرات غير محفوظة: احفظ التغييرات قبل تغيير المحرر.",
+    "visualEditor": "المحرر المرئي",
+    "toml": "Toml",
+    "specsErrors": "أخطاء المواصفات",
+    "noErrors": "لا أخطاء",
+    "specsValid": "المواصفات صالحة.",
+    "checkValidity": "فحص الصحة",
+    "prefillExample": "مثال التعبئة المسبقة",
+    "copyHtmlForm": "نسخ نموذج HTML",
+    "htmlCopied": "تم نسخ HTML إلى الحافظة",
+    "editor": {
+      "addField": "إضافة حقل",
+      "formFields": "حقول النموذج",
+      "fieldSettings": "إعدادات الحقل",
+      "formSettings": "إعدادات النموذج",
+      "globalSettings": "الإعدادات العامة",
+      "selectFieldToEdit": "اختر حقلاً لتحرير إعداداته، أو قم بتكوين إعدادات النموذج العامة أدناه.",
+      "discardAdditionalFields": "تجاهل الحقول الإضافية",
+      "discardAdditionalFieldsDescription": "تجاهل الحقول الإضافية غير المعرفة في مواصفات النموذج.",
+      "noFieldsAdded": "لم تتم إضافة حقول بعد. استخدم الأزرار على اليسار لإضافة حقلك الأول.",
+      "optionsRequired": "الخيارات مطلوبة!",
+      "fieldNameExists": "يوجد حقل بهذا الاسم بالفعل. يرجى اختيار اسم مختلف.",
+      "fieldTypes": {
+        "text": {
+          "label": "نص سطر واحد",
+          "description": "إدخال نص قصير"
+        },
+        "textarea": {
+          "label": "نص فقرة",
+          "description": "إدخال نص متعدد الأسطر"
+        },
+        "number": {
+          "label": "رقم",
+          "description": "إدخال رقمي"
+        },
+        "email": {
+          "label": "البريد الإلكتروني",
+          "description": "إدخال عنوان البريد الإلكتروني"
+        },
+        "tel": {
+          "label": "الهاتف",
+          "description": "إدخال رقم الهاتف"
+        },
+        "url": {
+          "label": "URL",
+          "description": "إدخال رابط الموقع"
+        },
+        "date": {
+          "label": "التاريخ",
+          "description": "منتقي التاريخ"
+        },
+        "time": {
+          "label": "الوقت",
+          "description": "منتقي الوقت"
+        },
+        "datetime": {
+          "label": "التاريخ والوقت",
+          "description": "منتقي التاريخ والوقت"
+        },
+        "select": {
+          "label": "قائمة منسدلة",
+          "description": "خيار واحد منسدل"
+        },
+        "radio": {
+          "label": "أزرار راديو",
+          "description": "خيارات اختيار واحد"
+        },
+        "checkbox": {
+          "label": "مربعات اختيار",
+          "description": "خيارات اختيار متعددة"
+        },
+        "form": {
+          "label": "رفع ملف",
+          "description": "مرفق ملف"
+        }
+      }
+    }
+  },
+  "integration": {
+    "delete": "حذف"
+  },
+  "accountPages": {
+    "newForm": "نموذج جديد",
+    "formsDescription": "النماذج التي تتلقى من خلالها الرسائل.",
+    "newIntegration": "تكامل جديد",
+    "integrationsDescription": "استخدم Webhooks للتكامل مع Zapier وغيرها",
+    "messagesDescription": "جميع الرسائل الواردة ستُدرج هنا.",
+    "messagesChartLabel": "الرسائل"
+  },
+  "formEdit": {
+    "settings": "الإعدادات",
+    "general": "عام",
+    "generalDescription": "عنوان النموذج، رابط إعادة التوجيه، مرشح الرسائل المزعجة و captcha.",
+    "formFieldsOptional": "حقول النموذج (اختياري)",
+    "formFieldsDescription": "حقول النموذج هي أشياء مثل الاسم الأول، الاسم الأخير، عنوان البريد الإلكتروني، إلخ. مع حقول النموذج يمكنك إجراء التحقق من النموذج، تحويل البيانات، وإنشاء نماذج HTML.",
+    "readMore": "اقرأ المزيد.",
+    "emailNotifications": "إشعارات البريد الإلكتروني",
+    "emailNotificationsDescription": "توجيه الرسائل الواردة إلى عنوان بريد إلكتروني واحد أو أكثر.",
+    "integrations": "التكاملات",
+    "integrationsDescription": "توجيه الرسائل الواردة إلى خدمات أخرى باستخدام التكاملات.",
+    "titleRequired": "العنوان مطلوب",
+    "formSpecsRequired": "مواصفات النموذج مطلوبة"
+  },
+  "formIntegration": {
+    "integration": "التكامل",
+    "manual": "يدوي",
+    "javascript": "Javascript", 
+    "iframe": "iFrame",
+    "link": "رابط",
+    "manualDescription": "لديك نموذج HTML بالفعل؟ ببساطة وجه إجراء نموذجك إلى رابط Formshive أدناه. إذا فعلت captcha، اشمل رابط captcha أيضاً.",
+    "formUrl": "رابط النموذج",
+    "formUrlDescription": "يمكن لنموذجك استقبال مشاركات النماذج و JSON، للتكامل في المواقع بالإضافة للاستخدام في bash scripts وغيرها.",
+    "captchaUrl": "رابط Captcha",
+    "captchaDescription": "يُستخدم هذا الرابط للتحقق من captcha.",
+    "captchaDisabledDescription": "يُستخدم هذا الرابط للتحقق من captcha. (معطل لأنك لم تفعل Captcha)",
+    "seeExamples": "انظر الأمثلة",
+    "examplesFromFields": "تم إنشاء الأمثلة من حقول النموذج.",
+    "simpleHtmlForm": "نموذج HTML بسيط",
+    "htmlExample": "مثال HTML",
+    "formPreview": "معاينة النموذج",
+    "includeScript": "تأكد من تضمين",
+    "inHtmlHead": "في HTML",
+    "section": "قسم موقعك.",
+    "htmlFormWithFile": "نموذج HTML مع رفع ملف",
+    "fileUploadNote": "معظم النماذج ستعمل كما هي، لكن مع رفع الملفات عليك أن تتعامل بعناية خاصة لتشمل",
+    "formSubmissionCurl": "إرسال النموذج مع curl",
+    "formSubmissionCurlFile": "إرسال النموذج مع curl، بما في ذلك رفع الملف",
+    "fileUploadCurlNote": "معظم الإرسالات ستعمل كما هي، لكن مع رفع الملفات عليك أن تتعامل بعناية خاصة لتشمل",
+    "jsonSubmissionCurl": "إرسال JSON مع curl",
+    "redirectNotApplicable": "رابط إعادة التوجيه غير قابل للتطبيق على الإرسالات المنسقة بـ JSON.",
+    "llmIntegration": "التكامل باستخدام LLM (AI) prompt",
+    "embedDescription": "دمج نموذج Formshive في أي موقع مع JavaScript. مثالي لـ Squarespace، WordPress، أو المواقع المخصصة. انسخ الكود والصقه في صفحتك.",
+    "iframeDescription": "اعرض نموذج Formshive باستخدام iFrame. احصل على كود التضمين أدناه والصقه في HTML موقعك للحصول على نموذج مضمن سلس.",
+    "linkDescriptionLong": "شارك نموذج Formshive برابط مباشر. انسخ الرابط أدناه واستخدمه في رسائل البريد الإلكتروني، وسائل التواصل الاجتماعي، أو كزر في موقعك.",
+    "needFormFields": "تحتاج لإنشاء",
+    "formFields": "حقول النموذج",
+    "toUseFeature": "لاستخدام",
+    "embedFeature": "ميزة التضمين.",
+    "iframeFeature": "ميزة iframe.", 
+    "linkFeature": "ميزة الرابط.",
+    "noFileField": "النموذج لا يتضمن حقل رفع ملف.",
+    "htmlTag": "علامة HTML",
+    "htmlTagDescription": "ضع هذه العلامة في HTML حيث تريد ظهور النموذج.",
+    "cssFramework": "إطار عمل CSS",
+    "selectCssFramework": "اختر إطار عمل CSS",
+    "scriptTag": "علامة Script",
+    "scriptTagDescription": "ضع هذا حيث تريد ظهور النموذج.",
+    "preview": "معاينة",
+    "linkLabel": "رابط",
+    "linkDescription": "استخدم هذا الرابط للربط المباشر إلى النموذج.",
+    "formTitle": "عنوان النموذج",
+    "formTitlePlaceholder": "أدخل عنوان النموذج",
+    "formTitleDescription": "عنوان مخصص يظهر على صفحة النموذج"
+  },
+  "messageTable": {
+    "content": "المحتوى",
+    "form": "النموذج",
+    "files": "الملفات",
+    "createdAt": "تاريخ الإنشاء",
+    "download": "تحميل",
+    "downloadJson": "تحميل JSON", 
+    "downloadTxt": "تحميل TXT",
+    "markAsHam": "تمييز كـ HAM",
+    "markAsSpam": "تمييز كـ SPAM",
+    "delete": "حذف",
+    "messageUpdated": "تم تحديث الرسالة",
+    "markedAsHam": "تم تمييزها كـ HAM",
+    "markedAsSpam": "تم تمييزها كـ SPAM",
+    "spamAndHam": "SPAM & HAM",
+    "spam": "SPAM",
+    "ham": "HAM",
+    "loading": "جاري التحميل...",
+    "noMessagesFound": "لم يتم العثور على رسائل",
+    "couldNotToggleSpam": "لا يمكن تبديل حالة الرسائل المزعجة"
+  },
+  "integrationTable": {
+    "integrationName": "اسم التكامل",
+    "createdAt": "تاريخ الإنشاء",
+    "updatedAt": "تاريخ التحديث",
+    "loading": "جاري التحميل...",
+    "noIntegrationsFound": "لم يتم العثور على تكاملات"
+  },
+  "specField": {
+    "htmlPreview": "معاينة HTML",
+    "htmlCode": "كود HTML",
+    "labelField": "التسمية (اسم العرض)",
+    "labelPlaceholder": "تسمية الحقل المعروضة للمستخدمين",
+    "options": "الخيارات",
+    "optionsDescription": "اضغط Enter لإضافة خيار",
+    "addOptionPlaceholder": "أضف خيار واضغط Enter",
+    "fieldName": "اسم الحقل (المعرف الداخلي)",
+    "fieldNamePlaceholder": "field_name",
+    "fieldNameDescription": "يُستخدم داخلياً لبيانات النموذج. استخدم الأحرف الصغيرة والأرقام والشرطات السفلية فقط.",
+    "fieldType": "نوع الحقل",
+    "placeholder": "العنصر النائب",
+    "placeholderDescription": "محتوى الحقل المعبأ مسبقاً",
+    "helpText": "نص المساعدة",
+    "helpTextPlaceholder": "نص المساعدة",
+    "validation": "التحقق",
+    "onValidationFailure": "عند فشل التحقق",
+    "onValidationFailureDescription": "ما يحدث إذا فشل التحقق من صحة الحقل؟",
+    "required": "مطلوب",
+    "requiredDescription": "تمييز الحقل كمطلوب",
+    "optionsNote": "* الخيارات قابلة للتطبيق فقط على مخرجات html ولا تؤثر على التحقق.",
+    "onFail": {
+      "spam": "تمييز كرسائل مزعجة",
+      "trash": "نقل إلى المهملات",
+      "reject": "رفض الإرسال",
+      "pass": "السماح بالإرسال"
+    }
+  }
+}

@@ -1,0 +1,357 @@
+{
+  "brand": {
+    "logoAlt": "โลโก้ Formshive",
+    "name": "Forms",
+    "nameSecond": "hive",
+    "domain": "formshive.com",
+    "email": "hello@formshive.com"
+  },
+  "welcome": {
+    "tagline": "การจัดการข้อมูลฟอร์มที่ง่ายดายและยืดหยุ่น",
+    "description": "จับข้อมูล ตรวจสอบ แปลง และส่งต่อข้อมูล — จากฟอร์ม สคริปต์ หรือ AI agent ใดก็ได้",
+    "subDescription": "ความเร็วสูง ปลอดภัยเป็นหลัก และสร้างขึ้นเพื่อให้ข้อมูลของคุณไหลอย่างปลอดภัยและเรียบง่าย",
+    "features": {
+      "noFields": {
+        "title": "ไม่ต้องกำหนดฟิลด์",
+        "description": "ส่งข้อมูลฟอร์มใดก็ได้ โดยไม่ต้องกำหนดฟิลด์ล่วงหน้า ปรับแต่งการตรวจสอบและการแปลงข้อมูลเมื่อต้องการเท่านั้น"
+      },
+      "flexible": {
+        "title": "การสร้างฟอร์มที่ยืดหยุ่น",
+        "description": "สร้างฟอร์มด้วย GUI ที่ใช้งานง่าย หรือ TOML config ที่เรียบง่าย ฝัง ลิงก์ หรือสร้างฟอร์มแบบกำหนดเองอย่างง่ายดาย"
+      },
+      "protection": {
+        "title": "ป้องกันสแปมและ CAPTCHA อัจฉริยะ",
+        "description": "ระบบ CAPTCHA อัตโนมัติที่เป็นมิตรช่วยให้การส่งข้อมูลของคุณสะอาดโดยไม่ทำให้ผู้ใช้รำคาญ"
+      },
+      "privacy": {
+        "title": "ความเป็นส่วนตัวตามการออกแบบ",
+        "description": "ข้อมูลของคุณยังคงเป็นของคุณ เราไม่เก็บข้อมูลส่วนบุคคล พร้อมระบบ hosting ที่ปลอดภัยใน EU ที่เน้นความเป็นส่วนตัวและความน่าเชื่อถือ"
+      },
+      "integrations": {
+        "title": "การเชื่อมต่อที่ราบรื่น",
+        "description": "เชื่อมต่อได้ทันทีกับการแจ้งเตือนอีเมล webhook และอื่นๆ — ทำให้ workflow ของคุณทำงานได้อย่างราบรื่น"
+      },
+      "pricing": {
+        "title": "ราคาที่เรียบง่ายและโปร่งใส",
+        "description": "เริ่มต้นเพียง €0.005 ต่อการส่งข้อมูล หรือ self-host ในราคา €590/ปี ไม่มีค่าใช้จ่ายแอบแฝง ไม่มีนักลงทุน ไม่มีการขายเพิ่ม"
+      }
+    },
+    "cta": {
+      "title": "พร้อมที่จะทำให้ฟอร์มของคุณมีชีวิตชีวา?",
+      "button": "เริ่มต้นกับ Formshive",
+      "credit": "เครดิตต้อนรับ €0.25",
+      "description": "ไม่มีขั้นตอนซับซ้อน — เพียงแค่การจัดการข้อมูลฟอร์มที่ราบรื่น",
+      "loginTitle": "มีบัญชีอยู่แล้ว?",
+      "loginDescription": "เป็นส่วนหนึ่งของครอบครัว Formshive แล้ว? เข้าสู่ระบบเพื่อจัดการฟอร์มของคุณ",
+      "loginButton": "เข้าสู่ระบบ"
+    }
+  },
+  "forms": {
+    "title": "ชื่อฟอร์ม",
+    "titlePlaceholder": "ชื่อเรื่อง",
+    "titleRequired": "ต้องระบุชื่อเรื่อง",
+    "titleDescription": "เป็นที่มองเห็นโดยผู้รับการตอบกลับอัตโนมัติ",
+    "redirectUrl": "URL เปลี่ยนเส้นทาง",
+    "redirectPlaceholder": "https://my-website.com/thank-you",
+    "invalidUrl": "URL ไม่ถูกต้อง",
+    "redirectDescription": "URL ที่ผู้ใช้จะถูกเปลี่ยนเส้นทางไปหลังจากส่งฟอร์ม",
+    "redirectWarning": "หากคุณไม่ได้ตั้งค่า redirect URL ผู้ใช้จะเห็นหน้าเปล่าหลังจากส่งข้อมูล แนะนำให้ใช้เฉพาะเมื่อคุณรู้ว่าทำอะไรอยู่ (เช่น จัดการการส่งข้อมูลด้วย Javascript)",
+    "filterSpam": "กรองสแปม",
+    "filterSpamDescription": "เปิดใช้งานการกรองสแปม ระบบจะตรวจสอบรูปแบบสแปมทั่วไปในฟิลด์ข้อความ การรวมและการแจ้งเตือนจะถูกข้ามสำหรับการส่งข้อมูลสแปม",
+    "filterSpamWarning": "การส่งฟอร์มจะถูกปฏิเสธหากฟอร์มไม่มีฟิลด์ที่มีชื่อ \"message\" ในฟอร์มของคุณ หรือฟิลด์ที่กำหนดเองที่เปิดใช้งานการตรวจสอบสแปม",
+    "checkCaptcha": "ตรวจสอบ CAPTCHA",
+    "captchaDescription": "เปิดใช้งานการตรวจสอบ CAPTCHA ผู้ใช้จะต้องแก้ captcha ก่อนส่งฟอร์ม",
+    "captchaWarning": "การส่งฟอร์มจะถูกปฏิเสธหาก captcha ไม่ได้รับการแก้ไข",
+    "setupInstructions": "คำแนะนำการตั้งค่า",
+    "createForm": "สร้างฟอร์ม",
+    "createDescription": "คุณสามารถกำหนดค่าการรวมและการแจ้งเตือนอีเมลหลังจากบันทึก",
+    "formsDescription": "ฟอร์มที่คุณใช้รับข้อความ",
+    "newForm": "ฟอร์มใหม่",
+    "formName": "ชื่อฟอร์ม",
+    "createdAt": "สร้างเมื่อ",
+    "updatedAt": "อัปเดตเมื่อ",
+    "security": "ความปลอดภัย",
+    "redirect": "เปลี่ยนเส้นทาง",
+    "fieldSpecs": "ฟิลด์",
+    "autoResponse": "ตอบกลับอัตโนมัติ",
+    "spamFilterEnabled": "ตัวกรองสแปมเปิดใช้งานแล้ว ตรวจสอบให้แน่ใจว่าได้รวมฟิลด์ที่มีชื่อ \"message\" ในฟอร์มของคุณ หรือฟิลด์ฟอร์มที่เปิดใช้งานการตรวจสอบสแปม",
+    "captchaEnabled": "เปิดใช้งานการตรวจสอบ CAPTCHA",
+    "noSecurityEnabled": "ไม่มีคุณสมบัติความปลอดภัยที่เปิดใช้งาน",
+    "noRedirectUrl": "ไม่มี URL เปลี่ยนเส้นทางที่กำหนดไว้",
+    "specsEnabled": "เปิดใช้งานข้อกำหนดฟิลด์",
+    "specsDisabled": "ปิดใช้งานข้อกำหนดฟิลด์",
+    "autoResponseEnabled": "เปิดใช้งานการตอบกลับอัตโนมัติ",
+    "autoResponseDisabled": "ปิดใช้งานการตอบกลับอัตโนมัติ",
+    "loading": "กำลังโหลด...",
+    "noFormsFound": "ไม่พบฟอร์ม",
+    "deleteAriaLabel": "ลบ"
+  },
+  "account": {
+    "welcome": "ยินดีต้อนรับสู่ ",
+    "newHereTitle": "มาใหม่? เริ่มต้นเลย:",
+    "createForm": "สร้างฟอร์ม",
+    "questions": "มีคำถาม? ",
+    "formsTitle": "ฟอร์ม",
+    "formsDescription": "สร้างและจัดการฟอร์มของคุณ",
+    "goToForms": "ไปที่ฟอร์ม",
+    "integrationsTitle": "การเชื่อมต่อ",
+    "integrationsDescription": "เชื่อมต่อฟอร์มกับเครื่องมือของคุณ",
+    "goToIntegrations": "ไปที่การเชื่อมต่อ",
+    "messagesTitle": "ข้อความ",
+    "messagesDescription": "ดูการส่งฟอร์มของคุณ",
+    "goToMessages": "ไปที่ข้อความ",
+    "profileTitle": "โปรไฟล์",
+    "profileDescription": "จัดการบัญชีและการเรียกเก็บเงิน",
+    "goToProfile": "ไปที่โปรไฟล์"
+  },
+  "integrations": {
+    "newIntegration": "การเชื่อมต่อใหม่",
+    "description": "ใช้ Webhook เพื่อเชื่อมต่อกับ Zapier และอื่นๆ",
+    "createIntegration": "สร้างการเชื่อมต่อ",
+    "createDescription": "ขณะนี้รองรับเฉพาะ webhook เท่านั้น"
+  },
+  "messages": {
+    "chartLabel": "ข้อความ",
+    "description": "ข้อความขาเข้าทั้งหมดจะแสดงที่นี่",
+    "messagesSection": "ข้อความ"
+  },
+  "billing": {
+    "pricing": "ราคา",
+    "comparison": "การเปรียบเทียบ",
+    "comparisonNote": "... อิงจากแผนระดับเริ่มต้น",
+    "totalMessages": "ข้อความทั้งหมด",
+    "usageDescription": "เราคิดค่าใช้จ่ายตามการใช้งาน ไม่ใช่ต่อเดือน ต้องการ 10 ข้อความต่อปี? ไม่มีปัญหา",
+    "checkSpam": "ตรวจสอบข้อความสแปม (~0.005 Euro)",
+    "emailNotifications": "รับการแจ้งเตือนอีเมลเกี่ยวกับข้อความแต่ละรายการ (~0.003 Euro)",
+    "webhook": "ส่ง webhook (~0.0005 Euro)",
+    "cost": "ค่าใช้จ่าย: ",
+    "costWithDiscount": "ค่าใช้จ่าย: ",
+    "formshive": "Formshive",
+    "wufoo": "Wufoo",
+    "formspree": "Formspree"
+  },
+  "pricing": {
+    "title": "ราคา"
+  },
+  "common": {
+    "loading": "กำลังโหลด...",
+    "unlimited": "ไม่จำกัด"
+  },
+  "formSpec": {
+    "checkFormFields": "ตรวจสอบฟิลด์ฟอร์ม",
+    "checkFormFieldsDescription": "ตรวจสอบฟิลด์ฟอร์มหาข้อผิดพลาดก่อนส่งข้อมูล",
+    "formFieldsDisabled": "ฟิลด์ฟอร์มไม่ได้เปิดใช้งานและจะไม่มีผลกระทบใดๆ",
+    "spamFilterEnabled": "ตัวกรองสแปมเปิดใช้งานแล้ว ตรวจสอบให้แน่ใจว่าได้รวมฟิลด์ที่มีชื่อ",
+    "unsavedChanges": "การเปลี่ยนแปลงที่ไม่ได้บันทึก",
+    "unsavedChangesAlert": "การเปลี่ยนแปลงที่ไม่ได้บันทึก: บันทึกการเปลี่ยนแปลงก่อนเปลี่ยนตัวแก้ไข",
+    "visualEditor": "ตัวแก้ไขแบบภาพ",
+    "toml": "TOML",
+    "specsErrors": "ข้อผิดพลาดของ Specs",
+    "noErrors": "ไม่มีข้อผิดพลาด",
+    "specsValid": "Specs ถูกต้อง",
+    "checkValidity": "ตรวจสอบความถูกต้อง",
+    "prefillExample": "ตัวอย่างการเติมล่วงหน้า",
+    "copyHtmlForm": "คัดลอกฟอร์ม HTML",
+    "htmlCopied": "คัดลอก HTML ไปยัง clipboard แล้ว",
+    "editor": {
+      "addField": "เพิ่มฟิลด์",
+      "formFields": "ฟิลด์ฟอร์ม",
+      "fieldSettings": "การตั้งค่าฟิลด์",
+      "formSettings": "การตั้งค่าฟอร์ม",
+      "globalSettings": "การตั้งค่าทั่วไป",
+      "selectFieldToEdit": "เลือกฟิลด์เพื่อแก้ไขการตั้งค่า หรือกำหนดค่าการตั้งค่าฟอร์มทั่วไปด้านล่าง",
+      "discardAdditionalFields": "ละทิ้งฟิลด์เพิ่มเติม",
+      "discardAdditionalFieldsDescription": "ละทิ้งฟิลด์เพิ่มเติมที่ไม่ได้กำหนดไว้ในข้อกำหนดฟอร์ม",
+      "noFieldsAdded": "ยังไม่ได้เพิ่มฟิลด์ ใช้ปุ่มทางซ้ายเพื่อเพิ่มฟิลด์แรกของคุณ",
+      "optionsRequired": "ต้องระบุตัวเลือก!",
+      "fieldNameExists": "ฟิลด์ที่มีชื่อนี้มีอยู่แล้ว กรุณาเลือกชื่ออื่น",
+      "fieldTypes": {
+        "text": {
+          "label": "ข้อความบรรทัดเดียว",
+          "description": "ช่องกรอกข้อความสั้น"
+        },
+        "textarea": {
+          "label": "ข้อความหลายบรรทัด",
+          "description": "ช่องกรอกข้อความหลายบรรทัด"
+        },
+        "number": {
+          "label": "ตัวเลข",
+          "description": "ช่องกรอกตัวเลข"
+        },
+        "email": {
+          "label": "อีเมล",
+          "description": "ช่องกรอกที่อยู่อีเมล"
+        },
+        "tel": {
+          "label": "โทรศัพท์",
+          "description": "ช่องกรอกหมายเลขโทรศัพท์"
+        },
+        "url": {
+          "label": "URL",
+          "description": "ช่องกรอก URL เว็บไซต์"
+        },
+        "date": {
+          "label": "วันที่",
+          "description": "ตัวเลือกวันที่"
+        },
+        "time": {
+          "label": "เวลา",
+          "description": "ตัวเลือกเวลา"
+        },
+        "datetime": {
+          "label": "วันที่และเวลา",
+          "description": "ตัวเลือกวันที่และเวลา"
+        },
+        "select": {
+          "label": "เมนูดรอปดาวน์",
+          "description": "ตัวเลือกเดียว"
+        },
+        "radio": {
+          "label": "ปุ่มเลือก",
+          "description": "ตัวเลือกเดียว"
+        },
+        "checkbox": {
+          "label": "ช่องทำเครื่องหมาย",
+          "description": "ตัวเลือกหลายตัว"
+        },
+        "form": {
+          "label": "อัปโหลดไฟล์",
+          "description": "แนบไฟล์"
+        }
+      }
+    }
+  },
+  "integration": {
+    "delete": "ลบ"
+  },
+  "accountPages": {
+    "newForm": "ฟอร์มใหม่",
+    "formsDescription": "ฟอร์มที่คุณใช้รับข้อความ",
+    "newIntegration": "การเชื่อมต่อใหม่",
+    "integrationsDescription": "ใช้ Webhook เพื่อเชื่อมต่อกับ Zapier และอื่นๆ",
+    "messagesDescription": "ข้อความขาเข้าทั้งหมดจะแสดงที่นี่",
+    "messagesChartLabel": "ข้อความ"
+  },
+  "formEdit": {
+    "settings": "การตั้งค่า",
+    "general": "ทั่วไป",
+    "generalDescription": "ชื่อฟอร์ม URL เปลี่ยนเส้นทาง ตัวกรองสแปม และ captcha",
+    "formFieldsOptional": "ฟิลด์ฟอร์ม (เสริม)",
+    "formFieldsDescription": "ฟิลด์ฟอร์มคือสิ่งต่างๆ เช่น ชื่อ นามสกุล ที่อยู่อีเมล เป็นต้น ด้วยฟิลด์ฟอร์ม คุณสามารถตรวจสอบฟอร์ม แปลงข้อมูล และสร้างฟอร์ม HTML ได้",
+    "readMore": "อ่านเพิ่มเติม",
+    "emailNotifications": "การแจ้งเตือนอีเมล",
+    "emailNotificationsDescription": "ส่งต่อข้อความขาเข้าไปยังที่อยู่อีเมลหนึ่งหรือหลายที่อยู่",
+    "integrations": "การเชื่อมต่อ",
+    "integrationsDescription": "ส่งต่อข้อความขาเข้าไปยังบริการอื่นโดยใช้การเชื่อมต่อ",
+    "titleRequired": "ต้องระบุชื่อเรื่อง",
+    "formSpecsRequired": "ต้องระบุข้อกำหนดฟอร์ม"
+  },
+  "formIntegration": {
+    "integration": "การเชื่อมต่อ",
+    "manual": "ด้วยตนเอง",
+    "javascript": "Javascript",
+    "iframe": "iFrame",
+    "link": "ลิงก์",
+    "manualDescription": "มีฟอร์ม HTML อยู่แล้ว? เพียงชี้ action ของฟอร์มไปที่ URL ของ Formshive ด้านล่าง หากคุณเปิดใช้งาน captcha ให้รวม URL captcha ด้วย",
+    "formUrl": "URL ฟอร์ม",
+    "formUrlDescription": "ฟอร์มของคุณสามารถรับทั้งการส่งฟอร์มและ JSON สำหรับการรวมบนเว็บไซต์รวมถึงการใช้งานใน bash script และอื่นๆ",
+    "captchaUrl": "URL CAPTCHA",
+    "captchaDescription": "URL นี้ใช้เพื่อตรวจสอบ captcha",
+    "captchaDisabledDescription": "URL นี้ใช้เพื่อตรวจสอบ captcha (ปิดใช้งานเพราะคุณไม่ได้เปิดใช้งาน CAPTCHA)",
+    "seeExamples": "ดูตัวอย่าง",
+    "examplesFromFields": "ตัวอย่างถูกสร้างจากฟิลด์ฟอร์ม",
+    "simpleHtmlForm": "ฟอร์ม HTML ธรรมดา",
+    "htmlExample": "ตัวอย่าง HTML",
+    "formPreview": "ตัวอย่างฟอร์ม",
+    "includeScript": "ตรวจสอบให้แน่ใจว่าได้รวม",
+    "inHtmlHead": "ในส่วน HTML",
+    "section": "ของเว็บไซต์คุณ",
+    "htmlFormWithFile": "ฟอร์ม HTML พร้อมการอัปโหลดไฟล์",
+    "fileUploadNote": "ฟอร์มส่วนใหญ่จะทำงานตามที่เป็นอยู่ แต่สำหรับการอัปโหลดไฟล์ คุณต้องดูแลเป็นพิเศษให้รวม",
+    "formSubmissionCurl": "การส่งฟอร์มด้วย curl",
+    "formSubmissionCurlFile": "การส่งฟอร์มด้วย curl รวมการอัปโหลดไฟล์",
+    "fileUploadCurlNote": "การส่งข้อมูลส่วนใหญ่จะทำงานตามที่เป็นอยู่ แต่สำหรับการอัปโหลดไฟล์ คุณต้องดูแลเป็นพิเศษให้รวม",
+    "jsonSubmissionCurl": "การส่ง JSON ด้วย curl",
+    "redirectNotApplicable": "URL เปลี่ยนเส้นทางไม่สามารถใช้ได้กับการส่งข้อมูลรูปแบบ JSON",
+    "llmIntegration": "การรวมโดยใช้ LLM (AI) prompt",
+    "embedDescription": "ฝังฟอร์ม Formshive ของคุณลงในเว็บไซต์ใดก็ได้ด้วย JavaScript เหมาะสำหรับ Squarespace, WordPress หรือไซต์กำหนดเอง คัดลอกโค้ดแล้ววางลงในหน้าของคุณ",
+    "iframeDescription": "แสดงฟอร์ม Formshive ของคุณโดยใช้ iFrame คว้าโค้ดฝังด้านล่างแล้ววางลงใน HTML ของเว็บไซต์สำหรับฟอร์มแบบ inline ที่ราบรื่น",
+    "linkDescriptionLong": "แชร์ฟอร์ม Formshive ของคุณด้วยลิงก์โดยตรง คัดลอก URL ด้านล่างและใช้ในอีเมล โซเชียลมีเดีย หรือเป็นปุ่มบนเว็บไซต์ของคุณ",
+    "needFormFields": "คุณต้องสร้าง",
+    "formFields": "ฟิลด์ฟอร์ม",
+    "toUseFeature": "เพื่อใช้",
+    "embedFeature": "ฟีเจอร์ฝัง",
+    "iframeFeature": "ฟีเจอร์ iframe",
+    "linkFeature": "ฟีเจอร์ลิงก์",
+    "noFileField": "ฟอร์มไม่มีฟิลด์อัปโหลดไฟล์",
+    "htmlTag": "แท็ก HTML",
+    "htmlTagDescription": "วางแท็กนี้ใน HTML ที่คุณต้องการให้ฟอร์มปรากฏ",
+    "cssFramework": "CSS Framework",
+    "selectCssFramework": "เลือก CSS framework",
+    "scriptTag": "แท็ก Script",
+    "scriptTagDescription": "วางสิ่งนี้ที่คุณต้องการให้ฟอร์มปรากฏ",
+    "preview": "ตัวอย่าง",
+    "linkLabel": "ลิงก์",
+    "linkDescription": "ใช้ URL นี้เพื่อลิงก์ไปยังฟอร์มโดยตรง",
+    "formTitle": "ชื่อฟอร์ม",
+    "formTitlePlaceholder": "กรอกชื่อฟอร์ม",
+    "formTitleDescription": "ชื่อที่กำหนดเองที่แสดงบนหน้าฟอร์ม"
+  },
+  "messageTable": {
+    "content": "เนื้อหา",
+    "form": "ฟอร์ม",
+    "files": "ไฟล์",
+    "createdAt": "สร้างเมื่อ",
+    "download": "ดาวน์โหลด",
+    "downloadJson": "ดาวน์โหลด JSON",
+    "downloadTxt": "ดาวน์โหลด TXT",
+    "markAsHam": "ทำเครื่องหมายเป็น HAM",
+    "markAsSpam": "ทำเครื่องหมายเป็นสแปม",
+    "delete": "ลบ",
+    "messageUpdated": "อัปเดตข้อความแล้ว",
+    "markedAsHam": "ทำเครื่องหมายเป็น HAM แล้ว",
+    "markedAsSpam": "ทำเครื่องหมายเป็นสแปมแล้ว",
+    "spamAndHam": "สแปมและ HAM",
+    "spam": "สแปม",
+    "ham": "HAM",
+    "loading": "กำลังโหลด...",
+    "noMessagesFound": "ไม่พบข้อความ",
+    "couldNotToggleSpam": "ไม่สามารถเปลี่ยนสถานะสแปมได้"
+  },
+  "integrationTable": {
+    "integrationName": "ชื่อการเชื่อมต่อ",
+    "createdAt": "สร้างเมื่อ",
+    "updatedAt": "อัปเดตเมื่อ",
+    "loading": "กำลังโหลด...",
+    "noIntegrationsFound": "ไม่พบการเชื่อมต่อ"
+  },
+  "specField": {
+    "htmlPreview": "ตัวอย่าง HTML",
+    "htmlCode": "โค้ด HTML",
+    "labelField": "ป้ายกำกับ (ชื่อที่แสดง)",
+    "labelPlaceholder": "ป้ายกำกับฟิลด์ที่แสดงให้ผู้ใช้เห็น",
+    "options": "ตัวเลือก",
+    "optionsDescription": "กด Enter เพื่อเพิ่มตัวเลือก",
+    "addOptionPlaceholder": "เพิ่มตัวเลือกและกด Enter",
+    "fieldName": "ชื่อฟิลด์ (ตัวระบุภายใน)",
+    "fieldNamePlaceholder": "field_name",
+    "fieldNameDescription": "ใช้ภายในสำหรับข้อมูลฟอร์ม ใช้ตัวอักษรภาษาอังกฤษตัวเล็ก ตัวเลข และ underscore เท่านั้น",
+    "fieldType": "ประเภทฟิลด์",
+    "placeholder": "ตัวอย่าง",
+    "placeholderDescription": "เนื้อหาที่เติมล่วงหน้าในฟิลด์",
+    "helpText": "ข้อความช่วยเหลือ",
+    "helpTextPlaceholder": "ข้อความช่วยเหลือ",
+    "validation": "การตรวจสอบ",
+    "onValidationFailure": "เมื่อการตรวจสอบล้มเหลว",
+    "onValidationFailureDescription": "จะเกิดอะไรขึ้นหากการตรวจสอบฟิลด์ล้มเหลว?",
+    "required": "จำเป็น",
+    "requiredDescription": "ทำเครื่องหมายฟิลด์เป็นฟิลด์จำเป็น",
+    "optionsNote": "* ตัวเลือกจะใช้ได้กับเอาต์พุต HTML เท่านั้น และไม่ส่งผลต่อการตรวจสอบ",
+    "onFail": {
+      "spam": "ทำเครื่องหมายเป็นสแปม",
+      "trash": "ย้ายไปถังขยะ",
+      "reject": "ปฏิเสธการส่งข้อมูล",
+      "pass": "อนุญาตการส่งข้อมูล"
+    }
+  }
+}

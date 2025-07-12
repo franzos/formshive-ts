@@ -1,0 +1,357 @@
+{
+  "brand": {
+    "logoAlt": "Logo de Formshive",
+    "name": "Forms",
+    "nameSecond": "hive",
+    "domain": "formshive.com",  
+    "email": "hello@formshive.com"
+  },
+  "welcome": {
+    "tagline": "Gestión de datos de formularios sin esfuerzo y flexible",
+    "description": "Captura, valida, transforma y enruta datos — desde cualquier formulario, script o agente de IA.",
+    "subDescription": "Ultrarrápido, privacidad primero, y diseñado para mantener tus datos fluyendo de forma segura y simple.",
+    "features": {
+      "noFields": {
+        "title": "No Requiere Campos",
+        "description": "Envía cualquier dato de formulario—incluso sin campos predefinidos. Personaliza validaciones y transformaciones solo cuando las necesites."
+      },
+      "flexible": {
+        "title": "Creación de Formularios Flexible",
+        "description": "Construye formularios con nuestra interfaz intuitiva o configuraciones TOML simples. Incrusta, enlaza o crea formularios completamente personalizados — sin esfuerzo."
+      },
+      "protection": {
+        "title": "Protección Inteligente contra Spam y CAPTCHA",
+        "description": "Desafíos CAPTCHA amigables y automatizados mantienen tus envíos limpios sin frustrar a tus usuarios."
+      },
+      "privacy": {
+        "title": "Privacidad por Diseño",
+        "description": "Tus datos siguen siendo tuyos. No recopilamos información personal, con hosting seguro en la UE enfocado en tu privacidad y confianza."
+      },
+      "integrations": {
+        "title": "Integraciones Perfectas",
+        "description": "Conecta instantáneamente con notificaciones por email, webhooks y más — manteniendo tus flujos de trabajo funcionando sin problemas."
+      },
+      "pricing": {
+        "title": "Precios Simples y Transparentes",
+        "description": "Comienza desde solo €0.005 por envío o auto-hostea por €590/año. Sin tarifas ocultas, sin inversores, sin ventas adicionales."
+      }
+    },
+    "cta": {
+      "title": "¿Listo para dar vida a tus formularios?",
+      "button": "Comenzar con Formshive",
+      "credit": "€0.25 Crédito de Bienvenida",
+      "description": "Sin incorporación compleja — solo gestión perfecta de datos de formularios.",
+      "loginTitle": "¿Tienes una cuenta?",
+      "loginDescription": "¿Ya eres parte de la familia Formshive? Inicia sesión para gestionar tus formularios.",
+      "loginButton": "Iniciar Sesión"
+    }
+  },
+  "forms": {
+    "title": "Título del Formulario",
+    "titlePlaceholder": "Título",
+    "titleRequired": "El título es obligatorio",
+    "titleDescription": "Visible para los destinatarios del contestador automático.",
+    "redirectUrl": "URL de Redirección",
+    "redirectPlaceholder": "https://mi-sitio-web.com/gracias",
+    "invalidUrl": "URL inválida",
+    "redirectDescription": "La URL a la que será redirigido el usuario después del envío del formulario.",
+    "redirectWarning": "Si no estableces una URL de redirección, los usuarios verán una página en blanco después del envío. Esto solo se recomienda si sabes lo que estás haciendo (por ejemplo, manejar el envío con Javascript).",
+    "filterSpam": "Filtrar SPAM",
+    "filterSpamDescription": "Habilitar filtrado de SPAM. Esto verificará patrones comunes de spam en el campo de mensaje. Las integraciones y notificaciones se omiten para envíos de SPAM.",
+    "filterSpamWarning": "Los envíos de formulario serán rechazados si el formulario no contiene un campo con el nombre \"message\" en su formulario, o un campo personalizado con verificación de spam habilitada.",
+    "checkCaptcha": "Verificar CAPTCHA",
+    "captchaDescription": "Habilitar verificación CAPTCHA. Esto requerirá que el usuario resuelva un captcha antes de enviar el formulario.",
+    "captchaWarning": "Los envíos de formulario serán rechazados si el captcha no se resuelve.",
+    "setupInstructions": "Instrucciones de configuración",
+    "createForm": "Crear formulario",
+    "createDescription": "Puedes configurar integraciones y notificaciones por email después de guardar.",
+    "formsDescription": "Formularios a través de los cuales recibes mensajes.",
+    "newForm": "Nuevo Formulario",
+    "formName": "Nombre del Formulario",
+    "createdAt": "Creado el",
+    "updatedAt": "Actualizado el",
+    "security": "Seguridad",
+    "redirect": "Redirección",
+    "fieldSpecs": "Campos",
+    "autoResponse": "Respuesta Auto",
+    "spamFilterEnabled": "El filtro de spam está habilitado. Asegúrese de incluir un campo con el nombre \"message\" en su formulario, o un campo de formulario con verificación de spam habilitada.",
+    "captchaEnabled": "Verificación CAPTCHA habilitada",
+    "noSecurityEnabled": "No hay características de seguridad habilitadas",
+    "noRedirectUrl": "No hay URL de redirección configurada",
+    "specsEnabled": "Especificaciones de campo habilitadas",
+    "specsDisabled": "Especificaciones de campo deshabilitadas",
+    "autoResponseEnabled": "Respuesta automática habilitada",
+    "autoResponseDisabled": "Respuesta automática deshabilitada",
+    "loading": "Cargando...",
+    "noFormsFound": "No se encontraron formularios",
+    "deleteAriaLabel": "Eliminar"
+  },
+  "account": {
+    "welcome": "Bienvenido a ",
+    "newHereTitle": "¿Nuevo aquí? Comienza:",
+    "createForm": "Crear un formulario",
+    "questions": "¿Preguntas? ",
+    "formsTitle": "Formularios",
+    "formsDescription": "Crear y gestionar tus formularios",
+    "goToForms": "Ir a Formularios",
+    "integrationsTitle": "Integraciones",
+    "integrationsDescription": "Conecta formularios a tus herramientas",
+    "goToIntegrations": "Ir a Integraciones",
+    "messagesTitle": "Mensajes",
+    "messagesDescription": "Ver tus envíos de formularios",
+    "goToMessages": "Ir a Mensajes",
+    "profileTitle": "Perfil",
+    "profileDescription": "Gestionar cuenta y facturación",
+    "goToProfile": "Ir a Perfil"
+  },
+  "integrations": {
+    "newIntegration": "Nueva Integración",
+    "description": "Usa Webhooks para integrar con Zapier y otros",
+    "createIntegration": "Crear integración",
+    "createDescription": "Por el momento solo se soportan webhooks."
+  },
+  "messages": {
+    "chartLabel": "Mensajes",
+    "description": "Todos los mensajes entrantes se listarán aquí.",
+    "messagesSection": "Mensajes"
+  },
+  "billing": {
+    "pricing": "Precios",
+    "comparison": "Comparación",
+    "comparisonNote": "... basado en planes de nivel básico",
+    "totalMessages": "Total de Mensajes",
+    "usageDescription": "Cobramos por uso, no por mes; ¿Necesitas 10 mensajes por año? No hay problema.",
+    "checkSpam": "Verificar mensajes por spam (~0.005 Euro)",
+    "emailNotifications": "Recibir notificaciones por email sobre cada mensaje (~0.003 Euro)",
+    "webhook": "Enviar webhook (~0.0005 Euro)",
+    "cost": "Costo: ",
+    "costWithDiscount": "Costo: ",
+    "formshive": "Formshive",
+    "wufoo": "Wufoo",
+    "formspree": "Formspree"
+  },
+  "pricing": {
+    "title": "Precios"
+  },
+  "common": {
+    "loading": "Cargando...",
+    "unlimited": "Ilimitado"
+  },
+  "formSpec": {
+    "checkFormFields": "Verificar Campos del Formulario",
+    "checkFormFieldsDescription": "Verificar campos del formulario por errores antes del envío.",
+    "formFieldsDisabled": "Los campos del formulario no están habilitados y no tendrán efecto.",
+    "spamFilterEnabled": "El filtro de spam está habilitado. Asegúrate de incluir un campo con el nombre",
+    "unsavedChanges": "Cambios sin guardar",
+    "unsavedChangesAlert": "Cambios sin guardar: Guarda los cambios antes de cambiar de editor.",
+    "visualEditor": "Editor Visual",
+    "toml": "TOML",
+    "specsErrors": "Errores de Especificaciones",
+    "noErrors": "Sin errores",
+    "specsValid": "Las especificaciones son válidas.",
+    "checkValidity": "Verificar Validez",
+    "prefillExample": "Ejemplo de Prellenado",
+    "copyHtmlForm": "Copiar Formulario HTML",
+    "htmlCopied": "HTML copiado al portapapeles",
+    "editor": {
+      "addField": "Agregar Campo",
+      "formFields": "Campos del Formulario",
+      "fieldSettings": "Configuración de Campo",
+      "formSettings": "Configuración del Formulario",
+      "globalSettings": "Configuración Global",
+      "selectFieldToEdit": "Selecciona un campo para editar su configuración, o configura las opciones globales del formulario abajo.",
+      "discardAdditionalFields": "Descartar campos adicionales",
+      "discardAdditionalFieldsDescription": "Descartar campos adicionales que no están definidos en la especificación del formulario.",
+      "noFieldsAdded": "Aún no se han agregado campos. Usa los botones de la izquierda para agregar tu primer campo.",
+      "optionsRequired": "¡Opciones requeridas!",
+      "fieldNameExists": "Ya existe un campo con este nombre. Por favor elige un nombre diferente.",
+      "fieldTypes": {
+        "text": {
+          "label": "Texto de Una Línea",
+          "description": "Entrada de texto corto"
+        },
+        "textarea": {
+          "label": "Texto de Párrafo",
+          "description": "Entrada de texto multilínea"
+        },
+        "number": {
+          "label": "Número",
+          "description": "Entrada numérica"
+        },
+        "email": {
+          "label": "Email",
+          "description": "Entrada de dirección de email"
+        },
+        "tel": {
+          "label": "Teléfono",
+          "description": "Entrada de número de teléfono"
+        },
+        "url": {
+          "label": "URL",
+          "description": "Entrada de URL de sitio web"
+        },
+        "date": {
+          "label": "Fecha",
+          "description": "Selector de fecha"
+        },
+        "time": {
+          "label": "Hora",
+          "description": "Selector de hora"
+        },
+        "datetime": {
+          "label": "Fecha y Hora",
+          "description": "Selector de fecha y hora"
+        },
+        "select": {
+          "label": "Lista Desplegable",
+          "description": "Opción única desplegable"
+        },
+        "radio": {
+          "label": "Botones de Radio",
+          "description": "Opciones de selección única"
+        },
+        "checkbox": {
+          "label": "Casillas de Verificación",
+          "description": "Opciones de selección múltiple"
+        },
+        "form": {
+          "label": "Subida de Archivo",
+          "description": "Adjunto de archivo"
+        }
+      }
+    }
+  },
+  "integration": {
+    "delete": "Eliminar"
+  },
+  "accountPages": {
+    "newForm": "Nuevo Formulario",
+    "formsDescription": "Formularios a través de los cuales recibes mensajes.",
+    "newIntegration": "Nueva Integración",
+    "integrationsDescription": "Usa Webhooks para integrar con Zapier y otros",
+    "messagesDescription": "Todos los mensajes entrantes se listarán aquí.",
+    "messagesChartLabel": "Mensajes"
+  },
+  "formEdit": {
+    "settings": "Configuración",
+    "general": "General",
+    "generalDescription": "Título del formulario, URL de redirección, filtro de spam y captcha.",
+    "formFieldsOptional": "Campos del Formulario (Opcional)",
+    "formFieldsDescription": "Los campos del formulario son cosas como nombre, apellido, dirección de email, etc. Con los campos del formulario puedes hacer validación de formularios, transformación de datos y generar formularios HTML.",
+    "readMore": "Leer más.",
+    "emailNotifications": "Notificaciones por Email",
+    "emailNotificationsDescription": "Reenviar mensajes entrantes a una o más direcciones de email.",
+    "integrations": "Integraciones",
+    "integrationsDescription": "Reenviar mensajes entrantes a otros servicios usando integraciones.",
+    "titleRequired": "El título es obligatorio",
+    "formSpecsRequired": "Las especificaciones del formulario son obligatorias"
+  },
+  "formIntegration": {
+    "integration": "Integración",
+    "manual": "Manual",
+    "javascript": "Javascript",
+    "iframe": "iFrame",
+    "link": "Enlace",
+    "manualDescription": "¿Ya tienes un formulario HTML? Simplemente apunta la acción de tu formulario a la URL de Formshive de abajo. Si has habilitado captcha, incluye también la URL del captcha.",
+    "formUrl": "URL del Formulario",
+    "formUrlDescription": "Tu formulario puede recibir tanto envíos de formulario como JSON, para integración en sitios web así como uso en scripts bash y otros.",
+    "captchaUrl": "URL del CAPTCHA",
+    "captchaDescription": "Esta URL se usa para verificar el captcha.",
+    "captchaDisabledDescription": "Esta URL se usa para verificar el captcha. (Deshabilitado porque no has habilitado CAPTCHA)",
+    "seeExamples": "Ver ejemplos",
+    "examplesFromFields": "Los ejemplos fueron generados desde los campos del formulario.",
+    "simpleHtmlForm": "Formulario HTML simple",
+    "htmlExample": "Ejemplo HTML",
+    "formPreview": "Vista Previa del Formulario",
+    "includeScript": "Asegúrate de incluir",
+    "inHtmlHead": "en la sección HTML",
+    "section": "de tu sitio web.",
+    "htmlFormWithFile": "Formulario HTML con subida de archivo",
+    "fileUploadNote": "La mayoría de formularios funcionarán tal como están, pero con subidas de archivos tienes que tener cuidado especial de incluir",
+    "formSubmissionCurl": "Envío de formulario con curl",
+    "formSubmissionCurlFile": "Envío de formulario con curl, incluyendo subida de archivo",
+    "fileUploadCurlNote": "La mayoría de envíos funcionarán tal como están, pero con subidas de archivos tienes que tener cuidado especial de incluir",
+    "jsonSubmissionCurl": "Envío JSON con curl",
+    "redirectNotApplicable": "La URL de redirección no es aplicable a envíos con formato JSON.",
+    "llmIntegration": "Integración usando prompt LLM (IA)",
+    "embedDescription": "Incrusta tu formulario Formshive en cualquier sitio web con JavaScript. Perfecto para Squarespace, WordPress o sitios personalizados. Copia el código y pégalo en tu página.",
+    "iframeDescription": "Muestra tu formulario Formshive usando un iFrame. Toma el código de incrustación de abajo y pégalo en el HTML de tu sitio web para un formulario en línea perfecto.",
+    "linkDescriptionLong": "Comparte tu formulario Formshive con un enlace directo. Copia la URL de abajo y úsala en emails, redes sociales o como un botón en tu sitio web.",
+    "needFormFields": "Necesitas crear",
+    "formFields": "campos de formulario",
+    "toUseFeature": "para usar la",
+    "embedFeature": "función de incrustar.",
+    "iframeFeature": "función de iframe.",
+    "linkFeature": "función de enlace.",
+    "noFileField": "El formulario no incluye un campo de subida de archivo.",
+    "htmlTag": "Etiqueta HTML",
+    "htmlTagDescription": "Coloca esta etiqueta en el HTML donde quieras que aparezca el formulario.",
+    "cssFramework": "Framework CSS",
+    "selectCssFramework": "Seleccionar framework CSS",
+    "scriptTag": "Etiqueta Script",
+    "scriptTagDescription": "Coloca esto donde quieras que aparezca el formulario.",
+    "preview": "Vista Previa",
+    "linkLabel": "Enlace",
+    "linkDescription": "Usa esta URL para enlazar directamente al formulario.",
+    "formTitle": "Título del formulario",
+    "formTitlePlaceholder": "Ingresa el título del formulario",
+    "formTitleDescription": "Título personalizado mostrado en la página del formulario"
+  },
+  "messageTable": {
+    "content": "Contenido",
+    "form": "Formulario",
+    "files": "Archivos",
+    "createdAt": "Creado el",
+    "download": "Descargar",
+    "downloadJson": "Descargar JSON",
+    "downloadTxt": "Descargar TXT",
+    "markAsHam": "Marcar como HAM",
+    "markAsSpam": "Marcar como SPAM",
+    "delete": "Eliminar",
+    "messageUpdated": "Mensaje actualizado",
+    "markedAsHam": "marcado como HAM",
+    "markedAsSpam": "marcado como SPAM",
+    "spamAndHam": "SPAM y HAM",
+    "spam": "SPAM",
+    "ham": "HAM",
+    "loading": "Cargando...",
+    "noMessagesFound": "No se encontraron mensajes",
+    "couldNotToggleSpam": "No se pudo cambiar el estado de spam"
+  },
+  "integrationTable": {
+    "integrationName": "Nombre de la Integración",
+    "createdAt": "Creado el",
+    "updatedAt": "Actualizado el",
+    "loading": "Cargando...",
+    "noIntegrationsFound": "No se encontraron integraciones"
+  },
+  "specField": {
+    "htmlPreview": "Vista Previa HTML",
+    "htmlCode": "Código HTML",
+    "labelField": "Etiqueta (Nombre Mostrado)",
+    "labelPlaceholder": "Etiqueta de campo mostrada a los usuarios",
+    "options": "Opciones",
+    "optionsDescription": "Presiona Enter para agregar una opción",
+    "addOptionPlaceholder": "Agregar opción y presionar Enter",
+    "fieldName": "Nombre del Campo (Identificador Interno)",
+    "fieldNamePlaceholder": "nombre_campo",
+    "fieldNameDescription": "Usado internamente para datos del formulario. Usa solo letras minúsculas, números y guiones bajos.",
+    "fieldType": "Tipo de campo",
+    "placeholder": "Texto de ayuda",
+    "placeholderDescription": "Contenido predeterminado del campo",
+    "helpText": "Texto de ayuda",
+    "helpTextPlaceholder": "Texto de ayuda",
+    "validation": "Validación",
+    "onValidationFailure": "Al fallar la validación",
+    "onValidationFailureDescription": "¿Qué sucede si falla la validación del campo?",
+    "required": "Obligatorio",
+    "requiredDescription": "Marcar el campo como obligatorio",
+    "optionsNote": "* Las opciones solo son aplicables a la salida HTML y no impactan la validación.",
+    "onFail": {
+      "spam": "Marcar como spam",
+      "trash": "Mover a la papelera",
+      "reject": "Rechazar envío",
+      "pass": "Permitir envío"
+    }
+  }
+}

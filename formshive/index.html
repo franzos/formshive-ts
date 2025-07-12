@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <meta
+      name="viewport"
+      content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
+    />
+    
+    <!-- Essential SEO Meta Tags for crawlers (before React loads) -->
+    <title>Formshive - Online Form Builder | Create Custom Forms</title>
+    <meta name="description" content="Create custom forms in minutes. Registration forms, application forms, surveys, contact forms and more. Sign up free!" />
+    <meta name="author" content="Formshive" />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Basic Open Graph for social sharing -->
+    <meta property="og:title" content="Formshive - Online Form Builder" />
+    <meta property="og:description" content="Create custom forms in minutes. Easy drag-and-drop form builder." />
+    <meta property="og:image" content="https://formshive.com/banner.png" />
+    <meta property="og:url" content="https://formshive.com/" />
+    
+    <!-- Structured Data for Form Builder Application -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Formshive",
+      "description": "Online form builder to create custom forms in minutes. Registration forms, application forms, surveys, and contact forms.",
+      "url": "https://formshive.com",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "description": "Free tier available"
+      },
+      "featureList": [
+        "Drag and Drop Form Builder",
+        "Custom Form Fields",
+        "Registration Forms",
+        "Survey Creation",
+        "Contact Forms",
+        "Form Analytics",
+        "Multi-language Support",
+        "Email Notifications"
+      ],
+      "provider": {
+        "@type": "Organization",
+        "name": "Formshive",
+        "url": "https://formshive.com"
+      }
+    }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

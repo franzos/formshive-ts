@@ -1,0 +1,10 @@
+{
+  "name": "formshive-frontend",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "pnpm --filter common build && pnpm --filter common-components build && pnpm --filter formshive-common build && pnpm --filter formshive-embed build && pnpm --filter formshive build",
+    "dev": "pnpm --filter formshive dev",
+    "test": "pnpm --filter formshive test"
+  }
+}
