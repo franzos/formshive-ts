@@ -1,7 +1,7 @@
 import { ComboboxItem, Select, Text } from '@mantine/core';
 import { useEffect, useState } from 'react';
-import { ListResponse } from '../../lib/api';
-import { Form, HttpNewFormsRecipient, VerifiedEmail } from '../../lib/models';
+import { VerifiedEmail, VerifiedEmailsResponse } from '@gofranz/common';
+import { Form, NewFormsRecipient } from '@gofranz/formshive-common';
 
 export interface FormsRecipient {
   id: string;
@@ -12,8 +12,8 @@ export interface FormsRecipient {
 }
 
 export interface CreateFormsRecipientProps {
-  submitFormCb: (newForm: HttpNewFormsRecipient) => Promise<void>;
-  getVerifiedEmails: () => Promise<ListResponse<VerifiedEmail>>;
+  submitFormCb: (newForm: NewFormsRecipient) => Promise<void>;
+  getVerifiedEmails: () => Promise<VerifiedEmailsResponse>;
   form: Form;
 }
 

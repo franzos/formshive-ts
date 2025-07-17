@@ -4,8 +4,8 @@ import { notifications } from '@mantine/notifications';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { CreateIntegration } from '../../../components/Integration/Create';
 import { IntegrationsHelp } from '../../../components/Integrations';
-import { HttpNewIntegration } from '../../../lib/models';
 import { useRustyState } from '../../../state';
+import { HttpNewIntegration } from '@gofranz/formshive-common';
 
 export function AccountIntegrationCreatePage() {
   const { api } = useRustyState.getState();

@@ -2,12 +2,12 @@ import { useForm } from '@mantine/form';
 import { useState } from 'react';
 import { Title } from '@mantine/core';
 import { FormFields } from './Common';
-import { HttpUpdateIntegration, HttpIntegration } from '../../lib/models';
 import { extractApiErrorMessage } from '../../lib/errors';
+import { Integration, UpdateIntegration } from '@gofranz/formshive-common';
 
 export interface EditIntegrationProps {
-  submitFormCb: (id: string, updateIntegration: HttpUpdateIntegration) => Promise<void>;
-  integration: HttpIntegration;
+  submitFormCb: (id: string, updateIntegration: UpdateIntegration) => Promise<void>;
+  integration: Integration
 }
 
 export function EditIntegration(props: EditIntegrationProps) {

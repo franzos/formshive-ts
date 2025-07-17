@@ -1,7 +1,7 @@
+import { VerifiedEmail } from '@gofranz/common';
 import { IsVerified } from '@gofranz/common-components';
 import { ActionIcon, Grid, Group, Text } from '@mantine/core';
 import { IconTrash } from '@tabler/icons-react';
-import { VerifiedEmail } from '../../lib/models';
 
 export interface FormsRecipientProps {
   verifiedEmail: VerifiedEmail;

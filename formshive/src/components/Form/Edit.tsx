@@ -1,15 +1,4 @@
-import { ListResponse } from '../../lib/api';
 import { parseAndValidateFormSpec } from '../../lib/form-specs';
-import {
-  Form,
-  FormsIntegrationsQueryParams,
-  HttpIntegration,
-  HttpNewFormsIntegration,
-  HttpNewFormsRecipient,
-  VerifiedEmail,
-  IntegrationsQueryParams,
-  UpdateForm,
-} from '../../lib/models';
 import { validateTemplateString } from '../../lib/template-validation';
 import { validateUrl } from '../../lib/validate-url';
 import { useRustyState } from '../../state';
@@ -30,6 +19,8 @@ import { FormsRecipientDetail } from '../FormsRecipient/Detail';
 import { AutoResponse } from './AutoResponse';
 import { FormFields } from './Common';
 import { FormSpecifications } from './FormSpecification';
+import { VerifiedEmailsResponse } from '@gofranz/common';
+import { Form, FormsIntegrationsQueryParams, FormsIntegrationsResponse, IntegrationsApiResponse, IntegrationsQueryParams, NewFormsIntegration, NewFormsRecipient, UpdateForm } from '@gofranz/formshive-common';
 
 export interface EditFormProps {
   submitFormCb: (id: string, updatedForm: UpdateForm) => Promise<void>;
@@ -37,17 +28,17 @@ export interface EditFormProps {
   formSubmitUrl: string;
   formChallengeUrl: string;
 
-  submitFormRecipientCb: (newForm: HttpNewFormsRecipient) => Promise<void>;
-  getVerifiedEmails: () => Promise<ListResponse<VerifiedEmail>>;
-  getFormVerifiedEmails: () => Promise<ListResponse<VerifiedEmail>>;
+  submitFormRecipientCb: (newForm: NewFormsRecipient) => Promise<void>;
+  getVerifiedEmails: () => Promise<VerifiedEmailsResponse>;
+  getFormVerifiedEmails: () => Promise<VerifiedEmailsResponse>;
   deleteRecipientCp: (formId: string, recipientId: string) => Promise<void>;
 
-  submitFormIntegrationCb: (newForm: HttpNewFormsIntegration) => Promise<void>;
-  getIntegrations: (params: IntegrationsQueryParams) => Promise<ListResponse<HttpIntegration>>;
+  submitFormIntegrationCb: (newForm: NewFormsIntegration) => Promise<void>;
+  getIntegrations: (params: IntegrationsQueryParams) => Promise<IntegrationsApiResponse>;
   getFormIntegrations: (
     id: string,
     query: FormsIntegrationsQueryParams
-  ) => Promise<ListResponse<HttpIntegration>>;
+  ) => Promise<FormsIntegrationsResponse>;
   deleteFormIntegrationCb: (formId: string, integrationId: string) => Promise<void>;
 }
 
@@ -89,7 +80,7 @@ export function EditForm(props: EditFormProps) {
           }
           console.log('NO ERRROR (valid)');
         }
-        if (form.values.check_specs && !form.values.specs.match('name =')) {
+        if (form.values.check_specs && form.values.specs && form.values.specs.match('name =')) {
           console.log('ERRROR');
           return t('formEdit.formSpecsRequired');
         }
@@ -172,7 +163,7 @@ export function EditForm(props: EditFormProps) {
       auto_response_enabled: props.form.auto_response_enabled,
       auto_response_subject: props.form.auto_response_subject,
       auto_response_text: props.form.auto_response_text,
-    });
+    } as UpdateForm);
     setHasUnsavedChanges(false);
     setError('');
   };
@@ -190,7 +181,7 @@ export function EditForm(props: EditFormProps) {
       }
     }
     setError('');
-    const updatedForm = {
+    const updatedForm: UpdateForm = {
       title: form.values.title,
       filter_spam: form.values.filter_spam,
       check_challenge: form.values.check_challenge,

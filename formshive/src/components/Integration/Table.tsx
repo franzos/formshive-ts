@@ -12,8 +12,8 @@ import {
 import { DataTable } from 'mantine-datatable';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { HttpIntegration, HttpUpdateIntegration } from '../../lib/models';
 import { CommonTableProps } from '../../lib/table';
+import { Integration, UpdateIntegration } from '@gofranz/formshive-common';
 
 const getIntegrationIcon = (kind: string) => {
   switch (kind) {
@@ -55,10 +55,10 @@ const getIntegrationDisplayName = (kind: string) => {
   }
 };
 
-export function IntegrationsTable(props: CommonTableProps<HttpIntegration, HttpUpdateIntegration>) {
+export function IntegrationsTable(props: CommonTableProps<Integration, UpdateIntegration>) {
   const { t } = useTranslation();
   const [isBusy, setIsBusy] = useState(false);
-  const [records, setRecords] = useState<HttpIntegration[] | []>([]);
+  const [records, setRecords] = useState<Integration[] | []>([]);
   const [page, setPage] = useState(1);
 
   useEffect(() => {
@@ -90,14 +90,14 @@ export function IntegrationsTable(props: CommonTableProps<HttpIntegration, HttpU
     {
       accessor: 'title',
       title: t('integrationTable.integrationName'),
-      render: (row: HttpIntegration) => (
+      render: (row: Integration) => (
         <NavLink label={row.title} onClick={() => props.openRowPage(row)} />
       ),
     },
     {
       accessor: 'type',
       title: t('integrationTable.integrationType'),
-      render: (row: HttpIntegration) => {
+      render: (row: Integration) => {
         const { icon: Icon, color } = getIntegrationIcon(row.kind);
         return (
           <Group wrap="nowrap" gap="xs">
@@ -112,17 +112,17 @@ export function IntegrationsTable(props: CommonTableProps<HttpIntegration, HttpU
     {
       accessor: 'created_at',
       title: t('integrationTable.createdAt'),
-      render: (row: HttpIntegration) => new Date(row.created_at).toLocaleDateString(),
+      render: (row: Integration) => new Date(row.created_at).toLocaleDateString(),
     },
     {
       accessor: 'updated_at',
       title: t('integrationTable.updatedAt'),
-      render: (row: HttpIntegration) => new Date(row.updated_at).toLocaleDateString(),
+      render: (row: Integration) => new Date(row.updated_at).toLocaleDateString(),
     },
     {
       accessor: 'delete',
       title: '',
-      render: (row: HttpIntegration) => (
+      render: (row: Integration) => (
         <ActionIcon
           color="red"
           onClick={() => deleteCb(row.id)}

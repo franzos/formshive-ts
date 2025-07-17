@@ -2,16 +2,15 @@ import { VerifiedEmail } from '@gofranz/common';
 import { Alert, Card } from '@mantine/core';
 import { IconAlertCircle } from '@tabler/icons-react';
 import { useEffect, useState } from 'react';
-import { ListResponse } from '../../lib/api';
-import { Form, HttpNewFormsRecipient } from '../../lib/models';
 import { useRustyState } from '../../state';
 import { CreateFormsRecipient } from './Create';
 import { FormRecipient } from './Recipient';
+import { Form, FormsRecipientsResponse, NewFormsRecipient } from '@gofranz/formshive-common';
 
 export interface FormsRecipientDetailProps {
-  submitFormCb: (newForm: HttpNewFormsRecipient) => Promise<void>;
-  getVerifiedEmails: () => Promise<ListResponse<VerifiedEmail>>;
-  getFormVerifiedEmails: () => Promise<ListResponse<VerifiedEmail>>;
+  submitFormCb: (newForm: NewFormsRecipient) => Promise<void>;
+  getVerifiedEmails: () => Promise<FormsRecipientsResponse>;
+  getFormVerifiedEmails: () => Promise<FormsRecipientsResponse>;
   deleteRecipientCp: (formId: string, recipientId: string) => Promise<void>;
   form: Form;
   onRecipientsChange?: () => Promise<void>;
@@ -24,7 +23,7 @@ export function FormsRecipientDetail(props: FormsRecipientDetailProps) {
 
   const [verifiedEmails, setVerifiedEmails] = useState<VerifiedEmail[]>([]);
 
-  const submitCb = async (recipient: HttpNewFormsRecipient) => {
+  const submitCb = async (recipient: NewFormsRecipient) => {
     try {
       setIsBusy(true);
       await props.submitFormCb(recipient);

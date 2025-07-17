@@ -9,6 +9,7 @@ import {
   getNextPlan,
   getPlanDisplayName,
   getStatusColor,
+  PlanAllowance,
 } from '@gofranz/common';
 import { useRustyState } from '../../state';
 
@@ -120,11 +121,11 @@ export function CurrentSubscription() {
         )}
       </div>
 
-      {currentSubscription.cancel_at_period_end && (
+      {/* {currentSubscription.cancel_at_period_end && (
         <Alert color="orange" mb="sm">
           Subscription will be canceled at period end.
         </Alert>
-      )}
+      )} */}
 
       {hasNextPlan(currentSubscription) && (
         <>
@@ -149,7 +150,7 @@ export function CurrentSubscription() {
                 getNextPlan(currentSubscription, subscriptionPlans)!.allowances.length > 0 && (
                   <Text size="xs" c="dimmed">
                     {getNextPlan(currentSubscription, subscriptionPlans)!
-                      .allowances.map(([resource, amount]: [string, number]) => {
+                    .allowances.map((allowance: PlanAllowance) => {
                         const formatAmount = (resource: string, amount: number) => {
                           if (amount === -1) return 'Unlimited';
                           if (resource === 'file_upload') {
@@ -158,7 +159,7 @@ export function CurrentSubscription() {
                           }
                           return amount.toLocaleString('en-US').replace(/,/g, ' ');
                         };
-                        return `${formatAmount(resource, amount)} ${resource.replace('_', ' ')}`;
+                      return `${formatAmount(allowance.service, allowance.limit)} ${allowance.service.replace('_', ' ')}`;
                       })
                       .join(' • ')}
                   </Text>
@@ -168,7 +169,7 @@ export function CurrentSubscription() {
         </>
       )}
 
-      {currentSubscription.status.toLowerCase() === 'active' &&
+      {/* {currentSubscription.status.toLowerCase() === 'active' &&
         !currentSubscription.cancel_at_period_end && (
           <Group mt="sm">
             {isPaidPlan(currentSubscription, subscriptionPlans) ? (
@@ -195,6 +196,34 @@ export function CurrentSubscription() {
               </Button>
             )}
           </Group>
+        )} */}
+
+      {currentSubscription.status.toLowerCase() === 'active' && (
+        <Group mt="sm">
+          {isPaidPlan(currentSubscription, subscriptionPlans) ? (
+            <Button
+              variant="light"
+              color="blue"
+              size="sm"
+              leftSection={<IconExternalLink size="0.9rem" />}
+              loading={openingPortal}
+              onClick={handleOpenCustomerPortal}
+            >
+              Manage via Stripe
+            </Button>
+          ) : (
+            <Button
+              variant="light"
+              color="red"
+              size="sm"
+              leftSection={<IconX size="0.9rem" />}
+              loading={canceling}
+              onClick={handleCancel}
+            >
+              Cancel
+            </Button>
+          )}
+        </Group>
         )}
     </Card>
   );

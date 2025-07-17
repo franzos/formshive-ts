@@ -57,8 +57,10 @@ export function ReferralStats({ stats }: ReferralStatsProps) {
     return [Currency.EUR, 0]; // Default fallback
   };
 
+  // TODO
   const getPendingEarnings = () => {
-    return stats.pending_earnings || 0;
+    return 0
+    // return stats.pending_earnings || 0;
   };
 
   return (

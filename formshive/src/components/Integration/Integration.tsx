@@ -1,10 +1,10 @@
+import { Integration } from '@gofranz/formshive-common';
 import { Text, Grid, ActionIcon, Group } from '@mantine/core';
 import { IconTrash } from '@tabler/icons-react';
-import { HttpIntegration } from '../../lib/models';
 import { useTranslation } from 'react-i18next';
 
 export interface FormsIntegrationProps {
-  integration: HttpIntegration;
+  integration: Integration;
   form_id: string;
   isBusy: boolean;
   deleteCb: (formId: string, integrationId: string) => Promise<void>;

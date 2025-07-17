@@ -1,3 +1,4 @@
+import { IntegrationType } from '@gofranz/formshive-common';
 import {
   Alert,
   Button,
@@ -111,7 +112,7 @@ export interface FormFieldsProps {
   submitCb: () => Promise<void>;
   form: UseFormReturnType<{
     title: string;
-    kind: string;
+    kind: IntegrationType;
     data: {
       // Webhook fields
       webhook_url?: string;
@@ -232,22 +233,22 @@ export function FormFields(props: FormFieldsProps) {
               label="Integration Type"
               placeholder="Choose an integration type"
               data={[
-                { value: 'API_PIPEDRIVE', label: 'Pipedrive CRM (Contact & Lead Management)' },
-                { value: 'API_MAILCHIMP', label: 'Mailchimp (Email Marketing)' },
-                { value: 'API_KIT', label: 'Kit (ConvertKit) (Email Marketing)' },
-                { value: 'WEBHOOK_ZAPIER', label: 'Zapier (8,000+ apps)' },
-                { value: 'WEBHOOK_SLACK', label: 'Slack (Team notifications)' },
-                { value: 'WEBHOOK_GOOGLE_SHEETS', label: 'Google Sheets (Spreadsheet data)' },
-                { value: 'WEBHOOK', label: 'Custom Webhook (Any API endpoint)' },
+                { value: IntegrationType.API_PIPEDRIVE, label: 'Pipedrive CRM (Contact & Lead Management)' },
+                { value: IntegrationType.API_MAILCHIMP, label: 'Mailchimp (Email Marketing)' },
+                { value: IntegrationType.API_KIT, label: 'Kit (ConvertKit) (Email Marketing)' },
+                { value: IntegrationType.WEBHOOK_ZAPIER, label: 'Zapier (8,000+ apps)' },
+                { value: IntegrationType.WEBHOOK_SLACK, label: 'Slack (Team notifications)' },
+                { value: IntegrationType.WEBHOOK_GOOGLE_SHEETS, label: 'Google Sheets (Spreadsheet data)' },
+                { value: IntegrationType.WEBHOOK, label: 'Custom Webhook (Any API endpoint)' },
               ]}
               value={props.form.values.kind}
-              onChange={(value) => props.form.setFieldValue('kind', value || 'WEBHOOK')}
+              onChange={(value) => props.form.setFieldValue('kind', (value as IntegrationType) || IntegrationType.WEBHOOK)}
               error={props.form.errors.kind}
             />
           )}
 
           {/* Render different fields based on integration type */}
-          {props.form.values.kind === 'API_PIPEDRIVE' ? (
+          {props.form.values.kind === IntegrationType.API_PIPEDRIVE ? (
             <Stack gap="md">
               <TextInput
                 label="API Token"

@@ -2,8 +2,8 @@ import { Text, Title } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { useState } from 'react';
 import { extractApiErrorMessage } from '../../lib/errors';
-import { HttpNewIntegration } from '../../lib/models';
 import { FormFields } from './Common';
+import { HttpNewIntegration, IntegrationType } from '@gofranz/formshive-common';
 
 export interface CreateIntegrationProps {
   submitFormCb: (newIntegration: HttpNewIntegration) => Promise<void>;
@@ -14,19 +14,19 @@ export function CreateIntegration(props: CreateIntegrationProps) {
   const [isBusy, setIsBusy] = useState(false);
   const [error, setError] = useState('');
 
-  const getInitialKind = (): string => {
+  const getInitialKind = (): IntegrationType => {
     // Map URL parameter values to backend enum values
-    const typeMapping: { [key: string]: string } = {
-      PIPEDRIVE: 'API_PIPEDRIVE',
-      MAILCHIMP: 'API_MAILCHIMP',
-      KIT: 'API_KIT',
-      ZAPIER: 'WEBHOOK_ZAPIER',
-      SLACK: 'WEBHOOK_SLACK',
-      GOOGLE_SHEETS: 'WEBHOOK_GOOGLE_SHEETS',
-      WEBHOOK: 'WEBHOOK',
+    const typeMapping: { [key: string]: IntegrationType } = {
+      PIPEDRIVE: IntegrationType.API_PIPEDRIVE,
+      MAILCHIMP: IntegrationType.API_MAILCHIMP,
+      KIT: IntegrationType.API_KIT,
+      ZAPIER: IntegrationType.WEBHOOK_ZAPIER,
+      SLACK: IntegrationType.WEBHOOK_SLACK,
+      GOOGLE_SHEETS: IntegrationType.WEBHOOK_GOOGLE_SHEETS,
+      WEBHOOK: IntegrationType.WEBHOOK,
     };
 
-    return typeMapping[props.initialIntegrationType || ''] || 'WEBHOOK';
+    return typeMapping[props.initialIntegrationType || ''] || IntegrationType.WEBHOOK;
   };
 
   const getInitialData = (kind: string) => {
@@ -140,7 +140,7 @@ export function CreateIntegration(props: CreateIntegrationProps) {
       }
     }
 
-    const newForm = {
+    const newForm: HttpNewIntegration = {
       title: form.values.title,
       kind: form.values.kind,
       data: JSON.stringify(data),

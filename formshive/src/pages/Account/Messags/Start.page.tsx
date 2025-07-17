@@ -1,5 +1,4 @@
 import { MessagesTable } from '../../../components/Message/Table';
-import { Form, Message, MessageCountByDay } from '../../../lib/models';
 import { useRustyState } from '../../../state';
 import { LineChart } from '@mantine/charts';
 import { Flex, Group, Text } from '@mantine/core';
@@ -7,6 +6,7 @@ import { useLanguageAwareRouting, usePagination } from '@gofranz/common-componen
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
+import { Form, Message, MessageCountByDay } from '@gofranz/formshive-common';
 
 export interface AccountFormsStartPageProps {
   formId?: string;

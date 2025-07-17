@@ -1,12 +1,6 @@
+import { Form, Integration, IntegrationsApiResponse, IntegrationsQueryParams, NewFormsIntegration } from '@gofranz/formshive-common';
 import { ComboboxItem, Select, Text } from '@mantine/core';
 import { useEffect, useState } from 'react';
-import { ListResponse } from '../../lib/api';
-import {
-  Form,
-  HttpIntegration,
-  HttpNewFormsIntegration,
-  IntegrationsQueryParams,
-} from '../../lib/models';
 
 export interface FormsRecipient {
   id: string;
@@ -17,15 +11,15 @@ export interface FormsRecipient {
 }
 
 export interface CreateFormsRecipientProps {
-  submitFormCb: (newForm: HttpNewFormsIntegration) => Promise<void>;
-  getIntegrations: (params: IntegrationsQueryParams) => Promise<ListResponse<HttpIntegration>>;
+  submitFormCb: (newForm: NewFormsIntegration) => Promise<void>;
+  getIntegrations: (params: IntegrationsQueryParams) => Promise<IntegrationsApiResponse>;
   form: Form;
 }
 
 export function CreateFormsRecipient(props: CreateFormsRecipientProps) {
   const [isBusy, setIsBusy] = useState(false);
   const [error, setError] = useState('');
-  const [data, setData] = useState<HttpIntegration[]>([]);
+  const [data, setData] = useState<Integration[]>([]);
   const [dropDownItems, setDropDownItems] = useState<{ label: string; value: string }[]>([]);
   const [selected, setSelected] = useState<ComboboxItem | null>(null);
 
@@ -86,8 +80,8 @@ export function CreateFormsRecipient(props: CreateFormsRecipientProps) {
         }}
         mb="md"
       />
-      {isBusy && <Text color="blue">Loading...</Text>}
-      {error && <Text color="red">{error}</Text>}
+      {isBusy && <Text c="blue">Loading...</Text>}
+      {error && <Text c="red">{error}</Text>}
     </>
   );
 }

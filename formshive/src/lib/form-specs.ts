@@ -106,7 +106,11 @@ export function validatFormSpec(formSpec: FormSpec): {
   };
 }
 
-export function parseTomlToFormSpec(tomlString: string): FormSpec | null {
+export function parseTomlToFormSpec(tomlString?: string): FormSpec | null {
+  if (!tomlString || tomlString.trim() === '') {
+    return null; // Empty string means no form spec
+  }
+
   try {
     const parsed = parse(tomlString) as any; // Using 'any' for simplicity; consider a more specific type
 
@@ -139,7 +143,7 @@ export function dumpFormSpecToToml(formSpec: FormSpec): string {
   return toml;
 }
 
-export function parseAndValidateFormSpec(tomlString: string): {
+export function parseAndValidateFormSpec(tomlString?: string): {
   formSpec: FormSpec | null;
   isValid: boolean;
   errors: Map<string, string>;

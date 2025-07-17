@@ -3,8 +3,8 @@ import { Button, Flex, Group, Text } from '@mantine/core';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { FormsTable } from '../../../components/Form/Table';
-import { Form, UpdateForm } from '../../../lib/models';
 import { useRustyState } from '../../../state';
+import { Form, UpdateForm } from '@gofranz/formshive-common';
 
 export function AccountFormsStartPage() {
   const { t } = useTranslation();

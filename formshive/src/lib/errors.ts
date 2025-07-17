@@ -1,5 +1,5 @@
+import { ApiErrorResponse } from '@gofranz/common-components';
 import axios from 'axios';
-import { ApiErrorResponse } from './models';
 
 /**
  * Extracts a user-friendly error message from API error responses

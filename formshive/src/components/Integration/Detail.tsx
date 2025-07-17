@@ -1,9 +1,9 @@
-import { HttpIntegration, HttpUpdateIntegration } from '../../lib/models';
+import { Integration, UpdateIntegration } from '@gofranz/formshive-common';
 import { EditIntegration } from './Edit';
 
 export interface IntegrationDetailProps {
-  integration: HttpIntegration;
-  submitCb: (id: string, updateIntegration: HttpUpdateIntegration) => Promise<void>;
+  integration: Integration;
+  submitCb: (id: string, updateIntegration: UpdateIntegration) => Promise<void>;
   deleteCb?: (formId: string) => Promise<void>;
 }
 

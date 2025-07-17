@@ -11,7 +11,7 @@ import {
 } from '@tabler/icons-react';
 import { useTranslation } from 'react-i18next';
 import { CommonTableProps } from '../../lib/table';
-import { Form, UpdateForm } from '../../lib/models';
+import { Form, UpdateForm } from '@gofranz/formshive-common';
 
 export function FormsTable(props: CommonTableProps<Form, UpdateForm>) {
   const { t } = useTranslation();

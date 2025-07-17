@@ -26,11 +26,11 @@ export interface AutoResponseProps {
     filter_spam: boolean;
     check_challenge: boolean;
     check_specs: boolean;
-    specs: string;
-    redirect_url: string;
+    specs: string | undefined;
+    redirect_url: string | undefined;
     auto_response_enabled: boolean;
-    auto_response_subject: string | null;
-    auto_response_text: string | null;
+    auto_response_subject: string | undefined;
+    auto_response_text: string | undefined;
   }>;
   hasUnsavedChanges: boolean;
   onCancel: () => void;

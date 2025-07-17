@@ -30,6 +30,7 @@ import {
 } from '../../lib/form-specs';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { UpdateForm } from '@gofranz/formshive-common';
 
 export interface FormSpecificationsProps {
   isEditing: boolean;
@@ -37,12 +38,7 @@ export interface FormSpecificationsProps {
   hasError: string;
   submitSection: () => Promise<void>;
   form: {
-    values: {
-      filter_spam: boolean;
-      check_specs: boolean;
-      specs: string;
-      redirect_url: string;
-    };
+    values: UpdateForm;
     setFieldValue: (field: string, value: any) => void;
   };
   formSubmitUrl: string;
@@ -265,7 +261,7 @@ export function FormSpecifications(props: FormSpecificationsProps) {
         )}
       </Group>
 
-      {props.hasError && props.hasError !== '' && <Text color="red">{props.hasError}</Text>}
+      {props.hasError && props.hasError !== '' && <Text c="red">{props.hasError}</Text>}
     </>
   );
 }

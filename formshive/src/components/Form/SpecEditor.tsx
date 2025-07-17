@@ -60,7 +60,7 @@ import { renderInputField } from '../../lib/form-spec-to-html';
 import { useTranslation } from 'react-i18next';
 
 export interface SpecEditorProps {
-  spec: string;
+  spec?: string;
   onChange: (spec: string) => void;
 }
 

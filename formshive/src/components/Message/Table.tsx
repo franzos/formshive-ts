@@ -7,7 +7,7 @@ import { notifications } from '@mantine/notifications';
 import { Link } from 'react-router-dom';
 import { useRustyState } from '../../state';
 import { CommonTableProps } from '../../lib/table';
-import { FileAttachment, Form, HttpUpdateMessage, Message } from '../../lib/models';
+import { File, Form, HttpUpdateMessage, Message } from '@gofranz/formshive-common';
 
 interface SpamFilter {
   value: number;
@@ -19,7 +19,7 @@ export function MessagesTable(
     {
       msg: Message;
       form: Form | undefined;
-      files: FileAttachment[];
+      files: File[];
     },
     HttpUpdateMessage
   >
@@ -28,7 +28,7 @@ export function MessagesTable(
   const [isBusy, setIsBusy] = useState(false);
   const [records, setRecords] = useState<Message[] | []>([]);
   const [forms, setForms] = useState<Form[] | []>([]);
-  const [files, setFiles] = useState<FileAttachment[] | []>([]);
+  const [files, setFiles] = useState<File[] | []>([]);
   const page = useRef(1);
   const spamFilter = useRef(0);
 
@@ -52,7 +52,7 @@ export function MessagesTable(
             });
       const msgs: Message[] = [];
       const newForms: Form[] = [];
-      let newFiles: FileAttachment[] = [];
+      let newFiles: File[] = [];
       data.forEach((d) => {
         if (d.msg) {
           msgs.push(d.msg);

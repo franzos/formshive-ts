@@ -3,8 +3,8 @@ import { notifications } from '@mantine/notifications';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { FormDetail } from '../../../components/Form/Detail';
-import { Form, UpdateForm } from '../../../lib/models';
 import { useRustyState } from '../../../state';
+import { Form, UpdateForm } from '@gofranz/formshive-common';
 
 export function AccountFormViewPage() {
   const { api } = useRustyState.getState();
@@ -32,9 +32,7 @@ export function AccountFormViewPage() {
       };
     }
     // TODO: Why query by form ID
-    return useRustyState.getState().getAndSetVerifiedEmails({
-      form_id: uuid,
-    });
+    return useRustyState.getState().getAndSetFormVerifiedEmails(uuid);
   };
 
   const updateForm = async (id: string, data: UpdateForm) => {

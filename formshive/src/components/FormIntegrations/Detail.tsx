@@ -1,24 +1,18 @@
 import { useEffect, useState } from 'react';
 import { Alert, Card } from '@mantine/core';
-import {
-  Form,
-  FormsIntegrationsQueryParams,
-  HttpIntegration,
-  HttpNewFormsIntegration,
-  IntegrationsQueryParams,
-} from '../../lib/models';
 import { FormIntegration } from '../Integration/Integration';
 import { CreateFormsRecipient } from './Create';
-import { ListResponse } from '../../lib/api';
+import { ListResponse } from '../../../../formshive-common/src/api';
 import { IconAlertCircle } from '@tabler/icons-react';
+import { Form, FormsIntegrationsQueryParams, FormsIntegrationsResponse, Integration, NewFormsIntegration } from '@gofranz/formshive-common';
 
 export interface FormsIntegrationDetailProps {
-  submitFormCb: (newForm: HttpNewFormsIntegration) => Promise<void>;
-  getIntegrations: (params: IntegrationsQueryParams) => Promise<ListResponse<HttpIntegration>>;
+  submitFormCb: (newForm: NewFormsIntegration) => Promise<void>;
+  getIntegrations: (params: FormsIntegrationsQueryParams) => Promise<FormsIntegrationsResponse>;
   getFormIntegrations: (
     id: string,
     query: FormsIntegrationsQueryParams
-  ) => Promise<ListResponse<HttpIntegration>>;
+  ) => Promise<ListResponse<Integration>>;
   deleteFormIntegrationCb: (formId: string, integrationId: string) => Promise<void>;
   form: Form;
 }
@@ -28,9 +22,9 @@ export function FormsIntegrationDetail(props: FormsIntegrationDetailProps) {
   // TODO: Use error
   const [_, setError] = useState('');
 
-  const [integrations, setIntegrations] = useState<HttpIntegration[]>([]);
+  const [integrations, setIntegrations] = useState<Integration[]>([]);
 
-  const submitCb = async (recipient: HttpNewFormsIntegration) => {
+  const submitCb = async (recipient: NewFormsIntegration) => {
     try {
       setIsBusy(true);
       await props.submitFormCb(recipient);

@@ -1,5 +1,4 @@
 import { API_BASE_URL } from '../../constants';
-import { ListResponse } from '../../lib/api';
 import { generateCurlFormData, generateCurlJson } from '../../lib/form-spec-to-curl';
 import { generateHtmlFromSpecV2, generateLLMPrompt } from '../../lib/form-spec-to-html';
 import { parseAndValidateFormSpec } from '../../lib/form-specs';
@@ -11,16 +10,6 @@ import {
   exampleFormHtmlFileUpload,
   exampleLLMPrompt,
 } from '../../lib/forms';
-import {
-  Form,
-  FormsIntegrationsQueryParams,
-  HttpIntegration,
-  HttpNewFormsIntegration,
-  HttpNewFormsRecipient,
-  VerifiedEmail,
-  IntegrationsQueryParams,
-  UpdateForm,
-} from '../../lib/models';
 import { AccountMessagesStartPage } from '../../pages/Account/Messags/Start.page';
 import { useRustyState } from '../../state';
 import { Title } from '@mantine/core';
@@ -28,23 +17,25 @@ import { useEffect, useState } from 'react';
 import { EditForm } from './Edit';
 import './form.module.scss';
 import { IntegrationHelp } from './Integration';
+import { VerifiedEmailsResponse } from '@gofranz/common';
+import { Form, FormsIntegrationsQueryParams, FormsIntegrationsResponse, IntegrationsApiResponse, IntegrationsQueryParams, NewFormsIntegration, NewFormsRecipient, UpdateForm } from '@gofranz/formshive-common';
 
 export interface FormDetailProps {
   form: Form;
   submitFormCb: (id: string, newForm: UpdateForm) => Promise<void>;
   deleteCb?: (formId: string) => Promise<void>;
 
-  submitFormRecipientCb: (newForm: HttpNewFormsRecipient) => Promise<void>;
-  getVerifiedEmails: () => Promise<ListResponse<VerifiedEmail>>;
-  getFormVerifiedEmails: () => Promise<ListResponse<VerifiedEmail>>;
+  submitFormRecipientCb: (newForm: NewFormsRecipient) => Promise<void>;
+  getVerifiedEmails: () => Promise<VerifiedEmailsResponse>;
+  getFormVerifiedEmails: () => Promise<VerifiedEmailsResponse>;
   deleteRecipientCp: (formId: string, recipientId: string) => Promise<void>;
 
-  submitFormIntegrationCb: (newForm: HttpNewFormsIntegration) => Promise<void>;
-  getIntegrations: (params: IntegrationsQueryParams) => Promise<ListResponse<HttpIntegration>>;
+  submitFormIntegrationCb: (newForm: NewFormsIntegration) => Promise<void>;
+  getIntegrations: (params: IntegrationsQueryParams) => Promise<IntegrationsApiResponse>;
   getFormIntegrations: (
     id: string,
     query: FormsIntegrationsQueryParams
-  ) => Promise<ListResponse<HttpIntegration>>;
+  ) => Promise<FormsIntegrationsResponse>;
   deleteFormIntegrationCb: (formId: string, integrationId: string) => Promise<void>;
 }
 

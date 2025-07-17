@@ -1,5 +1,4 @@
 import * as Sentry from '@sentry/react';
-import { loadOrCreateKeypair } from '@nostr-ts/web';
 import {
   LOGIN_METHOD,
   LoginChallenge,
@@ -7,33 +6,37 @@ import {
   LoginSuccess,
   RustyAuth,
   Session,
-  setLsPrivateKey,
-  setLsPublicKey,
-  AccountMovement,
   CommonQueryParams,
   SubscriptionResponse,
   UsageResponse,
-  ReferralHistoryItem,
   CustomerPortalResponse,
   SubscriptionPlanConfig,
   ReferralCodeResponse,
   ReferralStatsResponse,
   NewSubscriptionResponse,
+  getErrorTitle,
+  VerifiedEmail,
+  VerifiedEmailsResponse,
+  AccountMovementsResponse,
+  ReferralHistoryResponse,
 } from '@gofranz/common';
 import { create } from 'zustand';
-import { API_BASE_URL } from './constants';
-import { ListResponse, RustyFormsAPI } from './lib/api';
-import {
-  FileAttachment,
-  Form,
-  FormsQueryParams,
-  FormsRecipientsQueryParams,
-  VerifiedEmail,
-  Message,
-  MessagesQueryParams,
-  VerfiedEmailsQuery,
-} from './lib/models';
-import { NEvent, NEVENT_KIND } from '@nostr-ts/common';
+import { API_BASE_URL, LOCAL_STORAGE_KEY } from './constants';
+import type { AxiosError } from "axios";
+import { showApiErrorNotification } from '@gofranz/common-components';
+import { notifications } from '@mantine/notifications';
+import { Form, FormsResponse, RustyFormsAPI, FormsQueryParams, FormsRecipientsResponse, FormRecipientsQueryParams, MessageQueryParams, File, Message } from '@gofranz/formshive-common';
+
+// Helper function to handle API errors generically
+const handleApiError = (error: AxiosError) => {
+  // Don't show notifications for aborted requests or network timeouts during development
+  if (error.code === 'ECONNABORTED' || error.message === 'Network Error') {
+    return;
+  }
+
+  const title = getErrorTitle(error);
+  showApiErrorNotification(error, notifications, title);
+};
 
 // Helper function to update Sentry user context
 const updateSentryUserContext = (session: Session | undefined) => {
@@ -65,7 +68,7 @@ interface State {
   getSession: () => Session | undefined;
   login: (identifier: string, loginMethod: LOGIN_METHOD) => Promise<LoginChallenge>;
   loginChallenge(loginResponse: LoginChallengeUserResponse): Promise<LoginSuccess>;
-  generateNewAccount: () => Promise<void>;
+  // generateNewAccount: () => Promise<void>;
   logout: () => Promise<void>;
   api: RustyFormsAPI;
   verifiedEmails: VerifiedEmail[];
@@ -82,12 +85,13 @@ interface State {
   referralCode: ReferralCodeResponse | null;
   referralStats: ReferralStatsResponse | null;
 
-  getAndSetForms: (params?: FormsQueryParams) => Promise<ListResponse<Form>>;
-  getAndSetVerifiedEmails: (params?: VerfiedEmailsQuery) => Promise<ListResponse<VerifiedEmail>>;
-  getMessagesWithForms: (params: MessagesQueryParams) => Promise<{
+  getAndSetForms: (params?: FormsQueryParams) => Promise<FormsResponse>;
+  getAndSetVerifiedEmails: (params?: FormRecipientsQueryParams) => Promise<VerifiedEmailsResponse>;
+  getAndSetFormVerifiedEmails: (formId: string, params?: FormRecipientsQueryParams) => Promise<VerifiedEmailsResponse>;
+  getMessagesWithForms: (params: MessageQueryParams) => Promise<{
     data: {
       form: Form | undefined;
-      files: FileAttachment[];
+      files: File[];
       msg: Message;
     }[];
     total: number;
@@ -103,17 +107,18 @@ interface State {
   createCustomerPortalSession: () => Promise<CustomerPortalResponse>;
 
   // Account methods
-  getAccountMovements: (query?: CommonQueryParams) => Promise<ListResponse<AccountMovement>>;
+  getAccountMovements: (query?: CommonQueryParams) => Promise<AccountMovementsResponse>;
 
   // Referral methods
   getAndSetReferralCode: () => Promise<ReferralCodeResponse>;
   getAndSetReferralStats: () => Promise<ReferralStatsResponse>;
-  getReferralHistory: () => Promise<ListResponse<ReferralHistoryItem>>;
+  getReferralHistory: () => Promise<ReferralHistoryResponse>;
 }
 
 const api = new RustyFormsAPI({
   baseUrl: API_BASE_URL,
-  auth: new RustyAuth({ baseUrl: API_BASE_URL, useLocalStore: true }),
+  auth: new RustyAuth({ baseUrl: API_BASE_URL, useLocalStore: true, localStorageKey: LOCAL_STORAGE_KEY }),
+  errorHandler: handleApiError,
 });
 
 export const useRustyState = create<State>((set, get) => ({
@@ -212,43 +217,43 @@ export const useRustyState = create<State>((set, get) => ({
     }
     throw new Error('Unsupported challenge response');
   },
-  generateNewAccount: async () => {
-    const keypair = await loadOrCreateKeypair();
-    console.log(`Generated new account with public key: ${keypair.publicKey}`);
-    get().api?.auth?.setSession({
-      isLoggedIn: false,
-      publicKey: keypair.publicKey,
-    });
-    setLsPrivateKey(keypair.privateKey);
-    setLsPublicKey(keypair.publicKey);
-    const loginChallenge = await get().login(keypair.publicKey, LOGIN_METHOD.NOSTR);
+  // generateNewAccount: async () => {
+  //   const keypair = await loadOrCreateKeypair();
+  //   console.log(`Generated new account with public key: ${keypair.publicKey}`);
+  //   get().api?.auth?.setSession({
+  //     isLoggedIn: false,
+  //     publicKey: keypair.publicKey,
+  //   });
+  //   setLsPrivateKey(keypair.privateKey, LOCAL_STORAGE_KEY);
+  //   setLsPublicKey(keypair.publicKey, LOCAL_STORAGE_KEY);
+  //   const loginChallenge = await get().login(keypair.publicKey, LOGIN_METHOD.NOSTR);
 
-    if (loginChallenge.type === 'NOSTR') {
-      const { content } = loginChallenge;
-      // Create the signed nostr event
-      const event = new NEvent({
-        pubkey: keypair.publicKey,
-        kind: NEVENT_KIND.CLIENT_AUTHENTICATION,
-        tags: [
-          ['relay', API_BASE_URL],
-          ['challenge', content.challenge],
-        ],
-        content: '',
-      });
+  //   if (loginChallenge.type === 'NOSTR') {
+  //     const { content } = loginChallenge;
+  //     // Create the signed nostr event
+  //     const event = new NEvent({
+  //       pubkey: keypair.publicKey,
+  //       kind: NEVENT_KIND.CLIENT_AUTHENTICATION,
+  //       tags: [
+  //         ['relay', API_BASE_URL],
+  //         ['challenge', content.challenge],
+  //       ],
+  //       content: '',
+  //     });
 
-      await get().loginChallenge({
-        type: 'NOSTR',
-        content: {
-          id: content.id,
-          response: event.ToObj(),
-        },
-      });
+  //     await get().loginChallenge({
+  //       type: 'NOSTR',
+  //       content: {
+  //         id: content.id,
+  //         response: event.ToObj(),
+  //       },
+  //     });
 
-      // Update Sentry context after successful account generation and login
-      const session = get().getSession();
-      updateSentryUserContext(session);
-    }
-  },
+  //     // Update Sentry context after successful account generation and login
+  //     const session = get().getSession();
+  //     updateSentryUserContext(session);
+  //   }
+  // },
   logout: async () => {
     if (api.auth) {
       await api.auth.logout();
@@ -291,32 +296,50 @@ export const useRustyState = create<State>((set, get) => ({
     return form;
   },
   getAndSetVerifiedEmails: async (
-    params?: VerfiedEmailsQuery
-  ): Promise<ListResponse<VerifiedEmail>> => {
-    if (params && params.form_id) {
-      const res = await api.getFormRecipients(params.form_id);
-      if (res.data) {
-        set({
-          verifiedEmailsByForm: {
-            ...get().verifiedEmailsByForm,
-            [params.form_id]: res.data,
-          },
-        });
-        return res;
-      }
-    } else {
-      const res = await api.getVerifiedEmails();
-      if (res.data) {
-        set({ verifiedEmails: res.data });
-        return res;
-      }
+    // params?: FormRecipientsQueryParams
+  ): Promise<FormsRecipientsResponse> => {
+    // TODO: Params
+    const res = await api.getVerifiedEmails();
+    if (res.data) {
+      set({ verifiedEmails: res.data });
+      return res;
     }
     return {
       data: [],
       total: 0,
     };
   },
-  getFormRecipients: async (formId: string, query: FormsRecipientsQueryParams) => {
+  getAndSetFormVerifiedEmails: async (
+    formId: string,
+    params?: FormRecipientsQueryParams
+  ): Promise<VerifiedEmailsResponse> => {
+    const res = await api.getFormRecipients(formId, params);
+    if (res.data) {
+      const exists = get().verifiedEmailsByForm[formId];
+      if (exists) {
+        set({
+          verifiedEmailsByForm: {
+            ...get().verifiedEmailsByForm,
+            [formId]: [...exists, ...res.data],
+          },
+        });
+        return res;
+      }
+      set({
+        verifiedEmailsByForm: {
+          ...get().verifiedEmailsByForm,
+          [formId]: res.data,
+        },
+      });
+
+      return res;
+    }
+    return {
+      data: [],
+      total: 0,
+    };
+  },
+  getFormRecipients: async (formId: string, query: FormRecipientsQueryParams) => {
     const res = await api.getFormRecipients(formId, query);
     if (res.data) {
       const exists = get().verifiedEmailsByForm[formId];
@@ -343,7 +366,7 @@ export const useRustyState = create<State>((set, get) => ({
       total: 0,
     };
   },
-  getMessagesWithForms: async (query: MessagesQueryParams) => {
+  getMessagesWithForms: async (query: MessageQueryParams) => {
     const res = await api.getMessages(query);
     if (res) {
       const files = Array.isArray(res.files) ? res.files : [];
@@ -351,7 +374,7 @@ export const useRustyState = create<State>((set, get) => ({
       return {
         data: res.data.map((m) => {
           const filteredFiles = files.filter(
-            (f): f is FileAttachment => 'message_id' in f && f.message_id === m.id
+            (f): f is File => 'message_id' in f && f.message_id === m.id
           );
 
           return {

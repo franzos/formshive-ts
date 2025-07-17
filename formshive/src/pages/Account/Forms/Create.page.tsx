@@ -2,8 +2,8 @@ import { showSuccessNotification, useLanguageAwareRouting } from '@gofranz/commo
 import { notifications } from '@mantine/notifications';
 import { useNavigate } from 'react-router-dom';
 import { CreateForm } from '../../../components/Form/Create';
-import { HttpNewForm } from '../../../lib/models';
 import { useRustyState } from '../../../state';
+import { HttpNewForm } from '@gofranz/formshive-common';
 
 export function AccountFormCreatePage() {
   const { api } = useRustyState.getState();

@@ -1,5 +1,5 @@
-export function validateUrl(value: string, allowEmpty: boolean = false) {
-  if (allowEmpty && value === '') {
+export function validateUrl(value?: string, allowEmpty: boolean = false) {
+  if (allowEmpty && value === '' || value === undefined) {
     console.warn('URL is empty');
     return null;
   }

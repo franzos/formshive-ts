@@ -1,5 +1,7 @@
 import {
   CommonQueryParams,
+  CustomerPortalResponse,
+  HttpNewVerifiedEmail,
   makeAuthHeaders,
   NewDepositHttp,
   NewSubscriptionResponse,
@@ -17,28 +19,10 @@ import {
   SubscriptionPlanConfig,
   SubscriptionResponse,
   UsageResponse,
+  VerifiedEmailsResponse,
 } from '@gofranz/common';
-import axios, { AxiosInstance } from 'axios';
-import {
-  FileAttachment,
-  Form,
-  FormsIntegrationsQueryParams,
-  FormsRecipientsQueryParams,
-  HttpIntegration,
-  HttpNewForm,
-  HttpNewFormsIntegration,
-  HttpNewFormsRecipient,
-  HttpNewIntegration,
-  HttpNewVerifiedEmail,
-  HttpUpdateIntegration,
-  HttpUpdateMessage,
-  VerifiedEmail,
-  IntegrationsQueryParams,
-  Message,
-  MessageCountByDay,
-  MessagesQueryParams,
-  UpdateForm,
-} from './models';
+import axios, { AxiosError, AxiosInstance } from 'axios';
+import { Form, FormRecipientsQueryParams, FormsIntegrationsQueryParams, FormsIntegrationsResponse, FormsQueryParams, FormsRecipientsResponse, FormsResponse, HttpNewForm, HttpNewIntegration, HttpUpdateMessage, IntegrationResponse, IntegrationsApiResponse, IntegrationsQueryParams, MessageCountByDay, MessageQueryParams, MessagesResponse, NewFormsIntegration, NewFormsRecipient, UpdateForm, UpdateIntegration } from './types/generated';
 
 export interface GenericResponse {
   status: number;
@@ -99,15 +83,17 @@ export interface RustyFormsApiProps {
   baseUrl?: string;
   timeout?: number;
   auth?: RustyAuthSpec;
+  errorHandler?: (error: AxiosError) => void;
 }
 
 export class RustyFormsAPI {
   private baseUrl: string;
   private timeout: number;
   private client: AxiosInstance;
+  private errorHandler?: (error: AxiosError) => void;
   auth?: RustyAuthSpec;
 
-  constructor({ baseUrl, timeout, auth }: RustyFormsApiProps) {
+  constructor({ baseUrl, timeout, auth, errorHandler }: RustyFormsApiProps) {
     if (baseUrl) {
       this.baseUrl = baseUrl;
     } else {
@@ -128,6 +114,8 @@ export class RustyFormsAPI {
       console.warn('Auth config not set');
     }
 
+    this.errorHandler = errorHandler;
+
     this.client = axios.create({
       baseURL: this.baseUrl,
       timeout: this.timeout,
@@ -139,15 +127,26 @@ export class RustyFormsAPI {
     // Add request interceptor to handle authentication timing
     this.client.interceptors.request.use(async (config) => {
       // Check if this request needs auth (has Authorization header or uses auth endpoints)
-      const needsAuth = config.url?.startsWith('/a/') || 
-                       (config.headers && 'Authorization' in config.headers);
-      
+      const needsAuth = config.url?.startsWith('/a/') ||
+        (config.headers && 'Authorization' in config.headers);
+
       if (needsAuth && this.auth && !this.auth.hasValidAccessToken()) {
         // Wait for auth to be ready
         await new Promise(resolve => setTimeout(resolve, 500));
       }
       return config;
     });
+
+    // Add response interceptor to handle errors generically
+    this.client.interceptors.response.use(
+      (response) => response, // Pass through successful responses
+      (error: AxiosError) => {
+        if (this.errorHandler) {
+          this.errorHandler(error);
+        }
+        return Promise.reject(error); // Still reject so specific handlers can override
+      }
+    );
   }
 
   getAuthApi = (): RustyAuthSpec => {
@@ -199,7 +198,7 @@ export class RustyFormsAPI {
   getSubscriptionUsage = async (): Promise<UsageResponse> =>
     this.getSubscriptionApi().getSubscriptionUsage(this.getAccessToken());
 
-  createCustomerPortalSession = async (): Promise<CustomerPortalSession> =>
+  createCustomerPortalSession = async (): Promise<CustomerPortalResponse> =>
     this.getSubscriptionApi().createCustomerPortalSession(this.getAccessToken());
 
   // Referral endpoints
@@ -225,8 +224,8 @@ export class RustyFormsAPI {
     await this.client.delete(`/a/forms/${id}`, this.getAxiosConfig());
   };
 
-  getForms = async (query?: QueryParamsBase): Promise<ListResponse<Form>> => {
-    const response = await this.client.get<ListResponse<Form>>(
+  getForms = async (query?: FormsQueryParams): Promise<FormsResponse> => {
+    const response = await this.client.get<FormsResponse>(
       makeUrl('/a/forms', query),
       this.getAxiosConfig()
     );
@@ -255,8 +254,8 @@ export class RustyFormsAPI {
     await this.client.delete(`/a/emails/${id}`, this.getAxiosConfig());
   };
 
-  getVerifiedEmails = async (): Promise<ListResponse<VerifiedEmail>> => {
-    const response = await this.client.get<ListResponse<VerifiedEmail>>(
+  getVerifiedEmails = async (): Promise<VerifiedEmailsResponse> => {
+    const response = await this.client.get<VerifiedEmailsResponse>(
       '/a/emails',
       this.getAxiosConfig()
     );
@@ -264,15 +263,15 @@ export class RustyFormsAPI {
   };
 
   // Form recipients endpoints
-  newFormRecipient = async (data: HttpNewFormsRecipient): Promise<void> => {
+  newFormRecipient = async (data: NewFormsRecipient): Promise<void> => {
     await this.client.post('/a/forms/recipients', data, this.getAxiosConfig());
   };
 
   getFormRecipients = async (
     formId: string,
-    query?: FormsRecipientsQueryParams
-  ): Promise<ListResponse<VerifiedEmail>> => {
-    const response = await this.client.get<ListResponse<VerifiedEmail>>(
+    query?: FormRecipientsQueryParams
+  ): Promise<FormsRecipientsResponse> => {
+    const response = await this.client.get<FormsRecipientsResponse>(
       makeUrl(`/a/forms/${formId}/recipients`, query),
       this.getAxiosConfig()
     );
@@ -285,9 +284,9 @@ export class RustyFormsAPI {
 
   // Messages endpoints
   getMessages = async (
-    query: MessagesQueryParams
-  ): Promise<ExtendedListResponse<Message, FileAttachment[]>> => {
-    const response = await this.client.get<ExtendedListResponse<Message, FileAttachment[]>>(
+    query: MessageQueryParams
+  ): Promise<MessagesResponse> => {
+    const response = await this.client.get<MessagesResponse>(
       makeUrl('/a/messages', query),
       this.getAxiosConfig()
     );
@@ -314,8 +313,8 @@ export class RustyFormsAPI {
   };
 
   // Integrations endpoints
-  newIntegration = async (data: HttpNewIntegration): Promise<HttpIntegration> => {
-    const response = await this.client.post<HttpIntegration>(
+  newIntegration = async (data: HttpNewIntegration): Promise<IntegrationResponse> => {
+    const response = await this.client.post<IntegrationResponse>(
       '/a/integrations',
       data,
       this.getAxiosConfig()
@@ -325,23 +324,23 @@ export class RustyFormsAPI {
 
   getIntegrations = async (
     query: IntegrationsQueryParams
-  ): Promise<ListResponse<HttpIntegration>> => {
-    const response = await this.client.get<ListResponse<HttpIntegration>>(
+  ): Promise<IntegrationsApiResponse> => {
+    const response = await this.client.get<IntegrationsApiResponse>(
       makeUrl('/a/integrations', query),
       this.getAxiosConfig()
     );
     return response.data;
   };
 
-  getIntegration = async (id: string): Promise<HttpIntegration> => {
-    const response = await this.client.get<HttpIntegration>(
+  getIntegration = async (id: string): Promise<IntegrationResponse> => {
+    const response = await this.client.get<IntegrationResponse>(
       `/a/integrations/${id}`,
       this.getAxiosConfig()
     );
     return response.data;
   };
 
-  updateIntegration = async (id: string, data: HttpUpdateIntegration): Promise<void> => {
+  updateIntegration = async (id: string, data: UpdateIntegration): Promise<void> => {
     await this.client.patch(`/a/integrations/${id}`, data, this.getAxiosConfig());
   };
 
@@ -350,14 +349,14 @@ export class RustyFormsAPI {
   };
 
   // Forms integrations endpoints
-  newFormsIntegration = async (data: HttpNewFormsIntegration): Promise<void> => {
+  newFormsIntegration = async (data: NewFormsIntegration): Promise<void> => {
     await this.client.post('/a/forms/integrations', data, this.getAxiosConfig());
   };
 
   getFormsIntegrations = async (
     formId: string,
     query: FormsIntegrationsQueryParams
-  ): Promise<any> => {
+  ): Promise<FormsIntegrationsResponse> => {
     const response = await this.client.get(
       makeUrl(`/a/forms/${formId}/integrations`, query),
       this.getAxiosConfig()

@@ -3,13 +3,13 @@ import { notifications } from '@mantine/notifications';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { IntegrationDetail } from '../../../components/Integration/Detail';
-import { HttpIntegration, HttpUpdateIntegration } from '../../../lib/models';
 import { useRustyState } from '../../../state';
+import { Integration, UpdateIntegration } from '@gofranz/formshive-common';
 
 export function AccountIntegrationViewPage() {
   const { api } = useRustyState.getState();
   const { uuid } = useParams<{ uuid: string }>();
-  const [integration, setIntegration] = useState<HttpIntegration | undefined>(undefined);
+  const [integration, setIntegration] = useState<Integration | undefined>(undefined);
 
   useEffect(() => {
     const getForm = async () => {
@@ -24,7 +24,7 @@ export function AccountIntegrationViewPage() {
     getForm();
   }, []);
 
-  const handleUpdate = async (id: string, updateIntegration: HttpUpdateIntegration) => {
+  const handleUpdate = async (id: string, updateIntegration: UpdateIntegration) => {
     await api.updateIntegration(id, updateIntegration);
     showSuccessNotification(
       'Integration Updated',

@@ -12,8 +12,8 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { IntegrationsTable } from '../../../components/Integration/Table';
 import { IntegrationsHelp } from '../../../components/Integrations';
-import { HttpIntegration } from '../../../lib/models';
 import { useRustyState } from '../../../state';
+import { Integration } from '@gofranz/formshive-common';
 
 export function AccountIntegrationsStartPage() {
   const { t } = useTranslation();
@@ -48,7 +48,7 @@ export function AccountIntegrationsStartPage() {
     nav(createLanguageURL(url));
   };
 
-  const openForm = (form: HttpIntegration) => {
+  const openForm = (form: Integration) => {
     nav(createLanguageURL(`/account/integrations/${form.id}`));
   };
 

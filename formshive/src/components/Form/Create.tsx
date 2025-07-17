@@ -3,8 +3,8 @@ import { useState } from 'react';
 import { Text, Title } from '@mantine/core';
 import { useTranslation } from 'react-i18next';
 import { FormFields } from './Common';
-import { HttpNewForm } from '../../lib/models';
 import { validateUrl } from '../../lib/validate-url';
+import { HttpNewForm } from '@gofranz/formshive-common';
 
 export interface CreateFormProps {
   submitFormCb: (newForm: HttpNewForm) => Promise<void>;
@@ -21,29 +21,29 @@ export function CreateForm(props: CreateFormProps) {
       filter_spam: false,
       check_challenge: false,
       check_specs: false,
-      specs: '',
-      redirect_url: '',
+      specs: undefined as string | undefined,
+      redirect_url: undefined as string | undefined,
       auto_response_enabled: false,
-      auto_response_subject: null as string | null,
-      auto_response_text: null as string | null,
+      auto_response_subject: undefined as string | undefined,
+      auto_response_text: undefined as string | undefined,
     },
     validate: {
       title: (value) => (value ? null : t('forms.titleRequired')),
-      redirect_url: (value) => validateUrl(value, true),
+      redirect_url: (value) => validateUrl(value || '', true),
     },
   });
 
   const submitForm = async () => {
-    const newForm = {
+    const newForm: HttpNewForm = {
       title: form.values.title,
       filter_spam: form.values.filter_spam,
       check_challenge: form.values.check_challenge,
-      check_specs: form.values.check_specs,
-      specs: form.values.specs,
+      // check_specs: form.values.check_specs,
+      // specs: form.values.specs,
       redirect_url: form.values.redirect_url,
       auto_response_enabled: form.values.auto_response_enabled,
-      auto_response_subject: form.values.auto_response_subject,
-      auto_response_text: form.values.auto_response_text,
+      // auto_response_subject: form.values.auto_response_subject,
+      // auto_response_text: form.values.auto_response_text,
     };
     setIsBusy(true);
     try {
