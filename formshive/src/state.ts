@@ -131,7 +131,6 @@ export const useRustyState = create<State>((set, get) => ({
     isLoggedIn: false,
   },
   getSession: (): Session | undefined => {
-    console.log('state: getSession()');
     if (api.auth) {
       return api.auth.getSession();
     }

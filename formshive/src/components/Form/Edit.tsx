@@ -67,24 +67,21 @@ export function EditForm(props: EditFormProps) {
     validate: {
       title: (value) => (value ? null : t('formEdit.titleRequired')),
       specs: () => {
-        console.log(form.values);
         if (form.values && form.values.specs && form.values.specs.trim() !== '') {
           const specIsValid = parseAndValidateFormSpec(form.values.specs);
           if (!specIsValid.isValid) {
-            console.log('ERRROR');
+            console.warn(`Form specs validation failed: ${JSON.stringify(specIsValid.errors)}`);
             let errorString = '';
             specIsValid.errors.forEach((value, key) => {
               errorString += `${key}: ${value}\n`;
             });
             return errorString;
           }
-          console.log('NO ERRROR (valid)');
         }
         if (form.values.check_specs && form.values.specs && form.values.specs.match('name =')) {
-          console.log('ERRROR');
+          console.warn('Form specs validation failed: form specs are required when check_specs is enabled');
           return t('formEdit.formSpecsRequired');
         }
-        console.log('NO ERRROR');
         return null;
       },
       redirect_url: (value) => validateUrl(value, true),
@@ -193,7 +190,6 @@ export function EditForm(props: EditFormProps) {
       auto_response_text: form.values.auto_response_text,
     };
     setIsBusy(true);
-    console.log(updatedForm);
     try {
       await props.submitFormCb(props.form.id, updatedForm);
       setHasUnsavedChanges(false);

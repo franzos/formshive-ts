@@ -1,12 +1,14 @@
 import { useEffect } from 'react';
 import { Card, Text, Group, CopyButton, ActionIcon, Tooltip, Stack } from '@mantine/core';
 import { IconCopy, IconCheck } from '@tabler/icons-react';
+import { useTranslation } from 'react-i18next';
 import { useRustyState } from '../../state';
 import { ReferralStats } from './ReferralStats';
 
 export function ReferralDashboard() {
   const { referralCode, referralStats, getAndSetReferralCode, getAndSetReferralStats } =
     useRustyState();
+  const { t } = useTranslation();
 
   useEffect(() => {
     const loadData = async () => {
@@ -20,14 +22,14 @@ export function ReferralDashboard() {
   }, []);
 
   if (!referralCode) {
-    return <Text>Loading referral information...</Text>;
+    return <Text>{t('glob_billing.loadingReferralInfo')}</Text>;
   }
 
   return (
     <Stack gap="md">
       <Card shadow="sm" padding="lg" radius="md" withBorder>
         <Text size="lg" fw={600} mb="md">
-          Your Referral Code
+          {t('glob_billing.yourReferralCode')}
         </Text>
 
         <Group gap="md" align="center">
@@ -47,7 +49,7 @@ export function ReferralDashboard() {
 
           <CopyButton value={referralCode.code} timeout={2000}>
             {({ copied, copy }) => (
-              <Tooltip label={copied ? 'Copied' : 'Copy'} withArrow position="right">
+              <Tooltip label={copied ? t('glob_billing.copied') : t('glob_billing.copy')} withArrow position="right">
                 <ActionIcon color={copied ? 'teal' : 'gray'} onClick={copy} size="lg">
                   {copied ? <IconCheck size="1rem" /> : <IconCopy size="1rem" />}
                 </ActionIcon>
@@ -57,7 +59,7 @@ export function ReferralDashboard() {
         </Group>
 
         <Text size="sm" c="dimmed" mt="sm" mb="md">
-          Or share this direct signup link:
+          {t('glob_billing.shareDirectLink')}
         </Text>
 
         <Group gap="md" align="center">
@@ -81,7 +83,7 @@ export function ReferralDashboard() {
             timeout={2000}
           >
             {({ copied, copy }) => (
-              <Tooltip label={copied ? 'Link Copied' : 'Copy Link'} withArrow position="right">
+              <Tooltip label={copied ? t('glob_billing.linkCopied') : t('glob_billing.copyLink')} withArrow position="right">
                 <ActionIcon color={copied ? 'teal' : 'blue'} onClick={copy} size="lg">
                   {copied ? <IconCheck size="1rem" /> : <IconCopy size="1rem" />}
                 </ActionIcon>
@@ -91,8 +93,7 @@ export function ReferralDashboard() {
         </Group>
 
         <Text size="sm" c="dimmed" mt="md">
-          When someone signs up with your referral link and makes their first subscription payment
-          or deposit, you earn 10% of that amount, and they receive a 10% bonus.
+          {t('glob_billing.referralDescription')}
         </Text>
       </Card>
 

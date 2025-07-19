@@ -60,13 +60,10 @@ export function EditIntegration(props: EditIntegrationProps) {
       secrets,
     };
 
-    console.log('EditIntegration: Update payload:', updateIntegration);
-
     setIsBusy(true);
     try {
       await props.submitFormCb(props.integration.id, updateIntegration);
       setError('');
-      console.log('EditIntegration: Update successful');
     } catch (e) {
       const errorMessage = extractApiErrorMessage(e);
       setError(errorMessage);

@@ -11,6 +11,7 @@ import {
   getStatusColor,
   PlanAllowance,
 } from '@gofranz/common';
+import { useTranslation } from 'react-i18next';
 import { useRustyState } from '../../state';
 
 export function CurrentSubscription() {
@@ -21,6 +22,7 @@ export function CurrentSubscription() {
     cancelSubscription,
     createCustomerPortalSession,
   } = useRustyState();
+  const { t } = useTranslation();
 
   const [canceling, setCanceling] = useState(false);
   const [openingPortal, setOpeningPortal] = useState(false);
@@ -68,8 +70,8 @@ export function CurrentSubscription() {
 
   if (!currentSubscription) {
     return (
-      <Alert icon={<IconInfoCircle size="1rem" />} title="No Active Subscription">
-        You don't have an active subscription. You're using our pay-as-you-go billing model.
+      <Alert icon={<IconInfoCircle size="1rem" />} title={t('glob_billing.noActiveSubscription')}>
+        {t('glob_billing.noActiveSubscriptionDescription')}
       </Alert>
     );
   }
@@ -78,7 +80,7 @@ export function CurrentSubscription() {
     <Card shadow="sm" padding="md" radius="md" withBorder>
       <Group justify="space-between" mb="sm">
         <Text size="lg" fw={600}>
-          Current Subscription
+          {t('glob_billing.currentSubscription')}
         </Text>
         <Badge color={getStatusColor(currentSubscription.status)}>
           {currentSubscription.status.toUpperCase()}
@@ -95,7 +97,7 @@ export function CurrentSubscription() {
       >
         <div>
           <Text size="xs" c="dimmed">
-            Plan
+            {t('glob_billing.plan')}
           </Text>
           <Text fw={500} size="sm">
             {getPlanDisplayName(currentSubscription)}
@@ -105,7 +107,7 @@ export function CurrentSubscription() {
         {currentSubscription.current_period_start && (
           <div>
             <Text size="xs" c="dimmed">
-              Period Started
+              {t('glob_billing.periodStarted')}
             </Text>
             <Text size="sm">{formatDate(currentSubscription.current_period_start)}</Text>
           </div>
@@ -114,7 +116,7 @@ export function CurrentSubscription() {
         {currentSubscription.current_period_end && (
           <div>
             <Text size="xs" c="dimmed">
-              Next Billing
+              {t('glob_billing.nextBilling')}
             </Text>
             <Text size="sm">{formatDate(currentSubscription.current_period_end)}</Text>
           </div>
@@ -134,14 +136,14 @@ export function CurrentSubscription() {
             <div>
               <Group justify="space-between" align="center" mb="xs">
                 <Text fw={500} size="sm">
-                  Next Cycle:{' '}
+                  {t('glob_billing.nextCycle')}:{' '}
                   {getNextPlan(currentSubscription, subscriptionPlans)?.name ||
                     currentSubscription.next_plan_id}
                 </Text>
                 {getNextPlan(currentSubscription, subscriptionPlans) && (
                   <Text size="xs" c="dimmed">
                     {getNextPlan(currentSubscription, subscriptionPlans)!.price === 0
-                      ? 'Free'
+                      ? t('glob_billing.free')
                       : `${formatCurrency([getNextPlan(currentSubscription, subscriptionPlans)!.currency as Currency, getNextPlan(currentSubscription, subscriptionPlans)!.price])}/mo`}
                   </Text>
                 )}
@@ -152,7 +154,7 @@ export function CurrentSubscription() {
                     {getNextPlan(currentSubscription, subscriptionPlans)!
                     .allowances.map((allowance: PlanAllowance) => {
                         const formatAmount = (resource: string, amount: number) => {
-                          if (amount === -1) return 'Unlimited';
+                          if (amount === -1) return t('glob_billing.unlimited');
                           if (resource === 'file_upload') {
                             const mb = amount / 1024;
                             return mb.toLocaleString('en-US').replace(/,/g, ' ') + ' MB';
@@ -209,7 +211,7 @@ export function CurrentSubscription() {
               loading={openingPortal}
               onClick={handleOpenCustomerPortal}
             >
-              Manage via Stripe
+              {t('glob_billing.manageViaStripe')}
             </Button>
           ) : (
             <Button
@@ -220,7 +222,7 @@ export function CurrentSubscription() {
               loading={canceling}
               onClick={handleCancel}
             >
-              Cancel
+              {t('glob_billing.cancel')}
             </Button>
           )}
         </Group>

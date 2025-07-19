@@ -4,6 +4,7 @@ import { Balance, formatCurrency } from '@gofranz/common';
 import { showApiErrorNotification } from '@gofranz/common-components';
 import { IconInfoCircle } from '@tabler/icons-react';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useRustyState } from '../../state';
 import { AccountMovements } from './AccountMovements';
 import { CurrentSubscription } from './CurrentSubscription';
@@ -12,6 +13,7 @@ import { SubscriptionUsage } from './SubscriptionUsage';
 
 export function CombinedBillingDashboard() {
   const { currentSubscription, getAndSetCurrentSubscription, api } = useRustyState();
+  const { t } = useTranslation();
 
   const [balance, setBalance] = useState<Balance[]>([]);
   const [addMoney, setAddMoney] = useState(false);
@@ -46,7 +48,7 @@ export function CombinedBillingDashboard() {
 
   const BalancesDisplay = ({ balances }: { balances: Balance[] }) => {
     if (!balances || balances.length === 0) {
-      return <Text c="dimmed">No balance found</Text>;
+      return <Text c="dimmed">{t('glob_billing.noBalanceFound')}</Text>;
     }
     return (
       <Stack gap="xs">
@@ -60,7 +62,7 @@ export function CombinedBillingDashboard() {
   return (
     <Stack gap="md">
       <Text size="xl" fw={600}>
-        Billing Overview
+        {t('glob_billing.billingOverview')}
       </Text>
 
       <div
@@ -74,25 +76,24 @@ export function CombinedBillingDashboard() {
 
         <Card shadow="sm" padding="lg" radius="md" withBorder>
           <Text size="lg" fw={600} mb="md">
-            Pay-as-you-go Credits
+            {t('glob_billing.payAsYouGoCredits')}
           </Text>
           <BalancesDisplay balances={balance} />
           {addMoney ? (
             <Stack gap="md" mt="md">
-              <Title order={4}>Add Credits</Title>
+              <Title order={4}>{t('glob_billing.addCredits')}</Title>
               <NewDepositForm onCancelCb={() => setAddMoney(false)} />
             </Stack>
           ) : (
             <Button onClick={() => setAddMoney(true)} mt="md" variant="light">
-              Add Credits
+              {t('glob_billing.addCredits')}
             </Button>
           )}
         </Card>
       </div>
 
-      <Alert icon={<IconInfoCircle size="1rem" />} title="Hybrid Billing Model">
-        When subscription allowances are exhausted, usage automatically falls back to pay-as-you-go
-        credits. You'll never lose service - just additional usage beyond your plan limits.
+      <Alert icon={<IconInfoCircle size="1rem" />} title={t('glob_billing.hybridBillingModel')}>
+        {t('glob_billing.hybridBillingDescription')}
       </Alert>
 
       {currentSubscription && currentSubscription.status.toLowerCase() === 'active' && (

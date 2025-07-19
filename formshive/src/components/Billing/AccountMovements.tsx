@@ -3,12 +3,14 @@ import { notifications } from '@mantine/notifications';
 import { AccountMovement, CommonQueryParams, formatCurrency, ListResponse } from '@gofranz/common';
 import { showApiErrorNotification } from '@gofranz/common-components';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useRustyState } from '../../state';
 
 export function AccountMovements() {
   const [movements, setMovements] = useState<AccountMovement[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const { getAccountMovements } = useRustyState();
+  const { t } = useTranslation();
 
   useEffect(() => {
     const loadAccountMovements = async () => {
@@ -42,16 +44,16 @@ export function AccountMovements() {
   };
 
   const getMovementType = (amount: number) => {
-    return amount > 0 ? 'Credit' : 'Debit';
+    return amount > 0 ? t('glob_billing.credit') : t('glob_billing.debit');
   };
 
   if (isLoading) {
     return (
       <Card shadow="sm" padding="lg" radius="md" withBorder>
         <Text size="lg" fw={600} mb="md">
-          Recent Account Movements
+          {t('glob_billing.recentAccountMovements')}
         </Text>
-        <Text c="dimmed">Loading account movements...</Text>
+        <Text c="dimmed">{t('glob_billing.loadingAccountMovements')}</Text>
       </Card>
     );
   }
@@ -60,9 +62,9 @@ export function AccountMovements() {
     return (
       <Card shadow="sm" padding="lg" radius="md" withBorder>
         <Text size="lg" fw={600} mb="md">
-          Recent Account Movements
+          {t('glob_billing.recentAccountMovements')}
         </Text>
-        <Text c="dimmed">No account movements found.</Text>
+        <Text c="dimmed">{t('glob_billing.noAccountMovements')}</Text>
       </Card>
     );
   }
@@ -70,16 +72,16 @@ export function AccountMovements() {
   return (
     <Card shadow="sm" padding="lg" radius="md" withBorder>
       <Text size="lg" fw={600} mb="md">
-        Recent Account Movements
+        {t('glob_billing.recentAccountMovements')}
       </Text>
 
       <Table>
         <Table.Thead>
           <Table.Tr>
-            <Table.Th>Date</Table.Th>
-            <Table.Th>Amount</Table.Th>
-            <Table.Th>Type</Table.Th>
-            <Table.Th>Features</Table.Th>
+            <Table.Th>{t('glob_billing.date')}</Table.Th>
+            <Table.Th>{t('glob_billing.amount')}</Table.Th>
+            <Table.Th>{t('glob_billing.type')}</Table.Th>
+            <Table.Th>{t('glob_billing.features')}</Table.Th>
           </Table.Tr>
         </Table.Thead>
         <Table.Tbody>

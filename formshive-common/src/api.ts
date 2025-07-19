@@ -43,27 +43,6 @@ export type ExtendedListResponse<T, R> = ListResponse<T> & {
   [key: string]: R | T[] | number;
 };
 
-export const makeHeaders = (accessToken: string) => {
-  if (!accessToken) {
-    throw new Error('No access token');
-  }
-  return {
-    Authorization: `Bearer ${accessToken}`,
-  };
-};
-
-export const defaultReqHeaders = (kind: 'json' | 'form', accessToken?: string) => {
-  const headers: Record<string, string> = {
-    'Content-Type': `application/${kind}`,
-  };
-
-  if (accessToken) {
-    Object.assign(headers, makeHeaders(accessToken));
-  }
-
-  return headers;
-};
-
 export interface MessageCountByDayParams extends QueryParamsBase {
   form_ids?: string[];
   is_spam?: boolean;
@@ -124,15 +103,19 @@ export class RustyFormsAPI {
       },
     });
 
-    // Add request interceptor to handle authentication timing
+    // Add request interceptor to automatically handle authentication
     this.client.interceptors.request.use(async (config) => {
-      // Check if this request needs auth (has Authorization header or uses auth endpoints)
-      const needsAuth = config.url?.startsWith('/a/') ||
-        (config.headers && 'Authorization' in config.headers);
+      // Check if this request needs auth (uses auth endpoints)
+      const needsAuth = config.url?.startsWith('/a/');
 
-      if (needsAuth && this.auth && !this.auth.hasValidAccessToken()) {
-        // Wait for auth to be ready
-        await new Promise(resolve => setTimeout(resolve, 500));
+      if (needsAuth && this.auth) {
+        if (!this.auth.hasValidAccessToken()) {
+          await new Promise((resolve) => setTimeout(resolve, 500)); // Wait for auth to be ready
+        }
+        const token = this.auth.getAccessToken();
+        if (token) {
+          config.headers.Authorization = `Bearer ${token}`;
+        }
       }
       return config;
     });
@@ -226,8 +209,7 @@ export class RustyFormsAPI {
 
   getForms = async (query?: FormsQueryParams): Promise<FormsResponse> => {
     const response = await this.client.get<FormsResponse>(
-      makeUrl('/a/forms', query),
-      this.getAxiosConfig()
+      makeUrl('/a/forms', query)
     );
     return response.data;
   };
@@ -245,8 +227,7 @@ export class RustyFormsAPI {
   verifyVerifiedEmail = async (id: string): Promise<void> => {
     await this.client.post(
       '/a/emails/verify/retry',
-      { verified_email_id: id },
-      this.getAxiosConfig()
+      { verified_email_id: id }
     );
   };
 
@@ -256,8 +237,7 @@ export class RustyFormsAPI {
 
   getVerifiedEmails = async (): Promise<VerifiedEmailsResponse> => {
     const response = await this.client.get<VerifiedEmailsResponse>(
-      '/a/emails',
-      this.getAxiosConfig()
+      '/a/emails'
     );
     return response.data;
   };
@@ -272,8 +252,7 @@ export class RustyFormsAPI {
     query?: FormRecipientsQueryParams
   ): Promise<FormsRecipientsResponse> => {
     const response = await this.client.get<FormsRecipientsResponse>(
-      makeUrl(`/a/forms/${formId}/recipients`, query),
-      this.getAxiosConfig()
+      makeUrl(`/a/forms/${formId}/recipients`, query)
     );
     return response.data;
   };
@@ -287,8 +266,7 @@ export class RustyFormsAPI {
     query: MessageQueryParams
   ): Promise<MessagesResponse> => {
     const response = await this.client.get<MessagesResponse>(
-      makeUrl('/a/messages', query),
-      this.getAxiosConfig()
+      makeUrl('/a/messages', query)
     );
     return response.data;
   };
@@ -306,8 +284,7 @@ export class RustyFormsAPI {
     is_spam?: boolean;
   }): Promise<MessageCountByDay[]> => {
     const response = await this.client.get<MessageCountByDay[]>(
-      makeUrl('/a/messages/count-by-day', params),
-      this.getAxiosConfig()
+      makeUrl('/a/messages/count-by-day', params)
     );
     return response.data;
   };
@@ -316,8 +293,7 @@ export class RustyFormsAPI {
   newIntegration = async (data: HttpNewIntegration): Promise<IntegrationResponse> => {
     const response = await this.client.post<IntegrationResponse>(
       '/a/integrations',
-      data,
-      this.getAxiosConfig()
+      data
     );
     return response.data;
   };
@@ -326,16 +302,14 @@ export class RustyFormsAPI {
     query: IntegrationsQueryParams
   ): Promise<IntegrationsApiResponse> => {
     const response = await this.client.get<IntegrationsApiResponse>(
-      makeUrl('/a/integrations', query),
-      this.getAxiosConfig()
+      makeUrl('/a/integrations', query)
     );
     return response.data;
   };
 
   getIntegration = async (id: string): Promise<IntegrationResponse> => {
     const response = await this.client.get<IntegrationResponse>(
-      `/a/integrations/${id}`,
-      this.getAxiosConfig()
+      `/a/integrations/${id}`
     );
     return response.data;
   };
@@ -358,25 +332,20 @@ export class RustyFormsAPI {
     query: FormsIntegrationsQueryParams
   ): Promise<FormsIntegrationsResponse> => {
     const response = await this.client.get(
-      makeUrl(`/a/forms/${formId}/integrations`, query),
-      this.getAxiosConfig()
+      makeUrl(`/a/forms/${formId}/integrations`, query)
     );
     return response.data;
   };
 
   deleteFormsIntegration = async (formId: string, integrationId: string): Promise<void> => {
     await this.client.delete(
-      `/a/forms/${formId}/integrations/${integrationId}`,
-      this.getAxiosConfig()
+      `/a/forms/${formId}/integrations/${integrationId}`
     );
   };
 
-  async downloadFile(fileId: string, accessToken: string) {
+  async downloadFile(fileId: string) {
     const response = await fetch(makeUrl(`${this.baseUrl}/a/files/download/${fileId}`), {
       method: 'GET',
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
     });
     if (response.ok) {
       const signedUrl = response.url;

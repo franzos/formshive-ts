@@ -20,7 +20,7 @@ export function getUrlParameters(): UrlParameters {
   
   return {
     form_id: urlParams.get('form_id'),
-    api_endpoint: urlParams.get('api_endpoint'),
+    api_endpoint: urlParams.get('api_url'),
     framework: urlParams.get('framework'),
     title: urlParams.get('title')
   };

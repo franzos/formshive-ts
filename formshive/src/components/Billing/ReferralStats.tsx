@@ -9,6 +9,7 @@ import {
 } from '@gofranz/common';
 import { showApiErrorNotification } from '@gofranz/common-components';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useRustyState } from '../../state';
 
 interface ReferralStatsProps {
@@ -19,6 +20,7 @@ export function ReferralStats({ stats }: ReferralStatsProps) {
   const [referralHistory, setReferralHistory] = useState<ReferralHistoryItem[]>([]);
   const [isLoadingHistory, setIsLoadingHistory] = useState(true);
   const { getReferralHistory } = useRustyState();
+  const { t } = useTranslation();
 
   useEffect(() => {
     const loadReferralHistory = async () => {
@@ -67,7 +69,7 @@ export function ReferralStats({ stats }: ReferralStatsProps) {
     <Stack gap="md">
       <Card shadow="sm" padding="lg" radius="md" withBorder>
         <Text size="lg" fw={600} mb="md">
-          Referral Statistics
+          {t('glob_billing.referralStatistics')}
         </Text>
 
         <div
@@ -79,7 +81,7 @@ export function ReferralStats({ stats }: ReferralStatsProps) {
         >
           <div>
             <Text size="sm" c="dimmed">
-              Total Referrals
+              {t('glob_billing.totalReferrals')}
             </Text>
             <Text size="xl" fw={700}>
               {stats.total_referrals}
@@ -88,7 +90,7 @@ export function ReferralStats({ stats }: ReferralStatsProps) {
 
           <div>
             <Text size="sm" c="dimmed">
-              Total Earnings
+              {t('glob_billing.totalEarnings')}
             </Text>
             <Text size="xl" fw={700} c="green">
               {formatCurrency(getTotalEarnings())}
@@ -97,7 +99,7 @@ export function ReferralStats({ stats }: ReferralStatsProps) {
 
           <div>
             <Text size="sm" c="dimmed">
-              Pending Earnings
+              {t('glob_billing.pendingEarnings')}
             </Text>
             <Text size="xl" fw={700} c="orange">
               {formatCurrency([Currency.EUR, getPendingEarnings()])}
@@ -109,16 +111,16 @@ export function ReferralStats({ stats }: ReferralStatsProps) {
       {!isLoadingHistory && referralHistory && referralHistory.length > 0 && (
         <Card shadow="sm" padding="lg" radius="md" withBorder>
           <Text size="lg" fw={600} mb="md">
-            Recent Referrals
+            {t('glob_billing.recentReferrals')}
           </Text>
 
           <Table>
             <Table.Thead>
               <Table.Tr>
-                <Table.Th>Date</Table.Th>
-                <Table.Th>First Payment</Table.Th>
-                <Table.Th>Bonus</Table.Th>
-                <Table.Th>Status</Table.Th>
+                <Table.Th>{t('glob_billing.date')}</Table.Th>
+                <Table.Th>{t('glob_billing.firstPayment')}</Table.Th>
+                <Table.Th>{t('glob_billing.bonus')}</Table.Th>
+                <Table.Th>{t('glob_billing.status')}</Table.Th>
               </Table.Tr>
             </Table.Thead>
             <Table.Tbody>
@@ -129,7 +131,7 @@ export function ReferralStats({ stats }: ReferralStatsProps) {
                   </Table.Td>
                   <Table.Td>
                     <Badge color={referral?.first_payment_processed ? 'green' : 'orange'}>
-                      {referral?.first_payment_processed ? 'Processed' : 'Pending'}
+                      {referral?.first_payment_processed ? t('glob_billing.processed') : t('glob_billing.pending')}
                     </Badge>
                   </Table.Td>
                   <Table.Td>
@@ -139,11 +141,11 @@ export function ReferralStats({ stats }: ReferralStatsProps) {
                   </Table.Td>
                   <Table.Td>
                     {referral?.bonus_date ? (
-                      <Badge color="green">Bonus Paid</Badge>
+                      <Badge color="green">{t('glob_billing.bonusPaid')}</Badge>
                     ) : referral?.first_payment_processed ? (
-                      <Badge color="orange">Awaiting Bonus</Badge>
+                      <Badge color="orange">{t('glob_billing.awaitingBonus')}</Badge>
                     ) : (
-                      <Badge color="gray">Pending Payment</Badge>
+                      <Badge color="gray">{t('glob_billing.pendingPayment')}</Badge>
                     )}
                   </Table.Td>
                 </Table.Tr>
@@ -156,10 +158,10 @@ export function ReferralStats({ stats }: ReferralStatsProps) {
       {!isLoadingHistory && (!referralHistory || referralHistory.length === 0) && (
         <Card shadow="sm" padding="lg" radius="md" withBorder>
           <Text size="lg" fw={600} mb="md">
-            Recent Referrals
+            {t('glob_billing.recentReferrals')}
           </Text>
           <Text c="dimmed">
-            No referrals yet. Share your referral code to start earning commissions!
+            {t('glob_billing.noReferrals')}
           </Text>
         </Card>
       )}
@@ -167,9 +169,9 @@ export function ReferralStats({ stats }: ReferralStatsProps) {
       {isLoadingHistory && (
         <Card shadow="sm" padding="lg" radius="md" withBorder>
           <Text size="lg" fw={600} mb="md">
-            Recent Referrals
+            {t('glob_billing.recentReferrals')}
           </Text>
-          <Text c="dimmed">Loading referral history...</Text>
+          <Text c="dimmed">{t('glob_billing.loadingReferralHistory')}</Text>
         </Card>
       )}
     </Stack>

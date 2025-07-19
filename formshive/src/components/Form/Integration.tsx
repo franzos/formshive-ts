@@ -430,8 +430,7 @@ export function IntegrationHelp({
             <EmbedForm formId={form.id} />
           ) : (
             <Alert icon={<IconAlertCircle size={20} />} mt="md" mb="md">
-              {t('formIntegration.needFormFields')} <b>{t('formIntegration.formFields')}</b>{' '}
-              {t('formIntegration.toUseFeature')} {t('formIntegration.embedFeature')}.
+                {t('formIntegration.needFormFieldsEmbedFeature')}.
             </Alert>
           )}
         </Tabs.Panel>
@@ -444,8 +443,7 @@ export function IntegrationHelp({
             <IFrameForm form={form} />
           ) : (
             <Alert icon={<IconAlertCircle size={20} />} mt="md" mb="md">
-              {t('formIntegration.needFormFields')} <b>{t('formIntegration.formFields')}</b>{' '}
-              {t('formIntegration.toUseFeature')} {t('formIntegration.iframeFeature')}.
+                {t('formIntegration.needFormFieldsIframeFeature')}.
             </Alert>
           )}
         </Tabs.Panel>
@@ -458,8 +456,7 @@ export function IntegrationHelp({
             <LinkToForm formId={form.id} />
           ) : (
             <Alert icon={<IconAlertCircle size={20} />} mt="md" mb="md">
-              {t('formIntegration.needFormFields')} <b>{t('formIntegration.formFields')}</b>{' '}
-              {t('formIntegration.toUseFeature')} {t('formIntegration.linkFeature')}.
+                {t('formIntegration.needFormFieldsLinkFeature')}.
             </Alert>
           )}
         </Tabs.Panel>

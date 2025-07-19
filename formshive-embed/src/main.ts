@@ -18,13 +18,13 @@ async function initializeFormshive(): Promise<void> {
   }
 
   // Check if this is embed mode (has form-id attribute) or link mode (has URL parameters)
-  const formId = rustyFormsDiv.getAttribute('form-id');
+  const formId = rustyFormsDiv.getAttribute('form_id');
   const urlParams = getUrlParameters();
   
   if (formId) {
     // Embed mode: Use attributes from the div element
     let framework = rustyFormsDiv.getAttribute('framework') as SupportedFramework | null;
-    const customApiUrl = rustyFormsDiv.getAttribute('api-url');
+    const customApiUrl = rustyFormsDiv.getAttribute('api_url');
 
     if (!framework) {
       framework = 'bootstrap' as SupportedFramework; // Default to bootstrap for embed
