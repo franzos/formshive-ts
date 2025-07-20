@@ -1,4 +1,4 @@
-import { Session } from '@gofranz/common';
+import { LOGIN_METHOD, Session } from '@gofranz/common';
 import {
   LoginCallbackPage,
   LoginPage,
@@ -70,11 +70,11 @@ export function LanguageRoutes({ languagePrefix }: LanguageRoutesProps) {
           <LoginPage
             login={async (loginRequest) => {
               const state = useRustyState.getState();
-              if (loginRequest.type === 'NOSTR') {
+              if (loginRequest.type === LOGIN_METHOD.NOSTR) {
                 return await state.api.auth!.login(loginRequest);
-              } else if (loginRequest.type === 'EmailMagicLink') {
+              } else if (loginRequest.type === LOGIN_METHOD.EMAIL_MAGIC_LINK) {
                 return await state.api.auth!.login(loginRequest);
-              } else if (loginRequest.type === 'Google') {
+              } else if (loginRequest.type === LOGIN_METHOD.GOOGLE) {
                 return await state.api.auth!.login(loginRequest);
               }
               throw new Error('Unsupported login method');

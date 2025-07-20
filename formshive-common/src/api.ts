@@ -1,8 +1,10 @@
 import {
+  ApiProps,
   CommonQueryParams,
   CustomerPortalResponse,
   HttpNewVerifiedEmail,
   makeAuthHeaders,
+  makeUrl,
   NewDepositHttp,
   NewSubscriptionResponse,
   QueryParamsBase,
@@ -24,55 +26,19 @@ import {
 import axios, { AxiosError, AxiosInstance } from 'axios';
 import { Form, FormRecipientsQueryParams, FormsIntegrationsQueryParams, FormsIntegrationsResponse, FormsQueryParams, FormsRecipientsResponse, FormsResponse, HttpNewForm, HttpNewIntegration, HttpUpdateMessage, IntegrationResponse, IntegrationsApiResponse, IntegrationsQueryParams, MessageCountByDay, MessageQueryParams, MessagesResponse, NewFormsIntegration, NewFormsRecipient, UpdateForm, UpdateIntegration } from './types/generated';
 
-export interface GenericResponse {
-  status: number;
-  data?: any;
-}
-
-export interface TypedGenericResponse<T> {
-  status: number;
-  data?: T;
-}
-
 export interface ListResponse<T> {
   data: T[];
   total: number;
 }
 
-export type ExtendedListResponse<T, R> = ListResponse<T> & {
-  [key: string]: R | T[] | number;
-};
-
-export interface MessageCountByDayParams extends QueryParamsBase {
-  form_ids?: string[];
-  is_spam?: boolean;
-}
-
-function makeUrl(
-  url: string,
-  params?: QueryParamsBase | MessageCountByDayParams | IntegrationsQueryParams
-) {
-  if (params) {
-    return `${url}?${new URLSearchParams(params as Record<string, string>)}`;
-  }
-  return url;
-}
-
-export interface RustyFormsApiProps {
-  baseUrl?: string;
-  timeout?: number;
-  auth?: RustyAuthSpec;
-  errorHandler?: (error: AxiosError) => void;
-}
-
-export class RustyFormsAPI {
+export class RustyFormsApi {
   private baseUrl: string;
   private timeout: number;
   private client: AxiosInstance;
   private errorHandler?: (error: AxiosError) => void;
   auth?: RustyAuthSpec;
 
-  constructor({ baseUrl, timeout, auth, errorHandler }: RustyFormsApiProps) {
+  constructor({ baseUrl, timeout, auth, errorHandler }: ApiProps) {
     if (baseUrl) {
       this.baseUrl = baseUrl;
     } else {
@@ -193,6 +159,7 @@ export class RustyFormsAPI {
 
   getReferralHistory = async (): Promise<ListResponse<ReferralHistoryItem>> =>
     this.getReferralApi().getReferralHistory(this.getAccessToken());
+
   // Forms endpoints
   newForm = async (data: HttpNewForm): Promise<Form> => {
     const response = await this.client.post<Form>('/a/forms', data, this.getAxiosConfig());
