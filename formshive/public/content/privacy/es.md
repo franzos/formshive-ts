@@ -15,16 +15,13 @@ No te vamos a aburrir con términos que a la mayoría de las empresas les import
 - 🇩🇪 Backend: Hetzner Dedicated, Alemania
 - 🇪🇺 Frontend: Amazon AWS Cloudfront
 - 🇪🇺 Pagos: Stripe
-- 🇺🇸 Email: Postmark (Solo notificaciones)
+- 🇺🇸 Email: [Postmark](https://postmarkapp.com/eu-privacy) (Solo notificaciones)
 
 ## Seguridad de Datos de Formularios:
 
-- Todos los envíos de formularios están encriptados en tránsito y en reposo
 - Utilizamos prácticas de seguridad estándar de la industria
 - Los datos de tus formularios están aislados y seguros
 - Puedes exportar o eliminar tus datos en cualquier momento
-
-Es razonable asumir que eres rastreado en cada paso del proceso; desde tu proveedor de internet, hasta los routers entre servidores, y los proveedores de los servidores mismos.
 
 ## ¿Preguntas?
 

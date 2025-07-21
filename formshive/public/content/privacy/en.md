@@ -15,17 +15,14 @@ We're not going to bore you with terms that most companies don't give two shit's
 - 🇩🇪 Backend: Hetzner Dedicated, Germany
 - 🇪🇺 Frontend: Amazon AWS Cloudfront
 - 🇪🇺 Payments: Stripe
-- 🇺🇸 Email: Postmark (Notifications only)
+- 🇺🇸 Email: [Postmark](https://postmarkapp.com/eu-privacy) (Notifications only)
 - 🇩🇪 Bug Tracking: Sentry (hosted on Hetzner, Germany)
 
 ## Form Data Security:
 
-- All form submissions are encrypted in transit and at rest
 - We use industry-standard security practices
 - Your form data is isolated and secure
 - You can export or delete your data at any time
-
-It's reasonable to assume, that you're tracked at every step of the process; from your internet provider, to the routers between servers, and the providers of the servers themselves.
 
 ## Questions?
 

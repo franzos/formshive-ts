@@ -15,17 +15,14 @@ Wir werden Sie nicht mit Bedingungen langweilen, um die sich die meisten Unterne
 - 🇩🇪 Backend: Hetzner Dedicated, Deutschland
 - 🇪🇺 Frontend: Amazon AWS Cloudfront
 - 🇪🇺 Zahlungen: Stripe
-- 🇺🇸 E-Mail: Postmark (Nur Benachrichtigungen)
+- 🇺🇸 E-Mail: [Postmark](https://postmarkapp.com/eu-privacy) (Nur Benachrichtigungen)
 - 🇩🇪 Fehler-Tracking: Sentry (gehostet auf Hetzner, Deutschland)
 
 ## Sicherheit der Formulardaten:
 
-- Alle Formularübermittlungen sind bei der Übertragung und Speicherung verschlüsselt
 - Wir verwenden branchenübliche Sicherheitspraktiken
 - Ihre Formulardaten sind isoliert und sicher
 - Sie können Ihre Daten jederzeit exportieren oder löschen
-
-Es ist vernünftig anzunehmen, dass Sie bei jedem Schritt des Prozesses verfolgt werden; von Ihrem Internetanbieter bis zu den Routern zwischen den Servern und den Anbietern der Server selbst.
 
 ## Fragen?
 

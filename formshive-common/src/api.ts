@@ -7,7 +7,6 @@ import {
   makeUrl,
   NewDepositHttp,
   NewSubscriptionResponse,
-  QueryParamsBase,
   ReferralCodeResponse,
   ReferralHistoryItem,
   ReferralStatsResponse,
@@ -23,7 +22,7 @@ import {
   UsageResponse,
   VerifiedEmailsResponse,
 } from '@gofranz/common';
-import axios, { AxiosError, AxiosInstance } from 'axios';
+import axios, { AxiosError, AxiosInstance, AxiosResponse } from 'axios';
 import { Form, FormRecipientsQueryParams, FormsIntegrationsQueryParams, FormsIntegrationsResponse, FormsQueryParams, FormsRecipientsResponse, FormsResponse, HttpNewForm, HttpNewIntegration, HttpUpdateMessage, IntegrationResponse, IntegrationsApiResponse, IntegrationsQueryParams, MessageCountByDay, MessageQueryParams, MessagesResponse, NewFormsIntegration, NewFormsRecipient, UpdateForm, UpdateIntegration } from './types/generated';
 
 export interface ListResponse<T> {
@@ -36,9 +35,10 @@ export class RustyFormsApi {
   private timeout: number;
   private client: AxiosInstance;
   private errorHandler?: (error: AxiosError) => void;
+  private successHandler?: (response: AxiosResponse) => void;
   auth?: RustyAuthSpec;
 
-  constructor({ baseUrl, timeout, auth, errorHandler }: ApiProps) {
+  constructor({ baseUrl, timeout, auth, errorHandler, successHandler }: ApiProps) {
     if (baseUrl) {
       this.baseUrl = baseUrl;
     } else {
@@ -60,6 +60,7 @@ export class RustyFormsApi {
     }
 
     this.errorHandler = errorHandler;
+    this.successHandler = successHandler;
 
     this.client = axios.create({
       baseURL: this.baseUrl,
@@ -86,9 +87,14 @@ export class RustyFormsApi {
       return config;
     });
 
-    // Add response interceptor to handle errors generically
+    // Add response interceptor to handle errors / success generically
     this.client.interceptors.response.use(
-      (response) => response, // Pass through successful responses
+      (response) => {
+        if (this.successHandler) {
+          this.successHandler(response);
+        }
+        return response; // Pass through successful responses
+      }, // Pass through successful responses
       (error: AxiosError) => {
         if (this.errorHandler) {
           this.errorHandler(error);

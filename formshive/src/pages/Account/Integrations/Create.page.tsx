@@ -1,11 +1,10 @@
-import { showSuccessNotification, useLanguageAwareRouting } from '@gofranz/common-components';
+import { useLanguageAwareRouting } from '@gofranz/common-components';
+import { HttpNewIntegration } from '@gofranz/formshive-common';
 import { Stack, Title } from '@mantine/core';
-import { notifications } from '@mantine/notifications';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { CreateIntegration } from '../../../components/Integration/Create';
 import { IntegrationsHelp } from '../../../components/Integrations';
 import { useRustyState } from '../../../state';
-import { HttpNewIntegration } from '@gofranz/formshive-common';
 
 export function AccountIntegrationCreatePage() {
   const { api } = useRustyState.getState();
@@ -17,11 +16,6 @@ export function AccountIntegrationCreatePage() {
 
   const submit = async (newForm: HttpNewIntegration) => {
     const integration = await api.newIntegration(newForm);
-    showSuccessNotification(
-      'Integration Created',
-      `Your ${newForm.title} integration has been successfully created and is ready to receive form submissions.`,
-      notifications
-    );
     nav(createLanguageURL(`/account/integrations/${integration.id}`));
   };
 

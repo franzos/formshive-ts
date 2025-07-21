@@ -1,10 +1,8 @@
-import { showSuccessNotification } from '@gofranz/common-components';
-import { notifications } from '@mantine/notifications';
+import { Integration, UpdateIntegration } from '@gofranz/formshive-common';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { IntegrationDetail } from '../../../components/Integration/Detail';
 import { useRustyState } from '../../../state';
-import { Integration, UpdateIntegration } from '@gofranz/formshive-common';
 
 export function AccountIntegrationViewPage() {
   const { api } = useRustyState.getState();
@@ -26,12 +24,6 @@ export function AccountIntegrationViewPage() {
 
   const handleUpdate = async (id: string, updateIntegration: UpdateIntegration) => {
     await api.updateIntegration(id, updateIntegration);
-    showSuccessNotification(
-      'Integration Updated',
-      `Your ${integration?.title || 'integration'} has been successfully updated with the new settings.`,
-      notifications
-    );
-    // Refresh the integration data to show updated values
     if (uuid) {
       const res = await api.getIntegration(uuid);
       if (res) {

@@ -1,4 +1,12 @@
 import {
+  Currency,
+  formatCurrency,
+  isCurrentPlan,
+  isNextPlan,
+  SubscriptionPlanConfig,
+} from '@gofranz/common';
+import { showApiErrorNotification } from '@gofranz/common-components';
+import {
   Badge,
   Box,
   BoxProps,
@@ -12,14 +20,6 @@ import {
   ThemeIcon,
 } from '@mantine/core';
 import { notifications } from '@mantine/notifications';
-import {
-  Currency,
-  formatCurrency,
-  isCurrentPlan,
-  isNextPlan,
-  SubscriptionPlanConfig,
-} from '@gofranz/common';
-import { showApiErrorNotification, showSuccessNotification } from '@gofranz/common-components';
 import { IconBuilding, IconCheck, IconCrown, IconRocket, IconStar } from '@tabler/icons-react';
 import { useEffect, useState } from 'react';
 import { useRustyState } from '../../state';
@@ -64,29 +64,7 @@ export function SubscriptionPlans({ mode = 'private', ...boxProps }: Subscriptio
   const handleSubscribe = async (planId: string) => {
     try {
       setSubscribingToPlan(planId);
-      const result = await subscribeToplan(planId);
-
-      if (currentSubscription?.plan_id) {
-        // Only show success notification if we didn't redirect to Customer Portal
-        if (result !== undefined) {
-          showSuccessNotification(
-            'Subscription Updated',
-            'Your subscription plan has been changed successfully.',
-            notifications
-          );
-        }
-        // If result is undefined, we redirected to Customer Portal - no notification needed
-      } else {
-        // Only show success notification if we didn't redirect to checkout
-        if (result?.type !== "Checkout") {
-          showSuccessNotification(
-            'Subscription Activated',
-            'Welcome to your new subscription plan!',
-            notifications
-          );
-        }
-        // If result has Checkout type, we redirected to Stripe - no notification needed
-      }
+      await subscribeToplan(planId);
     } catch (error: any) {
       console.error('Failed to subscribe:', error);
       showApiErrorNotification(error, notifications, 'Subscription Error');

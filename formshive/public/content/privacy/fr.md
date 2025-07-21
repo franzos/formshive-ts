@@ -15,17 +15,14 @@ Nous n'allons pas vous ennuyer avec des termes dont la plupart des entreprises s
 - 🇩🇪 Backend : Hetzner Dedicated, Allemagne
 - 🇪🇺 Frontend : Amazon AWS Cloudfront
 - 🇪🇺 Paiements : Stripe
-- 🇺🇸 Email : Postmark (Notifications uniquement)
+- 🇺🇸 Email : [Postmark](https://postmarkapp.com/eu-privacy) (Notifications uniquement)
 - 🇩🇪 Suivi des Erreurs : Sentry (hébergé sur Hetzner, Allemagne)
 
 ## Sécurité des Données de Formulaires :
 
-- Toutes les soumissions de formulaires sont chiffrées en transit et au repos
 - Nous utilisons des pratiques de sécurité standard de l'industrie
 - Vos données de formulaires sont isolées et sécurisées
 - Vous pouvez exporter ou supprimer vos données à tout moment
-
-Il est raisonnable de supposer que vous êtes suivi à chaque étape du processus ; de votre fournisseur d'accès internet, aux routeurs entre serveurs, et aux fournisseurs des serveurs eux-mêmes.
 
 ## Questions ?
 
