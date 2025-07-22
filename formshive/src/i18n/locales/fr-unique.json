@@ -232,7 +232,12 @@
     "newIntegration": "Nouvelle Intégration",
     "integrationsDescription": "Utilisez les Webhooks pour intégrer avec Zapier et autres",
     "messagesDescription": "Tous les messages entrants seront listés ici.",
-    "messagesChartLabel": "Messages"
+    "messagesChartLabel": "Messages",
+    "totalViews": "Total des Vues",
+    "totalMessages": "Total des Messages",
+    "conversionRate": "Taux de Conversion",
+    "views": "Vues",
+    "messages": "Messages"
   },
   "formEdit": {
     "settings": "Paramètres",

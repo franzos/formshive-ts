@@ -1,12 +1,12 @@
-import { MessagesTable } from '../../../components/Message/Table';
-import { useRustyState } from '../../../state';
-import { LineChart } from '@mantine/charts';
-import { Flex, Group, Text } from '@mantine/core';
 import { useLanguageAwareRouting, usePagination } from '@gofranz/common-components';
+import { Form, FormAnalyticsResponse, Message } from '@gofranz/formshive-common';
+import { LineChart } from '@mantine/charts';
+import { Card, Flex, Group, SimpleGrid, Stack, Text } from '@mantine/core';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { Form, Message, MessageCountByDay } from '@gofranz/formshive-common';
+import { MessagesTable } from '../../../components/Message/Table';
+import { useRustyState } from '../../../state';
 
 export interface AccountFormsStartPageProps {
   formId?: string;
@@ -19,14 +19,17 @@ export function AccountMessagesStartPage(props: AccountFormsStartPageProps) {
   const nav = useNavigate();
   const { createLanguageURL } = useLanguageAwareRouting();
 
-  const [messageCount, setMessageCount] = useState<MessageCountByDay[]>([]);
+  const [analyticsResponse, setAnalyticsResponse] = useState<FormAnalyticsResponse | null>(null);
 
-  const getCount = async (params?: { is_spam?: boolean }) => {
+  const getAnalytics = async (params?: { is_spam?: boolean }) => {
     const formId = props.formId ? [props.formId] : undefined;
     const countParams: {
       form_ids?: string[];
       is_spam?: boolean;
-    } = {};
+      data_type?: 'views' | 'messages' | 'combined';
+    } = {
+      data_type: 'combined'
+    };
     if (formId) {
       countParams.form_ids = formId;
     }
@@ -34,8 +37,8 @@ export function AccountMessagesStartPage(props: AccountFormsStartPageProps) {
       countParams.is_spam = params.is_spam;
     }
 
-    const res = await api.getMessageCountByDay(countParams);
-    setMessageCount(res);
+    const res = await api.getMessageCountByDay(countParams) as unknown as FormAnalyticsResponse;
+    setAnalyticsResponse(res);
   };
 
   const fetchMessages = async (params: { nextPage: number; [key: string]: any }) => {
@@ -51,7 +54,7 @@ export function AccountMessagesStartPage(props: AccountFormsStartPageProps) {
     }
 
     const [, messagesResult] = await Promise.all([
-      getCount({ is_spam: params.is_spam }),
+      getAnalytics({ is_spam: params.is_spam }),
       useRustyState.getState().getMessagesWithForms(apiParams),
     ]);
 
@@ -68,6 +71,7 @@ export function AccountMessagesStartPage(props: AccountFormsStartPageProps) {
 
   useEffect(() => {
     api.getForms({ limit: 25, offset: 0 });
+    getAnalytics();
   }, []);
 
   const openForm = (data: { msg: Message; form: Form | undefined }) => {
@@ -80,21 +84,50 @@ export function AccountMessagesStartPage(props: AccountFormsStartPageProps) {
 
   return (
     <>
-      <LineChart
-        h={150}
-        pr="lg"
-        pb="lg"
-        dataKey="date"
-        data={messageCount.map((item) => ({
-          date: item.date,
-          Messages: item.message_count,
-        }))}
-        curveType="monotone"
-        tickLine="none"
-        gridAxis="y"
-        withYAxis={false}
-        series={[{ name: t('accountPages.messagesChartLabel'), color: 'indigo.6' }]}
-      />
+      <Stack gap="md">
+        {analyticsResponse && (
+          <SimpleGrid cols={3}>
+            <Card padding="md" withBorder>
+              <Text size="sm" c="dimmed">{t('accountPages.totalViews')}</Text>
+              <Text size="xl" fw={700}>
+                {analyticsResponse.view_count}
+              </Text>
+            </Card>
+            <Card padding="md" withBorder>
+              <Text size="sm" c="dimmed">{t('accountPages.totalMessages')}</Text>
+              <Text size="xl" fw={700}>
+                {analyticsResponse.message_count}
+              </Text>
+            </Card>
+            <Card padding="md" withBorder>
+              <Text size="sm" c="dimmed">{t('accountPages.conversionRate')}</Text>
+              <Text size="xl" fw={700}>
+                {Math.min(analyticsResponse.conversion_rate, 100).toFixed(1)}%
+              </Text>
+            </Card>
+          </SimpleGrid>
+        )}
+
+        <LineChart
+          h={200}
+          pr="lg"
+          pb="lg"
+          dataKey="date"
+          data={analyticsResponse?.data.map((item) => ({
+            date: item.date,
+            Views: item.view_count,
+            Messages: item.message_count,
+          })) || []}
+          curveType="monotone"
+          tickLine="none"
+          gridAxis="y"
+          withYAxis={false}
+          series={[
+            { name: t('accountPages.views'), color: 'blue.6' },
+            { name: t('accountPages.messages'), color: 'indigo.6' },
+          ]}
+        />
+      </Stack>
       {props.showTableInfo && (
         <Flex justify="flex-end">
           <Group>

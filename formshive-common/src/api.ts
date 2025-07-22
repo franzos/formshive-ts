@@ -23,7 +23,7 @@ import {
   VerifiedEmailsResponse,
 } from '@gofranz/common';
 import axios, { AxiosError, AxiosInstance, AxiosResponse } from 'axios';
-import { Form, FormRecipientsQueryParams, FormsIntegrationsQueryParams, FormsIntegrationsResponse, FormsQueryParams, FormsRecipientsResponse, FormsResponse, HttpNewForm, HttpNewIntegration, HttpUpdateMessage, IntegrationResponse, IntegrationsApiResponse, IntegrationsQueryParams, MessageCountByDay, MessageQueryParams, MessagesResponse, NewFormsIntegration, NewFormsRecipient, UpdateForm, UpdateIntegration } from './types/generated';
+import { Form, FormAnalyticsResponse, FormRecipientsQueryParams, FormsIntegrationsQueryParams, FormsIntegrationsResponse, FormsQueryParams, FormsRecipientsResponse, FormsResponse, HttpNewForm, HttpNewIntegration, HttpUpdateMessage, IntegrationResponse, IntegrationsApiResponse, IntegrationsQueryParams, MessageCountByDay, MessageQueryParams, MessagesResponse, NewFormsIntegration, NewFormsRecipient, UpdateForm, UpdateIntegration, ViewCountByDay } from './types/generated';
 
 export interface ListResponse<T> {
   data: T[];
@@ -255,8 +255,9 @@ export class RustyFormsApi {
   getMessageCountByDay = async (params?: {
     form_ids?: string[];
     is_spam?: boolean;
-  }): Promise<MessageCountByDay[]> => {
-    const response = await this.client.get<MessageCountByDay[]>(
+    data_type?: 'views' | 'messages' | 'combined';
+  }): Promise<MessageCountByDay[] | ViewCountByDay[] | FormAnalyticsResponse> => {
+    const response = await this.client.get(
       makeUrl('/a/messages/count-by-day', params)
     );
     return response.data;

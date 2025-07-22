@@ -77,9 +77,40 @@ export interface Form {
 	auto_response_text?: string;
 }
 
+export interface FormAnalyticsByDay {
+	date: string;
+	message_count: number;
+	view_count: number;
+	conversion_rate: number;
+}
+
+export interface FormAnalyticsResponse {
+	from_date: string;
+	to_date: string;
+	message_count: number;
+	view_count: number;
+	conversion_rate: number;
+	data: FormAnalyticsByDay[];
+}
+
 export interface FormRecipientsQueryParams {
 	limit: number;
 	offset: number;
+}
+
+export interface FormView {
+	id: string;
+	form_id: string;
+	ip_hash: string;
+	user_agent?: string;
+	referrer?: string;
+	view_type: string;
+	device_type?: string;
+	browser_name?: string;
+	traffic_source?: string;
+	country_code?: string;
+	analytics_data?: any;
+	created_at: string;
 }
 
 export interface FormsIntegration {
@@ -239,6 +270,19 @@ export interface NewForm {
 	auto_response_text?: string;
 }
 
+export interface NewFormView {
+	form_id: string;
+	ip_hash: string;
+	user_agent?: string;
+	referrer?: string;
+	view_type: string;
+	device_type?: string;
+	browser_name?: string;
+	traffic_source?: string;
+	country_code?: string;
+	analytics_data?: any;
+}
+
 export interface NewFormsIntegration {
 	form_id: string;
 	integration_id: string;
@@ -283,6 +327,11 @@ export interface UpdateIntegration {
 	title: string;
 	data?: string;
 	secrets?: any;
+}
+
+export interface ViewCountByDay {
+	date: string;
+	view_count: number;
 }
 
 export interface ZapierIntegration {

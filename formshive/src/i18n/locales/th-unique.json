@@ -232,7 +232,12 @@
     "newIntegration": "การเชื่อมต่อใหม่",
     "integrationsDescription": "ใช้ Webhook เพื่อเชื่อมต่อกับ Zapier และอื่นๆ",
     "messagesDescription": "ข้อความขาเข้าทั้งหมดจะแสดงที่นี่",
-    "messagesChartLabel": "ข้อความ"
+    "messagesChartLabel": "ข้อความ",
+    "totalViews": "ยอดดูทั้งหมด",
+    "totalMessages": "ข้อความทั้งหมด",
+    "conversionRate": "อัตราการแปลง",
+    "views": "การดู",
+    "messages": "ข้อความ"
   },
   "formEdit": {
     "settings": "การตั้งค่า",

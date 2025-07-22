@@ -232,7 +232,12 @@
     "newIntegration": "تكامل جديد",
     "integrationsDescription": "استخدم Webhooks للتكامل مع Zapier وغيرها",
     "messagesDescription": "جميع الرسائل الواردة ستُدرج هنا.",
-    "messagesChartLabel": "الرسائل"
+    "messagesChartLabel": "الرسائل",
+    "totalViews": "إجمالي المشاهدات",
+    "totalMessages": "إجمالي الرسائل",
+    "conversionRate": "معدل التحويل",
+    "views": "المشاهدات",
+    "messages": "الرسائل"
   },
   "formEdit": {
     "settings": "الإعدادات",

@@ -232,7 +232,12 @@
     "newIntegration": "新建集成",
     "integrationsDescription": "使用Webhook与Zapier和其他服务集成",
     "messagesDescription": "所有传入的消息都将在此列出。",
-    "messagesChartLabel": "消息"
+    "messagesChartLabel": "消息",
+    "totalViews": "总浏览量",
+    "totalMessages": "总消息数",
+    "conversionRate": "转换率",
+    "views": "浏览量",
+    "messages": "消息"
   },
   "formEdit": {
     "settings": "设置",
