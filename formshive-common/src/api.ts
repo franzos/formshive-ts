@@ -23,7 +23,7 @@ import {
   VerifiedEmailsResponse,
 } from '@gofranz/common';
 import axios, { AxiosError, AxiosInstance, AxiosResponse } from 'axios';
-import { Form, FormAnalyticsResponse, FormRecipientsQueryParams, FormsIntegrationsQueryParams, FormsIntegrationsResponse, FormsQueryParams, FormsRecipientsResponse, FormsResponse, HttpNewForm, HttpNewIntegration, HttpUpdateMessage, IntegrationResponse, IntegrationsApiResponse, IntegrationsQueryParams, MessageCountByDay, MessageQueryParams, MessagesResponse, NewFormsIntegration, NewFormsRecipient, UpdateForm, UpdateIntegration, ViewCountByDay } from './types/generated';
+import { Form, FormAnalyticsResponse, FormRecipientsQueryParams, FormsIntegrationsQueryParams, FormsIntegrationsResponse, FormsQueryParams, FormsRecipientsResponse, FormsResponse, FormView, HttpNewForm, HttpNewIntegration, HttpUpdateMessage, IntegrationResponse, IntegrationsApiResponse, IntegrationsQueryParams, MessageCountByDay, MessageQueryParams, MessagesResponse, NewFormsIntegration, NewFormsRecipient, UpdateForm, UpdateIntegration, ViewCountByDay } from './types/generated';
 
 export interface ListResponse<T> {
   data: T[];
@@ -250,6 +250,14 @@ export class RustyFormsApi {
 
   deleteMessage = async (id: string): Promise<void> => {
     await this.client.delete(`/a/messages/${id}`, this.getAxiosConfig());
+  };
+
+  getMessageView = async (messageId: string): Promise<FormView | null> => {
+    const response = await this.client.get<FormView | null>(
+      `/a/messages/${messageId}/view`,
+      this.getAxiosConfig()
+    );
+    return response.data;
   };
 
   getMessageCountByDay = async (params?: {

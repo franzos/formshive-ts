@@ -42,6 +42,7 @@ export interface FormDetailProps {
 export function FormDetail(props: FormDetailProps) {
   const url = `${API_BASE_URL}/digest/${props.form.id}`;
   const challengeUrl = `${API_BASE_URL}/forms/${props.form.id}/challenge/altcha`;
+  const challengeUrlNoTrack = `${API_BASE_URL}/forms/${props.form.id}/challenge/altcha?track=false`;
 
   const [hasFormSpec, setHasFormSpec] = useState(false);
   const [hasFileField, setHasFileField] = useState(true);
@@ -132,6 +133,7 @@ export function FormDetail(props: FormDetailProps) {
         form={props.form}
         url={url}
         challengeUrl={challengeUrl}
+        challengeUrlNoTrack={challengeUrlNoTrack}
         hasFormSpec={hasFormSpec}
         hasFileField={hasFileField}
         formExample={formExample}
@@ -145,6 +147,7 @@ export function FormDetail(props: FormDetailProps) {
         form={props.form}
         formSubmitUrl={url}
         formChallengeUrl={challengeUrl}
+        formChallengeUrlNoTrack={challengeUrlNoTrack}
         submitFormCb={props.submitFormCb}
         submitFormRecipientCb={props.submitFormRecipientCb}
         getVerifiedEmails={useRustyState.getState().getAndSetVerifiedEmails}

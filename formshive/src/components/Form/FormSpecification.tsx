@@ -43,6 +43,7 @@ export interface FormSpecificationsProps {
   };
   formSubmitUrl: string;
   formChallengeUrl: string;
+  formChallengeUrlNoTrack?: string;
   hasUnsavedChanges: boolean;
   onCancel: () => void;
 }

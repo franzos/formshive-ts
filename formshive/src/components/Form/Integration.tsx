@@ -1,4 +1,4 @@
-import { API_BASE_URL } from '../../constants';
+import { API_BASE_URL, IS_DEVELOPMENT } from '../../constants';
 import {
   Accordion,
   Alert,
@@ -85,6 +85,7 @@ export function IFrameForm({ form }: IFrameFormProps) {
   ];
 
   const iframeUrl = `${API_BASE_URL}/forms/${form.id}/html?css_framework=${framework}&_reload=${counter}`;
+  const iframeUrlNoTrack = iframeUrl + '&track=false';
 
   useEffect(() => {
     setCounter((prev) => prev + 1);
@@ -115,12 +116,21 @@ export function IFrameForm({ form }: IFrameFormProps) {
           mb="md"
           p="xs"
           dangerouslySetInnerHTML={{
-            __html: `<iframe src="${iframeUrl}" frameborder="0" width="100%" height=250></iframe>`,
+            __html: `<iframe src="${iframeUrlNoTrack}" frameborder="0" width="100%" height=250></iframe>`,
           }}
         />
       </Card>
     </>
   );
+}
+
+export function makeLinkUrl(formId: string, framework: string, title: string) {
+  if (IS_DEVELOPMENT) {
+    const browserUrl = window.location.host;
+    return `http://${browserUrl}/link.html?form_id=${formId}&framework=${framework}&title=${encodeURIComponent(title)}&api_url=${API_BASE_URL}`;
+  }
+
+  return `https://formshive.com/link.html?form_id=${formId}&framework=${framework}&title=${encodeURIComponent(title)}`
 }
 
 export function LinkToForm({ formId }: EmbedFormProps) {
@@ -132,8 +142,7 @@ export function LinkToForm({ formId }: EmbedFormProps) {
     { value: 'bootstrap', label: 'Bootstrap' },
   ];
 
-  const encodedTitle = encodeURIComponent(title);
-  const linkUrl = `https://formshive.com/link.html?form_id=${formId}&framework=${framework}&title=${encodedTitle}`;
+  const linkUrl = makeLinkUrl(formId, framework, title);
 
   return (
     <>
@@ -183,6 +192,7 @@ export interface IntegrationProps {
   };
   url: string;
   challengeUrl: string;
+  challengeUrlNoTrack?: string;
   hasFormSpec: boolean;
   hasFileField: boolean;
   formExample: string;
@@ -197,6 +207,7 @@ export function IntegrationHelp({
   form,
   url,
   challengeUrl,
+  challengeUrlNoTrack,
   hasFormSpec,
   hasFileField,
   formExample,
@@ -208,6 +219,15 @@ export function IntegrationHelp({
 }: IntegrationProps) {
   const { t } = useTranslation();
   const [integrationExampleIsOpen, { toggle }] = useDisclosure(false);
+
+  // Create preview versions of form examples using no-track challenge URL for rendered previews
+  const formExamplePreview = challengeUrlNoTrack && challengeUrl
+    ? formExample.replace(challengeUrl, challengeUrlNoTrack)
+    : formExample;
+
+  const formExampleFileUploadPreview = challengeUrlNoTrack && challengeUrl
+    ? formExampleFileUpload.replace(challengeUrl, challengeUrlNoTrack)
+    : formExampleFileUpload;
   return (
     <Box mb="md">
       <Title order={2}>{t('formIntegration.integration')}</Title>
@@ -305,7 +325,7 @@ export function IntegrationHelp({
                       mb="md"
                       id="plainhtml"
                       className="plainhtml"
-                      dangerouslySetInnerHTML={{ __html: formExample }}
+                      dangerouslySetInnerHTML={{ __html: formExamplePreview }}
                     />
                   </Card>
                 </Accordion.Panel>
@@ -354,7 +374,7 @@ export function IntegrationHelp({
                         mb="md"
                         id="plainhtml"
                         className="plainhtml"
-                        dangerouslySetInnerHTML={{ __html: formExampleFileUpload }}
+                        dangerouslySetInnerHTML={{ __html: formExampleFileUploadPreview }}
                       />
                     </Card>
                   </Accordion.Panel>

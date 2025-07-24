@@ -4,3 +4,6 @@ export const EXAMPLE_FORM_ID_CAPTCHA = import.meta.env.VITE_EXAMPLE_FORM_ID_CAPT
 export const EXAMPLE_FORM_ID = import.meta.env.VITE_EXAMPLE_FORM_ID;
 export const STRIPE_PUBLIC_KEY = import.meta.env.VITE_STRIPE_PUBLIC_KEY;
 export const RUSTY_TOOLS_BASE_URL = 'https://blog.formshive.com';
+export const SENTRY_DSN = import.meta.env.VITE_SENTRY_DSN;
+export const SENTRY_ENVIRONMENT = import.meta.env.VITE_SENTRY_ENVIRONMENT || 'development'
+export const IS_DEVELOPMENT = SENTRY_ENVIRONMENT === 'development';

@@ -27,6 +27,7 @@ export interface EditFormProps {
   form: Form;
   formSubmitUrl: string;
   formChallengeUrl: string;
+  formChallengeUrlNoTrack?: string;
 
   submitFormRecipientCb: (newForm: NewFormsRecipient) => Promise<void>;
   getVerifiedEmails: () => Promise<VerifiedEmailsResponse>;
@@ -255,6 +256,7 @@ export function EditForm(props: EditFormProps) {
               form={form}
               formSubmitUrl={props.formSubmitUrl}
               formChallengeUrl={props.formChallengeUrl}
+              formChallengeUrlNoTrack={props.formChallengeUrlNoTrack}
               hasUnsavedChanges={hasUnsavedChanges}
               onCancel={cancelChanges}
             />

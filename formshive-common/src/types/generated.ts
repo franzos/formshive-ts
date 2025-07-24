@@ -98,6 +98,19 @@ export interface FormRecipientsQueryParams {
 	offset: number;
 }
 
+export interface LocationInfo {
+	country_code?: string;
+	country_name?: string;
+	continent_code?: string;
+	continent_name?: string;
+	region_code?: string;
+	region_name?: string;
+	city?: string;
+	latitude?: number;
+	longitude?: number;
+	timezone?: string;
+}
+
 export interface FormView {
 	id: string;
 	form_id: string;
@@ -108,9 +121,9 @@ export interface FormView {
 	device_type?: string;
 	browser_name?: string;
 	traffic_source?: string;
-	country_code?: string;
 	analytics_data?: any;
 	created_at: string;
+	location?: LocationInfo;
 }
 
 export interface FormsIntegration {
@@ -235,10 +248,13 @@ export interface Message {
 	is_spam: boolean;
 	spam_score: number;
 	user_marked_spam: boolean;
-	src_ipv4?: string;
-	src_ipv6?: string;
-	src_agent?: string;
 	created_at: string;
+	ip_hash: string;
+	user_agent?: string;
+	device_type?: string;
+	browser_name?: string;
+	form_view_id?: string;
+	location?: LocationInfo;
 }
 
 export interface MessageCountByDay {
@@ -279,7 +295,7 @@ export interface NewFormView {
 	device_type?: string;
 	browser_name?: string;
 	traffic_source?: string;
-	country_code?: string;
+	location?: LocationInfo;
 	analytics_data?: any;
 }
 

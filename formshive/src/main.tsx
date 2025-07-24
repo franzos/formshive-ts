@@ -2,15 +2,13 @@ import * as Sentry from '@sentry/react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { useRustyState } from './state';
+import { SENTRY_DSN, SENTRY_ENVIRONMENT } from './constants';
 
 // Initialize Sentry
-const sentryDsn = import.meta.env.VITE_SENTRY_DSN;
-const sentryEnvironment = import.meta.env.VITE_SENTRY_ENVIRONMENT || 'development';
-
-if (sentryDsn) {
+if (SENTRY_DSN) {
   Sentry.init({
-    dsn: sentryDsn,
-    environment: sentryEnvironment,
+    dsn: SENTRY_DSN,
+    environment: SENTRY_ENVIRONMENT,
     integrations: [
       Sentry.browserTracingIntegration(),
       Sentry.replayIntegration({
@@ -18,8 +16,8 @@ if (sentryDsn) {
         blockAllMedia: false,
       }),
     ],
-    tracesSampleRate: sentryEnvironment === 'production' ? 0.1 : 1.0,
-    replaysSessionSampleRate: sentryEnvironment === 'production' ? 0.01 : 0.1,
+    tracesSampleRate: SENTRY_ENVIRONMENT === 'production' ? 0.1 : 1.0,
+    replaysSessionSampleRate: SENTRY_ENVIRONMENT === 'production' ? 0.01 : 0.1,
     replaysOnErrorSampleRate: 1.0,
   });
 }
@@ -30,7 +28,7 @@ const init = () => {
 
 init();
 
-const AppWithSentry = sentryDsn
+const AppWithSentry = SENTRY_DSN
   ? Sentry.withErrorBoundary(App, {
       fallback: ({ error }) => (
         <div style={{ padding: '20px', textAlign: 'center' }}>

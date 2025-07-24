@@ -2,12 +2,12 @@ import { useEffect, useRef, useState } from 'react';
 import { DataTable } from 'mantine-datatable';
 import { useTranslation } from 'react-i18next';
 import { Badge, Box, Button, Code, Group, Slider, Text, Tooltip, NavLink } from '@mantine/core';
-import { IconCapture, IconDownload, IconTrash } from '@tabler/icons-react';
+import { IconCapture, IconDownload, IconTrash, IconWorld } from '@tabler/icons-react';
 import { notifications } from '@mantine/notifications';
 import { Link } from 'react-router-dom';
 import { useRustyState } from '../../state';
 import { CommonTableProps } from '../../lib/table';
-import { File, Form, HttpUpdateMessage, Message } from '@gofranz/formshive-common';
+import { File, Form, FormView, HttpUpdateMessage, Message, LocationInfo } from '@gofranz/formshive-common';
 
 interface SpamFilter {
   value: number;
@@ -29,6 +29,8 @@ export function MessagesTable(
   const [records, setRecords] = useState<Message[] | []>([]);
   const [forms, setForms] = useState<Form[] | []>([]);
   const [files, setFiles] = useState<File[] | []>([]);
+  const [viewData, setViewData] = useState<Map<string, FormView | null>>(new Map());
+  const [loadingViews, setLoadingViews] = useState<Set<string>>(new Set());
   const page = useRef(1);
   const spamFilter = useRef(0);
 
@@ -38,9 +40,35 @@ export function MessagesTable(
     { value: 2, label: t('messageTable.ham') },
   ];
 
+  const fetchMessageView = async (messageId: string) => {
+    if (viewData.has(messageId) || loadingViews.has(messageId)) {
+      return; // Already loaded or loading
+    }
+
+    setLoadingViews(prev => new Set(prev).add(messageId));
+    
+    try {
+      const view = await useRustyState.getState().api.getMessageView(messageId);
+      setViewData(prev => new Map(prev).set(messageId, view));
+    } catch (error) {
+      console.error('Failed to fetch message view:', error);
+      setViewData(prev => new Map(prev).set(messageId, null));
+    } finally {
+      setLoadingViews(prev => {
+        const newSet = new Set(prev);
+        newSet.delete(messageId);
+        return newSet;
+      });
+    }
+  };
+
   const loadRecords = async () => {
     setIsBusy(true);
     try {
+      if (page.current === 1) {
+        await useRustyState.getState().getAndSetForms();
+      }
+
       const data =
         spamFilter.current === 0
           ? await props.onChange({
@@ -178,11 +206,74 @@ export function MessagesTable(
     <Badge color={is_spam ? 'red' : 'green'}>{spamScore.toFixed(2)}</Badge>
   );
 
+  const locationColumn = (location?: LocationInfo) => {
+    if (!location?.country_code) {
+      return (
+        <Tooltip label="Location unknown">
+          <IconWorld size={16} color="gray" />
+        </Tooltip>
+      );
+    }
+
+    const locationText = [
+      location.country_code,
+      location.city
+    ].filter(Boolean).join(', ');
+
+    return (
+      <Tooltip label={locationText}>
+        <Group gap="xs">
+          <IconWorld size={16} />
+          <Text size="sm">{location.country_code}</Text>
+        </Group>
+      </Tooltip>
+    );
+  };
+
+  const formatLocationDetails = (location?: LocationInfo) => {
+    if (!location) {
+      return (
+        <Text size="xs" c="dimmed">
+          Unknown
+        </Text>
+      );
+    }
+
+    const locationParts = [
+      location.city,
+      location.region_name,
+      location.country_name || location.country_code
+    ].filter(Boolean);
+
+    return (
+      <Box>
+        <Text size="xs" c="dimmed">
+          Location: <Text span fw={500}>{locationParts.join(', ') || 'Unknown'}</Text>
+        </Text>
+        {location.timezone && (
+          <Text size="xs" c="dimmed">
+            Timezone: <Text span fw={500}>{location.timezone}</Text>
+          </Text>
+        )}
+        {location.latitude && location.longitude && (
+          <Text size="xs" c="dimmed">
+            Coordinates: <Text span fw={500}>{location.latitude.toFixed(4)}, {location.longitude.toFixed(4)}</Text>
+          </Text>
+        )}
+      </Box>
+    );
+  };
+
   const columns = [
     {
       accessor: 'Content',
       title: t('messageTable.content'),
       render: (row: Message) => messagePreview(row),
+    },
+    {
+      accessor: 'Location',
+      title: "",
+      render: (row: Message) => locationColumn(row.location),
     },
     {
       accessor: 'Form',
@@ -205,6 +296,31 @@ export function MessagesTable(
       render: (row: Message) => dateTime(new Date(row.created_at)),
     },
   ];
+
+  const formatTimeDifference = (viewTime: string, messageTime: string): string => {
+    const viewDate = new Date(viewTime);
+    const messageDate = new Date(messageTime);
+    const diffMs = messageDate.getTime() - viewDate.getTime();
+    
+    if (diffMs < 0) {
+      return 'Message submitted before view (unusual)';
+    }
+    
+    const diffSeconds = Math.floor(diffMs / 1000);
+    const diffMinutes = Math.floor(diffSeconds / 60);
+    const diffHours = Math.floor(diffMinutes / 60);
+    const diffDays = Math.floor(diffHours / 24);
+    
+    if (diffDays > 0) {
+      return `${diffDays} day${diffDays > 1 ? 's' : ''} after view`;
+    } else if (diffHours > 0) {
+      return `${diffHours} hour${diffHours > 1 ? 's' : ''} after view`;
+    } else if (diffMinutes > 0) {
+      return `${diffMinutes} minute${diffMinutes > 1 ? 's' : ''} after view`;
+    } else {
+      return `${diffSeconds} second${diffSeconds > 1 ? 's' : ''} after view`;
+    }
+  };
 
   const downloadMessage = (message: Message, format: 'json' | 'txt') => {
     const msgData = JSON.parse(message.data);
@@ -248,6 +364,62 @@ export function MessagesTable(
             {filesDownload(row.id)}
           </Box>
         )}
+
+        {/* View Analytics Section */}
+        <Box mt="md">
+          <Text size="sm" fw={500} mb="xs">View Analytics:</Text>
+          {(() => {
+            const view = viewData.get(row.id);
+            const isLoading = loadingViews.has(row.id);
+            
+            if (isLoading) {
+              return <Text size="sm" c="dimmed">Loading view data...</Text>;
+            }
+            
+            if (view === null) {
+              return <Text size="sm" c="dimmed">No associated form view found</Text>;
+            }
+            
+            if (view === undefined) {
+              // Not loaded yet, trigger fetch
+              fetchMessageView(row.id);
+              return <Text size="sm" c="dimmed">Click to load view data...</Text>;
+            }
+            
+            return (
+              <Box>
+                <Group gap="md" mb="xs">
+                  <Badge color="blue" variant="light">
+                    {view.device_type || 'Unknown'} Device
+                  </Badge>
+                  <Badge color="green" variant="light">
+                    {view.browser_name || 'Unknown'} Browser
+                  </Badge>
+                  {view.location?.country_code && (
+                    <Badge color="orange" variant="light">
+                      {view.location.country_code}
+                    </Badge>
+                  )}
+                </Group>
+                <Text size="xs" c="dimmed">
+                  Form submitted{' '}
+                  <Text span fw={500}>
+                    {formatTimeDifference(view.created_at, row.created_at)}
+                  </Text>
+                </Text>
+                {view.traffic_source && (
+                  <Text size="xs" c="dimmed">
+                    Traffic source: <Text span fw={500}>{view.traffic_source}</Text>
+                  </Text>
+                )}
+                <Box mb="sm" mt="sm">
+                  <Text size="xs" fw={500} c="orange">Location:</Text>
+                  {formatLocationDetails(row.location)}
+                </Box>
+              </Box>
+            );
+          })()}
+        </Box>
 
         <Group mt="md">
           <Button
