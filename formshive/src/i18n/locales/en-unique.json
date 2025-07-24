@@ -237,7 +237,18 @@
     "totalMessages": "Total Messages",
     "conversionRate": "Conversion Rate",
     "views": "Views",
-    "messages": "Messages"
+    "messages": "Messages",
+    "analyticsBreakdown": "Analytics Breakdown",
+    "seeMore": "See more",
+    "seeLess": "See less",
+    "avgTimeToSubmit": "Avg. Time to Submit",
+    "topCountry": "Top Country",
+    "topCity": "Top City",
+    "topBrowser": "Top Browser",
+    "topCountries": "Top Countries",
+    "topCities": "Top Cities",
+    "topBrowsers": "Top Browsers",
+    "submissions": "submissions"
   },
   "formEdit": {
     "settings": "Settings",

@@ -237,7 +237,18 @@
     "totalMessages": "ข้อความทั้งหมด",
     "conversionRate": "อัตราการแปลง",
     "views": "การดู",
-    "messages": "ข้อความ"
+    "messages": "ข้อความ",
+    "analyticsBreakdown": "รายละเอียดการวิเคราะห์",
+    "seeMore": "ดูเพิ่มเติม",
+    "seeLess": "ดูน้อยลง",
+    "avgTimeToSubmit": "เวลาเฉลี่ยในการส่ง",
+    "topCountry": "ประเทศอันดับหนึ่ง",
+    "topCity": "เมืองอันดับหนึ่ง",
+    "topBrowser": "เบราว์เซอร์อันดับหนึ่ง",
+    "topCountries": "ประเทศอันดับต้น",
+    "topCities": "เมืองอันดับต้น",
+    "topBrowsers": "เบราว์เซอร์อันดับต้น",
+    "submissions": "การส่ง"
   },
   "formEdit": {
     "settings": "การตั้งค่า",

@@ -237,7 +237,18 @@
     "totalMessages": "إجمالي الرسائل",
     "conversionRate": "معدل التحويل",
     "views": "المشاهدات",
-    "messages": "الرسائل"
+    "messages": "الرسائل",
+    "analyticsBreakdown": "تفصيل التحليلات",
+    "seeMore": "عرض المزيد",
+    "seeLess": "عرض أقل",
+    "avgTimeToSubmit": "متوسط وقت الإرسال",
+    "topCountry": "البلد الأول",
+    "topCity": "المدينة الأولى",
+    "topBrowser": "المتصفح الأول",
+    "topCountries": "البلدان الأولى",
+    "topCities": "المدن الأولى",
+    "topBrowsers": "المتصفحات الأولى",
+    "submissions": "الإرسالات"
   },
   "formEdit": {
     "settings": "الإعدادات",

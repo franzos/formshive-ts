@@ -237,7 +237,18 @@
     "totalMessages": "总消息数",
     "conversionRate": "转换率",
     "views": "浏览量",
-    "messages": "消息"
+    "messages": "消息",
+    "analyticsBreakdown": "分析明细",
+    "seeMore": "查看更多",
+    "seeLess": "收起",
+    "avgTimeToSubmit": "平均提交时间",
+    "topCountry": "顶级国家",
+    "topCity": "顶级城市",
+    "topBrowser": "顶级浏览器",
+    "topCountries": "顶级国家",
+    "topCities": "顶级城市",
+    "topBrowsers": "顶级浏览器",
+    "submissions": "提交"
   },
   "formEdit": {
     "settings": "设置",

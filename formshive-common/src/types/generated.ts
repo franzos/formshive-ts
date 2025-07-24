@@ -30,6 +30,15 @@ export interface AltchaPublicChallenge {
 	algorithm: string;
 }
 
+export interface AverageTimeData {
+	average_time_seconds: number;
+}
+
+export interface BrowserData {
+	browser: string;
+	count: number;
+}
+
 export enum ChallengeKind {
 	ALTCHA = "ALTCHA",
 }
@@ -42,6 +51,16 @@ export interface Challenge {
 	created_at: string;
 	expires_at: string;
 	completed_at?: string;
+}
+
+export interface CityData {
+	city: string;
+	count: number;
+}
+
+export interface CountryData {
+	country: string;
+	count: number;
 }
 
 export interface File {
@@ -75,6 +94,13 @@ export interface Form {
 	auto_response_enabled: boolean;
 	auto_response_subject?: string;
 	auto_response_text?: string;
+}
+
+export interface FormAnalyticsAggregateResponse {
+	top_countries: CountryData[];
+	top_cities: CityData[];
+	top_browsers: BrowserData[];
+	average_time_to_submit_message: AverageTimeData;
 }
 
 export interface FormAnalyticsByDay {

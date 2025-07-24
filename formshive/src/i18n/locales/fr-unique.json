@@ -237,7 +237,18 @@
     "totalMessages": "Total des Messages",
     "conversionRate": "Taux de Conversion",
     "views": "Vues",
-    "messages": "Messages"
+    "messages": "Messages",
+    "analyticsBreakdown": "Ventilation des Analyses",
+    "seeMore": "Voir plus",
+    "seeLess": "Voir moins",
+    "avgTimeToSubmit": "Temps Moy. de Soumission",
+    "topCountry": "Premier Pays",
+    "topCity": "Première Ville",
+    "topBrowser": "Premier Navigateur",
+    "topCountries": "Premiers Pays",
+    "topCities": "Premières Villes",
+    "topBrowsers": "Premiers Navigateurs",
+    "submissions": "soumissions"
   },
   "formEdit": {
     "settings": "Paramètres",
