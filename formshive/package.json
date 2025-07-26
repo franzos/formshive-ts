@@ -38,7 +38,7 @@
     "@stripe/stripe-js": "^7.3.0",
     "@tabler/icons-react": "3.17.0",
     "@uiw/react-textarea-code-editor": "^3.1.1",
-    "altcha": "^1.4.3",
+    "altcha": "^2.1.0",
     "axios": "^1.9.0",
     "clsx": "^2.1.1",
     "i18next": "^25.2.1",

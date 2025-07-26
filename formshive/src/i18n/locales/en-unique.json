@@ -55,7 +55,7 @@
     "redirectPlaceholder": "https://my-website.com/thank-you",
     "invalidUrl": "Invalid URL",
     "redirectDescription": "The URL to which the user will be redirected after form submission.",
-    "redirectWarning": "If you do not set a redirect URL, users will see a blank page after submission. This is only recommended, if you know what you're doing (for ex. handle the submission with Javascript).",
+    "redirectWarning": "If you do not set a redirect URL, users will see a success page (for HTML forms) or receive a JSON response (for AJAX/API requests). You can override this behavior by adding ?redirect=html or ?redirect=none to your form submission URL.",
     "filterSpam": "Filter SPAM",
     "filterSpamDescription": "Enable SPAM filtering. This will check for common spam patterns using field specifications. Integration and notifications are skipped for SPAM submissions.",
     "filterSpamWarning": "Form submissions will be rejected if the form does not contain a field with the name \"message\" in your form, or a custom field with spam check enabled.",

@@ -1,9 +1,10 @@
+import { axiosFieldValidationErrorToFormErrors, hasFieldValidationError } from '@gofranz/common';
+import { parseApiError } from '@gofranz/common-components';
+import { HttpNewIntegration, IntegrationType } from '@gofranz/formshive-common';
 import { Text, Title } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { useState } from 'react';
-import { extractApiErrorMessage } from '../../lib/errors';
 import { FormFields } from './Common';
-import { HttpNewIntegration, IntegrationType } from '@gofranz/formshive-common';
 
 export interface CreateIntegrationProps {
   submitFormCb: (newIntegration: HttpNewIntegration) => Promise<void>;
@@ -12,7 +13,7 @@ export interface CreateIntegrationProps {
 
 export function CreateIntegration(props: CreateIntegrationProps) {
   const [isBusy, setIsBusy] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState<{ title: string, message: string } | null>(null);
 
   const getInitialKind = (): IntegrationType => {
     // Map URL parameter values to backend enum values
@@ -80,52 +81,6 @@ export function CreateIntegration(props: CreateIntegrationProps) {
       kind: initialKind,
       data: getInitialData(initialKind),
     },
-    validate: (values: any) => {
-      const errors: any = {};
-
-      if (!values.title) {
-        errors.title = 'Title is required';
-      }
-
-      if (!values.kind) {
-        errors.kind = 'Integration type is required';
-      }
-
-      const kind = values.kind;
-      const data = values.data;
-
-      if (kind === 'API_PIPEDRIVE' || kind === 'API_MAILCHIMP' || kind === 'API_KIT') {
-        if (!data?.api_key) {
-          errors['data.api_key'] = 'API key is required';
-        }
-      }
-
-      if (kind === 'API_PIPEDRIVE') {
-        if (!data?.company_domain) {
-          errors['data.company_domain'] = 'Company domain is required';
-        } else if (!data.company_domain.includes('.pipedrive.com')) {
-          errors['data.company_domain'] = 'Domain must be in format: company.pipedrive.com';
-        }
-      }
-
-      if (kind === 'API_MAILCHIMP' && !data?.list_id) {
-        errors['data.list_id'] = 'List ID is required';
-      }
-
-      if (kind === 'API_KIT' && !data?.form_id) {
-        errors['data.form_id'] = 'Form ID is required';
-      }
-
-      if (kind && !kind.startsWith('API_')) {
-        if (!data?.webhook_url) {
-          errors['data.webhook_url'] = 'Webhook URL is required';
-        } else if (!/^(http|https):\/\/[^ "]+$/.test(data.webhook_url)) {
-          errors['data.webhook_url'] = 'Invalid URL';
-        }
-      }
-
-      return errors;
-    },
   });
 
   const submitForm = async () => {
@@ -149,10 +104,15 @@ export function CreateIntegration(props: CreateIntegrationProps) {
     setIsBusy(true);
     try {
       await props.submitFormCb(newForm);
+      setError(null);
     } catch (e) {
-      const errorMessage = extractApiErrorMessage(e);
-      setError(errorMessage);
-      console.error(e);
+      setError({
+        ...parseApiError(e),
+      });
+      if (hasFieldValidationError(e)) {
+        console.log(axiosFieldValidationErrorToFormErrors(e));
+        form.setErrors(axiosFieldValidationErrorToFormErrors(e));
+      }
     } finally {
       setIsBusy(false);
     }

@@ -1,3 +1,7 @@
+import { VerifiedEmailsResponse } from '@gofranz/common';
+import { Form, FormsIntegrationsQueryParams, FormsIntegrationsResponse, IntegrationsApiResponse, IntegrationsQueryParams, NewFormsIntegration, NewFormsRecipient, UpdateForm } from '@gofranz/formshive-common';
+import { Title } from '@mantine/core';
+import { useEffect, useState } from 'react';
 import { API_BASE_URL } from '../../constants';
 import { generateCurlFormData, generateCurlJson } from '../../lib/form-spec-to-curl';
 import { generateHtmlFromSpecV2, generateLLMPrompt } from '../../lib/form-spec-to-html';
@@ -12,13 +16,9 @@ import {
 } from '../../lib/forms';
 import { AccountMessagesStartPage } from '../../pages/Account/Messags/Start.page';
 import { useRustyState } from '../../state';
-import { Title } from '@mantine/core';
-import { useEffect, useState } from 'react';
 import { EditForm } from './Edit';
 import './form.module.scss';
 import { IntegrationHelp } from './Integration';
-import { VerifiedEmailsResponse } from '@gofranz/common';
-import { Form, FormsIntegrationsQueryParams, FormsIntegrationsResponse, IntegrationsApiResponse, IntegrationsQueryParams, NewFormsIntegration, NewFormsRecipient, UpdateForm } from '@gofranz/formshive-common';
 
 export interface FormDetailProps {
   form: Form;

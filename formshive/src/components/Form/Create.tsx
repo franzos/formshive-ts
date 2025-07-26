@@ -1,10 +1,12 @@
+import { axiosFieldValidationErrorToFormErrors, hasFieldValidationError } from '@gofranz/common';
+import { parseApiError } from '@gofranz/common-components';
+import { HttpNewForm } from '@gofranz/formshive-common';
+import { Text, Title } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { useState } from 'react';
-import { Text, Title } from '@mantine/core';
 import { useTranslation } from 'react-i18next';
+import { clearField } from '../../lib/clear-field';
 import { FormFields } from './Common';
-import { validateUrl } from '../../lib/validate-url';
-import { HttpNewForm } from '@gofranz/formshive-common';
 
 export interface CreateFormProps {
   submitFormCb: (newForm: HttpNewForm) => Promise<void>;
@@ -13,7 +15,7 @@ export interface CreateFormProps {
 export function CreateForm(props: CreateFormProps) {
   const { t } = useTranslation();
   const [isBusy, setIsBusy] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState<{ title: string, message: string } | null>(null);
 
   const form = useForm({
     initialValues: {
@@ -27,10 +29,6 @@ export function CreateForm(props: CreateFormProps) {
       auto_response_subject: undefined as string | undefined,
       auto_response_text: undefined as string | undefined,
     },
-    validate: {
-      title: (value) => (value ? null : t('forms.titleRequired')),
-      redirect_url: (value) => validateUrl(value || '', true),
-    },
   });
 
   const submitForm = async () => {
@@ -38,20 +36,20 @@ export function CreateForm(props: CreateFormProps) {
       title: form.values.title,
       filter_spam: form.values.filter_spam,
       check_challenge: form.values.check_challenge,
-      // check_specs: form.values.check_specs,
-      // specs: form.values.specs,
-      redirect_url: form.values.redirect_url,
-      auto_response_enabled: form.values.auto_response_enabled,
-      // auto_response_subject: form.values.auto_response_subject,
-      // auto_response_text: form.values.auto_response_text,
+      redirect_url: clearField(form.values.redirect_url),
     };
     setIsBusy(true);
     try {
       await props.submitFormCb(newForm);
-      setError('');
+      setError(null);
     } catch (e) {
-      setError(`Error: ${e}`);
-      console.error(e);
+      setError({
+        ...parseApiError(e),
+      });
+      if (hasFieldValidationError(e)) {
+        console.log(axiosFieldValidationErrorToFormErrors(e));
+        form.setErrors(axiosFieldValidationErrorToFormErrors(e));
+      }
     } finally {
       setIsBusy(false);
     }

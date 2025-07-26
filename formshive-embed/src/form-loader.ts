@@ -3,6 +3,7 @@ import { showErrorMessage, getUrlParameters, showLoadingState, LoadingState } fr
 import { validateFormId, validateApiEndpoint, validateFramework, sanitizeTitle } from './validation';
 import { fetchWithRetry } from './network';
 import { loadAltchaIfNeeded as robustLoadAltcha, validateAltchaIntegration } from './altcha';
+import { handleFormSubmission } from './field-errors';
 
 /**
  * Load the appropriate CSS framework stylesheet
@@ -142,7 +143,7 @@ export async function loadFormshiveForm(options: FormshiveOptions = {}): Promise
     
     // Fetch form HTML with retry logic
     const result = await fetchWithRetry(
-      `${validatedApiEndpoint}/forms/${validatedFormId}/html?iframe=false&css_framework=${validatedFramework}`,
+      `${validatedApiEndpoint}/forms/${validatedFormId}/html?iframe=false&css_framework=${validatedFramework}&redirect=none`,
       {}, // Use default retry config
       (attempt, maxAttempts, error) => {
         if (attempt === 1) {
@@ -199,6 +200,13 @@ export async function loadFormshiveForm(options: FormshiveOptions = {}): Promise
     }
 
     console.log('Form loaded and rendered successfully');
+
+    // Add form submission event listener for error handling
+    const formElement = document.querySelector('form.formshive') as HTMLFormElement;
+    if (formElement) {
+      formElement.addEventListener('submit', handleFormSubmission);
+      console.log('Form submission handler attached');
+    }
 
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';

@@ -55,7 +55,7 @@
     "redirectPlaceholder": "https://my-website.com/thank-you",
     "invalidUrl": "无效的URL",
     "redirectDescription": "表单提交后用户将被重定向到的URL。",
-    "redirectWarning": "如果您不设置重定向URL，用户提交后将看到空白页面。只有在您知道自己在做什么时才推荐这样做（例如，使用Javascript处理提交）。",
+    "redirectWarning": "如果您不设置重定向URL，用户将看到成功页面（HTML表单）或收到JSON响应（AJAX/API请求）。您可以通过在表单提交URL中添加?redirect=html或?redirect=none来覆盖此行为。",
     "filterSpam": "过滤垃圾邮件",
     "filterSpamDescription": "启用垃圾邮件过滤。这将检查消息字段中的常见垃圾邮件模式。垃圾邮件提交将跳过集成和通知。",
     "filterSpamWarning": "如果表单不包含名为\"message\"的字段或启用了垃圾邮件检查的自定义字段，表单提交将被拒绝。",

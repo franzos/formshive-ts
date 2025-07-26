@@ -12,7 +12,7 @@ import {
   TextInput,
 } from '@mantine/core';
 import { UseFormReturnType } from '@mantine/form';
-import { IconInfoCircle } from '@tabler/icons-react';
+import { IconAlertCircle, IconInfoCircle } from '@tabler/icons-react';
 
 const getExamplePayload = (kind: string, formId: string) => {
   switch (kind) {
@@ -108,7 +108,10 @@ const getExamplePayload = (kind: string, formId: string) => {
 export interface FormFieldsProps {
   isEditing: boolean;
   isBusy: boolean;
-  hasError: string;
+  hasError: {
+    title: string;
+    message: string;
+  } | null;
   submitCb: () => Promise<void>;
   form: UseFormReturnType<{
     title: string;
@@ -585,12 +588,10 @@ export function FormFields(props: FormFieldsProps) {
           </Button>
         </Stack>
       </form>
+
       {props.hasError && (
-        <Alert variant="light" color="red" mt="md">
-          <Text size="sm" fw={500} mb="xs">
-            Error
-          </Text>
-          <Text size="sm">{props.hasError}</Text>
+        <Alert mt="md" icon={<IconAlertCircle size={16} />} title={props.hasError.title} color="red">
+          {props.hasError.message}
         </Alert>
       )}
     </>

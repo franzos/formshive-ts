@@ -55,7 +55,7 @@
     "redirectPlaceholder": "https://mi-sitio-web.com/gracias",
     "invalidUrl": "URL inválida",
     "redirectDescription": "La URL a la que será redirigido el usuario después del envío del formulario.",
-    "redirectWarning": "Si no estableces una URL de redirección, los usuarios verán una página en blanco después del envío. Esto solo se recomienda si sabes lo que estás haciendo (por ejemplo, manejar el envío con Javascript).",
+    "redirectWarning": "Si no estableces una URL de redirección, los usuarios verán una página de éxito (para formularios HTML) o recibirán una respuesta JSON (para solicitudes AJAX/API). Puedes modificar este comportamiento agregando ?redirect=html o ?redirect=none a la URL de envío de tu formulario.",
     "filterSpam": "Filtrar SPAM",
     "filterSpamDescription": "Habilitar filtrado de SPAM. Esto verificará patrones comunes de spam en el campo de mensaje. Las integraciones y notificaciones se omiten para envíos de SPAM.",
     "filterSpamWarning": "Los envíos de formulario serán rechazados si el formulario no contiene un campo con el nombre \"message\" en su formulario, o un campo personalizado con verificación de spam habilitada.",

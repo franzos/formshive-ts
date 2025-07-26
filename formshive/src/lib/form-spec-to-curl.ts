@@ -25,7 +25,7 @@ export function generateCurlFormData(data: FormSpec, formUrl: string): string {
     }
   }
 
-  curlCommand += `  ${formUrl}`;
+  curlCommand += `  ${formUrl}?redirect=none`;
   return curlCommand;
 }
 
@@ -58,7 +58,7 @@ export function generateCurlJson(data: FormSpec, formUrl: string): string {
   let curlCommand = `curl -X POST \\\n`;
   curlCommand += `  -H "Content-Type: application/json" \\\n`;
   curlCommand += `  -d '${jsonString}' \\\n`;
-  curlCommand += `  ${formUrl}`;
+  curlCommand += `  ${formUrl}?redirect=none`;
 
   return curlCommand;
 }

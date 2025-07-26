@@ -1,5 +1,5 @@
 import { Integration } from '@gofranz/formshive-common';
-import { Text, Grid, ActionIcon, Group } from '@mantine/core';
+import { ActionIcon, Grid, Group, Text } from '@mantine/core';
 import { IconTrash } from '@tabler/icons-react';
 import { useTranslation } from 'react-i18next';
 

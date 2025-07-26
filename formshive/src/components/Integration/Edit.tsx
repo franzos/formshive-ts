@@ -1,9 +1,10 @@
+import { axiosFieldValidationErrorToFormErrors, hasFieldValidationError } from '@gofranz/common';
+import { parseApiError } from '@gofranz/common-components';
+import { Integration, UpdateIntegration } from '@gofranz/formshive-common';
+import { Title } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { useState } from 'react';
-import { Title } from '@mantine/core';
 import { FormFields } from './Common';
-import { extractApiErrorMessage } from '../../lib/errors';
-import { Integration, UpdateIntegration } from '@gofranz/formshive-common';
 
 export interface EditIntegrationProps {
   submitFormCb: (id: string, updateIntegration: UpdateIntegration) => Promise<void>;
@@ -12,7 +13,7 @@ export interface EditIntegrationProps {
 
 export function EditIntegration(props: EditIntegrationProps) {
   const [isBusy, setIsBusy] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState<{ title: string, message: string } | null>(null);
 
   const form = useForm({
     initialValues: {
@@ -20,25 +21,9 @@ export function EditIntegration(props: EditIntegrationProps) {
       kind: props.integration.kind,
       data: JSON.parse(props.integration.data),
     },
-    validate: {
-      title: (value: string) => (value ? null : 'Title is required'),
-      kind: (value) => (value ? null : 'Integration type is required'),
-      data: {
-        webhook_url: (value) => {
-          // Only validate webhook URL if it's a webhook integration
-          if (props.integration.kind.startsWith('WEBHOOK') && value) {
-            return /^(http|https):\/\/[^ "]+$/.test(value) ? null : 'Invalid URL';
-          }
-          return null;
-        },
-      },
-    },
   });
 
   const submitForm = async () => {
-    console.log('EditIntegration: submitForm called');
-    console.log('Form values:', form.values);
-
     // Prepare the data for submission
     const formData = { ...form.values.data };
     let secrets = undefined;
@@ -63,11 +48,15 @@ export function EditIntegration(props: EditIntegrationProps) {
     setIsBusy(true);
     try {
       await props.submitFormCb(props.integration.id, updateIntegration);
-      setError('');
+      setError(null);
     } catch (e) {
-      const errorMessage = extractApiErrorMessage(e);
-      setError(errorMessage);
-      console.error('EditIntegration: Update failed:', e);
+      setError({
+        ...parseApiError(e),
+      });
+      if (hasFieldValidationError(e)) {
+        console.log(axiosFieldValidationErrorToFormErrors(e));
+        form.setErrors(axiosFieldValidationErrorToFormErrors(e));
+      }
     } finally {
       setIsBusy(false);
     }

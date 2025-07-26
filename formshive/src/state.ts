@@ -32,6 +32,8 @@ const errorHandler = (error: AxiosError) => {
     },
   });
 
+  console.log('API Error:', error);
+
   const title = getErrorTitle(error);
   showApiErrorNotification(error, notifications, title);
 };

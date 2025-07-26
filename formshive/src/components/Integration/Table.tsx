@@ -1,3 +1,4 @@
+import { Integration, UpdateIntegration } from '@gofranz/formshive-common';
 import { ActionIcon, Box, Group, NavLink, ThemeIcon } from '@mantine/core';
 import {
   IconBrandGoogle,
@@ -13,7 +14,6 @@ import { DataTable } from 'mantine-datatable';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { CommonTableProps } from '../../lib/table';
-import { Integration, UpdateIntegration } from '@gofranz/formshive-common';
 
 const getIntegrationIcon = (kind: string) => {
   switch (kind) {

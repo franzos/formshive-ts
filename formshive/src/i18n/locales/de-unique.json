@@ -55,7 +55,7 @@
     "redirectPlaceholder": "https://meine-website.com/danke",
     "invalidUrl": "Ungültige URL",
     "redirectDescription": "Die URL, zu der der Benutzer nach der Formularübermittlung weitergeleitet wird.",
-    "redirectWarning": "Wenn Sie keine Weiterleitungs-URL festlegen, sehen Benutzer nach der Übermittlung eine leere Seite. Dies wird nur empfohlen, wenn Sie wissen, was Sie tun (z.B. die Übermittlung mit Javascript verarbeiten).",
+    "redirectWarning": "Wenn Sie keine Weiterleitungs-URL festlegen, sehen Benutzer eine Erfolgsseite (bei HTML-Formularen) oder erhalten eine JSON-Antwort (bei AJAX/API-Anfragen). Sie können dieses Verhalten überschreiben, indem Sie ?redirect=html oder ?redirect=none zu Ihrer Formularübermittlungs-URL hinzufügen.",
     "filterSpam": "SPAM filtern",
     "filterSpamDescription": "SPAM-Filterung aktivieren. Dies überprüft das Nachrichtenfeld auf häufige Spam-Muster. Integration und Benachrichtigungen werden für SPAM-Übermittlungen übersprungen.",
     "filterSpamWarning": "Formularübermittlungen werden abgelehnt, wenn das Formular kein Feld mit dem Namen \"message\" enthält oder ein benutzerdefiniertes Feld mit aktivierter Spam-Prüfung.",

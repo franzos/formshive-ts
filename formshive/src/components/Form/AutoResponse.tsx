@@ -19,7 +19,10 @@ import { validateTemplateString } from '../../lib/template-validation';
 
 export interface AutoResponseProps {
   isBusy: boolean;
-  hasError: string;
+  hasError: {
+    title: string;
+    message: string;
+  } | null;
   submitCb: () => Promise<void>;
   form: UseFormReturnType<{
     title: string;
@@ -314,8 +317,8 @@ The Support Team`}
           )}
 
           {props.hasError && (
-            <Alert icon={<IconAlertCircle size={16} />} title="Error" color="red">
-              {props.hasError}
+            <Alert mt="md" icon={<IconAlertCircle size={16} />} title={props.hasError.title} color="red">
+              {props.hasError.message}
             </Alert>
           )}
 

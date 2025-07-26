@@ -55,7 +55,7 @@
     "redirectPlaceholder": "https://mon-site-web.com/merci",
     "invalidUrl": "URL invalide",
     "redirectDescription": "L'URL vers laquelle l'utilisateur sera redirigé après soumission du formulaire.",
-    "redirectWarning": "Si vous ne définissez pas d'URL de redirection, les utilisateurs verront une page vierge après soumission. Ceci n'est recommandé que si vous savez ce que vous faites (par ex. gérer la soumission avec Javascript).",
+    "redirectWarning": "Si vous ne définissez pas d'URL de redirection, les utilisateurs verront une page de succès (pour les formulaires HTML) ou recevront une réponse JSON (pour les requêtes AJAX/API). Vous pouvez modifier ce comportement en ajoutant ?redirect=html ou ?redirect=none à l'URL de soumission de votre formulaire.",
     "filterSpam": "Filtrer le SPAM",
     "filterSpamDescription": "Activer le filtrage SPAM. Ceci vérifiera les motifs de spam courants dans le champ message. Les intégrations et notifications sont ignorées pour les soumissions SPAM.",
     "filterSpamWarning": "Les soumissions de formulaire seront rejetées si le formulaire ne contient pas un champ avec le nom \"message\" dans votre formulaire, ou un champ personnalisé avec vérification de spam activée.",

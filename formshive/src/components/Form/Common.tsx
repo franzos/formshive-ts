@@ -1,4 +1,4 @@
-import { Alert, Anchor, Box, Button, Checkbox, Group, Text, TextInput } from '@mantine/core';
+import { Alert, Anchor, Box, Button, Checkbox, Group, TextInput } from '@mantine/core';
 import { UseFormReturnType } from '@mantine/form';
 import { IconAlertCircle, IconDeviceFloppy, IconX } from '@tabler/icons-react';
 import { useTranslation } from 'react-i18next';
@@ -6,7 +6,10 @@ import { useTranslation } from 'react-i18next';
 export interface FormFieldsProps {
   isEditing: boolean;
   isBusy: boolean;
-  hasError: string;
+  hasError: {
+    title: string;
+    message: string;
+  } | null;
   submitCb: () => Promise<void>;
   form: UseFormReturnType<{
     title: string;
@@ -114,7 +117,11 @@ export function FormFields(props: FormFieldsProps) {
             )}
           </Group>
 
-          {props.hasError && props.hasError !== '' && <Text color="red">{props.hasError}</Text>}
+          {props.hasError && (
+            <Alert mt="md" icon={<IconAlertCircle size={16} />} title={props.hasError.title} color="red">
+              {props.hasError.message}
+            </Alert>
+          )}
         </Box>
       </form>
     </>

@@ -35,7 +35,10 @@ import { UpdateForm } from '@gofranz/formshive-common';
 export interface FormSpecificationsProps {
   isEditing: boolean;
   isBusy: boolean;
-  hasError: string;
+  hasError: {
+    title: string;
+    message: string;
+  } | null;
   submitSection: () => Promise<void>;
   form: {
     values: UpdateForm;
@@ -262,7 +265,11 @@ export function FormSpecifications(props: FormSpecificationsProps) {
         )}
       </Group>
 
-      {props.hasError && props.hasError !== '' && <Text c="red">{props.hasError}</Text>}
+      {props.hasError && (
+        <Alert mt="md" icon={<IconAlertCircle size={16} />} title={props.hasError.title} color="red">
+          {props.hasError.message}
+        </Alert>
+      )}
     </>
   );
 }

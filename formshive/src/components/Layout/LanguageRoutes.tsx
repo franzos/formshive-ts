@@ -24,6 +24,7 @@ import { AccountIntegrationViewPage } from '../../pages/Account/Integrations/Vie
 import { AccountMessagesStartPage } from '../../pages/Account/Messags/Start.page';
 import { AccountProfilePage } from '../../pages/Account/Profile.page';
 import { AccountReferralsPage } from '../../pages/Account/Referrals.page';
+import { AccountDocsPage } from '../../pages/Account/Docs.page';
 import { DocsPage } from '../../pages/Docs.page';
 import { HomePage } from '../../pages/Home.page';
 import { IntegrationsPage } from '../../pages/Integrations.page';
@@ -118,6 +119,7 @@ export function LanguageRoutes({ languagePrefix }: LanguageRoutesProps) {
       <Route path="/account/billing/subscriptions" element={<AccountBillingSubscriptionsPage />} />
       <Route path="/account/billing/usage" element={<AccountBillingUsagePage />} />
       <Route path="/account/referrals" element={<AccountReferralsPage />} />
+      <Route path="/account/docs" element={<AccountDocsPage />} />
       <Route
         path="/account/profile"
         element={

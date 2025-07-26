@@ -1,6 +1,7 @@
 import { useLanguageAwareRouting } from '@gofranz/common-components';
 import { AppShell, NavLink } from '@mantine/core';
 import {
+  IconBook,
   IconCreditCard,
   IconForms,
   IconHelp,
@@ -73,6 +74,12 @@ export function AccountNavigation() {
         to={createLanguageURL('/account/profile')}
         label={t('glob_navigation.profile')}
         leftSection={<IconSettings size="18" stroke={1.5} />}
+      />
+      <NavLink
+        component={Link}
+        to={createLanguageURL('/account/docs')}
+        label="Docs"
+        leftSection={<IconBook size="18" stroke={1.5} />}
       />
       <NavLink
         component={Link}

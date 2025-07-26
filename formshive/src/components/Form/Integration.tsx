@@ -1,6 +1,7 @@
 import { API_BASE_URL, IS_DEVELOPMENT } from '../../constants';
 import {
   Accordion,
+  ActionIcon,
   Alert,
   Box,
   Button,
@@ -13,11 +14,14 @@ import {
   Text,
   TextInput,
   Title,
+  Tooltip,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import {
   IconAlertCircle,
   IconBox,
+  IconCheck,
+  IconCopy,
   IconFileUpload,
   IconFolderOpen,
   IconForms,
@@ -31,6 +35,53 @@ import 'altcha';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+// Reusable component for text inputs with copy functionality
+function CopyableTextInput({
+  value,
+  label,
+  description,
+  disabled = false
+}: {
+  value: string;
+  label: string;
+  description?: string;
+  disabled?: boolean;
+}) {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(value);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error('Failed to copy text: ', err);
+    }
+  };
+
+  return (
+    <TextInput
+      value={value}
+      readOnly
+      label={label}
+      description={description}
+      disabled={disabled}
+      rightSection={
+        <Tooltip label={copied ? 'Copied!' : 'Copy to clipboard'}>
+          <ActionIcon
+            variant="subtle"
+            onClick={handleCopy}
+            disabled={disabled}
+            color={copied ? 'green' : 'gray'}
+          >
+            {copied ? <IconCheck size={16} /> : <IconCopy size={16} />}
+          </ActionIcon>
+        </Tooltip>
+      }
+    />
+  );
+}
+
 export interface EmbedFormProps {
   formId: string;
 }
@@ -41,10 +92,11 @@ export function EmbedForm({ formId }: EmbedFormProps) {
   const frameworkOptions = [
     { value: 'bulma', label: 'Bulma' },
     { value: 'bootstrap', label: 'Bootstrap' },
+    { value: 'formshive', label: 'Formshive' },
   ];
 
   return (
-    <>
+    <Card withBorder p="md" radius="sm">
       <Select
         label={t('formIntegration.cssFramework')}
         placeholder={t('formIntegration.selectCssFramework')}
@@ -55,14 +107,12 @@ export function EmbedForm({ formId }: EmbedFormProps) {
         }}
         mb="md"
       />
-      <TextInput
+      <CopyableTextInput
         value={`<div id="formshive" form-id="${formId}" framework="${framework}"><a href="https://formshive.com/link.html?form_id=${formId}&framework=${framework}">Fill out my form</a></div><script type="text/javascript" async src="https://formshive.com/embed.js"></script>`}
-        readOnly
         label={t('formIntegration.htmlTag')}
-        mb="md"
         description={t('formIntegration.htmlTagDescription')}
       />
-    </>
+    </Card>
   );
 }
 
@@ -84,37 +134,40 @@ export function IFrameForm({ form }: IFrameFormProps) {
     { value: 'formshive', label: 'Formshive' },
   ];
 
-  const iframeUrl = `${API_BASE_URL}/forms/${form.id}/html?css_framework=${framework}&_reload=${counter}`;
-  const iframeUrlNoTrack = iframeUrl + '&track=false';
+  const iframeUrl = `${API_BASE_URL}/forms/${form.id}/html?iframe=true&css_framework=${framework}&css_embed=true&redirect=html`;
+  const iframeUrlNoTrack = iframeUrl + `&track=false&_reload=${counter}`;
 
   useEffect(() => {
     setCounter((prev) => prev + 1);
   }, [form]);
   return (
     <>
-      <Select
-        label={t('formIntegration.cssFramework')}
-        placeholder={t('formIntegration.selectCssFramework')}
-        data={frameworkOptions}
-        value={framework}
-        onChange={(value) => {
-          setFramework(value || 'bulma');
-        }}
-        mb="md"
-      />
-      <TextInput
-        value={`<iframe src="${iframeUrl}" frameborder="0" width="100%" height=350></iframe>`}
-        readOnly
-        label={t('formIntegration.scriptTag')}
-        description={t('formIntegration.scriptTagDescription')}
-      />
-      <Text fw="bold" mt="md">
-        {t('formIntegration.preview')}
-      </Text>
-      <Card shadow="xs">
-        <Box
+      <Card withBorder p="md" radius="sm" mb="md">
+        <Select
+          label={t('formIntegration.cssFramework')}
+          placeholder={t('formIntegration.selectCssFramework')}
+          description="Styling will be automatically included"
+          data={frameworkOptions}
+          value={framework}
+          onChange={(value) => {
+            setFramework(value || 'bulma');
+          }}
           mb="md"
+        />
+        <CopyableTextInput
+          value={`<iframe src="${iframeUrl}" frameborder="0" width="100%" height=350></iframe>`}
+          label={t('formIntegration.scriptTag')}
+          description={t('formIntegration.scriptTagDescription')}
+        />
+      </Card>
+
+      <Card withBorder p="md" radius="sm">
+        <Text fw="bold" mb="md">
+          {t('formIntegration.preview')}
+        </Text>
+        <Box
           p="xs"
+          style={{ border: '1px solid #e9ecef', borderRadius: '4px' }}
           dangerouslySetInnerHTML={{
             __html: `<iframe src="${iframeUrlNoTrack}" frameborder="0" width="100%" height=250></iframe>`,
           }}
@@ -140,12 +193,13 @@ export function LinkToForm({ formId }: EmbedFormProps) {
   const frameworkOptions = [
     { value: 'bulma', label: 'Bulma' },
     { value: 'bootstrap', label: 'Bootstrap' },
+    { value: 'formshive', label: 'Formshive' },
   ];
 
   const linkUrl = makeLinkUrl(formId, framework, title);
 
   return (
-    <>
+    <Card withBorder p="md" radius="sm">
       <Select
         label={t('formIntegration.cssFramework')}
         placeholder={t('formIntegration.selectCssFramework')}
@@ -164,11 +218,9 @@ export function LinkToForm({ formId }: EmbedFormProps) {
         onChange={(event) => setTitle(event.currentTarget.value)}
         mb="md"
       />
-      <TextInput
+      <CopyableTextInput
         value={linkUrl}
-        readOnly
         label={t('formIntegration.linkLabel')}
-        mb="md"
         description={t('formIntegration.linkDescription')}
       />
       <Button
@@ -177,11 +229,12 @@ export function LinkToForm({ formId }: EmbedFormProps) {
         target="_blank"
         rel="noopener noreferrer"
         variant="light"
-        mb="md"
+        fullWidth
+        mt="xs"
       >
         {t('formIntegration.preview')}
       </Button>
-    </>
+    </Card>
   );
 }
 
@@ -232,19 +285,73 @@ export function IntegrationHelp({
     <Box mb="md">
       <Title order={2}>{t('formIntegration.integration')}</Title>
 
+      <Alert icon={<IconAlertCircle size={16} />} title="Which method should I choose?" color="blue" mb="md">
+        <Group gap="md">
+          <Text size="sm">
+            <Text fw={600} span>Beginners:</Text> Start with <Text fw={600} span color="green">IFrame</Text> or <Text fw={600} span color="violet">Direct Link</Text> - they're the easiest!
+          </Text>
+          <Text size="sm">
+            <Text fw={600} span>Best UX:</Text> Use <Text fw={600} span color="orange">JavaScript Embed</Text> for the smoothest user experience
+          </Text>
+          <Text size="sm">
+            <Text fw={600} span>Existing forms:</Text> Use <Text fw={600} span color="blue">Manual HTML</Text> to keep your current design
+          </Text>
+        </Group>
+      </Alert>
+
       <Tabs defaultValue="manual">
         <Tabs.List>
-          <Tabs.Tab value="manual" leftSection={<IconHtml size={12} />}>
-            {t('formIntegration.manual')}
+          <Tabs.Tab value="manual" leftSection={<IconHtml size={14} />}>
+            <Box>
+              <Text size="sm" fw={500}>{t('formIntegration.manual')}</Text>
+              <Group gap="4px" mt="2px">
+                <Text size="xs" px="4px" py="1px" bg="blue.1" c="blue.8" style={{ borderRadius: '8px', fontSize: '10px', fontWeight: 500 }}>
+                  Existing Forms
+                </Text>
+                <Text size="xs" px="4px" py="1px" bg="green.1" c="green.8" style={{ borderRadius: '8px', fontSize: '10px', fontWeight: 500 }}>
+                  Very Flexible
+                </Text>
+              </Group>
+            </Box>
           </Tabs.Tab>
-          <Tabs.Tab value="embed" leftSection={<IconBox size={12} />}>
-            {t('formIntegration.javascript')}
+          <Tabs.Tab value="embed" leftSection={<IconBox size={14} />}>
+            <Box>
+              <Text size="sm" fw={500}>{t('formIntegration.javascript')}</Text>
+              <Group gap="4px" mt="2px">
+                <Text size="xs" px="4px" py="1px" bg="orange.1" c="orange.8" style={{ borderRadius: '8px', fontSize: '10px', fontWeight: 500 }}>
+                  Best UX
+                </Text>
+                <Text size="xs" px="4px" py="1px" bg="teal.1" c="teal.8" style={{ borderRadius: '8px', fontSize: '10px', fontWeight: 500 }}>
+                  Dynamic
+                </Text>
+              </Group>
+            </Box>
           </Tabs.Tab>
-          <Tabs.Tab value="iframe" leftSection={<IconFrame size={12} />}>
-            {t('formIntegration.iframe')}
+          <Tabs.Tab value="iframe" leftSection={<IconFrame size={14} />}>
+            <Box>
+              <Text size="sm" fw={500}>{t('formIntegration.iframe')}</Text>
+              <Group gap="4px" mt="2px">
+                <Text size="xs" px="4px" py="1px" bg="green.1" c="green.8" style={{ borderRadius: '8px', fontSize: '10px', fontWeight: 500 }}>
+                  Very Easy
+                </Text>
+                <Text size="xs" px="4px" py="1px" bg="gray.1" c="gray.8" style={{ borderRadius: '8px', fontSize: '10px', fontWeight: 500 }}>
+                  Copy & Paste
+                </Text>
+              </Group>
+            </Box>
           </Tabs.Tab>
-          <Tabs.Tab value="link" leftSection={<IconLink size={12} />}>
-            {t('formIntegration.link')}
+          <Tabs.Tab value="link" leftSection={<IconLink size={14} />}>
+            <Box>
+              <Text size="sm" fw={500}>{t('formIntegration.link')}</Text>
+              <Group gap="4px" mt="2px">
+                <Text size="xs" px="4px" py="1px" bg="green.1" c="green.8" style={{ borderRadius: '8px', fontSize: '10px', fontWeight: 500 }}>
+                  Very Easy
+                </Text>
+                <Text size="xs" px="4px" py="1px" bg="violet.1" c="violet.8" style={{ borderRadius: '8px', fontSize: '10px', fontWeight: 500 }}>
+                  Social Media
+                </Text>
+              </Group>
+            </Box>
           </Tabs.Tab>
         </Tabs.List>
 
@@ -252,26 +359,40 @@ export function IntegrationHelp({
           <Text mb="xs" mt="md">
             {t('formIntegration.manualDescription')}
           </Text>
-          <TextInput
-            value={url}
-            readOnly
-            label={t('formIntegration.formUrl')}
-            mb="md"
-            description={t('formIntegration.formUrlDescription')}
-          />
 
-          <TextInput
-            value={challengeUrl}
-            readOnly
-            label={t('formIntegration.captchaUrl')}
-            mb="md"
-            disabled={!form.check_challenge}
-            description={
-              form.check_challenge
-                ? t('formIntegration.captchaDescription')
-                : t('formIntegration.captchaDisabledDescription')
-            }
-          />
+          <Group gap="md" mb="md" align="stretch">
+            <Alert color="green" style={{ flex: 1 }}>
+              <Text size="xs">
+                <Text fw={600} span>✅ Success:</Text> Follows redirect behavior - custom URL redirect or built-in success page.
+              </Text>
+            </Alert>
+            <Alert color="yellow" style={{ flex: 1 }}>
+              <Text size="xs">
+                <Text fw={600} span>⚠️ Validation errors:</Text> For forms with defined fields - shows helpful error page with your input saved.
+              </Text>
+            </Alert>
+          </Group>
+
+          <Card withBorder p="md" radius="sm" mb="md">
+            <CopyableTextInput
+              value={url}
+              label={t('formIntegration.formUrl')}
+              description={t('formIntegration.formUrlDescription')}
+            />
+
+            <Box mt="md">
+              <CopyableTextInput
+                value={challengeUrl}
+                label={t('formIntegration.captchaUrl')}
+                disabled={!form.check_challenge}
+                description={
+                  form.check_challenge
+                    ? t('formIntegration.captchaDescription')
+                    : t('formIntegration.captchaDisabledDescription')
+                }
+              />
+            </Box>
+          </Card>
 
           <Group justify="left" mb={5}>
             <Button onClick={toggle} variant="light" leftSection={<IconFolderOpen />}>
@@ -446,6 +567,19 @@ export function IntegrationHelp({
           <Text mb="xs" mt="md">
             {t('formIntegration.embedDescription')}
           </Text>
+
+          <Group gap="md" mb="md" align="stretch">
+            <Alert color="green" style={{ flex: 1 }}>
+              <Text size="xs">
+                <Text fw={600} span>✅ Success:</Text> With redirect URL - redirects page. Without redirect URL - shows inline success message and clears form.
+              </Text>
+            </Alert>
+            <Alert color="yellow" style={{ flex: 1 }}>
+              <Text size="xs">
+                <Text fw={600} span>⚠️ Validation errors:</Text> For forms WITH defined fields - highlights field errors directly with red styling. Best user experience!
+              </Text>
+            </Alert>
+          </Group>
           {hasFormSpec ? (
             <EmbedForm formId={form.id} />
           ) : (
@@ -459,6 +593,19 @@ export function IntegrationHelp({
           <Text mb="xs" mt="md">
             {t('formIntegration.iframeDescription')}
           </Text>
+
+          <Group gap="md" mb="md" align="stretch">
+            <Alert color="green" style={{ flex: 1 }}>
+              <Text size="xs">
+                <Text fw={600} span>✅ Success:</Text> Shows built-in success page within the iframe. Users stay on your website.
+              </Text>
+            </Alert>
+            <Alert color="yellow" style={{ flex: 1 }}>
+              <Text size="xs">
+                <Text fw={600} span>⚠️ Validation errors:</Text> For forms WITH defined fields - shows error page within iframe with field highlighting.
+              </Text>
+            </Alert>
+          </Group>
           {hasFormSpec ? (
             <IFrameForm form={form} />
           ) : (
@@ -472,6 +619,19 @@ export function IntegrationHelp({
           <Text mb="xs" mt="md">
             {t('formIntegration.linkDescriptionLong')}
           </Text>
+
+          <Group gap="md" mb="md" align="stretch">
+            <Alert color="green" style={{ flex: 1 }}>
+              <Text size="xs">
+                <Text fw={600} span>✅ Success:</Text> Full-page experience - follows your form's redirect settings (custom URL or success page).
+              </Text>
+            </Alert>
+            <Alert color="yellow" style={{ flex: 1 }}>
+              <Text size="xs">
+                <Text fw={600} span>⚠️ Validation errors:</Text> For forms WITH defined fields - shows full-page error experience with preserved input.
+              </Text>
+            </Alert>
+          </Group>
           {hasFormSpec ? (
             <LinkToForm formId={form.id} />
           ) : (

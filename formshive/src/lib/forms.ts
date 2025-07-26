@@ -100,7 +100,7 @@ export function exampleCurlForm(formUrl: string) {
   -d "message=Hi, I want to enquire about ...." \\
   -d "products[]=Product A" \\
   -d "products[]=Product B" \\
-  ${formUrl}`;
+  ${formUrl}?redirect=none`;
 }
 
 export function exampleCurlMulitpart(formUrl: string) {
@@ -112,14 +112,14 @@ export function exampleCurlMulitpart(formUrl: string) {
   -F "products[]=Product A" \\
   -F "products[]=Product B" \\
   -F "file=@/some-folder/my-picture.jpg" \\
-  ${formUrl}`;
+  ${formUrl}?redirect=none`;
 }
 
 export function exampleCurlJson(formUrl: string) {
   return `curl -X POST \\
   -H "Content-Type: application/json" \\
   -d '{"email":"your-email@gmail.com","name":"Mike","message":"Hi, I want to enquire about ....","products":["Product A","Product B"]}' \\
-  ${formUrl}`;
+  ${formUrl}?redirect=none`;
 }
 
 export function exampleLLMPrompt(formUrl: string, checkChallenge = false, challengeUrl = '') {

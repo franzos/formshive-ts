@@ -1,7 +1,6 @@
-import { parseAndValidateFormSpec } from '../../lib/form-specs';
-import { validateTemplateString } from '../../lib/template-validation';
-import { validateUrl } from '../../lib/validate-url';
-import { useRustyState } from '../../state';
+import { axiosFieldValidationErrorToFormErrors, hasFieldValidationError, VerifiedEmailsResponse } from '@gofranz/common';
+import { parseApiError } from '@gofranz/common-components';
+import { Form, FormsIntegrationsQueryParams, FormsIntegrationsResponse, IntegrationsApiResponse, IntegrationsQueryParams, NewFormsIntegration, NewFormsRecipient, UpdateForm } from '@gofranz/formshive-common';
 import { Accordion, Anchor, Group, Text, Title } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import {
@@ -11,16 +10,16 @@ import {
   IconSettings,
   IconWebhook,
 } from '@tabler/icons-react';
-import { AxiosError } from 'axios';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { clearField } from '../../lib/clear-field';
+import { parseAndValidateFormSpec } from '../../lib/form-specs';
+import { useRustyState } from '../../state';
 import { FormsIntegrationDetail } from '../FormIntegrations/Detail';
 import { FormsRecipientDetail } from '../FormsRecipient/Detail';
 import { AutoResponse } from './AutoResponse';
 import { FormFields } from './Common';
 import { FormSpecifications } from './FormSpecification';
-import { VerifiedEmailsResponse } from '@gofranz/common';
-import { Form, FormsIntegrationsQueryParams, FormsIntegrationsResponse, IntegrationsApiResponse, IntegrationsQueryParams, NewFormsIntegration, NewFormsRecipient, UpdateForm } from '@gofranz/formshive-common';
 
 export interface EditFormProps {
   submitFormCb: (id: string, updatedForm: UpdateForm) => Promise<void>;
@@ -46,8 +45,8 @@ export interface EditFormProps {
 export function EditForm(props: EditFormProps) {
   const { t } = useTranslation();
   const [isBusy, setIsBusy] = useState(false);
-  const [error, setError] = useState('');
-  const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
+  const [error, setError] = useState<{ title: string, message: string } | null>(null);
+  // const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
   const [hasEmailRecipients, setHasEmailRecipients] = useState(false);
 
   const form = useForm({
@@ -61,67 +60,6 @@ export function EditForm(props: EditFormProps) {
       auto_response_enabled: props.form.auto_response_enabled,
       auto_response_subject: props.form.auto_response_subject,
       auto_response_text: props.form.auto_response_text,
-    },
-    onValuesChange: () => {
-      setHasUnsavedChanges(true);
-    },
-    validate: {
-      title: (value) => (value ? null : t('formEdit.titleRequired')),
-      specs: () => {
-        if (form.values && form.values.specs && form.values.specs.trim() !== '') {
-          const specIsValid = parseAndValidateFormSpec(form.values.specs);
-          if (!specIsValid.isValid) {
-            console.warn(`Form specs validation failed: ${JSON.stringify(specIsValid.errors)}`);
-            let errorString = '';
-            specIsValid.errors.forEach((value, key) => {
-              errorString += `${key}: ${value}\n`;
-            });
-            return errorString;
-          }
-        }
-        if (form.values.check_specs && form.values.specs && form.values.specs.match('name =')) {
-          console.warn('Form specs validation failed: form specs are required when check_specs is enabled');
-          return t('formEdit.formSpecsRequired');
-        }
-        return null;
-      },
-      redirect_url: (value) => validateUrl(value, true),
-      auto_response_enabled: (value) => {
-        if (value && !form.values.check_challenge) {
-          return 'Auto-response requires captcha to be enabled for security';
-        }
-        return null;
-      },
-      auto_response_subject: (value) => {
-        if (form.values.auto_response_enabled && (!value || value.trim() === '')) {
-          return 'Auto-response subject is required when auto-response is enabled';
-        }
-        if (value && value.length > 200) {
-          return 'Auto-response subject must be under 200 characters';
-        }
-        if (value && value.trim() !== '') {
-          const templateValidation = validateTemplateString(value);
-          if (!templateValidation.isValid) {
-            return `Subject template syntax errors: ${templateValidation.errors.join('; ')}`;
-          }
-        }
-        return null;
-      },
-      auto_response_text: (value) => {
-        if (form.values.auto_response_enabled && (!value || value.trim() === '')) {
-          return 'Auto-response message is required when auto-response is enabled';
-        }
-        if (value && value.length > 2000) {
-          return 'Auto-response message must be under 2000 characters';
-        }
-        if (value && value.trim() !== '') {
-          const templateValidation = validateTemplateString(value);
-          if (!templateValidation.isValid) {
-            return `Template syntax errors: ${templateValidation.errors.join('; ')}`;
-          }
-        }
-        return null;
-      },
     },
   });
 
@@ -162,41 +100,51 @@ export function EditForm(props: EditFormProps) {
       auto_response_subject: props.form.auto_response_subject,
       auto_response_text: props.form.auto_response_text,
     } as UpdateForm);
-    setHasUnsavedChanges(false);
-    setError('');
+    // setHasUnsavedChanges(false);
+    form.resetDirty();
+    setError(null);
   };
 
   const submitForm = async () => {
     if (form.values && form.values.specs && form.values.specs.trim() !== '') {
       const specIsValid = parseAndValidateFormSpec(form.values.specs);
       if (!specIsValid.isValid) {
-        let errorString = '';
+        let message = '';
         specIsValid.errors.forEach((value, key) => {
-          errorString += `${key}: ${value}\n`;
+          message += `${key}: ${value}\n`;
         });
-        setError(errorString);
+        setError({
+          title: 'Form Specs Validation Error',
+          message,
+        });
         return;
       }
     }
-    setError('');
+    setError(null);
     const updatedForm: UpdateForm = {
       title: form.values.title,
       filter_spam: form.values.filter_spam,
       check_challenge: form.values.check_challenge,
       check_specs: form.values.check_specs,
       specs: form.values.specs,
-      redirect_url: form.values.redirect_url,
+      redirect_url: clearField(form.values.redirect_url),
       auto_response_enabled: form.values.auto_response_enabled,
-      auto_response_subject: form.values.auto_response_subject,
-      auto_response_text: form.values.auto_response_text,
+      auto_response_subject: clearField(form.values.auto_response_subject),
+      auto_response_text: clearField(form.values.auto_response_text),
     };
     setIsBusy(true);
     try {
       await props.submitFormCb(props.form.id, updatedForm);
-      setHasUnsavedChanges(false);
+      // setHasUnsavedChanges(false);
+      form.resetDirty();
     } catch (e) {
-      setError(`Error: ${(e as AxiosError).response?.data ? (e as AxiosError).response?.data : e}`);
-      console.error(e);
+      setError({
+        ...parseApiError(e),
+      });
+      if (hasFieldValidationError(e)) {
+        console.log(axiosFieldValidationErrorToFormErrors(e));
+        form.setErrors(axiosFieldValidationErrorToFormErrors(e));
+      }
     } finally {
       setIsBusy(false);
     }
@@ -229,7 +177,7 @@ export function EditForm(props: EditFormProps) {
               submitCb={submitForm}
               formSubmitUrl={props.formSubmitUrl}
               form={form}
-              hasUnsavedChanges={hasUnsavedChanges}
+              hasUnsavedChanges={form.isDirty()}
               onCancel={cancelChanges}
             />
           </Accordion.Panel>
@@ -257,7 +205,7 @@ export function EditForm(props: EditFormProps) {
               formSubmitUrl={props.formSubmitUrl}
               formChallengeUrl={props.formChallengeUrl}
               formChallengeUrlNoTrack={props.formChallengeUrlNoTrack}
-              hasUnsavedChanges={hasUnsavedChanges}
+              hasUnsavedChanges={form.isDirty()}
               onCancel={cancelChanges}
             />
           </Accordion.Panel>
@@ -303,7 +251,7 @@ export function EditForm(props: EditFormProps) {
               hasError={error}
               submitCb={submitForm}
               form={form}
-              hasUnsavedChanges={hasUnsavedChanges}
+              hasUnsavedChanges={form.isDirty()}
               onCancel={cancelChanges}
               hasEmailRecipients={hasEmailRecipients}
             />

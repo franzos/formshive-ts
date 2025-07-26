@@ -438,7 +438,7 @@ export function VisualSpecEditor(props: SpecEditorProps) {
             field: fieldType,
             placeholder: '',
             helptext: '',
-            on_fail: 'pass',
+            on_fail: 'reject',
             // Automatically set validation flags for email and URL fields
             ...(fieldType === 'email' && { is_email: true }),
             ...(fieldType === 'url' && { is_url: true }),

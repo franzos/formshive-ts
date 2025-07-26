@@ -1,4 +1,4 @@
-import { Text, Stack, Accordion, Group, ThemeIcon, Alert, Card, Grid, Code } from '@mantine/core';
+import { Text, Stack, Accordion, Group, ThemeIcon, Alert, Card, Grid, Code, Box, Anchor } from '@mantine/core';
 import {
   IconForms,
   IconInfoCircle,
@@ -11,6 +11,10 @@ import {
   IconShield,
   IconFileCode,
 } from '@tabler/icons-react';
+
+export interface DocsProps {
+  colorScheme?: 'light' | 'dark' | undefined;
+}
 
 export function Docs() {
   return (
@@ -122,6 +126,221 @@ export function Docs() {
           </Accordion.Panel>
         </Accordion.Item>
 
+        <Accordion.Item value="form-submission">
+          <Accordion.Control>
+            <Group wrap="nowrap">
+              <ThemeIcon size="lg" radius="xl" color="blue">
+                <IconCode size={20} />
+              </ThemeIcon>
+              <div>
+                <Text fw={500}>Form Submission</Text>
+                <Text size="sm" c="dimmed" fw={400}>
+                  How form submissions work and what happens after users submit
+                </Text>
+              </div>
+            </Group>
+          </Accordion.Control>
+          <Accordion.Panel>
+            <Stack gap="lg">
+              <Text>
+                When someone submits your form, Formshive processes the data through several validation
+                steps and then responds based on your form configuration and the type of request.
+                \              </Text>
+
+              <Box>
+                <Text fw={500} mb="xs">
+                  Validation Process
+                </Text>
+                <Text size="sm" mb="md">
+                  Every form submission goes through comprehensive validation to ensure data quality
+                  and security. If validation fails, users receive detailed error messages.
+                </Text>
+                <Card withBorder p="sm" bg="blue.0">
+                  <Text size="sm" fw={500} mb="xs">
+                    Validation Steps:
+                  </Text>
+                  <Text size="xs">
+                    1. <strong>Form exists:</strong> Verifies the form ID is valid
+                    <br />
+                    2. <strong>CAPTCHA check:</strong> Validates anti-spam challenge (if enabled)
+                    <br />
+                    3. <strong>Field validation:</strong> Checks required fields, email format, etc. (if enabled)
+                    <br />
+                    4. <strong>Spam detection:</strong> Analyzes content for spam patterns (if enabled)
+                  </Text>
+                </Card>
+              </Box>
+
+              <Box>
+                <Text fw={500} mb="xs">
+                  User-Friendly Error Handling
+                </Text>
+                <Text size="sm" mb="md">
+                  When someone makes a mistake filling out your form, Formshive provides helpful,
+                  clear error messages. Instead of losing their work, users see exactly what needs
+                  to be fixed, with their original input preserved.
+                </Text>
+                <Grid>
+                  <Grid.Col span={{ base: 12, md: 6 }}>
+                    <Card withBorder p="sm">
+                      <Text fw={500} size="sm" mb="xs">
+                        HTML Forms (Website Visitors):
+                      </Text>
+                      <Text size="xs">
+                        • See a friendly error page with the form
+                        <br />
+                        • Their input is preserved - no retyping!
+                        <br />
+                        • Specific field errors highlighted in red
+                        <br />
+                        • Clear explanation of what went wrong
+                      </Text>
+                    </Card>
+                  </Grid.Col>
+                  <Grid.Col span={{ base: 12, md: 6 }}>
+                    <Card withBorder p="sm">
+                      <Text fw={500} size="sm" mb="xs">
+                        API/JSON Requests (Developers):
+                      </Text>
+                      <Text size="xs">
+                        • Detailed error information in JSON format
+                        <br />
+                        • Field-specific error codes and messages
+                        <br />
+                        • Machine-readable for custom error handling
+                        <br />
+                        • Perfect for dynamic forms and apps
+                      </Text>
+                    </Card>
+                  </Grid.Col>
+                </Grid>
+              </Box>
+
+              <Box>
+                <Text fw={500} mb="xs">
+                  What Happens After Someone Submits Your Form
+                </Text>
+                <Text size="sm" mb="md">
+                  When someone successfully submits your form, Formshive decides what to show them next.
+                  This depends on how your form is set up and how it's being used on your website.
+                  <br /><small>If you prefer to see a diagram: <Anchor size='xs' target='_blank' href="https://mermaid.live/edit#pako:eNqNlF9vmzAUxb-K5eckBZuUPw-b2pBomtZuavKykWjy4CYwgc1soywj-e5zzJrRilblAYE4v3PvuVxocSoywBHelmKf5kxqtIrXHJnjJlkIWaFl86MqlCoE36Dx-B26bSVkhYRUo5pJVoEG-f7UId359qw75roqj2iW3JR7dlDow-ruE3oAVQuuYNMJZ9Zw5ibLJk1BqcioVl8QcVy0L3TeMap7ZortnnEkWbCibCT84zzH6XEgpZB9qt8cFxyOKG5twpwp9JjpeyPLxzSxlX4FZZRDPX5cfr7vCvbpTR--F4YlAyxUtT4Y7sk8LINiOpDL1rKRBtNopEAf0fz1QPP_geZuYr2pQy5SpMVQkvklyaJ9gF8NKI1mgmvgerw61PD05S-smtV1WaRMm625-qkEN6z71im86EDePpfOY2uGMc6YZlcmzRj4edUzY0QHWnlp11538gZaer59eIR3sshwtGWlghGuQFbsfI_bc4k11jlUsMaRuSyLXa7XeM1PhqoZ_yZEhSMtG8NJ0ezyi0tTm3YgLtjOfIMXCfAM5Ew0XOMopFPrgaMW_8aR6wSTwPVDbxq61L-mhI7wAUfEoxM_oNPw2vNJ4HnkNMJ_bFVnElASGiEJCJn6TjDCZjm0kHfdH8P-OE5_AYJ6VO0">Form Submission Flow (mermaid.live/edit)</Anchor></small>
+                </Text>
+                <Grid>
+                  <Grid.Col span={{ base: 12, md: 4 }}>
+                    <Card withBorder p="sm" bg="green.0">
+                      <Text fw={500} size="sm" mb="xs">
+                        Custom Thank You Page:
+                      </Text>
+                      <Text size="xs">
+                        If you set a "Redirect URL" in your form settings, visitors go directly to your
+                        custom thank you page. Perfect for special offers or detailed next steps.
+                      </Text>
+                    </Card>
+                  </Grid.Col>
+
+                  <Grid.Col span={{ base: 12, md: 4 }}>
+                    <Card withBorder p="sm" bg="blue.0">
+                      <Text fw={500} size="sm" mb="xs">
+                        Built-in Success Page:
+                      </Text>
+                      <Text size="xs">
+                        If no redirect URL is set, visitors see a simple "Thank you, your message
+                        was received" page. Clean and professional, works great for most forms.
+                      </Text>
+                    </Card>
+                  </Grid.Col>
+
+                  <Grid.Col span={{ base: 12, md: 4 }}>
+                    <Card withBorder p="sm" bg="gray.0">
+                      <Text fw={500} size="sm" mb="xs">
+                        For Developers (API):
+                      </Text>
+                      <Text size="xs">
+                        JavaScript/AJAX requests get JSON responses instead of page redirects.
+                        Perfect for dynamic forms that don't reload the page.
+                      </Text>
+                    </Card>
+                  </Grid.Col>
+                </Grid>
+
+                <Alert icon={<IconInfoCircle size={16} />} title="Advanced: Override Options" color="blue" mt="sm">
+                  <Text size="sm">
+                    You can add special parameters to your form URL to control what happens:
+                    <br />• <strong>?redirect=html</strong> - Always show the built-in success page
+                    <br />• <strong>?redirect=none</strong> - For developers: return JSON instead of redirecting
+                  </Text>
+                </Alert>
+              </Box>
+
+              <Box>
+                <Text fw={500} mb="xs">
+                  Integration Examples
+                </Text>
+                <Text size="sm" mb="md">
+                  Here are examples of how different integration methods handle form submissions:
+                </Text>
+                <Grid>
+                  <Grid.Col span={{ base: 12, md: 6 }}>
+                    <Card withBorder p="sm">
+                      <Text fw={500} size="sm" mb="xs">
+                        JavaScript (AJAX):
+                      </Text>
+                      <Code block>
+                        {`fetch('/v1/digest/form-id', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    email: 'user@example.com',
+    message: 'Hello!'
+  })
+})`}
+                      </Code>
+                      <Text size="xs" mt="xs" c="blue">
+                        ✅ Success: Gets JSON response<br />
+                        ❌ Error: Gets detailed error JSON for custom handling
+                      </Text>
+                    </Card>
+                  </Grid.Col>
+
+                  <Grid.Col span={{ base: 12, md: 6 }}>
+                    <Card withBorder p="sm">
+                      <Text fw={500} size="sm" mb="xs">
+                        HTML Form:
+                      </Text>
+                      <Code block>
+                        {`<form action="/v1/digest/form-id" 
+      method="POST">
+  <input name="email" type="email">
+  <input name="message">
+  <button type="submit">Send</button>
+</form>`}
+                      </Code>
+                      <Text size="xs" mt="xs" c="green">
+                        ✅ Success: Redirects to thank you page or custom URL<br />
+                        ❌ Error: Shows user-friendly error page with form
+                      </Text>
+                    </Card>
+                  </Grid.Col>
+                </Grid>
+              </Box>
+
+              <Alert icon={<IconInfoCircle size={16} />} title="Pro Tips for Better User Experience" color="blue">
+                <Text size="sm">
+                  • <strong>Set a redirect URL</strong> to send visitors to a custom thank-you page with next steps
+                  <br />
+                  • <strong>Test your forms</strong> by filling them out incorrectly to see the error experience
+                  <br />
+                  • <strong>Keep error messages helpful</strong> - users appreciate clear guidance on how to fix problems
+                  <br />
+                  • <strong>Monitor submissions</strong> in the Messages tab to spot patterns or common user issues
+                </Text>
+              </Alert>
+            </Stack>
+          </Accordion.Panel>
+        </Accordion.Item>
+
         <Accordion.Item value="integration-types">
           <Accordion.Control>
             <Group wrap="nowrap">
@@ -152,6 +371,17 @@ export function Docs() {
                         Manual HTML
                       </Text>
                     </Group>
+                    <Group gap="xs" mb="sm">
+                      <Text size="xs" px="xs" py={2} bg="blue.1" c="blue.8" style={{ borderRadius: '12px', fontWeight: 500 }}>
+                        Existing Forms
+                      </Text>
+                      <Text size="xs" px="xs" py={2} bg="green.1" c="green.8" style={{ borderRadius: '12px', fontWeight: 500 }}>
+                        Very Flexible
+                      </Text>
+                      <Text size="xs" px="xs" py={2} bg="purple.1" c="purple.8" style={{ borderRadius: '12px', fontWeight: 500 }}>
+                        Custom Design
+                      </Text>
+                    </Group>
                     <Text size="xs" mb="sm">
                       Write your own HTML form and point it to Formshive. Perfect if you're
                       comfortable with HTML or have an existing form.
@@ -162,6 +392,16 @@ export function Docs() {
   <button type="submit">Send</button>
 </form>`}
                     </Code>
+                    <Alert color="green" mt="sm">
+                      <Text size="xs">
+                        <strong>✅ Success:</strong> Follows redirect behavior from "Form Submission" - custom URL redirect or built-in success page.
+                      </Text>
+                    </Alert>
+                    <Alert color="yellow" mt="xs">
+                      <Text size="xs">
+                        <strong>⚠️ Validation errors:</strong> Only for forms WITH defined fields (see "Forms With & Without Fields") - shows user-friendly error page with preserved input and highlighted field errors.
+                      </Text>
+                    </Alert>
                   </Card>
                 </Grid.Col>
 
@@ -171,6 +411,17 @@ export function Docs() {
                       <IconBox size={20} />
                       <Text fw={500} size="sm">
                         JavaScript Embed
+                      </Text>
+                    </Group>
+                    <Group gap="xs" mb="sm">
+                      <Text size="xs" px="xs" py={2} bg="orange.1" c="orange.8" style={{ borderRadius: '12px', fontWeight: 500 }}>
+                        Best UX
+                      </Text>
+                      <Text size="xs" px="xs" py={2} bg="teal.1" c="teal.8" style={{ borderRadius: '12px', fontWeight: 500 }}>
+                        No Page Reloads
+                      </Text>
+                      <Text size="xs" px="xs" py={2} bg="pink.1" c="pink.8" style={{ borderRadius: '12px', fontWeight: 500 }}>
+                        Dynamic
                       </Text>
                     </Group>
                     <Text size="xs" mb="sm">
@@ -183,6 +434,16 @@ export function Docs() {
 <script src="formshive-embed.js">
 </script>`}
                     </Code>
+                    <Alert color="green" mt="sm">
+                      <Text size="xs">
+                        <strong>✅ Success:</strong> With redirect URL - redirects page. Without redirect URL - shows inline success message and clears form.
+                      </Text>
+                    </Alert>
+                    <Alert color="yellow" mt="xs">
+                      <Text size="xs">
+                        <strong>⚠️ Validation errors:</strong> For forms WITH defined fields - highlights specific field errors directly in the form with red styling and error messages. Much more user-friendly than page reloads!
+                      </Text>
+                    </Alert>
                   </Card>
                 </Grid.Col>
 
@@ -192,6 +453,17 @@ export function Docs() {
                       <IconFrame size={20} />
                       <Text fw={500} size="sm">
                         IFrame
+                      </Text>
+                    </Group>
+                    <Group gap="xs" mb="sm">
+                      <Text size="xs" px="xs" py={2} bg="green.1" c="green.8" style={{ borderRadius: '12px', fontWeight: 500 }}>
+                        Very Easy
+                      </Text>
+                      <Text size="xs" px="xs" py={2} bg="blue.1" c="blue.8" style={{ borderRadius: '12px', fontWeight: 500 }}>
+                        Works Everywhere
+                      </Text>
+                      <Text size="xs" px="xs" py={2} bg="gray.1" c="gray.8" style={{ borderRadius: '12px', fontWeight: 500 }}>
+                        Copy & Paste
                       </Text>
                     </Group>
                     <Text size="xs" mb="sm">
@@ -204,6 +476,16 @@ export function Docs() {
   width="100%" height="350">
 </iframe>`}
                     </Code>
+                    <Alert color="green" mt="sm">
+                      <Text size="xs">
+                        <strong>✅ Success:</strong> Shows built-in success page within the iframe. Users stay on your website.
+                      </Text>
+                    </Alert>
+                    <Alert color="yellow" mt="xs">
+                      <Text size="xs">
+                        <strong>⚠️ Validation errors:</strong> For forms WITH defined fields - shows error page within iframe with preserved input and field highlighting. Users stay on your site while fixing errors.
+                      </Text>
+                    </Alert>
                   </Card>
                 </Grid.Col>
 
@@ -215,6 +497,17 @@ export function Docs() {
                         Direct Link
                       </Text>
                     </Group>
+                    <Group gap="xs" mb="sm">
+                      <Text size="xs" px="xs" py={2} bg="green.1" c="green.8" style={{ borderRadius: '12px', fontWeight: 500 }}>
+                        Very Easy
+                      </Text>
+                      <Text size="xs" px="xs" py={2} bg="violet.1" c="violet.8" style={{ borderRadius: '12px', fontWeight: 500 }}>
+                        Social Media
+                      </Text>
+                      <Text size="xs" px="xs" py={2} bg="indigo.1" c="indigo.8" style={{ borderRadius: '12px', fontWeight: 500 }}>
+                        Standalone
+                      </Text>
+                    </Group>
                     <Text size="xs" mb="sm">
                       Share a direct link to your form. Great for emails, social media, or when you
                       want a standalone form page.
@@ -224,6 +517,16 @@ export function Docs() {
 ?form_id=your-form-id
 &title=Contact%20Us`}
                     </Code>
+                    <Alert color="green" mt="sm">
+                      <Text size="xs">
+                        <strong>✅ Success:</strong> Full-page experience - follows your form's redirect settings from "Form Submission" (custom URL or success page).
+                      </Text>
+                    </Alert>
+                    <Alert color="yellow" mt="xs">
+                      <Text size="xs">
+                        <strong>⚠️ Validation errors:</strong> For forms WITH defined fields - shows full-page error experience with preserved input and field highlighting. Users can easily fix and resubmit.
+                      </Text>
+                    </Alert>
                   </Card>
                 </Grid.Col>
               </Grid>
@@ -425,6 +728,7 @@ export function Docs() {
                       <br />• <strong>Phone:</strong> Phone number input
                       <br />• <strong>URL:</strong> Website links with validation
                       <br />• <strong>Date:</strong> Date picker
+                      <br />• <strong>File:</strong> File upload
                       <br />• <strong>Select:</strong> Dropdown menu
                       <br />• <strong>Radio:</strong> Choose one option
                       <br />• <strong>Checkbox:</strong> Multiple selections
