@@ -1,4 +1,4 @@
-import { LOGIN_METHOD, Session } from '@gofranz/common';
+import { LOGIN_METHOD, LoginRequest, Session } from '@gofranz/common';
 import {
   LoginCallbackPage,
   LoginPage,
@@ -14,6 +14,7 @@ import { useTranslation } from 'react-i18next';
 import { Route, Routes } from 'react-router-dom';
 import { AccountBillingSubscriptionsPage } from '../../pages/Account/Billing/Subscriptions.page';
 import { AccountBillingUsagePage } from '../../pages/Account/Billing/Usage.page';
+import { AccountDocsPage } from '../../pages/Account/Docs.page';
 import { AccountFormCreatePage } from '../../pages/Account/Forms/Create.page';
 import { AccountFormsStartPage } from '../../pages/Account/Forms/Start.page';
 import { AccountFormViewPage } from '../../pages/Account/Forms/View.page';
@@ -24,7 +25,6 @@ import { AccountIntegrationViewPage } from '../../pages/Account/Integrations/Vie
 import { AccountMessagesStartPage } from '../../pages/Account/Messags/Start.page';
 import { AccountProfilePage } from '../../pages/Account/Profile.page';
 import { AccountReferralsPage } from '../../pages/Account/Referrals.page';
-import { AccountDocsPage } from '../../pages/Account/Docs.page';
 import { DocsPage } from '../../pages/Docs.page';
 import { HomePage } from '../../pages/Home.page';
 import { IntegrationsPage } from '../../pages/Integrations.page';
@@ -69,13 +69,15 @@ export function LanguageRoutes({ languagePrefix }: LanguageRoutesProps) {
         path="/login"
         element={
           <LoginPage
-            login={async (loginRequest) => {
+            login={async (loginRequest: LoginRequest) => {
               const state = useRustyState.getState();
               if (loginRequest.type === LOGIN_METHOD.NOSTR) {
                 return await state.api.auth!.login(loginRequest);
               } else if (loginRequest.type === LOGIN_METHOD.EMAIL_MAGIC_LINK) {
                 return await state.api.auth!.login(loginRequest);
               } else if (loginRequest.type === LOGIN_METHOD.GOOGLE) {
+                return await state.api.auth!.login(loginRequest);
+              } else if (loginRequest.type === LOGIN_METHOD.GITHUB) {
                 return await state.api.auth!.login(loginRequest);
               }
               throw new Error('Unsupported login method');

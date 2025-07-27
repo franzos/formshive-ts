@@ -119,6 +119,27 @@ export interface FormAnalyticsResponse {
 	data: FormAnalyticsByDay[];
 }
 
+export enum CssFramework {
+	Bulma = "bulma",
+	Bootstrap = "bootstrap",
+	Formshive = "formshive",
+}
+
+/** * Default:
+ * - If redirect URL is set, redirect to that URL */
+export enum FormRedirectOverride {
+	RedirectToSuccessHtml = "html",
+	NoRedirect = "none",
+}
+
+export interface FormHtmlOptions {
+	css_framework?: CssFramework;
+	css_embed?: boolean;
+	iframe?: boolean;
+	track?: boolean;
+	redirect?: FormRedirectOverride;
+}
+
 export interface FormRecipientsQueryParams {
 	limit: number;
 	offset: number;
@@ -251,6 +272,10 @@ export interface IntegrationsApiResponse {
 export interface IntegrationsQueryParams {
 	limit: number;
 	offset: number;
+}
+
+export interface JsonRedirect {
+	redirect_url: string;
 }
 
 export interface KitIntegrationConfig {
