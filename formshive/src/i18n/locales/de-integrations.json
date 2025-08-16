@@ -1,0 +1,311 @@
+{
+  "integrations": {
+    "pipedrive": {
+      "title": "Pipedrive CRM Integration",
+      "subtitle": "Automatische Erstellung von Kontakten und Leads in Ihrem CRM",
+      "description": "Verbinden Sie Ihre Formulare direkt mit Pipedrive CRM. Jede Formularübermittlung erstellt automatisch eine Person in Ihrem CRM und optional einen Lead, den Ihr Vertriebsteam bearbeiten kann.",
+      "howItWorks": {
+        "title": "So funktioniert es",
+        "description": "Über Pipedrives REST API werden Ihre Formularübermittlungen sofort in CRM-Kontakte umgewandelt. Sie können konfigurieren, ob nur eine Person oder sowohl eine Person als auch einen Lead für die Vertriebsbearbeitung erstellt werden soll."
+      },
+      "fieldHandling": {
+        "title": "Feldbehandlung & Datenspeicherung:",
+        "requiredFields": "**Pflichtfelder:**",
+        "nameField": "• `name` oder `first_name + last_name` - Vollständiger Name der Person (gespeichert als Pipedrive person.name)",
+        "optionalFields": "**Optionale Felder (automatisch zugeordnet):**",
+        "emailField": "• `email` - Gespeichert im person.email Array",
+        "phoneField": "• `phone` - Gespeichert im person.phone Array",
+        "customFields": "• Benutzerdefinierte Felder über Feldzuordnung - Gespeichert in benutzerdefinierten Personenfeldern",
+        "leadCreation": "**Lead-Erstellung (falls aktiviert):**",
+        "leadTitle": "• Lead-Titel verwendet Vorlage (Standard: \"Web Form Lead: Formularname\")",
+        "leadLink": "• Verknüpft automatisch mit erstellter Person",
+        "leadInherit": "• Übernimmt Eigentümer- und Organisationseinstellungen"
+      },
+      "setupSteps": {
+        "title": "Einrichtungsschritte:",
+        "getApiToken": "1. **API-Token abrufen:** Gehen Sie zu Einstellungen → Persönliche Einstellungen → API in Ihrem Pipedrive-Konto",
+        "copyDomain": "2. **Domain kopieren:** Ihre Pipedrive-URL (z.B. ihrfirma.pipedrive.com)",
+        "createIntegration": "3. **Integration erstellen:** Neue Pipedrive-Integration in Formshive hinzufügen",
+        "configureOptions": "4. **Optionen konfigurieren:** Lead-Erstellung, Eigentümer und benutzerdefinierte Felder einrichten",
+        "test": "5. **Testen:** Formular übermitteln, um zu überprüfen, ob die Integration funktioniert"
+      },
+      "features": {
+        "title": "Funktionen:",
+        "personCreation": "Personenerstellung",
+        "leadGeneration": "Lead-Generierung",
+        "customFields": "Benutzerdefinierte Felder",
+        "ownerAssignment": "Eigentümerzuweisung",
+        "organizationLinking": "Organisationsverknüpfung"
+      },
+      "whatYouGet": {
+        "title": "Was Sie erhalten",
+        "automaticCreation": "• Automatische Kontakterstellung mit E-Mail, Telefon und benutzerdefinierten Daten",
+        "optionalLead": "• Optional Lead-Erstellung für Vertriebsbearbeitung",
+        "configurableAssignment": "• Konfigurierbare Eigentümer- und Organisationszuweisung",
+        "customFieldMapping": "• Benutzerdefinierte Feldzuordnung für erweiterte Datenerfassung"
+      }
+    },
+    "mailchimp": {
+      "title": "Mailchimp E-Mail-Marketing",
+      "subtitle": "Formularübermittler zu Ihren E-Mail-Marketing-Listen hinzufügen",
+      "description": "Fügen Sie Formularübermittlungen automatisch zu Ihren Mailchimp-Zielgruppenlisten hinzu. Perfekt für Newsletter-Anmeldungen, Lead-Magnete und den Aufbau Ihrer E-Mail-Marketing-Datenbank mit ordnungsgemäßer Segmentierung.",
+      "howItWorks": {
+        "title": "So funktioniert es",
+        "description": "Über Mailchimps Marketing API werden Formularübermittlungen als Abonnenten zu Ihrer gewählten Zielgruppe hinzugefügt. Sie können Merge-Felder, Tags und Double-Opt-in-Einstellungen für Compliance und Organisation konfigurieren."
+      },
+      "fieldHandling": {
+        "title": "Feldbehandlung & Datenspeicherung:",
+        "requiredFields": "**Pflichtfelder:**",
+        "emailField": "• `email` - E-Mail-Adresse des Abonnenten (gespeichert als Mailchimp member.email_address)",
+        "optionalFields": "**Optionale Felder (über Merge-Feld-Zuordnung):**",
+        "firstNameField": "• `first_name` - Wird standardmäßig dem FNAME Merge-Feld zugeordnet",
+        "lastNameField": "• `last_name` - Wird standardmäßig dem LNAME Merge-Feld zugeordnet",
+        "phoneField": "• `phone` - Wird standardmäßig dem PHONE Merge-Feld zugeordnet",
+        "customFields": "• Beliebige benutzerdefinierte Formularfelder - Zuordnung zu benutzerdefinierten Mailchimp Merge-Feldern",
+        "additionalFeatures": "**Zusätzliche Funktionen:**",
+        "tags": "• Tags - Automatisch zur Segmentierung angewendet",
+        "status": "• Status - \"subscribed\" (sofort) oder \"pending\" (Double-Opt-in)",
+        "doubleOptin": "• Double-Opt-in - Sendet Bestätigungs-E-Mail für DSGVO-Konformität"
+      },
+      "setupSteps": {
+        "title": "Einrichtungsschritte:",
+        "getApiKey": "1. **API-Schlüssel abrufen:** Gehen Sie zu Konto → Extras → API-Schlüssel in Ihrem Mailchimp-Konto",
+        "findListId": "2. **Listen-ID finden:** Gehen Sie zu Zielgruppe → Einstellungen → Zielgruppenname und Standards",
+        "createIntegration": "3. **Integration erstellen:** Neue Mailchimp-Integration in Formshive hinzufügen",
+        "configureFields": "4. **Felder konfigurieren:** Formularfelder den Mailchimp Merge-Feldern zuordnen",
+        "setOptions": "5. **Optionen festlegen:** Tags, Double-Opt-in und Abonnentenstatus konfigurieren",
+        "test": "6. **Testen:** Formular übermitteln, um zu überprüfen, ob der Abonnent hinzugefügt wird"
+      },
+      "features": {
+        "title": "Funktionen:",
+        "audienceAddition": "Zielgruppenerweiterung",
+        "mergeFields": "Merge-Felder",
+        "tagManagement": "Tag-Verwaltung",
+        "doubleOptin": "Double-Opt-in",
+        "statusControl": "Status-Kontrolle"
+      },
+      "whatYouGet": {
+        "title": "Was Sie erhalten",
+        "automaticSubscriber": "• Automatisches Hinzufügen von Abonnenten zu Ihrer Zielgruppe",
+        "customMergeField": "• Benutzerdefinierte Merge-Feld-Zuordnung (Name, Telefon, etc.)",
+        "automaticTagging": "• Automatisches Tagging zur Segmentierung",
+        "doubleOptinCompliance": "• Double-Opt-in-Konformitätsunterstützung",
+        "configurableStatus": "• Konfigurierbarer Abonnentenstatus (subscribed/pending)"
+      }
+    },
+    "kit": {
+      "title": "Kit (ConvertKit) Integration",
+      "subtitle": "Abonnenten zu Ihren Kit E-Mail-Marketing-Formularen hinzufügen",
+      "description": "Fügen Sie Formularübermittlungen automatisch zu Ihren Kit (früher ConvertKit) E-Mail-Marketing-Formularen hinzu. Perfekt für Newsletter-Anmeldungen, Lead-Magnete und den Aufbau Ihrer Abonnentenbasis mit ordnungsgemäßer Segmentierung und Tagging.",
+      "howItWorks": {
+        "title": "So funktioniert es",
+        "description": "Über Kits v4 API werden Formularübermittlungen als Abonnenten zu Ihren angegebenen Formularen hinzugefügt. Sie können benutzerdefinierte Felder, Tags und Feldzuordnungen für erweiterte Abonnentenverwaltung konfigurieren."
+      },
+      "fieldHandling": {
+        "title": "Feldbehandlung & Datenspeicherung:",
+        "requiredFields": "**Pflichtfelder:**",
+        "emailField": "• `email` - E-Mail-Adresse des Abonnenten (gespeichert als Kit subscriber.email_address)",
+        "optionalFields": "**Optionale Felder (über benutzerdefinierte Feldzuordnung):**",
+        "firstNameField": "• `first_name` - Wird standardmäßig dem first_name benutzerdefinierten Feld zugeordnet",
+        "lastNameField": "• `last_name` - Wird standardmäßig dem last_name benutzerdefinierten Feld zugeordnet",
+        "companyField": "• `company` - Wird standardmäßig dem company benutzerdefinierten Feld zugeordnet",
+        "customFields": "• Beliebige benutzerdefinierte Formularfelder - Zuordnung zu Kit benutzerdefinierten Feldern über Feldzuordnung",
+        "twoStepProcess": "**Zweistufiger Prozess:**",
+        "stepOne": "• Schritt 1: Abonnenten mit benutzerdefinierten Feldern und Tags erstellen/aktualisieren",
+        "stepTwo": "• Schritt 2: Abonnenten zu angegebenem Formular für Automatisierungsauslöser hinzufügen",
+        "tagsApplied": "• Tags automatisch zur Segmentierung und Automatisierung angewendet"
+      },
+      "setupSteps": {
+        "title": "Einrichtungsschritte:",
+        "getApiKey": "1. **API-Schlüssel abrufen:** Gehen Sie zu Kontoeinstellungen → API-Schlüssel in Ihrem Kit-Konto",
+        "findFormId": "2. **Formular-ID finden:** Gehen Sie zu Formulare → Ihr Formular auswählen → Formular-ID aus der URL kopieren",
+        "createIntegration": "3. **Integration erstellen:** Neue Kit-Integration in Formshive hinzufügen",
+        "configureFields": "4. **Felder konfigurieren:** Formularfelder den Kit benutzerdefinierten Feldern zuordnen",
+        "setTags": "5. **Tags festlegen:** Standard-Tags für Abonnentensegmentierung konfigurieren",
+        "test": "6. **Testen:** Formular übermitteln, um zu überprüfen, ob der Abonnent hinzugefügt wird"
+      },
+      "features": {
+        "title": "Funktionen:",
+        "subscriberAddition": "Abonnentenerweiterung",
+        "customFields": "Benutzerdefinierte Felder",
+        "tagManagement": "Tag-Verwaltung",
+        "formIntegration": "Formularintegration",
+        "fieldMapping": "Feldzuordnung"
+      },
+      "whatYouGet": {
+        "title": "Was Sie erhalten",
+        "automaticSubscriber": "• Automatisches Hinzufügen von Abonnenten zu Ihren Kit-Formularen",
+        "customFieldMapping": "• Benutzerdefinierte Feldzuordnung (Name, Telefon, Firma, etc.)",
+        "automaticTagging": "• Automatisches Tagging für erweiterte Segmentierung",
+        "twoStepProcess": "• Zweistufiger Prozess: Abonnenten erstellen, dann zu Formular hinzufügen",
+        "kitCompatibility": "• Vollständige Kit v4 API-Kompatibilität"
+      }
+    },
+    "zapier": {
+      "title": "Zapier Integration",
+      "subtitle": "Verbindung zu über 8.000 Apps ohne Programmierung",
+      "description": "Zapier ermöglicht es Ihren Formularübermittlungen, Aktionen in Tausenden von anderen Apps wie Google Sheets, Mailchimp, Airtable und mehr auszulösen. Einmal eingerichtet, senden Ihre Formulare automatisch Daten dorthin, wo Sie sie benötigen.",
+      "howItWorks": {
+        "title": "So funktioniert es",
+        "description": "Erstellen Sie eine Webhook-Integration in Formshive und verwenden Sie dann diese URL in Zapier als \"Webhooks by Zapier\" Trigger. Zapier empfängt automatisch Ihre Formularübermittlungen und kann sie an jede verbundene App weiterleiten."
+      },
+      "fieldHandling": {
+        "title": "Feldbehandlung & Datenformat:",
+        "allFieldsIncluded": "**Alle Formularfelder enthalten:**",
+        "jsonPayload": "• Alle Formularübermittlungsdaten als JSON-Payload gesendet",
+        "integrationId": "• Integrations-ID und Metadaten für Verfolgung enthalten",
+        "dataStructure": "**Datenstruktur:**",
+        "integrationField": "• `integration` - Enthält Integrations-ID und Verfolgungsinformationen",
+        "dataField": "• `data` - Alle Formularfelder mit ihren Werten",
+        "standardWebhook": "• Standard-Webhook-Format kompatibel mit den meisten Zapier-Automatisierungen",
+        "zapierProcessing": "**Zapier-Verarbeitung:**",
+        "automaticParsing": "• Zapier analysiert automatisch alle Felder zur Verwendung in nachfolgenden Aktionen",
+        "filterTransform": "• Kann Daten filtern, transformieren oder an über 8.000 verbundene Apps weiterleiten",
+        "noFieldMapping": "• Keine Feldzuordnung erforderlich - alle Daten sind automatisch verfügbar"
+      },
+      "setupSteps": {
+        "title": "Einrichtungsschritte:",
+        "createWebhook": "1. **Webhook-Integration erstellen:** In Formshive eine neue Webhook-Integration erstellen und URL kopieren",
+        "newZap": "2. **Neuer Zap in Zapier:** Neuen Zap erstellen und \"Webhooks by Zapier\" als Trigger wählen",
+        "selectCatchHook": "3. **\"Catch Hook\" auswählen:** Diese Option wählen, um Webhook-Daten zu empfangen",
+        "pasteWebhookUrl": "4. **Webhook-URL einfügen:** URL aus Schritt 1 als Webhook-URL verwenden",
+        "testConnect": "5. **Testen & Verbinden:** Testformular übermitteln, um zu überprüfen, ob die Verbindung funktioniert",
+        "addActions": "6. **Aktionen hinzufügen:** Mit einer der über 8.000 Apps von Zapier verbinden"
+      },
+      "popularConnections": {
+        "title": "Beliebte Zapier-Verbindungen:",
+        "googleSheets": "Google Sheets",
+        "mailchimp": "Mailchimp",
+        "airtable": "Airtable",
+        "trello": "Trello",
+        "gmail": "Gmail",
+        "moreApps": "+8.000 weitere"
+      }
+    },
+    "slack": {
+      "title": "Slack Integration",
+      "subtitle": "Sofortige Benachrichtigungen in Ihren Slack-Kanälen erhalten",
+      "description": "Senden Sie Formularübermittlungen direkt an Ihre Slack-Kanäle. Perfekt für Team-Benachrichtigungen, Lead-Alerts oder immer dann, wenn Sie sofortige Sichtbarkeit der Formularaktivitäten benötigen.",
+      "howItWorks": {
+        "title": "So funktioniert es",
+        "description": "Slack bietet eingehende Webhook-URLs, mit denen Sie Nachrichten an bestimmte Kanäle senden können. Wenn jemand Ihr Formular übermittelt, postet Formshive automatisch eine formatierte Nachricht in Ihren gewählten Slack-Kanal."
+      },
+      "fieldHandling": {
+        "title": "Feldbehandlung & Nachrichtenformat:",
+        "allFieldsDisplayed": "**Alle Formularfelder angezeigt:**",
+        "allDataIncluded": "• Alle übermittelten Formulardaten in Slack-Nachricht enthalten",
+        "formattedBlocks": "• Formatiert als lesbare Nachrichtenblöcke mit klaren Feldbezeichnungen",
+        "timestampIncluded": "• Zeitstempel und Formulartitel automatisch enthalten",
+        "messageStructure": "**Nachrichtenstruktur:**",
+        "headerEmoji": "• Kopfzeile mit Emoji und Formularname",
+        "fieldDisplay": "• Jedes Formularfeld mit Bezeichnung und Wert angezeigt",
+        "submissionTimestamp": "• Übermittlungszeitstempel zur Verfolgung",
+        "optionalLink": "• Optionaler Link zur vollständigen Übermittlung (falls konfiguriert)",
+        "instantDelivery": "**Sofortige Zustellung:**",
+        "immediateMessages": "• Nachrichten erscheinen sofort bei Formularübermittlung",
+        "noPolling": "• Kein Polling oder Verzögerungen - Echtzeit-Benachrichtigungen",
+        "channelVisibility": "• Kanalmitglieder erhalten sofortige Sichtbarkeit der Formularaktivitäten"
+      },
+      "setupSteps": {
+        "title": "Einrichtungsschritte:",
+        "openSlack": "1. **Slack öffnen:** Zu Ihrem Slack-Arbeitsbereich gehen",
+        "createWebhook": "2. **Webhook erstellen:** Besuchen Sie https://api.slack.com/messaging/webhooks",
+        "chooseChannel": "3. **Kanal wählen:** Auswählen, welcher Kanal Formularbenachrichtigungen erhalten soll",
+        "copyWebhookUrl": "4. **Webhook-URL kopieren:** Die von Slack bereitgestellte Webhook-URL kopieren",
+        "addToFormshive": "5. **Zu Formshive hinzufügen:** Neue Slack-Integration erstellen und Webhook-URL einfügen",
+        "test": "6. **Testen:** Testformular übermitteln, um die Benachrichtigung in Slack zu sehen"
+      },
+      "slackPreview": {
+        "title": "Was Sie in Slack sehen werden:",
+        "exampleMessage": "🎯 Neue Kontaktformular-Übermittlung\n\n📧 E-Mail: john@example.com\n👤 Name: John Doe\n💬 Nachricht: Hallo, ich interessiere mich für Ihre Dienstleistungen!\n\n🔗 Vollständige Übermittlung anzeigen → [Link]"
+      },
+      "proTips": {
+        "title": "Profi-Tipps",
+        "differentChannels": "• Verschiedene Kanäle für verschiedene Formulare verwenden (Vertrieb, Support, Feedback)",
+        "mentionSetup": "• @channel oder @here Erwähnungen für dringende Formulartypen einrichten",
+        "instantWebhooks": "• Slack-Webhooks funktionieren sofort - keine Verzögerungen oder Polling"
+      }
+    },
+    "googleSheets": {
+      "title": "Google Sheets Integration",
+      "subtitle": "Formularübermittlungen automatisch zu Google Sheets hinzufügen",
+      "description": "Senden Sie Formularübermittlungen direkt an Google Sheets-Zeilen. Perfekt für Lead-Verfolgung, Datensammlung oder immer dann, wenn Sie Formulardaten in einem Tabellenformat benötigen.",
+      "howItWorks": {
+        "title": "So funktioniert es",
+        "description": "Google Apps Script kann Webhook-URLs erstellen, die automatisch Daten an Ihre Google Sheets anhängen. Jede Formularübermittlung wird zu einer neuen Zeile mit allen Formularfeldern als Spalten."
+      },
+      "fieldHandling": {
+        "title": "Feldbehandlung & Tabellenformat:",
+        "allFieldsAsColumns": "**Alle Formularfelder als Spalten:**",
+        "separateColumns": "• Jedes Formularfeld wird zu einer separaten Spalte in Ihrer Tabelle",
+        "headersAutocreated": "• Kopfzeilen automatisch bei erster Übermittlung erstellt",
+        "dynamicGeneration": "• Dynamische Spaltengenerierung basierend auf Formularstruktur",
+        "standardColumns": "**Standard-Spalten immer enthalten:**",
+        "timestampColumn": "• `Timestamp` - Wann das Formular übermittelt wurde",
+        "formTitleColumn": "• `Form Title` - Name des übermittelten Formulars",
+        "customFieldsIncluded": "• Alle benutzerdefinierten Formularfelder mit ihren ursprünglichen Namen",
+        "dataStorage": "**Datenspeicherung:**",
+        "oneRowPerSubmission": "• Jede Übermittlung = eine neue an Tabelle angehängte Zeile",
+        "dataPreserved": "• Daten genau wie übermittelt erhalten (keine Transformation)",
+        "fullFunctionality": "• Vollständige Google Sheets-Funktionalität für Analysen verfügbar",
+        "realtimeUpdates": "• Echtzeit-Updates bei Formularübermittlungen"
+      },
+      "setupSteps": {
+        "title": "Einrichtungsschritte:",
+        "openGoogleSheets": "1. **Google Sheets öffnen:** Neue Tabelle erstellen oder vorhandene öffnen",
+        "openAppsScript": "2. **Apps Script öffnen:** Zu Erweiterungen → Apps Script gehen",
+        "addCode": "3. **Code hinzufügen:** Webhook-Script einfügen (siehe unten)",
+        "deploy": "4. **Bereitstellen:** Deploy → Neue Bereitstellung → Ausführen als: Ich, Zugriff: Jeder klicken",
+        "copyUrl": "5. **URL kopieren:** Bereitstellungs-Webhook-URL kopieren",
+        "addToFormshive": "6. **Zu Formshive hinzufügen:** Neue Webhook-Integration mit dieser URL erstellen"
+      },
+      "appsScriptCode": {
+        "title": "Google Apps Script Code:",
+        "code": "function doPost(e) {\n  const sheet = SpreadsheetApp.getActiveSheet();\n  const data = JSON.parse(e.postData.contents);\n  \n  // Kopfzeilen hinzufügen, falls erste Zeile\n  if (sheet.getLastRow() === 0) {\n    const headers = ['Timestamp', 'Form Title'];\n    Object.keys(data.data || {}).forEach(key => headers.push(key));\n    sheet.getRange(1, 1, 1, headers.length).setValues([headers]);\n  }\n  \n  // Formulardaten als neue Zeile hinzufügen\n  const row = [\n    new Date(data.submitted_at),\n    data.form_title || 'Untitled Form'\n  ];\n  \n  Object.values(data.data || {}).forEach(value => row.push(value));\n  sheet.appendRow(row);\n  \n  return ContentService.createTextOutput('Success');\n}"
+      },
+      "whatYouGet": {
+        "title": "Was Sie erhalten",
+        "automaticSpreadsheet": "• Automatische Tabelle mit Zeitstempeln",
+        "fieldColumns": "• Jedes Formularfeld wird zu einer Spalte",
+        "realtimeUpdates": "• Echtzeit-Datenaktualisierungen",
+        "fullFunctionality": "• Vollständige Google Sheets-Funktionalität für Analysen"
+      }
+    },
+    "webhook": {
+      "title": "Benutzerdefinierte Webhook-Integration",
+      "subtitle": "Daten an jede API oder jeden Webhook-Endpunkt senden",
+      "description": "Für Entwickler und erweiterte Benutzer: Senden Sie Formularübermittlungen an jeden HTTP-Endpunkt. Perfekt für benutzerdefinierte Integrationen, interne APIs oder Dienste, die nicht von anderen Integrationstypen abgedeckt werden.",
+      "howItWorks": {
+        "title": "So funktioniert es",
+        "description": "Wenn jemand Ihr Formular übermittelt, macht Formshive eine POST-Anfrage an Ihre Webhook-URL mit den Formulardaten als JSON. Ihr Endpunkt kann diese Daten dann nach Bedarf verarbeiten."
+      },
+      "fieldHandling": {
+        "title": "Feldbehandlung & Datenformat:",
+        "completeFormData": "**Vollständige Formulardaten enthalten:**",
+        "allFieldsSent": "• Alle Formularfelder mit ursprünglichen Namen und Werten gesendet",
+        "formMetadata": "• Formular-Metadaten (ID, Titel, Übermittlungszeitstempel)",
+        "integrationDetails": "• Integrationsdetails für Verfolgung und Verarbeitung",
+        "standardHttpPost": "**Standard-HTTP-POST:**",
+        "contentTypeHeader": "• `Content-Type: application/json` Header",
+        "jsonBody": "• JSON-Body mit strukturierten Formulardaten",
+        "successResponse": "• Ihr Endpunkt muss mit 200-299 Status für Erfolg antworten",
+        "flexibleProcessing": "**Flexible Verarbeitung:**",
+        "parseJson": "• JSON parsen, um auf jedes Formularfeld nach Namen zuzugreifen",
+        "integrateAnyApi": "• Integration mit jeder API, Datenbank oder jedem Dienst",
+        "customLogic": "• Benutzerdefinierte Validierung, Transformation und Routing-Logik",
+        "businessWorkflows": "• Perfekt für komplexe Geschäftsprozesse"
+      },
+      "payloadFormat": {
+        "title": "JSON-Payload-Format:",
+        "examplePayload": "{\n  \"form_id\": \"ihre-formular-id\",\n  \"form_title\": \"Kontaktformular\",\n  \"submitted_at\": \"2024-06-28T10:30:00Z\",\n  \"data\": {\n    \"name\": \"John Doe\",\n    \"email\": \"john@example.com\",\n    \"message\": \"Hallo Welt\"\n  },\n  \"integration\": {\n    \"id\": \"integrations-id\",\n    \"title\": \"Mein Webhook\"\n  }\n}"
+      },
+      "requirements": {
+        "title": "Anforderungen:",
+        "acceptPost": "• Ihr Endpunkt muss POST-Anfragen akzeptieren",
+        "responseStatus": "• Muss mit HTTP 200-299 Statuscodes für Erfolg antworten",
+        "handleJson": "• Sollte JSON Content-Type verarbeiten",
+        "httpsRecommended": "• HTTPS-URLs aus Sicherheitsgründen empfohlen"
+      }
+    }
+  }
+}

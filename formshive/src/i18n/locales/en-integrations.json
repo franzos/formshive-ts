@@ -1,0 +1,311 @@
+{
+  "integrations": {
+    "pipedrive": {
+      "title": "Pipedrive CRM Integration",
+      "subtitle": "Automatically create contacts and leads in your CRM",
+      "description": "Connect your forms directly to Pipedrive CRM. Every form submission automatically creates a person in your CRM, and optionally creates a lead for your sales team to follow up on.",
+      "howItWorks": {
+        "title": "How it works",
+        "description": "Using Pipedrive's REST API, your form submissions are instantly converted into CRM contacts. You can configure whether to create just a person, or both a person and a lead for sales follow-up."
+      },
+      "fieldHandling": {
+        "title": "Field Handling & Data Storage:",
+        "requiredFields": "**Required Fields:**",
+        "nameField": "• `name` or `first_name + last_name` - Person's full name (stored as Pipedrive person.name)",
+        "optionalFields": "**Optional Fields (automatically mapped):**",
+        "emailField": "• `email` - Stored in person.email array",
+        "phoneField": "• `phone` - Stored in person.phone array",
+        "customFields": "• Custom fields via field mapping - Stored in person custom fields",
+        "leadCreation": "**Lead Creation (if enabled):**",
+        "leadTitle": "• Lead title uses template (default: \"Web Form Lead: Form Name\")",
+        "leadLink": "• Links to created person automatically",
+        "leadInherit": "• Inherits owner and organization settings"
+      },
+      "setupSteps": {
+        "title": "Setup Steps:",
+        "getApiToken": "1. **Get API Token:** Go to Settings → Personal Preferences → API in your Pipedrive account",
+        "copyDomain": "2. **Copy Domain:** Your Pipedrive URL (e.g., yourcompany.pipedrive.com)",
+        "createIntegration": "3. **Create Integration:** Add new Pipedrive integration in Formshive",
+        "configureOptions": "4. **Configure Options:** Set up lead creation, owners, and custom fields",
+        "test": "5. **Test:** Submit a form to verify the integration works"
+      },
+      "features": {
+        "title": "Features:",
+        "personCreation": "Person Creation",
+        "leadGeneration": "Lead Generation",
+        "customFields": "Custom Fields",
+        "ownerAssignment": "Owner Assignment",
+        "organizationLinking": "Organization Linking"
+      },
+      "whatYouGet": {
+        "title": "What you'll get",
+        "automaticCreation": "• Automatic contact creation with email, phone, and custom data",
+        "optionalLead": "• Optional lead creation for sales follow-up",
+        "configurableAssignment": "• Configurable owner and organization assignment",
+        "customFieldMapping": "• Custom field mapping for advanced data capture"
+      }
+    },
+    "mailchimp": {
+      "title": "Mailchimp Email Marketing",
+      "subtitle": "Add form submitters to your email marketing lists",
+      "description": "Automatically add form submissions to your Mailchimp audience lists. Perfect for newsletter signups, lead magnets, and building your email marketing database with proper segmentation.",
+      "howItWorks": {
+        "title": "How it works",
+        "description": "Using Mailchimp's Marketing API, form submissions are added as subscribers to your chosen audience. You can configure merge fields, tags, and double opt-in settings for compliance and organization."
+      },
+      "fieldHandling": {
+        "title": "Field Handling & Data Storage:",
+        "requiredFields": "**Required Fields:**",
+        "emailField": "• `email` - Subscriber email address (stored as Mailchimp member.email_address)",
+        "optionalFields": "**Optional Fields (via merge field mapping):**",
+        "firstNameField": "• `first_name` - Maps to FNAME merge field by default",
+        "lastNameField": "• `last_name` - Maps to LNAME merge field by default",
+        "phoneField": "• `phone` - Maps to PHONE merge field by default",
+        "customFields": "• Any custom form fields - Map to custom Mailchimp merge fields",
+        "additionalFeatures": "**Additional Features:**",
+        "tags": "• Tags - Applied automatically for segmentation",
+        "status": "• Status - \"subscribed\" (immediate) or \"pending\" (double opt-in)",
+        "doubleOptin": "• Double opt-in - Sends confirmation email for GDPR compliance"
+      },
+      "setupSteps": {
+        "title": "Setup Steps:",
+        "getApiKey": "1. **Get API Key:** Go to Account → Extras → API Keys in your Mailchimp account",
+        "findListId": "2. **Find List ID:** Go to Audience → Settings → Audience name and defaults",
+        "createIntegration": "3. **Create Integration:** Add new Mailchimp integration in Formshive",
+        "configureFields": "4. **Configure Fields:** Map form fields to Mailchimp merge fields",
+        "setOptions": "5. **Set Options:** Configure tags, double opt-in, and subscriber status",
+        "test": "6. **Test:** Submit a form to verify the subscriber is added"
+      },
+      "features": {
+        "title": "Features:",
+        "audienceAddition": "Audience Addition",
+        "mergeFields": "Merge Fields",
+        "tagManagement": "Tag Management",
+        "doubleOptin": "Double Opt-in",
+        "statusControl": "Status Control"
+      },
+      "whatYouGet": {
+        "title": "What you'll get",
+        "automaticSubscriber": "• Automatic subscriber addition to your audience",
+        "customMergeField": "• Custom merge field mapping (name, phone, etc.)",
+        "automaticTagging": "• Automatic tagging for segmentation",
+        "doubleOptinCompliance": "• Double opt-in compliance support",
+        "configurableStatus": "• Configurable subscriber status (subscribed/pending)"
+      }
+    },
+    "kit": {
+      "title": "Kit (ConvertKit) Integration",
+      "subtitle": "Add subscribers to your Kit email marketing forms",
+      "description": "Automatically add form submissions to your Kit (formerly ConvertKit) email marketing forms. Perfect for newsletter signups, lead magnets, and building your subscriber base with proper segmentation and tagging.",
+      "howItWorks": {
+        "title": "How it works",
+        "description": "Using Kit's v4 API, form submissions are added as subscribers to your specified forms. You can configure custom fields, tags, and field mappings for advanced subscriber management."
+      },
+      "fieldHandling": {
+        "title": "Field Handling & Data Storage:",
+        "requiredFields": "**Required Fields:**",
+        "emailField": "• `email` - Subscriber email address (stored as Kit subscriber.email_address)",
+        "optionalFields": "**Optional Fields (via custom field mapping):**",
+        "firstNameField": "• `first_name` - Maps to first_name custom field by default",
+        "lastNameField": "• `last_name` - Maps to last_name custom field by default",
+        "companyField": "• `company` - Maps to company custom field by default",
+        "customFields": "• Any custom form fields - Map to Kit custom fields via field mapping",
+        "twoStepProcess": "**Two-Step Process:**",
+        "stepOne": "• Step 1: Create/update subscriber with custom fields and tags",
+        "stepTwo": "• Step 2: Add subscriber to specified form for automation triggers",
+        "tagsApplied": "• Tags applied automatically for segmentation and automation"
+      },
+      "setupSteps": {
+        "title": "Setup Steps:",
+        "getApiKey": "1. **Get API Key:** Go to Account Settings → API Keys in your Kit account",
+        "findFormId": "2. **Find Form ID:** Go to Forms → Select your form → Copy the form ID from the URL",
+        "createIntegration": "3. **Create Integration:** Add new Kit integration in Formshive",
+        "configureFields": "4. **Configure Fields:** Map form fields to Kit custom fields",
+        "setTags": "5. **Set Tags:** Configure default tags for subscriber segmentation",
+        "test": "6. **Test:** Submit a form to verify the subscriber is added"
+      },
+      "features": {
+        "title": "Features:",
+        "subscriberAddition": "Subscriber Addition",
+        "customFields": "Custom Fields",
+        "tagManagement": "Tag Management",
+        "formIntegration": "Form Integration",
+        "fieldMapping": "Field Mapping"
+      },
+      "whatYouGet": {
+        "title": "What you'll get",
+        "automaticSubscriber": "• Automatic subscriber addition to your Kit forms",
+        "customFieldMapping": "• Custom field mapping (name, phone, company, etc.)",
+        "automaticTagging": "• Automatic tagging for advanced segmentation",
+        "twoStepProcess": "• Two-step process: create subscriber then add to form",
+        "kitCompatibility": "• Full Kit v4 API compatibility"
+      }
+    },
+    "zapier": {
+      "title": "Zapier Integration",
+      "subtitle": "Connect to 8,000+ apps with zero coding",
+      "description": "Zapier lets your form submissions trigger actions in thousands of other apps like Google Sheets, Mailchimp, Airtable, and more. Set up once, and your forms will automatically send data wherever you need it.",
+      "howItWorks": {
+        "title": "How it works",
+        "description": "Create a webhook integration in Formshive, then use that URL in Zapier as a \"Webhooks by Zapier\" trigger. Zapier will automatically receive your form submissions and can forward them to any connected app."
+      },
+      "fieldHandling": {
+        "title": "Field Handling & Data Format:",
+        "allFieldsIncluded": "**All Form Fields Included:**",
+        "jsonPayload": "• All form submission data sent as JSON payload",
+        "integrationId": "• Integration ID and metadata included for tracking",
+        "dataStructure": "**Data Structure:**",
+        "integrationField": "• `integration` - Contains integration ID and tracking info",
+        "dataField": "• `data` - All form fields with their values",
+        "standardWebhook": "• Standard webhook format compatible with most Zapier automations",
+        "zapierProcessing": "**Zapier Processing:**",
+        "automaticParsing": "• Zapier automatically parses all fields for use in subsequent actions",
+        "filterTransform": "• Can filter, transform, or route data to 8,000+ connected apps",
+        "noFieldMapping": "• No field mapping required - all data is automatically available"
+      },
+      "setupSteps": {
+        "title": "Setup Steps:",
+        "createWebhook": "1. **Create Webhook Integration:** In Formshive, create a new webhook integration and copy the URL",
+        "newZap": "2. **New Zap in Zapier:** Create a new Zap and choose \"Webhooks by Zapier\" as the trigger",
+        "selectCatchHook": "3. **Select \"Catch Hook\":** Choose this option to receive webhook data",
+        "pasteWebhookUrl": "4. **Paste Webhook URL:** Use the URL from step 1 as your webhook URL",
+        "testConnect": "5. **Test & Connect:** Submit a test form to verify the connection works",
+        "addActions": "6. **Add Actions:** Connect to any of Zapier's 8,000+ apps"
+      },
+      "popularConnections": {
+        "title": "Popular Zapier Connections:",
+        "googleSheets": "Google Sheets",
+        "mailchimp": "Mailchimp",
+        "airtable": "Airtable",
+        "trello": "Trello",
+        "gmail": "Gmail",
+        "moreApps": "+8,000 more"
+      }
+    },
+    "slack": {
+      "title": "Slack Integration",
+      "subtitle": "Get instant notifications in your Slack channels",
+      "description": "Send form submissions directly to your Slack channels. Perfect for team notifications, lead alerts, or any time you need instant visibility into form activity.",
+      "howItWorks": {
+        "title": "How it works",
+        "description": "Slack provides incoming webhook URLs that let you send messages to specific channels. When someone submits your form, Formshive will automatically post a formatted message to your chosen Slack channel."
+      },
+      "fieldHandling": {
+        "title": "Field Handling & Message Format:",
+        "allFieldsDisplayed": "**All Form Fields Displayed:**",
+        "allDataIncluded": "• All submitted form data included in Slack message",
+        "formattedBlocks": "• Formatted as readable message blocks with clear field labels",
+        "timestampIncluded": "• Timestamp and form title automatically included",
+        "messageStructure": "**Message Structure:**",
+        "headerEmoji": "• Header with emoji and form name",
+        "fieldDisplay": "• Each form field displayed with label and value",
+        "submissionTimestamp": "• Submission timestamp for tracking",
+        "optionalLink": "• Optional link to full submission (if configured)",
+        "instantDelivery": "**Instant Delivery:**",
+        "immediateMessages": "• Messages appear immediately when form is submitted",
+        "noPolling": "• No polling or delays - real-time notifications",
+        "channelVisibility": "• Channel members get instant visibility into form activity"
+      },
+      "setupSteps": {
+        "title": "Setup Steps:",
+        "openSlack": "1. **Open Slack:** Go to your Slack workspace",
+        "createWebhook": "2. **Create Webhook:** Visit https://api.slack.com/messaging/webhooks",
+        "chooseChannel": "3. **Choose Channel:** Select which channel should receive form notifications",
+        "copyWebhookUrl": "4. **Copy Webhook URL:** Copy the webhook URL that Slack provides",
+        "addToFormshive": "5. **Add to Formshive:** Create a new Slack integration and paste the webhook URL",
+        "test": "6. **Test:** Submit a test form to see the notification in Slack"
+      },
+      "slackPreview": {
+        "title": "What you'll see in Slack:",
+        "exampleMessage": "🎯 New Contact Form Submission\n\n📧 Email: john@example.com\n👤 Name: John Doe\n💬 Message: Hello, I'm interested in your services!\n\n🔗 View Full Submission → [Link]"
+      },
+      "proTips": {
+        "title": "Pro Tips",
+        "differentChannels": "• Use different channels for different forms (sales, support, feedback)",
+        "mentionSetup": "• Set up @channel or @here mentions for urgent form types",
+        "instantWebhooks": "• Slack webhooks work instantly - no delays or polling"
+      }
+    },
+    "googleSheets": {
+      "title": "Google Sheets Integration",
+      "subtitle": "Automatically add form submissions to Google Sheets",
+      "description": "Send form submissions directly to Google Sheets rows. Perfect for lead tracking, data collection, or any time you need form data in a spreadsheet format.",
+      "howItWorks": {
+        "title": "How it works",
+        "description": "Google Apps Script can create webhook URLs that automatically append data to your Google Sheets. Each form submission becomes a new row with all the form fields as columns."
+      },
+      "fieldHandling": {
+        "title": "Field Handling & Spreadsheet Format:",
+        "allFieldsAsColumns": "**All Form Fields as Columns:**",
+        "separateColumns": "• Each form field becomes a separate column in your sheet",
+        "headersAutocreated": "• Headers automatically created on first submission",
+        "dynamicGeneration": "• Dynamic column generation based on form structure",
+        "standardColumns": "**Standard Columns Always Included:**",
+        "timestampColumn": "• `Timestamp` - When the form was submitted",
+        "formTitleColumn": "• `Form Title` - Name of the form that was submitted",
+        "customFieldsIncluded": "• All custom form fields with their original names",
+        "dataStorage": "**Data Storage:**",
+        "oneRowPerSubmission": "• Each submission = one new row appended to sheet",
+        "dataPreserved": "• Data preserved exactly as submitted (no transformation)",
+        "fullFunctionality": "• Full Google Sheets functionality available for analysis",
+        "realtimeUpdates": "• Real-time updates when forms are submitted"
+      },
+      "setupSteps": {
+        "title": "Setup Steps:",
+        "openGoogleSheets": "1. **Open Google Sheets:** Create a new spreadsheet or open an existing one",
+        "openAppsScript": "2. **Open Apps Script:** Go to Extensions → Apps Script",
+        "addCode": "3. **Add Code:** Paste the webhook script (see below)",
+        "deploy": "4. **Deploy:** Click Deploy → New deployment → Execute as: Me, Access: Anyone",
+        "copyUrl": "5. **Copy URL:** Copy the deployment webhook URL",
+        "addToFormshive": "6. **Add to Formshive:** Create a new webhook integration with this URL"
+      },
+      "appsScriptCode": {
+        "title": "Google Apps Script Code:",
+        "code": "function doPost(e) {\n  const sheet = SpreadsheetApp.getActiveSheet();\n  const data = JSON.parse(e.postData.contents);\n  \n  // Add headers if first row\n  if (sheet.getLastRow() === 0) {\n    const headers = ['Timestamp', 'Form Title'];\n    Object.keys(data.data || {}).forEach(key => headers.push(key));\n    sheet.getRange(1, 1, 1, headers.length).setValues([headers]);\n  }\n  \n  // Add form data as new row\n  const row = [\n    new Date(data.submitted_at),\n    data.form_title || 'Untitled Form'\n  ];\n  \n  Object.values(data.data || {}).forEach(value => row.push(value));\n  sheet.appendRow(row);\n  \n  return ContentService.createTextOutput('Success');\n}"
+      },
+      "whatYouGet": {
+        "title": "What you'll get",
+        "automaticSpreadsheet": "• Automatic spreadsheet with timestamps",
+        "fieldColumns": "• Each form field becomes a column",
+        "realtimeUpdates": "• Real-time data updates",
+        "fullFunctionality": "• Full Google Sheets functionality for analysis"
+      }
+    },
+    "webhook": {
+      "title": "Custom Webhook Integration",
+      "subtitle": "Send data to any API or webhook endpoint",
+      "description": "For developers and advanced users: send form submissions to any HTTP endpoint. Perfect for custom integrations, internal APIs, or services not covered by other integration types.",
+      "howItWorks": {
+        "title": "How it works",
+        "description": "When someone submits your form, Formshive will make a POST request to your webhook URL with the form data as JSON. Your endpoint can then process this data however you need."
+      },
+      "fieldHandling": {
+        "title": "Field Handling & Data Format:",
+        "completeFormData": "**Complete Form Data Included:**",
+        "allFieldsSent": "• All form fields sent with original names and values",
+        "formMetadata": "• Form metadata (ID, title, submission timestamp)",
+        "integrationDetails": "• Integration details for tracking and processing",
+        "standardHttpPost": "**Standard HTTP POST:**",
+        "contentTypeHeader": "• `Content-Type: application/json` header",
+        "jsonBody": "• JSON body with structured form data",
+        "successResponse": "• Your endpoint must respond with 200-299 status for success",
+        "flexibleProcessing": "**Flexible Processing:**",
+        "parseJson": "• Parse JSON to access any form field by name",
+        "integrateAnyApi": "• Integrate with any API, database, or service",
+        "customLogic": "• Custom validation, transformation, and routing logic",
+        "businessWorkflows": "• Perfect for complex business workflows"
+      },
+      "payloadFormat": {
+        "title": "JSON Payload Format:",
+        "examplePayload": "{\n  \"form_id\": \"your-form-id\",\n  \"form_title\": \"Contact Form\",\n  \"submitted_at\": \"2024-06-28T10:30:00Z\",\n  \"data\": {\n    \"name\": \"John Doe\",\n    \"email\": \"john@example.com\",\n    \"message\": \"Hello world\"\n  },\n  \"integration\": {\n    \"id\": \"integration-id\",\n    \"title\": \"My Webhook\"\n  }\n}"
+      },
+      "requirements": {
+        "title": "Requirements:",
+        "acceptPost": "• Your endpoint must accept POST requests",
+        "responseStatus": "• Must respond with HTTP 200-299 status codes for success",
+        "handleJson": "• Should handle JSON content-type",
+        "httpsRecommended": "• HTTPS URLs recommended for security"
+      }
+    }
+  }
+}

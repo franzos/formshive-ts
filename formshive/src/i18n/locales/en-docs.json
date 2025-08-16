@@ -1,0 +1,310 @@
+{
+  "docs": {
+    "whatIsFormshive": {
+      "title": "What is Formshive?",
+      "subtitle": "Learn the basics of Formshive",
+      "description": "Formshive is a simple tool that helps you create web forms and collect submissions from your website visitors. Think of it like a digital mailbox - people fill out your forms, and you receive their messages.",
+      "keyBenefits": {
+        "title": "Key Benefits",
+        "noCoding": "No coding required for basic forms",
+        "multipleWays": "Multiple ways to integrate with your website",
+        "spamProtection": "Automatic spam protection",
+        "emailNotifications": "Email notifications when someone submits"
+      }
+    },
+    "formsWithWithoutFields": {
+      "title": "Forms With & Without Fields",
+      "subtitle": "Understanding how Formshive handles different types of forms",
+      "withFields": {
+        "title": "Forms WITH Fields (Structured)",
+        "description": "When you define specific fields (like \"Name\", \"Email\", \"Message\"), Formshive knows exactly what to expect. This gives you more features like validation, required fields, and prettier form layouts.",
+        "benefits": {
+          "title": "✅ Benefits:",
+          "professionalLooking": "Professional-looking forms",
+          "emailValidation": "Email validation",
+          "requiredFields": "Required field checking",
+          "dropdowns": "Dropdown menus and checkboxes",
+          "spamProtection": "Better spam protection"
+        }
+      },
+      "withoutFields": {
+        "title": "Forms WITHOUT Fields (Flexible)",
+        "description": "You can also create a form that accepts ANY content - whatever someone sends, you'll receive. This is perfect for simple contact forms or when you want maximum flexibility.",
+        "bestFor": {
+          "title": "⚡ Best for:",
+          "quickContact": "Quick contact forms",
+          "existingHtml": "Existing HTML forms",
+          "maxFlexibility": "When you need maximum flexibility",
+          "feedback": "Simple feedback collection"
+        }
+      }
+    },
+    "formSubmission": {
+      "title": "Form Submission",
+      "subtitle": "How form submissions work and what happens after users submit",
+      "description": "When someone submits your form, Formshive processes the data through several validation steps and then responds based on your form configuration and the type of request.",
+      "validation": {
+        "title": "Validation Process",
+        "description": "Every form submission goes through comprehensive validation to ensure data quality and security. If validation fails, users receive detailed error messages.",
+        "steps": {
+          "title": "Validation Steps:",
+          "formExists": "1. **Form exists:** Verifies the form ID is valid",
+          "captcha": "2. **CAPTCHA check:** Validates anti-spam challenge (if enabled)",
+          "fieldValidation": "3. **Field validation:** Checks required fields, email format, etc. (if enabled)",
+          "spamDetection": "4. **Spam detection:** Analyzes content for spam patterns (if enabled)"
+        }
+      },
+      "errorHandling": {
+        "title": "User-Friendly Error Handling",
+        "description": "When someone makes a mistake filling out your form, Formshive provides helpful, clear error messages. Instead of losing their work, users see exactly what needs to be fixed, with their original input preserved.",
+        "htmlForms": {
+          "title": "HTML Forms (Website Visitors):",
+          "seeErrorPage": "See a friendly error page with the form",
+          "inputPreserved": "Their input is preserved - no retyping!",
+          "fieldErrors": "Specific field errors highlighted in red",
+          "clearExplanation": "Clear explanation of what went wrong"
+        },
+        "apiRequests": {
+          "title": "API/JSON Requests (Developers):",
+          "detailedError": "Detailed error information in JSON format",
+          "fieldSpecific": "Field-specific error codes and messages",
+          "machineReadable": "Machine-readable for custom error handling",
+          "perfectForDynamic": "Perfect for dynamic forms and apps"
+        }
+      },
+      "afterSubmission": {
+        "title": "What Happens After Someone Submits Your Form",
+        "description": "When someone successfully submits your form, Formshive decides what to show them next. This depends on how your form is set up and how it's being used on your website.",
+        "diagramNote": "If you prefer to see a diagram: ",
+        "diagramLink": "Form Submission Flow (mermaid.live/edit)",
+        "customThankYou": {
+          "title": "Custom Thank You Page:",
+          "description": "If you set a \"Redirect URL\" in your form settings, visitors go directly to your custom thank you page. Perfect for special offers or detailed next steps."
+        },
+        "builtInSuccess": {
+          "title": "Built-in Success Page:",
+          "description": "If no redirect URL is set, visitors see a simple \"Thank you, your message was received\" page. Clean and professional, works great for most forms."
+        },
+        "forDevelopers": {
+          "title": "For Developers (API):",
+          "description": "JavaScript/AJAX requests get JSON responses instead of page redirects. Perfect for dynamic forms that don't reload the page."
+        },
+        "overrideOptions": {
+          "title": "Advanced: Override Options",
+          "description": "You can add special parameters to your form URL to control what happens:",
+          "redirectHtml": "• **?redirect=html** - Always show the built-in success page",
+          "redirectNone": "• **?redirect=none** - For developers: return JSON instead of redirecting"
+        }
+      },
+      "integrationExamples": {
+        "title": "Integration Examples",
+        "description": "Here are examples of how different integration methods handle form submissions:",
+        "javascript": {
+          "title": "JavaScript (AJAX):",
+          "code": "fetch('/v1/digest/form-id', {\n  method: 'POST',\n  headers: {\n    'Content-Type': 'application/json'\n  },\n  body: JSON.stringify({\n    email: 'user@example.com',\n    message: 'Hello!'\n  })\n})",
+          "success": "✅ Success: Gets JSON response",
+          "error": "❌ Error: Gets detailed error JSON for custom handling"
+        },
+        "htmlForm": {
+          "title": "HTML Form:",
+          "code": "<form action=\"/v1/digest/form-id\" \n      method=\"POST\">\n  <input name=\"email\" type=\"email\">\n  <input name=\"message\">\n  <button type=\"submit\">Send</button>\n</form>",
+          "success": "✅ Success: Redirects to thank you page or custom URL",
+          "error": "❌ Error: Shows user-friendly error page with form"
+        }
+      },
+      "proTips": {
+        "title": "Pro Tips for Better User Experience",
+        "setRedirect": "• **Set a redirect URL** to send visitors to a custom thank-you page with next steps",
+        "testForms": "• **Test your forms** by filling them out incorrectly to see the error experience",
+        "helpfulErrors": "• **Keep error messages helpful** - users appreciate clear guidance on how to fix problems",
+        "monitor": "• **Monitor submissions** in the Messages tab to spot patterns or common user issues"
+      }
+    },
+    "integrationMethods": {
+      "title": "Integration Methods",
+      "subtitle": "Different ways to add forms to your website",
+      "description": "Formshive offers several ways to integrate forms into your website, from simple copy-paste solutions to advanced customization.",
+      "manual": {
+        "title": "Manual HTML",
+        "tags": {
+          "existingForms": "Existing Forms",
+          "veryFlexible": "Very Flexible",
+          "customDesign": "Custom Design"
+        },
+        "description": "Write your own HTML form and point it to Formshive. Perfect if you're comfortable with HTML or have an existing form.",
+        "code": "<form action=\"your-form-url\" method=\"POST\">\n  <input name=\"email\" type=\"email\">\n  <button type=\"submit\">Send</button>\n</form>",
+        "success": "**✅ Success:** Follows redirect behavior from \"Form Submission\" - custom URL redirect or built-in success page.",
+        "validation": "**⚠️ Validation errors:** Only for forms WITH defined fields (see \"Forms With & Without Fields\") - shows user-friendly error page with preserved input and highlighted field errors."
+      },
+      "javascript": {
+        "title": "JavaScript Embed",
+        "tags": {
+          "bestUx": "Best UX",
+          "noPageReloads": "No Page Reloads",
+          "dynamic": "Dynamic"
+        },
+        "description": "Add a small script to your website and Formshive creates the form automatically. Works great with defined fields.",
+        "code": "<div id=\"formshive\" form-id=\"your-id\">\n</div>\n<script src=\"formshive-embed.js\">\n</script>",
+        "success": "**✅ Success:** With redirect URL - redirects page. Without redirect URL - shows inline success message and clears form.",
+        "validation": "**⚠️ Validation errors:** For forms WITH defined fields - highlights specific field errors directly in the form with red styling and error messages. Much more user-friendly than page reloads!"
+      },
+      "iframe": {
+        "title": "IFrame",
+        "tags": {
+          "veryEasy": "Very Easy",
+          "worksEverywhere": "Works Everywhere",
+          "copyPaste": "Copy & Paste"
+        },
+        "description": "Embed a complete form as a frame on your page. Easy to add, works everywhere, with different styling options.",
+        "code": "<iframe \n  src=\"your-form-url\"\n  width=\"100%\" height=\"350\">\n</iframe>",
+        "success": "**✅ Success:** Shows built-in success page within the iframe. Users stay on your website.",
+        "validation": "**⚠️ Validation errors:** For forms WITH defined fields - shows error page within iframe with preserved input and field highlighting. Users stay on your site while fixing errors."
+      },
+      "directLink": {
+        "title": "Direct Link",
+        "tags": {
+          "veryEasy": "Very Easy",
+          "socialMedia": "Social Media",
+          "standalone": "Standalone"
+        },
+        "description": "Share a direct link to your form. Great for emails, social media, or when you want a standalone form page.",
+        "code": "https://formshive.com/link.html\n?form_id=your-form-id\n&title=Contact%20Us",
+        "success": "**✅ Success:** Full-page experience - follows your form's redirect settings from \"Form Submission\" (custom URL or success page).",
+        "validation": "**⚠️ Validation errors:** For forms WITH defined fields - shows full-page error experience with preserved input and field highlighting. Users can easily fix and resubmit."
+      },
+      "whichMethod": {
+        "title": "Which method should I choose?",
+        "beginners": "**Beginners:** Start with IFrame or Direct Link - they're the easiest!",
+        "existingForms": "**Existing forms:** Use Manual HTML to keep your current design",
+        "advancedUsers": "**Advanced users:** JavaScript Embed gives you the most flexibility"
+      }
+    },
+    "emailSetup": {
+      "title": "Email Recipients",
+      "subtitle": "Getting notified when someone submits your form",
+      "description": "When someone fills out your form, Formshive can send you an email notification. You can add multiple email addresses to receive these notifications.",
+      "verification": {
+        "title": "Email Verification Required",
+        "description": "For security, you'll need to verify your email address before you can receive form submissions. This prevents spam and ensures you actually own the email address."
+      },
+      "howItWorks": {
+        "title": "How it works:",
+        "addEmail": "1. **Add your email:** Enter the email address where you want to receive notifications",
+        "checkInbox": "2. **Check your inbox:** Look for a verification email from Formshive",
+        "clickVerify": "3. **Click to verify:** Click the verification link in the email",
+        "ready": "4. **You're ready!** Start receiving form submissions immediately"
+      },
+      "multipleRecipients": {
+        "title": "Multiple Recipients",
+        "description": "You can add multiple verified email addresses to a single form. This is great for teams where multiple people need to see form submissions."
+      }
+    },
+    "captchaSetup": {
+      "title": "CAPTCHA Setup",
+      "subtitle": "Protect your forms from spam and bots",
+      "description": "CAPTCHA is like a security guard for your forms. It helps block spam messages and ensures that real people are filling out your forms, not automated bots.",
+      "howItWorks": {
+        "title": "How CAPTCHA Works",
+        "description": "When someone tries to submit your form, they'll need to solve a simple math problem. This takes just a few seconds for humans but stops most spam bots completely."
+      },
+      "setup": {
+        "title": "Setting up CAPTCHA (3 easy steps):",
+        "enable": "1. **Enable CAPTCHA:** Go to your form settings and turn on \"Check Challenge\"",
+        "updateWebsite": "2. **Update your website:** Your website needs a small script to show the CAPTCHA",
+        "test": "3. **Test it:** Try submitting your form to make sure it works"
+      },
+      "benefits": {
+        "title": "Benefits of Using CAPTCHA:",
+        "left": {
+          "blocksSpam": "✅ **Blocks spam:** Dramatically reduces unwanted messages",
+          "noTracking": "✅ **No tracking:** Privacy-friendly and GDPR compliant",
+          "free": "✅ **Free to use:** No extra charges for blocked spam"
+        },
+        "right": {
+          "quickForUsers": "⚡ **Quick for users:** Takes just 2-3 seconds to complete",
+          "worksEverywhere": "⚡ **Works everywhere:** Compatible with all integration methods",
+          "alwaysImproving": "⚡ **Always improving:** Automatically updated for better protection"
+        }
+      },
+      "technicalHelp": {
+        "title": "Need Technical Help?",
+        "description": "For detailed setup instructions and code examples, check the **Integration** tab when editing your form. It has all the technical details and copy-paste code you need."
+      }
+    },
+    "fieldConfiguration": {
+      "title": "Field Configuration",
+      "subtitle": "Customizing your form fields",
+      "description": "When you create forms with defined fields, you can customize each field to behave exactly how you want.",
+      "fieldTypes": {
+        "title": "Field Types Available:",
+        "text": "• **Text:** Single line text input",
+        "email": "• **Email:** Email with automatic validation",
+        "textarea": "• **Textarea:** Multi-line text for longer messages",
+        "number": "• **Number:** Only accepts numbers",
+        "phone": "• **Phone:** Phone number input",
+        "url": "• **URL:** Website links with validation",
+        "date": "• **Date:** Date picker",
+        "file": "• **File:** File upload",
+        "select": "• **Select:** Dropdown menu",
+        "radio": "• **Radio:** Choose one option",
+        "checkbox": "• **Checkbox:** Multiple selections"
+      },
+      "validationOptions": {
+        "title": "Validation Options:",
+        "required": "• **Required fields:** Must be filled out",
+        "emailValidation": "• **Email validation:** Checks for valid email format",
+        "urlValidation": "• **URL validation:** Ensures proper web links",
+        "customOptions": "• **Custom options:** For dropdowns and selections",
+        "helpText": "• **Help text:** Instructions for users",
+        "placeholders": "• **Placeholders:** Example text in fields"
+      },
+      "proTip": {
+        "title": "Pro Tip",
+        "description": "Start simple with just a few fields like Name, Email, and Message. You can always add more fields later as your needs grow!"
+      }
+    },
+    "tomlConfiguration": {
+      "title": "Programmatic Field Configuration (TOML)",
+      "subtitle": "Advanced form configuration using code",
+      "advancedOnly": {
+        "title": "For Advanced Users Only",
+        "description": "This section is for developers and advanced users who prefer to configure forms using code. If you're comfortable with the visual form builder, you can skip this section entirely."
+      },
+      "description": "Instead of using the visual form builder, you can define your form fields using TOML configuration. This gives you more precise control and makes it easier to version control your form specifications. TOML (Tom's Obvious, Minimal Language) is a simple configuration format that lets you define form fields, validation rules, and behavior using structured text instead of clicking through menus.",
+      "basicExample": {
+        "title": "Basic Example:",
+        "code": "[field]\nname = \"email\"\nfield = \"email\"\nlabel = \"Your Email\"\nplaceholder = \"Enter your email address\"\nrequired = true\nis_email = true\n\n[field]\nname = \"message\"\nfield = \"textarea\"\nlabel = \"Message\"\nplaceholder = \"Tell us what you think\"\nrequired = true\nis_min = 10"
+      },
+      "fieldTypesAvailable": {
+        "title": "Field Types Available:",
+        "text": "• **text:** Single line text input",
+        "email": "• **email:** Email with validation",
+        "textarea": "• **textarea:** Multi-line text area",
+        "select": "• **select:** Dropdown menu",
+        "checkbox": "• **checkbox:** Multiple choice options",
+        "number": "• **number:** Numeric input"
+      },
+      "validationOptions": {
+        "title": "Validation Options:",
+        "required": "• **required:** Field must be filled",
+        "isEmail": "• **is_email:** Validates email format",
+        "isMin": "• **is_min:** Minimum length/value",
+        "isMax": "• **is_max:** Maximum length/value",
+        "options": "• **options:** Valid choices for select/checkbox",
+        "checkSpam": "• **check_spam:** Enable spam detection"
+      },
+      "benefits": {
+        "title": "Benefits of TOML Configuration:",
+        "versionControl": "✨ **Version Control:** Track changes to your forms over time",
+        "reusable": "✨ **Reusable:** Copy configurations between forms easily",
+        "preciseControl": "✨ **Precise Control:** Fine-tune validation and behavior",
+        "teamCollaboration": "✨ **Team Collaboration:** Share form specs without account access",
+        "advancedFeatures": "✨ **Advanced Features:** Access to all validation options"
+      },
+      "gettingStarted": {
+        "title": "Getting Started",
+        "description": "To use TOML configuration, go to your form's **Form Fields (Optional)** section and paste your TOML specification into the text area. The system will validate your configuration and show any errors that need to be fixed."
+      }
+    }
+  }
+}

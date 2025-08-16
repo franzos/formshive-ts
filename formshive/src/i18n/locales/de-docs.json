@@ -1,0 +1,310 @@
+{
+  "docs": {
+    "whatIsFormshive": {
+      "title": "Was ist Formshive?",
+      "subtitle": "Lernen Sie die Grundlagen von Formshive kennen",
+      "description": "Formshive ist ein einfaches Tool, das Ihnen hilft, Web-Formulare zu erstellen und Einsendungen von Ihren Website-Besuchern zu sammeln. Stellen Sie es sich wie einen digitalen Briefkasten vor - Personen füllen Ihre Formulare aus und Sie erhalten deren Nachrichten.",
+      "keyBenefits": {
+        "title": "Hauptvorteile",
+        "noCoding": "Keine Programmierung für einfache Formulare erforderlich",
+        "multipleWays": "Mehrere Möglichkeiten zur Integration in Ihre Website",
+        "spamProtection": "Automatischer Spam-Schutz",
+        "emailNotifications": "E-Mail-Benachrichtigungen bei Einsendungen"
+      }
+    },
+    "formsWithWithoutFields": {
+      "title": "Formulare mit & ohne Felder",
+      "subtitle": "Verstehen, wie Formshive verschiedene Arten von Formularen verarbeitet",
+      "withFields": {
+        "title": "Formulare MIT Feldern (Strukturiert)",
+        "description": "Wenn Sie spezifische Felder definieren (wie \"Name\", \"E-Mail\", \"Nachricht\"), weiß Formshive genau, was zu erwarten ist. Dies bietet Ihnen mehr Funktionen wie Validierung, Pflichtfelder und ansprechendere Formular-Layouts.",
+        "benefits": {
+          "title": "✅ Vorteile:",
+          "professionalLooking": "Professionell aussehende Formulare",
+          "emailValidation": "E-Mail-Validierung",
+          "requiredFields": "Überprüfung von Pflichtfeldern",
+          "dropdowns": "Dropdown-Menüs und Checkboxen",
+          "spamProtection": "Besserer Spam-Schutz"
+        }
+      },
+      "withoutFields": {
+        "title": "Formulare OHNE Felder (Flexibel)",
+        "description": "Sie können auch ein Formular erstellen, das JEDEN Inhalt akzeptiert - was auch immer jemand sendet, Sie werden es erhalten. Dies ist perfekt für einfache Kontaktformulare oder wenn Sie maximale Flexibilität benötigen.",
+        "bestFor": {
+          "title": "⚡ Ideal für:",
+          "quickContact": "Schnelle Kontaktformulare",
+          "existingHtml": "Bestehende HTML-Formulare",
+          "maxFlexibility": "Wenn Sie maximale Flexibilität benötigen",
+          "feedback": "Einfache Feedback-Sammlung"
+        }
+      }
+    },
+    "formSubmission": {
+      "title": "Formular-Einsendung",
+      "subtitle": "Wie Formular-Einsendungen funktionieren und was nach dem Absenden passiert",
+      "description": "Wenn jemand Ihr Formular einsendet, verarbeitet Formshive die Daten durch mehrere Validierungsschritte und antwortet dann basierend auf Ihrer Formular-Konfiguration und der Art der Anfrage.",
+      "validation": {
+        "title": "Validierungsprozess",
+        "description": "Jede Formular-Einsendung durchläuft eine umfassende Validierung, um Datenqualität und Sicherheit zu gewährleisten. Bei fehlgeschlagener Validierung erhalten Benutzer detaillierte Fehlermeldungen.",
+        "steps": {
+          "title": "Validierungsschritte:",
+          "formExists": "1. **Formular existiert:** Überprüft, ob die Formular-ID gültig ist",
+          "captcha": "2. **CAPTCHA-Prüfung:** Validiert die Anti-Spam-Herausforderung (falls aktiviert)",
+          "fieldValidation": "3. **Feldvalidierung:** Überprüft Pflichtfelder, E-Mail-Format usw. (falls aktiviert)",
+          "spamDetection": "4. **Spam-Erkennung:** Analysiert Inhalte auf Spam-Muster (falls aktiviert)"
+        }
+      },
+      "errorHandling": {
+        "title": "Benutzerfreundliche Fehlerbehandlung",
+        "description": "Wenn jemand einen Fehler beim Ausfüllen Ihres Formulars macht, bietet Formshive hilfreiche, klare Fehlermeldungen. Anstatt ihre Arbeit zu verlieren, sehen Benutzer genau, was behoben werden muss, wobei ihre ursprüngliche Eingabe erhalten bleibt.",
+        "htmlForms": {
+          "title": "HTML-Formulare (Website-Besucher):",
+          "seeErrorPage": "Sehen eine freundliche Fehlerseite mit dem Formular",
+          "inputPreserved": "Ihre Eingabe bleibt erhalten - kein erneutes Tippen!",
+          "fieldErrors": "Spezifische Feldfehler rot hervorgehoben",
+          "clearExplanation": "Klare Erklärung, was schiefgelaufen ist"
+        },
+        "apiRequests": {
+          "title": "API/JSON-Anfragen (Entwickler):",
+          "detailedError": "Detaillierte Fehlerinformationen im JSON-Format",
+          "fieldSpecific": "Feldspezifische Fehlercodes und Nachrichten",
+          "machineReadable": "Maschinenlesbar für benutzerdefinierte Fehlerbehandlung",
+          "perfectForDynamic": "Perfekt für dynamische Formulare und Apps"
+        }
+      },
+      "afterSubmission": {
+        "title": "Was passiert, nachdem jemand Ihr Formular absendet",
+        "description": "Wenn jemand Ihr Formular erfolgreich einsendet, entscheidet Formshive, was als nächstes angezeigt wird. Dies hängt davon ab, wie Ihr Formular eingerichtet ist und wie es auf Ihrer Website verwendet wird.",
+        "diagramNote": "Wenn Sie ein Diagramm bevorzugen: ",
+        "diagramLink": "Formular-Einsendungsablauf (mermaid.live/edit)",
+        "customThankYou": {
+          "title": "Benutzerdefinierte Dankesseite:",
+          "description": "Wenn Sie eine \"Weiterleitungs-URL\" in Ihren Formular-Einstellungen festlegen, gehen Besucher direkt zu Ihrer benutzerdefinierten Dankesseite. Perfekt für spezielle Angebote oder detaillierte nächste Schritte."
+        },
+        "builtInSuccess": {
+          "title": "Integrierte Erfolgsseite:",
+          "description": "Wenn keine Weiterleitungs-URL festgelegt ist, sehen Besucher eine einfache \"Vielen Dank, Ihre Nachricht wurde erhalten\"-Seite. Sauber und professionell, funktioniert großartig für die meisten Formulare."
+        },
+        "forDevelopers": {
+          "title": "Für Entwickler (API):",
+          "description": "JavaScript/AJAX-Anfragen erhalten JSON-Antworten anstelle von Seitenweiterleitungen. Perfekt für dynamische Formulare, die die Seite nicht neu laden."
+        },
+        "overrideOptions": {
+          "title": "Erweitert: Überschreibungsoptionen",
+          "description": "Sie können spezielle Parameter zu Ihrer Formular-URL hinzufügen, um zu steuern, was passiert:",
+          "redirectHtml": "• **?redirect=html** - Immer die integrierte Erfolgsseite anzeigen",
+          "redirectNone": "• **?redirect=none** - Für Entwickler: JSON zurückgeben statt weiterleiten"
+        }
+      },
+      "integrationExamples": {
+        "title": "Integrationsbeispiele",
+        "description": "Hier sind Beispiele, wie verschiedene Integrationsmethoden Formular-Einsendungen handhaben:",
+        "javascript": {
+          "title": "JavaScript (AJAX):",
+          "code": "fetch('/v1/digest/form-id', {\n  method: 'POST',\n  headers: {\n    'Content-Type': 'application/json'\n  },\n  body: JSON.stringify({\n    email: 'user@example.com',\n    message: 'Hallo!'\n  })\n})",
+          "success": "✅ Erfolg: Erhält JSON-Antwort",
+          "error": "❌ Fehler: Erhält detailliertes Fehler-JSON für benutzerdefinierte Behandlung"
+        },
+        "htmlForm": {
+          "title": "HTML-Formular:",
+          "code": "<form action=\"/v1/digest/form-id\" \n      method=\"POST\">\n  <input name=\"email\" type=\"email\">\n  <input name=\"message\">\n  <button type=\"submit\">Senden</button>\n</form>",
+          "success": "✅ Erfolg: Leitet zur Dankesseite oder benutzerdefinierten URL weiter",
+          "error": "❌ Fehler: Zeigt benutzerfreundliche Fehlerseite mit Formular"
+        }
+      },
+      "proTips": {
+        "title": "Profi-Tipps für bessere Benutzererfahrung",
+        "setRedirect": "• **Weiterleitungs-URL festlegen**, um Besucher zu einer benutzerdefinierten Dankesseite mit nächsten Schritten zu senden",
+        "testForms": "• **Formulare testen**, indem Sie sie falsch ausfüllen, um die Fehlererfahrung zu sehen",
+        "helpfulErrors": "• **Fehlermeldungen hilfreich halten** - Benutzer schätzen klare Anweisungen zur Problemlösung",
+        "monitor": "• **Einsendungen überwachen** im Nachrichten-Tab, um Muster oder häufige Benutzerprobleme zu erkennen"
+      }
+    },
+    "integrationMethods": {
+      "title": "Integrationsmethoden",
+      "subtitle": "Verschiedene Wege, Formulare zu Ihrer Website hinzuzufügen",
+      "description": "Formshive bietet mehrere Möglichkeiten, Formulare in Ihre Website zu integrieren, von einfachen Kopieren-und-Einfügen-Lösungen bis hin zu erweiterten Anpassungen.",
+      "manual": {
+        "title": "Manuelles HTML",
+        "tags": {
+          "existingForms": "Bestehende Formulare",
+          "veryFlexible": "Sehr flexibel",
+          "customDesign": "Benutzerdefiniertes Design"
+        },
+        "description": "Schreiben Sie Ihr eigenes HTML-Formular und verweisen Sie es auf Formshive. Perfekt, wenn Sie sich mit HTML auskennen oder ein bestehendes Formular haben.",
+        "code": "<form action=\"ihre-formular-url\" method=\"POST\">\n  <input name=\"email\" type=\"email\">\n  <button type=\"submit\">Senden</button>\n</form>",
+        "success": "**✅ Erfolg:** Folgt dem Weiterleitungsverhalten aus \"Formular-Einsendung\" - benutzerdefinierte URL-Weiterleitung oder integrierte Erfolgsseite.",
+        "validation": "**⚠️ Validierungsfehler:** Nur für Formulare MIT definierten Feldern (siehe \"Formulare mit & ohne Felder\") - zeigt benutzerfreundliche Fehlerseite mit erhaltener Eingabe und hervorgehobenen Feldfehlern."
+      },
+      "javascript": {
+        "title": "JavaScript-Einbettung",
+        "tags": {
+          "bestUx": "Beste UX",
+          "noPageReloads": "Keine Seitenneuladen",
+          "dynamic": "Dynamisch"
+        },
+        "description": "Fügen Sie ein kleines Skript zu Ihrer Website hinzu und Formshive erstellt das Formular automatisch. Funktioniert großartig mit definierten Feldern.",
+        "code": "<div id=\"formshive\" form-id=\"ihre-id\">\n</div>\n<script src=\"formshive-embed.js\">\n</script>",
+        "success": "**✅ Erfolg:** Mit Weiterleitungs-URL - leitet Seite weiter. Ohne Weiterleitungs-URL - zeigt Inline-Erfolgsmeldung und leert Formular.",
+        "validation": "**⚠️ Validierungsfehler:** Für Formulare MIT definierten Feldern - hebt spezifische Feldfehler direkt im Formular mit roter Formatierung und Fehlermeldungen hervor. Viel benutzerfreundlicher als Seitenneuladen!"
+      },
+      "iframe": {
+        "title": "IFrame",
+        "tags": {
+          "veryEasy": "Sehr einfach",
+          "worksEverywhere": "Funktioniert überall",
+          "copyPaste": "Kopieren & Einfügen"
+        },
+        "description": "Betten Sie ein vollständiges Formular als Rahmen auf Ihrer Seite ein. Einfach hinzuzufügen, funktioniert überall, mit verschiedenen Styling-Optionen.",
+        "code": "<iframe \n  src=\"ihre-formular-url\"\n  width=\"100%\" height=\"350\">\n</iframe>",
+        "success": "**✅ Erfolg:** Zeigt integrierte Erfolgsseite innerhalb des iframes. Benutzer bleiben auf Ihrer Website.",
+        "validation": "**⚠️ Validierungsfehler:** Für Formulare MIT definierten Feldern - zeigt Fehlerseite innerhalb des iframes mit erhaltener Eingabe und Feldhervorhebung. Benutzer bleiben auf Ihrer Seite während der Fehlerbehebung."
+      },
+      "directLink": {
+        "title": "Direkter Link",
+        "tags": {
+          "veryEasy": "Sehr einfach",
+          "socialMedia": "Soziale Medien",
+          "standalone": "Eigenständig"
+        },
+        "description": "Teilen Sie einen direkten Link zu Ihrem Formular. Großartig für E-Mails, soziale Medien oder wenn Sie eine eigenständige Formularseite möchten.",
+        "code": "https://formshive.com/link.html\n?form_id=ihre-formular-id\n&title=Kontakt",
+        "success": "**✅ Erfolg:** Vollseitige Erfahrung - folgt den Weiterleitungseinstellungen Ihres Formulars aus \"Formular-Einsendung\" (benutzerdefinierte URL oder Erfolgsseite).",
+        "validation": "**⚠️ Validierungsfehler:** Für Formulare MIT definierten Feldern - zeigt vollseitige Fehlererfahrung mit erhaltener Eingabe und Feldhervorhebung. Benutzer können einfach korrigieren und erneut absenden."
+      },
+      "whichMethod": {
+        "title": "Welche Methode soll ich wählen?",
+        "beginners": "**Anfänger:** Beginnen Sie mit IFrame oder Direktem Link - sie sind am einfachsten!",
+        "existingForms": "**Bestehende Formulare:** Verwenden Sie manuelles HTML, um Ihr aktuelles Design beizubehalten",
+        "advancedUsers": "**Fortgeschrittene Benutzer:** JavaScript-Einbettung bietet Ihnen die meiste Flexibilität"
+      }
+    },
+    "emailSetup": {
+      "title": "E-Mail-Empfänger",
+      "subtitle": "Benachrichtigt werden, wenn jemand Ihr Formular einsendet",
+      "description": "Wenn jemand Ihr Formular ausfüllt, kann Formshive Ihnen eine E-Mail-Benachrichtigung senden. Sie können mehrere E-Mail-Adressen hinzufügen, um diese Benachrichtigungen zu erhalten.",
+      "verification": {
+        "title": "E-Mail-Verifizierung erforderlich",
+        "description": "Aus Sicherheitsgründen müssen Sie Ihre E-Mail-Adresse verifizieren, bevor Sie Formular-Einsendungen erhalten können. Dies verhindert Spam und stellt sicher, dass Sie tatsächlich die E-Mail-Adresse besitzen."
+      },
+      "howItWorks": {
+        "title": "So funktioniert es:",
+        "addEmail": "1. **E-Mail hinzufügen:** Geben Sie die E-Mail-Adresse ein, an die Sie Benachrichtigungen erhalten möchten",
+        "checkInbox": "2. **Posteingang prüfen:** Suchen Sie nach einer Verifizierungs-E-Mail von Formshive",
+        "clickVerify": "3. **Zum Verifizieren klicken:** Klicken Sie auf den Verifizierungslink in der E-Mail",
+        "ready": "4. **Sie sind bereit!** Beginnen Sie sofort mit dem Empfang von Formular-Einsendungen"
+      },
+      "multipleRecipients": {
+        "title": "Mehrere Empfänger",
+        "description": "Sie können mehrere verifizierte E-Mail-Adressen zu einem einzelnen Formular hinzufügen. Dies ist großartig für Teams, in denen mehrere Personen Formular-Einsendungen sehen müssen."
+      }
+    },
+    "captchaSetup": {
+      "title": "CAPTCHA-Einrichtung",
+      "subtitle": "Schützen Sie Ihre Formulare vor Spam und Bots",
+      "description": "CAPTCHA ist wie ein Sicherheitswächter für Ihre Formulare. Es hilft dabei, Spam-Nachrichten zu blockieren und sicherzustellen, dass echte Menschen Ihre Formulare ausfüllen, nicht automatisierte Bots.",
+      "howItWorks": {
+        "title": "Wie CAPTCHA funktioniert",
+        "description": "Wenn jemand versucht, Ihr Formular einzusenden, muss er ein einfaches Mathe-Problem lösen. Dies dauert nur wenige Sekunden für Menschen, stoppt aber die meisten Spam-Bots vollständig."
+      },
+      "setup": {
+        "title": "CAPTCHA einrichten (3 einfache Schritte):",
+        "enable": "1. **CAPTCHA aktivieren:** Gehen Sie zu Ihren Formular-Einstellungen und aktivieren Sie \"Herausforderung prüfen\"",
+        "updateWebsite": "2. **Website aktualisieren:** Ihre Website benötigt ein kleines Skript, um das CAPTCHA anzuzeigen",
+        "test": "3. **Testen:** Versuchen Sie, Ihr Formular einzusenden, um sicherzustellen, dass es funktioniert"
+      },
+      "benefits": {
+        "title": "Vorteile der CAPTCHA-Verwendung:",
+        "left": {
+          "blocksSpam": "✅ **Blockiert Spam:** Reduziert unerwünschte Nachrichten drastisch",
+          "noTracking": "✅ **Kein Tracking:** Datenschutzfreundlich und DSGVO-konform",
+          "free": "✅ **Kostenlos zu verwenden:** Keine zusätzlichen Gebühren für blockierten Spam"
+        },
+        "right": {
+          "quickForUsers": "⚡ **Schnell für Benutzer:** Dauert nur 2-3 Sekunden zum Vervollständigen",
+          "worksEverywhere": "⚡ **Funktioniert überall:** Kompatibel mit allen Integrationsmethoden",
+          "alwaysImproving": "⚡ **Ständig verbessernd:** Automatisch für besseren Schutz aktualisiert"
+        }
+      },
+      "technicalHelp": {
+        "title": "Benötigen Sie technische Hilfe?",
+        "description": "Für detaillierte Einrichtungsanweisungen und Code-Beispiele schauen Sie im **Integration**-Tab beim Bearbeiten Ihres Formulars nach. Es enthält alle technischen Details und kopierbaren Code, den Sie benötigen."
+      }
+    },
+    "fieldConfiguration": {
+      "title": "Feldkonfiguration",
+      "subtitle": "Anpassen Ihrer Formularfelder",
+      "description": "Wenn Sie Formulare mit definierten Feldern erstellen, können Sie jedes Feld so anpassen, dass es sich genau so verhält, wie Sie es möchten.",
+      "fieldTypes": {
+        "title": "Verfügbare Feldtypen:",
+        "text": "• **Text:** Einzeilige Texteingabe",
+        "email": "• **E-Mail:** E-Mail mit automatischer Validierung",
+        "textarea": "• **Textbereich:** Mehrzeilige Texteingabe für längere Nachrichten",
+        "number": "• **Zahl:** Akzeptiert nur Zahlen",
+        "phone": "• **Telefon:** Telefonnummer-Eingabe",
+        "url": "• **URL:** Website-Links mit Validierung",
+        "date": "• **Datum:** Datumsauswahl",
+        "file": "• **Datei:** Datei-Upload",
+        "select": "• **Auswahl:** Dropdown-Menü",
+        "radio": "• **Radio:** Eine Option wählen",
+        "checkbox": "• **Checkbox:** Mehrfachauswahl"
+      },
+      "validationOptions": {
+        "title": "Validierungsoptionen:",
+        "required": "• **Pflichtfelder:** Müssen ausgefüllt werden",
+        "emailValidation": "• **E-Mail-Validierung:** Überprüft gültiges E-Mail-Format",
+        "urlValidation": "• **URL-Validierung:** Stellt ordnungsgemäße Web-Links sicher",
+        "customOptions": "• **Benutzerdefinierte Optionen:** Für Dropdowns und Auswahl",
+        "helpText": "• **Hilfetext:** Anweisungen für Benutzer",
+        "placeholders": "• **Platzhalter:** Beispieltext in Feldern"
+      },
+      "proTip": {
+        "title": "Profi-Tipp",
+        "description": "Beginnen Sie einfach mit nur wenigen Feldern wie Name, E-Mail und Nachricht. Sie können später immer mehr Felder hinzufügen, wenn Ihre Bedürfnisse wachsen!"
+      }
+    },
+    "tomlConfiguration": {
+      "title": "Programmatische Feldkonfiguration (TOML)",
+      "subtitle": "Erweiterte Formular-Konfiguration mit Code",
+      "advancedOnly": {
+        "title": "Nur für fortgeschrittene Benutzer",
+        "description": "Dieser Abschnitt ist für Entwickler und fortgeschrittene Benutzer, die Formulare lieber mit Code konfigurieren. Wenn Sie mit dem visuellen Formular-Builder zufrieden sind, können Sie diesen Abschnitt komplett überspringen."
+      },
+      "description": "Anstatt den visuellen Formular-Builder zu verwenden, können Sie Ihre Formularfelder mit TOML-Konfiguration definieren. Dies gibt Ihnen präzisere Kontrolle und macht es einfacher, Ihre Formular-Spezifikationen versioniert zu verwalten. TOML (Tom's Obvious, Minimal Language) ist ein einfaches Konfigurationsformat, mit dem Sie Formularfelder, Validierungsregeln und Verhalten mit strukturiertem Text definieren können, anstatt durch Menüs zu klicken.",
+      "basicExample": {
+        "title": "Grundlegendes Beispiel:",
+        "code": "[field]\nname = \"email\"\nfield = \"email\"\nlabel = \"Ihre E-Mail\"\nplaceholder = \"Geben Sie Ihre E-Mail-Adresse ein\"\nrequired = true\nis_email = true\n\n[field]\nname = \"message\"\nfield = \"textarea\"\nlabel = \"Nachricht\"\nplaceholder = \"Sagen Sie uns, was Sie denken\"\nrequired = true\nis_min = 10"
+      },
+      "fieldTypesAvailable": {
+        "title": "Verfügbare Feldtypen:",
+        "text": "• **text:** Einzeilige Texteingabe",
+        "email": "• **email:** E-Mail mit Validierung",
+        "textarea": "• **textarea:** Mehrzeiliger Textbereich",
+        "select": "• **select:** Dropdown-Menü",
+        "checkbox": "• **checkbox:** Mehrfachauswahl-Optionen",
+        "number": "• **number:** Numerische Eingabe"
+      },
+      "validationOptions": {
+        "title": "Validierungsoptionen:",
+        "required": "• **required:** Feld muss ausgefüllt werden",
+        "isEmail": "• **is_email:** Validiert E-Mail-Format",
+        "isMin": "• **is_min:** Mindestlänge/-wert",
+        "isMax": "• **is_max:** Maximale Länge/Wert",
+        "options": "• **options:** Gültige Auswahl für select/checkbox",
+        "checkSpam": "• **check_spam:** Spam-Erkennung aktivieren"
+      },
+      "benefits": {
+        "title": "Vorteile der TOML-Konfiguration:",
+        "versionControl": "✨ **Versionskontrolle:** Verfolgen Sie Änderungen an Ihren Formularen über die Zeit",
+        "reusable": "✨ **Wiederverwendbar:** Kopieren Sie Konfigurationen einfach zwischen Formularen",
+        "preciseControl": "✨ **Präzise Kontrolle:** Feinabstimmung von Validierung und Verhalten",
+        "teamCollaboration": "✨ **Team-Zusammenarbeit:** Teilen Sie Formular-Spezifikationen ohne Kontozugang",
+        "advancedFeatures": "✨ **Erweiterte Funktionen:** Zugang zu allen Validierungsoptionen"
+      },
+      "gettingStarted": {
+        "title": "Erste Schritte",
+        "description": "Um TOML-Konfiguration zu verwenden, gehen Sie zum Abschnitt **Formularfelder (Optional)** Ihres Formulars und fügen Sie Ihre TOML-Spezifikation in das Textfeld ein. Das System validiert Ihre Konfiguration und zeigt alle Fehler an, die behoben werden müssen."
+      }
+    }
+  }
+}

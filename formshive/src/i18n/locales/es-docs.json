@@ -1,0 +1,310 @@
+{
+  "docs": {
+    "whatIsFormshive": {
+      "title": "¿Qué es Formshive?",
+      "subtitle": "Aprende lo básico de Formshive",
+      "description": "Formshive es una herramienta simple que te ayuda a crear formularios web y recopilar envíos de los visitantes de tu sitio web. Piénsalo como un buzón digital: las personas completan tus formularios y tú recibes sus mensajes.",
+      "keyBenefits": {
+        "title": "Beneficios Clave",
+        "noCoding": "No se requiere programación para formularios básicos",
+        "multipleWays": "Múltiples formas de integrar con tu sitio web",
+        "spamProtection": "Protección automática contra spam",
+        "emailNotifications": "Notificaciones por email cuando alguien envía un formulario"
+      }
+    },
+    "formsWithWithoutFields": {
+      "title": "Formularios Con y Sin Campos",
+      "subtitle": "Entendiendo cómo Formshive maneja diferentes tipos de formularios",
+      "withFields": {
+        "title": "Formularios CON Campos (Estructurados)",
+        "description": "Cuando defines campos específicos (como \"Nombre\", \"Email\", \"Mensaje\"), Formshive sabe exactamente qué esperar. Esto te da más funciones como validación, campos obligatorios y diseños de formulario más atractivos.",
+        "benefits": {
+          "title": "✅ Beneficios:",
+          "professionalLooking": "Formularios de aspecto profesional",
+          "emailValidation": "Validación de email",
+          "requiredFields": "Verificación de campos obligatorios",
+          "dropdowns": "Menús desplegables y casillas de verificación",
+          "spamProtection": "Mejor protección contra spam"
+        }
+      },
+      "withoutFields": {
+        "title": "Formularios SIN Campos (Flexibles)",
+        "description": "También puedes crear un formulario que acepta CUALQUIER contenido: lo que sea que alguien envíe, tú lo recibirás. Esto es perfecto para formularios de contacto simples o cuando necesitas máxima flexibilidad.",
+        "bestFor": {
+          "title": "⚡ Mejor para:",
+          "quickContact": "Formularios de contacto rápidos",
+          "existingHtml": "Formularios HTML existentes",
+          "maxFlexibility": "Cuando necesitas máxima flexibilidad",
+          "feedback": "Recopilación simple de comentarios"
+        }
+      }
+    },
+    "formSubmission": {
+      "title": "Envío de Formularios",
+      "subtitle": "Cómo funcionan los envíos de formularios y qué sucede después de que los usuarios envían",
+      "description": "Cuando alguien envía tu formulario, Formshive procesa los datos a través de varios pasos de validación y luego responde según la configuración de tu formulario y el tipo de solicitud.",
+      "validation": {
+        "title": "Proceso de Validación",
+        "description": "Cada envío de formulario pasa por una validación completa para asegurar la calidad y seguridad de los datos. Si la validación falla, los usuarios reciben mensajes de error detallados.",
+        "steps": {
+          "title": "Pasos de Validación:",
+          "formExists": "1. **El formulario existe:** Verifica que el ID del formulario sea válido",
+          "captcha": "2. **Verificación CAPTCHA:** Valida el desafío anti-spam (si está habilitado)",
+          "fieldValidation": "3. **Validación de campos:** Verifica campos obligatorios, formato de email, etc. (si está habilitado)",
+          "spamDetection": "4. **Detección de spam:** Analiza el contenido en busca de patrones de spam (si está habilitado)"
+        }
+      },
+      "errorHandling": {
+        "title": "Manejo de Errores Amigable para el Usuario",
+        "description": "Cuando alguien comete un error al completar tu formulario, Formshive proporciona mensajes de error útiles y claros. En lugar de perder su trabajo, los usuarios ven exactamente qué necesita ser corregido, con su entrada original preservada.",
+        "htmlForms": {
+          "title": "Formularios HTML (Visitantes del Sitio Web):",
+          "seeErrorPage": "Ven una página de error amigable con el formulario",
+          "inputPreserved": "Su entrada se preserva - ¡no hay que volver a escribir!",
+          "fieldErrors": "Errores específicos de campos resaltados en rojo",
+          "clearExplanation": "Explicación clara de qué salió mal"
+        },
+        "apiRequests": {
+          "title": "Solicitudes API/JSON (Desarrolladores):",
+          "detailedError": "Información detallada de error en formato JSON",
+          "fieldSpecific": "Códigos de error y mensajes específicos por campo",
+          "machineReadable": "Legible por máquina para manejo personalizado de errores",
+          "perfectForDynamic": "Perfecto para formularios dinámicos y aplicaciones"
+        }
+      },
+      "afterSubmission": {
+        "title": "Qué Sucede Después de que Alguien Envía tu Formulario",
+        "description": "Cuando alguien envía exitosamente tu formulario, Formshive decide qué mostrarles a continuación. Esto depende de cómo esté configurado tu formulario y cómo se esté usando en tu sitio web.",
+        "diagramNote": "Si prefieres ver un diagrama: ",
+        "diagramLink": "Flujo de Envío de Formulario (mermaid.live/edit)",
+        "customThankYou": {
+          "title": "Página de Agradecimiento Personalizada:",
+          "description": "Si estableces una \"URL de Redirección\" en la configuración de tu formulario, los visitantes van directamente a tu página de agradecimiento personalizada. Perfecto para ofertas especiales o pasos siguientes detallados."
+        },
+        "builtInSuccess": {
+          "title": "Página de Éxito Integrada:",
+          "description": "Si no se establece una URL de redirección, los visitantes ven una página simple de \"Gracias, tu mensaje fue recibido\". Limpia y profesional, funciona muy bien para la mayoría de formularios."
+        },
+        "forDevelopers": {
+          "title": "Para Desarrolladores (API):",
+          "description": "Las solicitudes JavaScript/AJAX obtienen respuestas JSON en lugar de redirecciones de página. Perfecto para formularios dinámicos que no recargan la página."
+        },
+        "overrideOptions": {
+          "title": "Avanzado: Opciones de Anulación",
+          "description": "Puedes agregar parámetros especiales a la URL de tu formulario para controlar qué sucede:",
+          "redirectHtml": "• **?redirect=html** - Siempre mostrar la página de éxito integrada",
+          "redirectNone": "• **?redirect=none** - Para desarrolladores: devolver JSON en lugar de redirigir"
+        }
+      },
+      "integrationExamples": {
+        "title": "Ejemplos de Integración",
+        "description": "Aquí hay ejemplos de cómo diferentes métodos de integración manejan los envíos de formularios:",
+        "javascript": {
+          "title": "JavaScript (AJAX):",
+          "code": "fetch('/v1/digest/form-id', {\n  method: 'POST',\n  headers: {\n    'Content-Type': 'application/json'\n  },\n  body: JSON.stringify({\n    email: 'user@example.com',\n    message: 'Hello!'\n  })\n})",
+          "success": "✅ Éxito: Obtiene respuesta JSON",
+          "error": "❌ Error: Obtiene JSON de error detallado para manejo personalizado"
+        },
+        "htmlForm": {
+          "title": "Formulario HTML:",
+          "code": "<form action=\"/v1/digest/form-id\" \n      method=\"POST\">\n  <input name=\"email\" type=\"email\">\n  <input name=\"message\">\n  <button type=\"submit\">Enviar</button>\n</form>",
+          "success": "✅ Éxito: Redirige a página de agradecimiento o URL personalizada",
+          "error": "❌ Error: Muestra página de error amigable con el formulario"
+        }
+      },
+      "proTips": {
+        "title": "Consejos Pro para Mejor Experiencia de Usuario",
+        "setRedirect": "• **Establece una URL de redirección** para enviar visitantes a una página de agradecimiento personalizada con próximos pasos",
+        "testForms": "• **Prueba tus formularios** completándolos incorrectamente para ver la experiencia de error",
+        "helpfulErrors": "• **Mantén los mensajes de error útiles** - los usuarios aprecian una guía clara sobre cómo resolver problemas",
+        "monitor": "• **Monitorea los envíos** en la pestaña Mensajes para detectar patrones o problemas comunes de usuarios"
+      }
+    },
+    "integrationMethods": {
+      "title": "Métodos de Integración",
+      "subtitle": "Diferentes formas de agregar formularios a tu sitio web",
+      "description": "Formshive ofrece varias formas de integrar formularios en tu sitio web, desde soluciones simples de copiar y pegar hasta personalización avanzada.",
+      "manual": {
+        "title": "HTML Manual",
+        "tags": {
+          "existingForms": "Formularios Existentes",
+          "veryFlexible": "Muy Flexible",
+          "customDesign": "Diseño Personalizado"
+        },
+        "description": "Escribe tu propio formulario HTML y apúntalo a Formshive. Perfecto si te sientes cómodo con HTML o tienes un formulario existente.",
+        "code": "<form action=\"your-form-url\" method=\"POST\">\n  <input name=\"email\" type=\"email\">\n  <button type=\"submit\">Enviar</button>\n</form>",
+        "success": "**✅ Éxito:** Sigue el comportamiento de redirección de \"Envío de Formulario\" - redirección a URL personalizada o página de éxito integrada.",
+        "validation": "**⚠️ Errores de validación:** Solo para formularios CON campos definidos (ver \"Formularios Con y Sin Campos\") - muestra página de error amigable con entrada preservada y errores de campo resaltados."
+      },
+      "javascript": {
+        "title": "Inserción JavaScript",
+        "tags": {
+          "bestUx": "Mejor UX",
+          "noPageReloads": "Sin Recargas de Página",
+          "dynamic": "Dinámico"
+        },
+        "description": "Agrega un pequeño script a tu sitio web y Formshive crea el formulario automáticamente. Funciona muy bien con campos definidos.",
+        "code": "<div id=\"formshive\" form-id=\"your-id\">\n</div>\n<script src=\"formshive-embed.js\">\n</script>",
+        "success": "**✅ Éxito:** Con URL de redirección - redirige la página. Sin URL de redirección - muestra mensaje de éxito en línea y borra el formulario.",
+        "validation": "**⚠️ Errores de validación:** Para formularios CON campos definidos - resalta errores específicos de campo directamente en el formulario con estilo rojo y mensajes de error. ¡Mucho más amigable que recargar páginas!"
+      },
+      "iframe": {
+        "title": "IFrame",
+        "tags": {
+          "veryEasy": "Muy Fácil",
+          "worksEverywhere": "Funciona en Todas Partes",
+          "copyPaste": "Copiar y Pegar"
+        },
+        "description": "Inserta un formulario completo como marco en tu página. Fácil de agregar, funciona en todas partes, con diferentes opciones de estilo.",
+        "code": "<iframe \n  src=\"your-form-url\"\n  width=\"100%\" height=\"350\">\n</iframe>",
+        "success": "**✅ Éxito:** Muestra página de éxito integrada dentro del iframe. Los usuarios permanecen en tu sitio web.",
+        "validation": "**⚠️ Errores de validación:** Para formularios CON campos definidos - muestra página de error dentro del iframe con entrada preservada y resaltado de campos. Los usuarios permanecen en tu sitio mientras corrigen errores."
+      },
+      "directLink": {
+        "title": "Enlace Directo",
+        "tags": {
+          "veryEasy": "Muy Fácil",
+          "socialMedia": "Redes Sociales",
+          "standalone": "Independiente"
+        },
+        "description": "Comparte un enlace directo a tu formulario. Genial para emails, redes sociales, o cuando quieres una página de formulario independiente.",
+        "code": "https://formshive.com/link.html\n?form_id=your-form-id\n&title=Contáctanos",
+        "success": "**✅ Éxito:** Experiencia de página completa - sigue la configuración de redirección de tu formulario desde \"Envío de Formulario\" (URL personalizada o página de éxito).",
+        "validation": "**⚠️ Errores de validación:** Para formularios CON campos definidos - muestra experiencia de error de página completa con entrada preservada y resaltado de campos. Los usuarios pueden corregir fácilmente y reenviar."
+      },
+      "whichMethod": {
+        "title": "¿Qué método debo elegir?",
+        "beginners": "**Principiantes:** Comienza con IFrame o Enlace Directo - ¡son los más fáciles!",
+        "existingForms": "**Formularios existentes:** Usa HTML Manual para mantener tu diseño actual",
+        "advancedUsers": "**Usuarios avanzados:** La Inserción JavaScript te da la mayor flexibilidad"
+      }
+    },
+    "emailSetup": {
+      "title": "Destinatarios de Email",
+      "subtitle": "Recibir notificaciones cuando alguien envía tu formulario",
+      "description": "Cuando alguien completa tu formulario, Formshive puede enviarte una notificación por email. Puedes agregar múltiples direcciones de email para recibir estas notificaciones.",
+      "verification": {
+        "title": "Verificación de Email Requerida",
+        "description": "Por seguridad, necesitarás verificar tu dirección de email antes de poder recibir envíos de formulario. Esto previene spam y asegura que realmente posees la dirección de email."
+      },
+      "howItWorks": {
+        "title": "Cómo funciona:",
+        "addEmail": "1. **Agrega tu email:** Ingresa la dirección de email donde quieres recibir notificaciones",
+        "checkInbox": "2. **Revisa tu bandeja de entrada:** Busca un email de verificación de Formshive",
+        "clickVerify": "3. **Haz clic para verificar:** Haz clic en el enlace de verificación en el email",
+        "ready": "4. **¡Estás listo!** Comienza a recibir envíos de formulario inmediatamente"
+      },
+      "multipleRecipients": {
+        "title": "Múltiples Destinatarios",
+        "description": "Puedes agregar múltiples direcciones de email verificadas a un solo formulario. Esto es genial para equipos donde múltiples personas necesitan ver los envíos de formulario."
+      }
+    },
+    "captchaSetup": {
+      "title": "Configuración de CAPTCHA",
+      "subtitle": "Protege tus formularios del spam y bots",
+      "description": "CAPTCHA es como un guardia de seguridad para tus formularios. Ayuda a bloquear mensajes de spam y asegura que personas reales estén completando tus formularios, no bots automatizados.",
+      "howItWorks": {
+        "title": "Cómo Funciona CAPTCHA",
+        "description": "Cuando alguien trata de enviar tu formulario, necesitará resolver un problema matemático simple. Esto toma solo unos segundos para humanos pero detiene completamente a la mayoría de bots de spam."
+      },
+      "setup": {
+        "title": "Configurando CAPTCHA (3 pasos fáciles):",
+        "enable": "1. **Habilitar CAPTCHA:** Ve a la configuración de tu formulario y activa \"Verificar Desafío\"",
+        "updateWebsite": "2. **Actualizar tu sitio web:** Tu sitio web necesita un pequeño script para mostrar el CAPTCHA",
+        "test": "3. **Probarlo:** Intenta enviar tu formulario para asegurarte de que funciona"
+      },
+      "benefits": {
+        "title": "Beneficios de Usar CAPTCHA:",
+        "left": {
+          "blocksSpam": "✅ **Bloquea spam:** Reduce dramáticamente los mensajes no deseados",
+          "noTracking": "✅ **Sin seguimiento:** Amigable con la privacidad y cumple con GDPR",
+          "free": "✅ **Gratis de usar:** Sin cargos extra por spam bloqueado"
+        },
+        "right": {
+          "quickForUsers": "⚡ **Rápido para usuarios:** Toma solo 2-3 segundos completar",
+          "worksEverywhere": "⚡ **Funciona en todas partes:** Compatible con todos los métodos de integración",
+          "alwaysImproving": "⚡ **Siempre mejorando:** Actualizado automáticamente para mejor protección"
+        }
+      },
+      "technicalHelp": {
+        "title": "¿Necesitas Ayuda Técnica?",
+        "description": "Para instrucciones detalladas de configuración y ejemplos de código, revisa la pestaña **Integración** al editar tu formulario. Tiene todos los detalles técnicos y código para copiar y pegar que necesitas."
+      }
+    },
+    "fieldConfiguration": {
+      "title": "Configuración de Campos",
+      "subtitle": "Personalizando los campos de tu formulario",
+      "description": "Cuando creas formularios con campos definidos, puedes personalizar cada campo para que se comporte exactamente como quieres.",
+      "fieldTypes": {
+        "title": "Tipos de Campo Disponibles:",
+        "text": "• **Texto:** Entrada de texto de una sola línea",
+        "email": "• **Email:** Email con validación automática",
+        "textarea": "• **Área de texto:** Texto de múltiples líneas para mensajes más largos",
+        "number": "• **Número:** Solo acepta números",
+        "phone": "• **Teléfono:** Entrada de número telefónico",
+        "url": "• **URL:** Enlaces de sitios web con validación",
+        "date": "• **Fecha:** Selector de fecha",
+        "file": "• **Archivo:** Carga de archivos",
+        "select": "• **Seleccionar:** Menú desplegable",
+        "radio": "• **Radio:** Elegir una opción",
+        "checkbox": "• **Casilla de verificación:** Múltiples selecciones"
+      },
+      "validationOptions": {
+        "title": "Opciones de Validación:",
+        "required": "• **Campos obligatorios:** Deben ser completados",
+        "emailValidation": "• **Validación de email:** Verifica formato de email válido",
+        "urlValidation": "• **Validación de URL:** Asegura enlaces web apropiados",
+        "customOptions": "• **Opciones personalizadas:** Para menús desplegables y selecciones",
+        "helpText": "• **Texto de ayuda:** Instrucciones para usuarios",
+        "placeholders": "• **Marcadores de posición:** Texto de ejemplo en campos"
+      },
+      "proTip": {
+        "title": "Consejo Pro",
+        "description": "Comienza simple con solo unos pocos campos como Nombre, Email y Mensaje. ¡Siempre puedes agregar más campos después a medida que crezcan tus necesidades!"
+      }
+    },
+    "tomlConfiguration": {
+      "title": "Configuración Programática de Campos (TOML)",
+      "subtitle": "Configuración avanzada de formularios usando código",
+      "advancedOnly": {
+        "title": "Solo para Usuarios Avanzados",
+        "description": "Esta sección es para desarrolladores y usuarios avanzados que prefieren configurar formularios usando código. Si te sientes cómodo con el constructor visual de formularios, puedes omitir esta sección completamente."
+      },
+      "description": "En lugar de usar el constructor visual de formularios, puedes definir los campos de tu formulario usando configuración TOML. Esto te da control más preciso y hace más fácil el control de versiones de las especificaciones de tu formulario. TOML (Tom's Obvious, Minimal Language) es un formato de configuración simple que te permite definir campos de formulario, reglas de validación y comportamiento usando texto estructurado en lugar de hacer clic en menús.",
+      "basicExample": {
+        "title": "Ejemplo Básico:",
+        "code": "[field]\nname = \"email\"\nfield = \"email\"\nlabel = \"Tu Email\"\nplaceholder = \"Ingresa tu dirección de email\"\nrequired = true\nis_email = true\n\n[field]\nname = \"message\"\nfield = \"textarea\"\nlabel = \"Mensaje\"\nplaceholder = \"Cuéntanos qué piensas\"\nrequired = true\nis_min = 10"
+      },
+      "fieldTypesAvailable": {
+        "title": "Tipos de Campo Disponibles:",
+        "text": "• **text:** Entrada de texto de una sola línea",
+        "email": "• **email:** Email con validación",
+        "textarea": "• **textarea:** Área de texto de múltiples líneas",
+        "select": "• **select:** Menú desplegable",
+        "checkbox": "• **checkbox:** Opciones de múltiple elección",
+        "number": "• **number:** Entrada numérica"
+      },
+      "validationOptions": {
+        "title": "Opciones de Validación:",
+        "required": "• **required:** El campo debe ser completado",
+        "isEmail": "• **is_email:** Valida formato de email",
+        "isMin": "• **is_min:** Longitud/valor mínimo",
+        "isMax": "• **is_max:** Longitud/valor máximo",
+        "options": "• **options:** Opciones válidas para select/checkbox",
+        "checkSpam": "• **check_spam:** Habilitar detección de spam"
+      },
+      "benefits": {
+        "title": "Beneficios de la Configuración TOML:",
+        "versionControl": "✨ **Control de Versiones:** Rastrea cambios en tus formularios a lo largo del tiempo",
+        "reusable": "✨ **Reutilizable:** Copia configuraciones entre formularios fácilmente",
+        "preciseControl": "✨ **Control Preciso:** Ajusta finamente la validación y comportamiento",
+        "teamCollaboration": "✨ **Colaboración en Equipo:** Comparte especificaciones de formulario sin acceso a cuenta",
+        "advancedFeatures": "✨ **Funciones Avanzadas:** Acceso a todas las opciones de validación"
+      },
+      "gettingStarted": {
+        "title": "Comenzando",
+        "description": "Para usar configuración TOML, ve a la sección **Campos de Formulario (Opcional)** de tu formulario y pega tu especificación TOML en el área de texto. El sistema validará tu configuración y mostrará cualquier error que necesite ser corregido."
+      }
+    }
+  }
+}

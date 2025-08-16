@@ -1,0 +1,310 @@
+{
+  "docs": {
+    "whatIsFormshive": {
+      "title": "什么是 Formshive？",
+      "subtitle": "了解 Formshive 的基础知识",
+      "description": "Formshive 是一个简单的工具，帮助您创建网页表单并收集网站访客的提交内容。您可以把它想象成一个数字邮箱——用户填写您的表单，您就会收到他们的消息。",
+      "keyBenefits": {
+        "title": "主要优势",
+        "noCoding": "基础表单无需编程",
+        "multipleWays": "多种网站集成方式",
+        "spamProtection": "自动垃圾邮件防护",
+        "emailNotifications": "提交时邮件通知"
+      }
+    },
+    "formsWithWithoutFields": {
+      "title": "有字段与无字段表单",
+      "subtitle": "了解 Formshive 如何处理不同类型的表单",
+      "withFields": {
+        "title": "有字段表单（结构化）",
+        "description": "当您定义特定字段（如\"姓名\"、\"邮箱\"、\"消息\"）时，Formshive 明确知道期望什么内容。这为您提供更多功能，如验证、必填字段和更美观的表单布局。",
+        "benefits": {
+          "title": "✅ 优势：",
+          "professionalLooking": "专业外观的表单",
+          "emailValidation": "邮箱验证",
+          "requiredFields": "必填字段检查",
+          "dropdowns": "下拉菜单和复选框",
+          "spamProtection": "更好的垃圾邮件防护"
+        }
+      },
+      "withoutFields": {
+        "title": "无字段表单（灵活）",
+        "description": "您也可以创建接受任何内容的表单——无论访客发送什么内容，您都会收到。这非常适合简单的联系表单或需要最大灵活性的场景。",
+        "bestFor": {
+          "title": "⚡ 最适合：",
+          "quickContact": "快速联系表单",
+          "existingHtml": "现有的 HTML 表单",
+          "maxFlexibility": "需要最大灵活性时",
+          "feedback": "简单反馈收集"
+        }
+      }
+    },
+    "formSubmission": {
+      "title": "表单提交",
+      "subtitle": "表单提交的工作原理以及用户提交后发生的事情",
+      "description": "当有人提交您的表单时，Formshive 会通过几个验证步骤处理数据，然后根据您的表单配置和请求类型做出响应。",
+      "validation": {
+        "title": "验证过程",
+        "description": "每个表单提交都会经过全面验证，以确保数据质量和安全性。如果验证失败，用户会收到详细的错误消息。",
+        "steps": {
+          "title": "验证步骤：",
+          "formExists": "1. **表单存在：** 验证表单 ID 是否有效",
+          "captcha": "2. **验证码检查：** 验证防垃圾邮件挑战（如果启用）",
+          "fieldValidation": "3. **字段验证：** 检查必填字段、邮箱格式等（如果启用）",
+          "spamDetection": "4. **垃圾邮件检测：** 分析内容中的垃圾邮件模式（如果启用）"
+        }
+      },
+      "errorHandling": {
+        "title": "用户友好的错误处理",
+        "description": "当有人在填写表单时出错，Formshive 会提供有用、清晰的错误消息。用户不会丢失他们的工作，而是看到确切需要修复的内容，并保留他们的原始输入。",
+        "htmlForms": {
+          "title": "HTML 表单（网站访客）：",
+          "seeErrorPage": "看到带有表单的友好错误页面",
+          "inputPreserved": "他们的输入被保留——无需重新输入！",
+          "fieldErrors": "特定字段错误以红色高亮显示",
+          "clearExplanation": "清楚解释出了什么问题"
+        },
+        "apiRequests": {
+          "title": "API/JSON 请求（开发者）：",
+          "detailedError": "JSON 格式的详细错误信息",
+          "fieldSpecific": "特定字段的错误代码和消息",
+          "machineReadable": "机器可读，用于自定义错误处理",
+          "perfectForDynamic": "完美适用于动态表单和应用"
+        }
+      },
+      "afterSubmission": {
+        "title": "用户提交表单后发生什么",
+        "description": "当有人成功提交您的表单时，Formshive 决定接下来向他们展示什么。这取决于您的表单设置以及它在您网站上的使用方式。",
+        "diagramNote": "如果您希望查看图表：",
+        "diagramLink": "表单提交流程（mermaid.live/edit）",
+        "customThankYou": {
+          "title": "自定义感谢页面：",
+          "description": "如果您在表单设置中设置了\"重定向 URL\"，访客会直接跳转到您的自定义感谢页面。非常适合特殊优惠或详细的后续步骤。"
+        },
+        "builtInSuccess": {
+          "title": "内置成功页面：",
+          "description": "如果没有设置重定向 URL，访客会看到简单的\"谢谢，我们已收到您的消息\"页面。简洁专业，适合大多数表单。"
+        },
+        "forDevelopers": {
+          "title": "对于开发者（API）：",
+          "description": "JavaScript/AJAX 请求获得 JSON 响应而不是页面重定向。非常适合不重新加载页面的动态表单。"
+        },
+        "overrideOptions": {
+          "title": "高级：覆盖选项",
+          "description": "您可以在表单 URL 中添加特殊参数来控制发生的行为：",
+          "redirectHtml": "• **?redirect=html** - 始终显示内置成功页面",
+          "redirectNone": "• **?redirect=none** - 对于开发者：返回 JSON 而不是重定向"
+        }
+      },
+      "integrationExamples": {
+        "title": "集成示例",
+        "description": "以下是不同集成方法如何处理表单提交的示例：",
+        "javascript": {
+          "title": "JavaScript (AJAX)：",
+          "code": "fetch('/v1/digest/form-id', {\n  method: 'POST',\n  headers: {\n    'Content-Type': 'application/json'\n  },\n  body: JSON.stringify({\n    email: 'user@example.com',\n    message: 'Hello!'\n  })\n})",
+          "success": "✅ 成功：获得 JSON 响应",
+          "error": "❌ 错误：获得详细的错误 JSON 用于自定义处理"
+        },
+        "htmlForm": {
+          "title": "HTML 表单：",
+          "code": "<form action=\"/v1/digest/form-id\" \n      method=\"POST\">\n  <input name=\"email\" type=\"email\">\n  <input name=\"message\">\n  <button type=\"submit\">发送</button>\n</form>",
+          "success": "✅ 成功：重定向到感谢页面或自定义 URL",
+          "error": "❌ 错误：显示用户友好的错误页面和表单"
+        }
+      },
+      "proTips": {
+        "title": "提升用户体验的专业技巧",
+        "setRedirect": "• **设置重定向 URL** 将访客发送到带有后续步骤的自定义感谢页面",
+        "testForms": "• **测试您的表单** 通过错误填写来查看错误体验",
+        "helpfulErrors": "• **保持错误消息有用** - 用户感谢关于如何解决问题的清晰指导",
+        "monitor": "• **监控提交** 在消息标签中发现模式或常见用户问题"
+      }
+    },
+    "integrationMethods": {
+      "title": "集成方法",
+      "subtitle": "向您网站添加表单的不同方式",
+      "description": "Formshive 提供多种方式将表单集成到您的网站中，从简单的复制粘贴解决方案到高级自定义。",
+      "manual": {
+        "title": "手动 HTML",
+        "tags": {
+          "existingForms": "现有表单",
+          "veryFlexible": "非常灵活",
+          "customDesign": "自定义设计"
+        },
+        "description": "编写您自己的 HTML 表单并将其指向 Formshive。如果您熟悉 HTML 或有现有表单，这是完美的选择。",
+        "code": "<form action=\"your-form-url\" method=\"POST\">\n  <input name=\"email\" type=\"email\">\n  <button type=\"submit\">发送</button>\n</form>",
+        "success": "**✅ 成功：** 遵循\"表单提交\"中的重定向行为 - 自定义 URL 重定向或内置成功页面。",
+        "validation": "**⚠️ 验证错误：** 仅适用于有定义字段的表单（参见\"有字段与无字段表单\"） - 显示用户友好的错误页面，保留输入并高亮字段错误。"
+      },
+      "javascript": {
+        "title": "JavaScript 嵌入",
+        "tags": {
+          "bestUx": "最佳用户体验",
+          "noPageReloads": "无页面重新加载",
+          "dynamic": "动态"
+        },
+        "description": "向您的网站添加一小段脚本，Formshive 会自动创建表单。与定义字段配合使用效果很好。",
+        "code": "<div id=\"formshive\" form-id=\"your-id\">\n</div>\n<script src=\"formshive-embed.js\">\n</script>",
+        "success": "**✅ 成功：** 有重定向 URL - 重定向页面。无重定向 URL - 显示内联成功消息并清除表单。",
+        "validation": "**⚠️ 验证错误：** 对于有定义字段的表单 - 直接在表单中以红色样式和错误消息高亮特定字段错误。比页面重新加载更用户友好！"
+      },
+      "iframe": {
+        "title": "IFrame",
+        "tags": {
+          "veryEasy": "非常简单",
+          "worksEverywhere": "到处可用",
+          "copyPaste": "复制粘贴"
+        },
+        "description": "将完整表单作为框架嵌入到您的页面中。易于添加，到处可用，有不同的样式选项。",
+        "code": "<iframe \n  src=\"your-form-url\"\n  width=\"100%\" height=\"350\">\n</iframe>",
+        "success": "**✅ 成功：** 在 iframe 内显示内置成功页面。用户留在您的网站上。",
+        "validation": "**⚠️ 验证错误：** 对于有定义字段的表单 - 在 iframe 内显示错误页面，保留输入并高亮字段。用户在修复错误时留在您的网站上。"
+      },
+      "directLink": {
+        "title": "直接链接",
+        "tags": {
+          "veryEasy": "非常简单",
+          "socialMedia": "社交媒体",
+          "standalone": "独立"
+        },
+        "description": "分享您表单的直接链接。非常适合邮件、社交媒体或需要独立表单页面时。",
+        "code": "https://formshive.com/link.html\n?form_id=your-form-id\n&title=Contact%20Us",
+        "success": "**✅ 成功：** 完整页面体验 - 遵循您表单在\"表单提交\"中的重定向设置（自定义 URL 或成功页面）。",
+        "validation": "**⚠️ 验证错误：** 对于有定义字段的表单 - 显示完整页面错误体验，保留输入并高亮字段。用户可以轻松修复并重新提交。"
+      },
+      "whichMethod": {
+        "title": "我应该选择哪种方法？",
+        "beginners": "**初学者：** 从 IFrame 或直接链接开始 - 它们最简单！",
+        "existingForms": "**现有表单：** 使用手动 HTML 保持您当前的设计",
+        "advancedUsers": "**高级用户：** JavaScript 嵌入为您提供最大的灵活性"
+      }
+    },
+    "emailSetup": {
+      "title": "邮件接收人",
+      "subtitle": "当有人提交您的表单时获得通知",
+      "description": "当有人填写您的表单时，Formshive 可以向您发送邮件通知。您可以添加多个邮箱地址来接收这些通知。",
+      "verification": {
+        "title": "需要邮箱验证",
+        "description": "为了安全起见，您需要验证您的邮箱地址才能接收表单提交。这可以防止垃圾邮件并确保您实际拥有该邮箱地址。"
+      },
+      "howItWorks": {
+        "title": "工作原理：",
+        "addEmail": "1. **添加您的邮箱：** 输入您想要接收通知的邮箱地址",
+        "checkInbox": "2. **检查您的收件箱：** 查找来自 Formshive 的验证邮件",
+        "clickVerify": "3. **点击验证：** 点击邮件中的验证链接",
+        "ready": "4. **准备就绪！** 立即开始接收表单提交"
+      },
+      "multipleRecipients": {
+        "title": "多个接收人",
+        "description": "您可以为单个表单添加多个已验证的邮箱地址。这对于需要多人查看表单提交的团队来说非常好。"
+      }
+    },
+    "captchaSetup": {
+      "title": "验证码设置",
+      "subtitle": "保护您的表单免受垃圾邮件和机器人攻击",
+      "description": "验证码就像您表单的安全卫士。它帮助阻止垃圾邮件并确保填写表单的是真人，而不是自动化机器人。",
+      "howItWorks": {
+        "title": "验证码工作原理",
+        "description": "当有人尝试提交您的表单时，他们需要解决一个简单的数学问题。这对人类来说只需要几秒钟，但可以完全阻止大多数垃圾邮件机器人。"
+      },
+      "setup": {
+        "title": "设置验证码（3个简单步骤）：",
+        "enable": "1. **启用验证码：** 转到您的表单设置并打开\"检查挑战\"",
+        "updateWebsite": "2. **更新您的网站：** 您的网站需要一个小脚本来显示验证码",
+        "test": "3. **测试：** 尝试提交您的表单以确保它正常工作"
+      },
+      "benefits": {
+        "title": "使用验证码的好处：",
+        "left": {
+          "blocksSpam": "✅ **阻止垃圾邮件：** 显著减少不想要的消息",
+          "noTracking": "✅ **无跟踪：** 隐私友好且符合 GDPR",
+          "free": "✅ **免费使用：** 阻止垃圾邮件无额外费用"
+        },
+        "right": {
+          "quickForUsers": "⚡ **用户快速：** 只需 2-3 秒完成",
+          "worksEverywhere": "⚡ **到处可用：** 与所有集成方法兼容",
+          "alwaysImproving": "⚡ **持续改进：** 自动更新以获得更好的保护"
+        }
+      },
+      "technicalHelp": {
+        "title": "需要技术帮助？",
+        "description": "有关详细设置说明和代码示例，请在编辑表单时查看**集成**标签。它包含您需要的所有技术详细信息和复制粘贴代码。"
+      }
+    },
+    "fieldConfiguration": {
+      "title": "字段配置",
+      "subtitle": "自定义您的表单字段",
+      "description": "当您创建带有定义字段的表单时，您可以自定义每个字段，使其完全按照您想要的方式运行。",
+      "fieldTypes": {
+        "title": "可用字段类型：",
+        "text": "• **文本：** 单行文本输入",
+        "email": "• **邮箱：** 带自动验证的邮箱",
+        "textarea": "• **文本区域：** 用于较长消息的多行文本",
+        "number": "• **数字：** 只接受数字",
+        "phone": "• **电话：** 电话号码输入",
+        "url": "• **URL：** 带验证的网站链接",
+        "date": "• **日期：** 日期选择器",
+        "file": "• **文件：** 文件上传",
+        "select": "• **选择：** 下拉菜单",
+        "radio": "• **单选：** 选择一个选项",
+        "checkbox": "• **复选框：** 多选"
+      },
+      "validationOptions": {
+        "title": "验证选项：",
+        "required": "• **必填字段：** 必须填写",
+        "emailValidation": "• **邮箱验证：** 检查有效的邮箱格式",
+        "urlValidation": "• **URL 验证：** 确保正确的网页链接",
+        "customOptions": "• **自定义选项：** 用于下拉菜单和选择",
+        "helpText": "• **帮助文本：** 用户说明",
+        "placeholders": "• **占位符：** 字段中的示例文本"
+      },
+      "proTip": {
+        "title": "专业提示",
+        "description": "从姓名、邮箱和消息等几个简单字段开始。随着需求增长，您始终可以稍后添加更多字段！"
+      }
+    },
+    "tomlConfiguration": {
+      "title": "编程字段配置（TOML）",
+      "subtitle": "使用代码进行高级表单配置",
+      "advancedOnly": {
+        "title": "仅限高级用户",
+        "description": "本节适用于更喜欢使用代码配置表单的开发者和高级用户。如果您对可视化表单构建器感到满意，可以完全跳过本节。"
+      },
+      "description": "您可以使用 TOML 配置定义表单字段，而不是使用可视化表单构建器。这为您提供更精确的控制，并使表单规范的版本控制更容易。TOML（Tom's Obvious, Minimal Language）是一种简单的配置格式，让您使用结构化文本而不是点击菜单来定义表单字段、验证规则和行为。",
+      "basicExample": {
+        "title": "基本示例：",
+        "code": "[field]\nname = \"email\"\nfield = \"email\"\nlabel = \"您的邮箱\"\nplaceholder = \"输入您的邮箱地址\"\nrequired = true\nis_email = true\n\n[field]\nname = \"message\"\nfield = \"textarea\"\nlabel = \"消息\"\nplaceholder = \"告诉我们您的想法\"\nrequired = true\nis_min = 10"
+      },
+      "fieldTypesAvailable": {
+        "title": "可用字段类型：",
+        "text": "• **text：** 单行文本输入",
+        "email": "• **email：** 带验证的邮箱",
+        "textarea": "• **textarea：** 多行文本区域",
+        "select": "• **select：** 下拉菜单",
+        "checkbox": "• **checkbox：** 多选选项",
+        "number": "• **number：** 数字输入"
+      },
+      "validationOptions": {
+        "title": "验证选项：",
+        "required": "• **required：** 字段必须填写",
+        "isEmail": "• **is_email：** 验证邮箱格式",
+        "isMin": "• **is_min：** 最小长度/值",
+        "isMax": "• **is_max：** 最大长度/值",
+        "options": "• **options：** 选择/复选框的有效选项",
+        "checkSpam": "• **check_spam：** 启用垃圾邮件检测"
+      },
+      "benefits": {
+        "title": "TOML 配置的好处：",
+        "versionControl": "✨ **版本控制：** 跟踪表单的变化",
+        "reusable": "✨ **可重用：** 轻松在表单之间复制配置",
+        "preciseControl": "✨ **精确控制：** 微调验证和行为",
+        "teamCollaboration": "✨ **团队协作：** 无需账户访问即可共享表单规范",
+        "advancedFeatures": "✨ **高级功能：** 访问所有验证选项"
+      },
+      "gettingStarted": {
+        "title": "开始使用",
+        "description": "要使用 TOML 配置，请转到您表单的**表单字段（可选）**部分，并将您的 TOML 规范粘贴到文本区域中。系统将验证您的配置并显示需要修复的任何错误。"
+      }
+    }
+  }
+}

@@ -1,0 +1,311 @@
+{
+  "integrations": {
+    "pipedrive": {
+      "title": "Intégration CRM Pipedrive",
+      "subtitle": "Créez automatiquement des contacts et des prospects dans votre CRM",
+      "description": "Connectez vos formulaires directement à Pipedrive CRM. Chaque soumission de formulaire crée automatiquement une personne dans votre CRM, et optionnellement crée un prospect pour le suivi commercial de votre équipe.",
+      "howItWorks": {
+        "title": "Comment ça fonctionne",
+        "description": "À l'aide de l'API REST de Pipedrive, vos soumissions de formulaire sont instantanément converties en contacts CRM. Vous pouvez configurer s'il faut créer seulement une personne, ou à la fois une personne et un prospect pour le suivi commercial."
+      },
+      "fieldHandling": {
+        "title": "Gestion des champs et stockage des données :",
+        "requiredFields": "**Champs obligatoires :**",
+        "nameField": "• `name` ou `first_name + last_name` - Nom complet de la personne (stocké comme person.name dans Pipedrive)",
+        "optionalFields": "**Champs optionnels (mappés automatiquement) :**",
+        "emailField": "• `email` - Stocké dans le tableau person.email",
+        "phoneField": "• `phone` - Stocké dans le tableau person.phone",
+        "customFields": "• Champs personnalisés via mappage de champs - Stockés dans les champs personnalisés de person",
+        "leadCreation": "**Création de prospect (si activée) :**",
+        "leadTitle": "• Le titre du prospect utilise un modèle (par défaut : \"Prospect Formulaire Web : Nom du Formulaire\")",
+        "leadLink": "• Lié automatiquement à la personne créée",
+        "leadInherit": "• Hérite des paramètres de propriétaire et d'organisation"
+      },
+      "setupSteps": {
+        "title": "Étapes de configuration :",
+        "getApiToken": "1. **Obtenir le token API :** Allez dans Paramètres → Préférences personnelles → API dans votre compte Pipedrive",
+        "copyDomain": "2. **Copier le domaine :** Votre URL Pipedrive (ex. votreentreprise.pipedrive.com)",
+        "createIntegration": "3. **Créer l'intégration :** Ajoutez une nouvelle intégration Pipedrive dans Formshive",
+        "configureOptions": "4. **Configurer les options :** Paramétrez la création de prospects, les propriétaires et les champs personnalisés",
+        "test": "5. **Tester :** Soumettez un formulaire pour vérifier que l'intégration fonctionne"
+      },
+      "features": {
+        "title": "Fonctionnalités :",
+        "personCreation": "Création de personne",
+        "leadGeneration": "Génération de prospects",
+        "customFields": "Champs personnalisés",
+        "ownerAssignment": "Attribution de propriétaire",
+        "organizationLinking": "Liaison d'organisation"
+      },
+      "whatYouGet": {
+        "title": "Ce que vous obtiendrez",
+        "automaticCreation": "• Création automatique de contact avec email, téléphone et données personnalisées",
+        "optionalLead": "• Création optionnelle de prospect pour le suivi commercial",
+        "configurableAssignment": "• Attribution configurable de propriétaire et d'organisation",
+        "customFieldMapping": "• Mappage de champs personnalisés pour la capture avancée de données"
+      }
+    },
+    "mailchimp": {
+      "title": "Marketing Email Mailchimp",
+      "subtitle": "Ajoutez les soumissionnaires de formulaire à vos listes de marketing email",
+      "description": "Ajoutez automatiquement les soumissions de formulaire à vos listes d'audience Mailchimp. Parfait pour les inscriptions newsletter, les lead magnets et la construction de votre base de données de marketing email avec une segmentation appropriée.",
+      "howItWorks": {
+        "title": "Comment ça fonctionne",
+        "description": "À l'aide de l'API Marketing de Mailchimp, les soumissions de formulaire sont ajoutées comme abonnés à votre audience choisie. Vous pouvez configurer les champs de fusion, les tags et les paramètres de double opt-in pour la conformité et l'organisation."
+      },
+      "fieldHandling": {
+        "title": "Gestion des champs et stockage des données :",
+        "requiredFields": "**Champs obligatoires :**",
+        "emailField": "• `email` - Adresse email de l'abonné (stockée comme member.email_address dans Mailchimp)",
+        "optionalFields": "**Champs optionnels (via mappage des champs de fusion) :**",
+        "firstNameField": "• `first_name` - Mappé au champ de fusion FNAME par défaut",
+        "lastNameField": "• `last_name` - Mappé au champ de fusion LNAME par défaut",
+        "phoneField": "• `phone` - Mappé au champ de fusion PHONE par défaut",
+        "customFields": "• Tous champs de formulaire personnalisés - Mappés aux champs de fusion Mailchimp personnalisés",
+        "additionalFeatures": "**Fonctionnalités supplémentaires :**",
+        "tags": "• Tags - Appliqués automatiquement pour la segmentation",
+        "status": "• Statut - \"subscribed\" (immédiat) ou \"pending\" (double opt-in)",
+        "doubleOptin": "• Double opt-in - Envoie un email de confirmation pour la conformité RGPD"
+      },
+      "setupSteps": {
+        "title": "Étapes de configuration :",
+        "getApiKey": "1. **Obtenir la clé API :** Allez dans Compte → Extras → Clés API dans votre compte Mailchimp",
+        "findListId": "2. **Trouver l'ID de liste :** Allez dans Audience → Paramètres → Nom d'audience et paramètres par défaut",
+        "createIntegration": "3. **Créer l'intégration :** Ajoutez une nouvelle intégration Mailchimp dans Formshive",
+        "configureFields": "4. **Configurer les champs :** Mappez les champs de formulaire aux champs de fusion Mailchimp",
+        "setOptions": "5. **Définir les options :** Configurez les tags, le double opt-in et le statut d'abonné",
+        "test": "6. **Tester :** Soumettez un formulaire pour vérifier que l'abonné est ajouté"
+      },
+      "features": {
+        "title": "Fonctionnalités :",
+        "audienceAddition": "Ajout d'audience",
+        "mergeFields": "Champs de fusion",
+        "tagManagement": "Gestion des tags",
+        "doubleOptin": "Double opt-in",
+        "statusControl": "Contrôle du statut"
+      },
+      "whatYouGet": {
+        "title": "Ce que vous obtiendrez",
+        "automaticSubscriber": "• Ajout automatique d'abonné à votre audience",
+        "customMergeField": "• Mappage de champs de fusion personnalisés (nom, téléphone, etc.)",
+        "automaticTagging": "• Marquage automatique pour la segmentation",
+        "doubleOptinCompliance": "• Support de conformité double opt-in",
+        "configurableStatus": "• Statut d'abonné configurable (abonné/en attente)"
+      }
+    },
+    "kit": {
+      "title": "Intégration Kit (ConvertKit)",
+      "subtitle": "Ajoutez des abonnés à vos formulaires de marketing email Kit",
+      "description": "Ajoutez automatiquement les soumissions de formulaire à vos formulaires de marketing email Kit (anciennement ConvertKit). Parfait pour les inscriptions newsletter, les lead magnets et la construction de votre base d'abonnés avec une segmentation et un marquage appropriés.",
+      "howItWorks": {
+        "title": "Comment ça fonctionne",
+        "description": "À l'aide de l'API v4 de Kit, les soumissions de formulaire sont ajoutées comme abonnés à vos formulaires spécifiés. Vous pouvez configurer les champs personnalisés, les tags et les mappages de champs pour une gestion avancée des abonnés."
+      },
+      "fieldHandling": {
+        "title": "Gestion des champs et stockage des données :",
+        "requiredFields": "**Champs obligatoires :**",
+        "emailField": "• `email` - Adresse email de l'abonné (stockée comme subscriber.email_address dans Kit)",
+        "optionalFields": "**Champs optionnels (via mappage de champs personnalisés) :**",
+        "firstNameField": "• `first_name` - Mappé au champ personnalisé first_name par défaut",
+        "lastNameField": "• `last_name` - Mappé au champ personnalisé last_name par défaut",
+        "companyField": "• `company` - Mappé au champ personnalisé company par défaut",
+        "customFields": "• Tous champs de formulaire personnalisés - Mappés aux champs personnalisés Kit via mappage de champs",
+        "twoStepProcess": "**Processus en deux étapes :**",
+        "stepOne": "• Étape 1 : Créer/mettre à jour l'abonné avec champs personnalisés et tags",
+        "stepTwo": "• Étape 2 : Ajouter l'abonné au formulaire spécifié pour les déclencheurs d'automatisation",
+        "tagsApplied": "• Tags appliqués automatiquement pour la segmentation et l'automatisation"
+      },
+      "setupSteps": {
+        "title": "Étapes de configuration :",
+        "getApiKey": "1. **Obtenir la clé API :** Allez dans Paramètres du compte → Clés API dans votre compte Kit",
+        "findFormId": "2. **Trouver l'ID de formulaire :** Allez dans Formulaires → Sélectionnez votre formulaire → Copiez l'ID du formulaire depuis l'URL",
+        "createIntegration": "3. **Créer l'intégration :** Ajoutez une nouvelle intégration Kit dans Formshive",
+        "configureFields": "4. **Configurer les champs :** Mappez les champs de formulaire aux champs personnalisés Kit",
+        "setTags": "5. **Définir les tags :** Configurez les tags par défaut pour la segmentation des abonnés",
+        "test": "6. **Tester :** Soumettez un formulaire pour vérifier que l'abonné est ajouté"
+      },
+      "features": {
+        "title": "Fonctionnalités :",
+        "subscriberAddition": "Ajout d'abonné",
+        "customFields": "Champs personnalisés",
+        "tagManagement": "Gestion des tags",
+        "formIntegration": "Intégration de formulaire",
+        "fieldMapping": "Mappage de champs"
+      },
+      "whatYouGet": {
+        "title": "Ce que vous obtiendrez",
+        "automaticSubscriber": "• Ajout automatique d'abonné à vos formulaires Kit",
+        "customFieldMapping": "• Mappage de champs personnalisés (nom, téléphone, entreprise, etc.)",
+        "automaticTagging": "• Marquage automatique pour la segmentation avancée",
+        "twoStepProcess": "• Processus en deux étapes : créer l'abonné puis l'ajouter au formulaire",
+        "kitCompatibility": "• Compatibilité complète avec l'API Kit v4"
+      }
+    },
+    "zapier": {
+      "title": "Intégration Zapier",
+      "subtitle": "Connectez à plus de 8 000 applications sans codage",
+      "description": "Zapier permet à vos soumissions de formulaire de déclencher des actions dans des milliers d'autres applications comme Google Sheets, Mailchimp, Airtable, et plus. Configurez une fois, et vos formulaires enverront automatiquement les données partout où vous en avez besoin.",
+      "howItWorks": {
+        "title": "Comment ça fonctionne",
+        "description": "Créez une intégration webhook dans Formshive, puis utilisez cette URL dans Zapier comme déclencheur \"Webhooks by Zapier\". Zapier recevra automatiquement vos soumissions de formulaire et pourra les transférer vers toute application connectée."
+      },
+      "fieldHandling": {
+        "title": "Gestion des champs et format des données :",
+        "allFieldsIncluded": "**Tous les champs de formulaire inclus :**",
+        "jsonPayload": "• Toutes les données de soumission de formulaire envoyées en tant que payload JSON",
+        "integrationId": "• ID d'intégration et métadonnées inclus pour le suivi",
+        "dataStructure": "**Structure des données :**",
+        "integrationField": "• `integration` - Contient l'ID d'intégration et les informations de suivi",
+        "dataField": "• `data` - Tous les champs de formulaire avec leurs valeurs",
+        "standardWebhook": "• Format webhook standard compatible avec la plupart des automatisations Zapier",
+        "zapierProcessing": "**Traitement Zapier :**",
+        "automaticParsing": "• Zapier analyse automatiquement tous les champs pour utilisation dans les actions suivantes",
+        "filterTransform": "• Peut filtrer, transformer ou router les données vers plus de 8 000 applications connectées",
+        "noFieldMapping": "• Aucun mappage de champs requis - toutes les données sont automatiquement disponibles"
+      },
+      "setupSteps": {
+        "title": "Étapes de configuration :",
+        "createWebhook": "1. **Créer une intégration webhook :** Dans Formshive, créez une nouvelle intégration webhook et copiez l'URL",
+        "newZap": "2. **Nouveau Zap dans Zapier :** Créez un nouveau Zap et choisissez \"Webhooks by Zapier\" comme déclencheur",
+        "selectCatchHook": "3. **Sélectionnez \"Catch Hook\" :** Choisissez cette option pour recevoir les données webhook",
+        "pasteWebhookUrl": "4. **Collez l'URL webhook :** Utilisez l'URL de l'étape 1 comme URL de votre webhook",
+        "testConnect": "5. **Testez et connectez :** Soumettez un formulaire de test pour vérifier que la connexion fonctionne",
+        "addActions": "6. **Ajoutez des actions :** Connectez à n'importe laquelle des plus de 8 000 applications de Zapier"
+      },
+      "popularConnections": {
+        "title": "Connexions Zapier populaires :",
+        "googleSheets": "Google Sheets",
+        "mailchimp": "Mailchimp",
+        "airtable": "Airtable",
+        "trello": "Trello",
+        "gmail": "Gmail",
+        "moreApps": "+8 000 autres"
+      }
+    },
+    "slack": {
+      "title": "Intégration Slack",
+      "subtitle": "Recevez des notifications instantanées dans vos canaux Slack",
+      "description": "Envoyez les soumissions de formulaire directement à vos canaux Slack. Parfait pour les notifications d'équipe, les alertes de prospects, ou chaque fois que vous avez besoin d'une visibilité instantanée sur l'activité des formulaires.",
+      "howItWorks": {
+        "title": "Comment ça fonctionne",
+        "description": "Slack fournit des URL de webhook entrant qui vous permettent d'envoyer des messages à des canaux spécifiques. Lorsque quelqu'un soumet votre formulaire, Formshive publiera automatiquement un message formaté dans votre canal Slack choisi."
+      },
+      "fieldHandling": {
+        "title": "Gestion des champs et format des messages :",
+        "allFieldsDisplayed": "**Tous les champs de formulaire affichés :**",
+        "allDataIncluded": "• Toutes les données de formulaire soumises incluses dans le message Slack",
+        "formattedBlocks": "• Formatées en blocs de message lisibles avec des étiquettes de champ claires",
+        "timestampIncluded": "• Horodatage et titre du formulaire automatiquement inclus",
+        "messageStructure": "**Structure du message :**",
+        "headerEmoji": "• En-tête avec emoji et nom du formulaire",
+        "fieldDisplay": "• Chaque champ de formulaire affiché avec étiquette et valeur",
+        "submissionTimestamp": "• Horodatage de soumission pour le suivi",
+        "optionalLink": "• Lien optionnel vers la soumission complète (si configuré)",
+        "instantDelivery": "**Livraison instantanée :**",
+        "immediateMessages": "• Les messages apparaissent immédiatement lorsque le formulaire est soumis",
+        "noPolling": "• Pas d'interrogation ou de délais - notifications en temps réel",
+        "channelVisibility": "• Les membres du canal obtiennent une visibilité instantanée sur l'activité des formulaires"
+      },
+      "setupSteps": {
+        "title": "Étapes de configuration :",
+        "openSlack": "1. **Ouvrir Slack :** Allez dans votre espace de travail Slack",
+        "createWebhook": "2. **Créer un webhook :** Visitez https://api.slack.com/messaging/webhooks",
+        "chooseChannel": "3. **Choisir le canal :** Sélectionnez quel canal doit recevoir les notifications de formulaire",
+        "copyWebhookUrl": "4. **Copier l'URL webhook :** Copiez l'URL webhook que Slack fournit",
+        "addToFormshive": "5. **Ajouter à Formshive :** Créez une nouvelle intégration Slack et collez l'URL webhook",
+        "test": "6. **Tester :** Soumettez un formulaire de test pour voir la notification dans Slack"
+      },
+      "slackPreview": {
+        "title": "Ce que vous verrez dans Slack :",
+        "exampleMessage": "🎯 Nouvelle soumission de formulaire de contact\n\n📧 Email: john@example.com\n👤 Nom: John Doe\n💬 Message: Bonjour, je suis intéressé par vos services !\n\n🔗 Voir la soumission complète → [Lien]"
+      },
+      "proTips": {
+        "title": "Conseils de pro",
+        "differentChannels": "• Utilisez différents canaux pour différents formulaires (ventes, support, feedback)",
+        "mentionSetup": "• Configurez des mentions @channel ou @here pour les types de formulaire urgents",
+        "instantWebhooks": "• Les webhooks Slack fonctionnent instantanément - pas de délais ni d'interrogation"
+      }
+    },
+    "googleSheets": {
+      "title": "Intégration Google Sheets",
+      "subtitle": "Ajoutez automatiquement les soumissions de formulaire à Google Sheets",
+      "description": "Envoyez les soumissions de formulaire directement aux lignes de Google Sheets. Parfait pour le suivi de prospects, la collecte de données, ou chaque fois que vous avez besoin de données de formulaire dans un format de feuille de calcul.",
+      "howItWorks": {
+        "title": "Comment ça fonctionne",
+        "description": "Google Apps Script peut créer des URL webhook qui ajoutent automatiquement des données à vos Google Sheets. Chaque soumission de formulaire devient une nouvelle ligne avec tous les champs de formulaire en tant que colonnes."
+      },
+      "fieldHandling": {
+        "title": "Gestion des champs et format de feuille de calcul :",
+        "allFieldsAsColumns": "**Tous les champs de formulaire comme colonnes :**",
+        "separateColumns": "• Chaque champ de formulaire devient une colonne séparée dans votre feuille",
+        "headersAutocreated": "• En-têtes créés automatiquement lors de la première soumission",
+        "dynamicGeneration": "• Génération dynamique de colonnes basée sur la structure du formulaire",
+        "standardColumns": "**Colonnes standard toujours incluses :**",
+        "timestampColumn": "• `Timestamp` - Quand le formulaire a été soumis",
+        "formTitleColumn": "• `Form Title` - Nom du formulaire qui a été soumis",
+        "customFieldsIncluded": "• Tous les champs de formulaire personnalisés avec leurs noms originaux",
+        "dataStorage": "**Stockage des données :**",
+        "oneRowPerSubmission": "• Chaque soumission = une nouvelle ligne ajoutée à la feuille",
+        "dataPreserved": "• Données préservées exactement comme soumises (pas de transformation)",
+        "fullFunctionality": "• Fonctionnalité complète de Google Sheets disponible pour l'analyse",
+        "realtimeUpdates": "• Mises à jour en temps réel lorsque les formulaires sont soumis"
+      },
+      "setupSteps": {
+        "title": "Étapes de configuration :",
+        "openGoogleSheets": "1. **Ouvrir Google Sheets :** Créez une nouvelle feuille de calcul ou ouvrez-en une existante",
+        "openAppsScript": "2. **Ouvrir Apps Script :** Allez dans Extensions → Apps Script",
+        "addCode": "3. **Ajouter le code :** Collez le script webhook (voir ci-dessous)",
+        "deploy": "4. **Déployer :** Cliquez sur Déployer → Nouveau déploiement → Exécuter en tant que : Moi, Accès : Tout le monde",
+        "copyUrl": "5. **Copier l'URL :** Copiez l'URL webhook de déploiement",
+        "addToFormshive": "6. **Ajouter à Formshive :** Créez une nouvelle intégration webhook avec cette URL"
+      },
+      "appsScriptCode": {
+        "title": "Code Google Apps Script :",
+        "code": "function doPost(e) {\n  const sheet = SpreadsheetApp.getActiveSheet();\n  const data = JSON.parse(e.postData.contents);\n  \n  // Add headers if first row\n  if (sheet.getLastRow() === 0) {\n    const headers = ['Timestamp', 'Form Title'];\n    Object.keys(data.data || {}).forEach(key => headers.push(key));\n    sheet.getRange(1, 1, 1, headers.length).setValues([headers]);\n  }\n  \n  // Add form data as new row\n  const row = [\n    new Date(data.submitted_at),\n    data.form_title || 'Untitled Form'\n  ];\n  \n  Object.values(data.data || {}).forEach(value => row.push(value));\n  sheet.appendRow(row);\n  \n  return ContentService.createTextOutput('Success');\n}"
+      },
+      "whatYouGet": {
+        "title": "Ce que vous obtiendrez",
+        "automaticSpreadsheet": "• Feuille de calcul automatique avec horodatages",
+        "fieldColumns": "• Chaque champ de formulaire devient une colonne",
+        "realtimeUpdates": "• Mises à jour de données en temps réel",
+        "fullFunctionality": "• Fonctionnalité complète de Google Sheets pour l'analyse"
+      }
+    },
+    "webhook": {
+      "title": "Intégration Webhook personnalisée",
+      "subtitle": "Envoyez des données vers n'importe quelle API ou endpoint webhook",
+      "description": "Pour les développeurs et utilisateurs avancés : envoyez les soumissions de formulaire vers n'importe quel endpoint HTTP. Parfait pour les intégrations personnalisées, les API internes, ou les services non couverts par d'autres types d'intégration.",
+      "howItWorks": {
+        "title": "Comment ça fonctionne",
+        "description": "Lorsque quelqu'un soumet votre formulaire, Formshive fera une requête POST vers votre URL webhook avec les données du formulaire au format JSON. Votre endpoint peut ensuite traiter ces données comme vous le souhaitez."
+      },
+      "fieldHandling": {
+        "title": "Gestion des champs et format des données :",
+        "completeFormData": "**Données complètes du formulaire incluses :**",
+        "allFieldsSent": "• Tous les champs de formulaire envoyés avec les noms et valeurs originaux",
+        "formMetadata": "• Métadonnées du formulaire (ID, titre, horodatage de soumission)",
+        "integrationDetails": "• Détails d'intégration pour le suivi et le traitement",
+        "standardHttpPost": "**HTTP POST standard :**",
+        "contentTypeHeader": "• En-tête `Content-Type: application/json`",
+        "jsonBody": "• Corps JSON avec données de formulaire structurées",
+        "successResponse": "• Votre endpoint doit répondre avec un statut 200-299 pour le succès",
+        "flexibleProcessing": "**Traitement flexible :**",
+        "parseJson": "• Analysez le JSON pour accéder à tout champ de formulaire par nom",
+        "integrateAnyApi": "• Intégrez avec n'importe quelle API, base de données ou service",
+        "customLogic": "• Logique personnalisée de validation, transformation et routage",
+        "businessWorkflows": "• Parfait pour les workflows métier complexes"
+      },
+      "payloadFormat": {
+        "title": "Format du payload JSON :",
+        "examplePayload": "{\n  \"form_id\": \"your-form-id\",\n  \"form_title\": \"Formulaire de contact\",\n  \"submitted_at\": \"2024-06-28T10:30:00Z\",\n  \"data\": {\n    \"name\": \"John Doe\",\n    \"email\": \"john@example.com\",\n    \"message\": \"Bonjour monde\"\n  },\n  \"integration\": {\n    \"id\": \"integration-id\",\n    \"title\": \"Mon Webhook\"\n  }\n}"
+      },
+      "requirements": {
+        "title": "Exigences :",
+        "acceptPost": "• Votre endpoint doit accepter les requêtes POST",
+        "responseStatus": "• Doit répondre avec des codes de statut HTTP 200-299 pour le succès",
+        "handleJson": "• Devrait gérer le content-type JSON",
+        "httpsRecommended": "• URLs HTTPS recommandées pour la sécurité"
+      }
+    }
+  }
+}

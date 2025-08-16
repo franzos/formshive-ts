@@ -1,0 +1,311 @@
+{
+  "integrations": {
+    "pipedrive": {
+      "title": "Pipedrive CRM 集成",
+      "subtitle": "在您的 CRM 中自动创建联系人和潜在客户",
+      "description": "将您的表单直接连接到 Pipedrive CRM。每次表单提交都会自动在您的 CRM 中创建一个联系人，并可选择为您的销售团队创建一个潜在客户以便跟进。",
+      "howItWorks": {
+        "title": "工作原理",
+        "description": "使用 Pipedrive 的 REST API，您的表单提交会立即转换为 CRM 联系人。您可以配置是仅创建联系人，还是同时创建联系人和潜在客户以供销售跟进。"
+      },
+      "fieldHandling": {
+        "title": "字段处理和数据存储：",
+        "requiredFields": "**必填字段：**",
+        "nameField": "• `name` 或 `first_name + last_name` - 联系人姓名（存储为 Pipedrive person.name）",
+        "optionalFields": "**可选字段（自动映射）：**",
+        "emailField": "• `email` - 存储在 person.email 数组中",
+        "phoneField": "• `phone` - 存储在 person.phone 数组中",
+        "customFields": "• 通过字段映射的自定义字段 - 存储在联系人自定义字段中",
+        "leadCreation": "**潜在客户创建（如已启用）：**",
+        "leadTitle": "• 潜在客户标题使用模板（默认：\"网络表单潜在客户：表单名称\"）",
+        "leadLink": "• 自动链接到已创建的联系人",
+        "leadInherit": "• 继承负责人和组织设置"
+      },
+      "setupSteps": {
+        "title": "设置步骤：",
+        "getApiToken": "1. **获取 API 令牌：** 前往您的 Pipedrive 账户中的设置 → 个人偏好设置 → API",
+        "copyDomain": "2. **复制域名：** 您的 Pipedrive URL（例如：yourcompany.pipedrive.com）",
+        "createIntegration": "3. **创建集成：** 在 Formshive 中添加新的 Pipedrive 集成",
+        "configureOptions": "4. **配置选项：** 设置潜在客户创建、负责人和自定义字段",
+        "test": "5. **测试：** 提交表单以验证集成是否正常工作"
+      },
+      "features": {
+        "title": "功能：",
+        "personCreation": "联系人创建",
+        "leadGeneration": "潜在客户生成",
+        "customFields": "自定义字段",
+        "ownerAssignment": "负责人分配",
+        "organizationLinking": "组织关联"
+      },
+      "whatYouGet": {
+        "title": "您将获得",
+        "automaticCreation": "• 自动创建包含邮箱、电话和自定义数据的联系人",
+        "optionalLead": "• 可选的潜在客户创建功能，便于销售跟进",
+        "configurableAssignment": "• 可配置的负责人和组织分配",
+        "customFieldMapping": "• 自定义字段映射，支持高级数据捕获"
+      }
+    },
+    "mailchimp": {
+      "title": "Mailchimp 邮件营销",
+      "subtitle": "将表单提交者添加到您的邮件营销列表",
+      "description": "自动将表单提交添加到您的 Mailchimp 受众列表中。非常适合新闻通讯订阅、潜在客户磁铁，以及构建具有适当分段的邮件营销数据库。",
+      "howItWorks": {
+        "title": "工作原理",
+        "description": "使用 Mailchimp 的营销 API，表单提交会被添加为您选择的受众的订阅者。您可以配置合并字段、标签和双重选择加入设置，以确保合规性和组织性。"
+      },
+      "fieldHandling": {
+        "title": "字段处理和数据存储：",
+        "requiredFields": "**必填字段：**",
+        "emailField": "• `email` - 订阅者邮箱地址（存储为 Mailchimp member.email_address）",
+        "optionalFields": "**可选字段（通过合并字段映射）：**",
+        "firstNameField": "• `first_name` - 默认映射到 FNAME 合并字段",
+        "lastNameField": "• `last_name` - 默认映射到 LNAME 合并字段",
+        "phoneField": "• `phone` - 默认映射到 PHONE 合并字段",
+        "customFields": "• 任何自定义表单字段 - 映射到自定义 Mailchimp 合并字段",
+        "additionalFeatures": "**其他功能：**",
+        "tags": "• 标签 - 自动应用以进行分段",
+        "status": "• 状态 - \"已订阅\"（立即生效）或\"待定\"（双重选择加入）",
+        "doubleOptin": "• 双重选择加入 - 发送确认邮件以符合 GDPR 要求"
+      },
+      "setupSteps": {
+        "title": "设置步骤：",
+        "getApiKey": "1. **获取 API 密钥：** 前往您的 Mailchimp 账户中的账户 → 附加功能 → API 密钥",
+        "findListId": "2. **查找列表 ID：** 前往受众 → 设置 → 受众名称和默认设置",
+        "createIntegration": "3. **创建集成：** 在 Formshive 中添加新的 Mailchimp 集成",
+        "configureFields": "4. **配置字段：** 将表单字段映射到 Mailchimp 合并字段",
+        "setOptions": "5. **设置选项：** 配置标签、双重选择加入和订阅者状态",
+        "test": "6. **测试：** 提交表单以验证订阅者是否已添加"
+      },
+      "features": {
+        "title": "功能：",
+        "audienceAddition": "受众添加",
+        "mergeFields": "合并字段",
+        "tagManagement": "标签管理",
+        "doubleOptin": "双重选择加入",
+        "statusControl": "状态控制"
+      },
+      "whatYouGet": {
+        "title": "您将获得",
+        "automaticSubscriber": "• 自动将订阅者添加到您的受众",
+        "customMergeField": "• 自定义合并字段映射（姓名、电话等）",
+        "automaticTagging": "• 自动标签分段",
+        "doubleOptinCompliance": "• 双重选择加入合规支持",
+        "configurableStatus": "• 可配置的订阅者状态（已订阅/待定）"
+      }
+    },
+    "kit": {
+      "title": "Kit (ConvertKit) 集成",
+      "subtitle": "将订阅者添加到您的 Kit 邮件营销表单",
+      "description": "自动将表单提交添加到您的 Kit（前身为 ConvertKit）邮件营销表单中。非常适合新闻通讯订阅、潜在客户磁铁，以及构建具有适当分段和标签的订阅者基础。",
+      "howItWorks": {
+        "title": "工作原理",
+        "description": "使用 Kit 的 v4 API，表单提交会被添加为指定表单的订阅者。您可以配置自定义字段、标签和字段映射，实现高级订阅者管理。"
+      },
+      "fieldHandling": {
+        "title": "字段处理和数据存储：",
+        "requiredFields": "**必填字段：**",
+        "emailField": "• `email` - 订阅者邮箱地址（存储为 Kit subscriber.email_address）",
+        "optionalFields": "**可选字段（通过自定义字段映射）：**",
+        "firstNameField": "• `first_name` - 默认映射到 first_name 自定义字段",
+        "lastNameField": "• `last_name` - 默认映射到 last_name 自定义字段",
+        "companyField": "• `company` - 默认映射到 company 自定义字段",
+        "customFields": "• 任何自定义表单字段 - 通过字段映射映射到 Kit 自定义字段",
+        "twoStepProcess": "**两步处理流程：**",
+        "stepOne": "• 步骤 1：使用自定义字段和标签创建/更新订阅者",
+        "stepTwo": "• 步骤 2：将订阅者添加到指定表单以触发自动化",
+        "tagsApplied": "• 自动应用标签以进行分段和自动化"
+      },
+      "setupSteps": {
+        "title": "设置步骤：",
+        "getApiKey": "1. **获取 API 密钥：** 前往您的 Kit 账户中的账户设置 → API 密钥",
+        "findFormId": "2. **查找表单 ID：** 前往表单 → 选择您的表单 → 从 URL 中复制表单 ID",
+        "createIntegration": "3. **创建集成：** 在 Formshive 中添加新的 Kit 集成",
+        "configureFields": "4. **配置字段：** 将表单字段映射到 Kit 自定义字段",
+        "setTags": "5. **设置标签：** 配置订阅者分段的默认标签",
+        "test": "6. **测试：** 提交表单以验证订阅者是否已添加"
+      },
+      "features": {
+        "title": "功能：",
+        "subscriberAddition": "订阅者添加",
+        "customFields": "自定义字段",
+        "tagManagement": "标签管理",
+        "formIntegration": "表单集成",
+        "fieldMapping": "字段映射"
+      },
+      "whatYouGet": {
+        "title": "您将获得",
+        "automaticSubscriber": "• 自动将订阅者添加到您的 Kit 表单",
+        "customFieldMapping": "• 自定义字段映射（姓名、电话、公司等）",
+        "automaticTagging": "• 自动标签高级分段",
+        "twoStepProcess": "• 两步处理流程：创建订阅者然后添加到表单",
+        "kitCompatibility": "• 完全兼容 Kit v4 API"
+      }
+    },
+    "zapier": {
+      "title": "Zapier 集成",
+      "subtitle": "无需编码连接 8,000+ 个应用",
+      "description": "Zapier 让您的表单提交能够触发数千个其他应用中的操作，如 Google Sheets、Mailchimp、Airtable 等。一次设置，您的表单将自动将数据发送到您需要的任何地方。",
+      "howItWorks": {
+        "title": "工作原理",
+        "description": "在 Formshive 中创建一个 webhook 集成，然后在 Zapier 中使用该 URL 作为\"Webhooks by Zapier\"触发器。Zapier 将自动接收您的表单提交并可以将其转发到任何连接的应用。"
+      },
+      "fieldHandling": {
+        "title": "字段处理和数据格式：",
+        "allFieldsIncluded": "**包含所有表单字段：**",
+        "jsonPayload": "• 所有表单提交数据以 JSON 载荷发送",
+        "integrationId": "• 包含集成 ID 和元数据用于跟踪",
+        "dataStructure": "**数据结构：**",
+        "integrationField": "• `integration` - 包含集成 ID 和跟踪信息",
+        "dataField": "• `data` - 所有表单字段及其值",
+        "standardWebhook": "• 与大多数 Zapier 自动化兼容的标准 webhook 格式",
+        "zapierProcessing": "**Zapier 处理：**",
+        "automaticParsing": "• Zapier 自动解析所有字段以供后续操作使用",
+        "filterTransform": "• 可以过滤、转换或将数据路由到 8,000+ 个连接的应用",
+        "noFieldMapping": "• 无需字段映射 - 所有数据自动可用"
+      },
+      "setupSteps": {
+        "title": "设置步骤：",
+        "createWebhook": "1. **创建 Webhook 集成：** 在 Formshive 中创建新的 webhook 集成并复制 URL",
+        "newZap": "2. **在 Zapier 中创建新 Zap：** 创建新 Zap 并选择\"Webhooks by Zapier\"作为触发器",
+        "selectCatchHook": "3. **选择\"Catch Hook\"：** 选择此选项以接收 webhook 数据",
+        "pasteWebhookUrl": "4. **粘贴 Webhook URL：** 使用步骤 1 中的 URL 作为您的 webhook URL",
+        "testConnect": "5. **测试和连接：** 提交测试表单以验证连接是否正常工作",
+        "addActions": "6. **添加操作：** 连接到 Zapier 的 8,000+ 个应用中的任何一个"
+      },
+      "popularConnections": {
+        "title": "热门 Zapier 连接：",
+        "googleSheets": "Google Sheets",
+        "mailchimp": "Mailchimp",
+        "airtable": "Airtable",
+        "trello": "Trello",
+        "gmail": "Gmail",
+        "moreApps": "+8,000 更多应用"
+      }
+    },
+    "slack": {
+      "title": "Slack 集成",
+      "subtitle": "在您的 Slack 频道中获得即时通知",
+      "description": "将表单提交直接发送到您的 Slack 频道。非常适合团队通知、潜在客户提醒，或任何需要即时了解表单活动的场景。",
+      "howItWorks": {
+        "title": "工作原理",
+        "description": "Slack 提供传入 webhook URL，让您可以向特定频道发送消息。当有人提交您的表单时，Formshive 会自动向您选择的 Slack 频道发布格式化消息。"
+      },
+      "fieldHandling": {
+        "title": "字段处理和消息格式：",
+        "allFieldsDisplayed": "**显示所有表单字段：**",
+        "allDataIncluded": "• Slack 消息中包含所有提交的表单数据",
+        "formattedBlocks": "• 格式化为带有清晰字段标签的可读消息块",
+        "timestampIncluded": "• 自动包含时间戳和表单标题",
+        "messageStructure": "**消息结构：**",
+        "headerEmoji": "• 带有表情符号和表单名称的标题",
+        "fieldDisplay": "• 每个表单字段都显示标签和值",
+        "submissionTimestamp": "• 用于跟踪的提交时间戳",
+        "optionalLink": "• 可选的完整提交链接（如已配置）",
+        "instantDelivery": "**即时投递：**",
+        "immediateMessages": "• 表单提交时消息立即出现",
+        "noPolling": "• 无轮询或延迟 - 实时通知",
+        "channelVisibility": "• 频道成员立即了解表单活动"
+      },
+      "setupSteps": {
+        "title": "设置步骤：",
+        "openSlack": "1. **打开 Slack：** 前往您的 Slack 工作区",
+        "createWebhook": "2. **创建 Webhook：** 访问 https://api.slack.com/messaging/webhooks",
+        "chooseChannel": "3. **选择频道：** 选择应该接收表单通知的频道",
+        "copyWebhookUrl": "4. **复制 Webhook URL：** 复制 Slack 提供的 webhook URL",
+        "addToFormshive": "5. **添加到 Formshive：** 创建新的 Slack 集成并粘贴 webhook URL",
+        "test": "6. **测试：** 提交测试表单以在 Slack 中查看通知"
+      },
+      "slackPreview": {
+        "title": "您将在 Slack 中看到的内容：",
+        "exampleMessage": "🎯 新联系表单提交\n\n📧 邮箱：john@example.com\n👤 姓名：John Doe\n💬 消息：您好，我对您的服务感兴趣！\n\n🔗 查看完整提交 → [链接]"
+      },
+      "proTips": {
+        "title": "专业提示",
+        "differentChannels": "• 为不同的表单使用不同的频道（销售、支持、反馈）",
+        "mentionSetup": "• 为紧急表单类型设置 @channel 或 @here 提及",
+        "instantWebhooks": "• Slack webhook 即时工作 - 无延迟或轮询"
+      }
+    },
+    "googleSheets": {
+      "title": "Google Sheets 集成",
+      "subtitle": "自动将表单提交添加到 Google Sheets",
+      "description": "将表单提交直接发送到 Google Sheets 行中。非常适合潜在客户跟踪、数据收集，或任何需要以电子表格格式保存表单数据的场景。",
+      "howItWorks": {
+        "title": "工作原理",
+        "description": "Google Apps Script 可以创建 webhook URL，自动将数据附加到您的 Google Sheets 中。每次表单提交都会成为新行，所有表单字段都作为列。"
+      },
+      "fieldHandling": {
+        "title": "字段处理和电子表格格式：",
+        "allFieldsAsColumns": "**所有表单字段作为列：**",
+        "separateColumns": "• 每个表单字段在您的工作表中成为单独的列",
+        "headersAutocreated": "• 首次提交时自动创建标题",
+        "dynamicGeneration": "• 基于表单结构的动态列生成",
+        "standardColumns": "**始终包含的标准列：**",
+        "timestampColumn": "• `时间戳` - 表单提交时间",
+        "formTitleColumn": "• `表单标题` - 提交的表单名称",
+        "customFieldsIncluded": "• 所有自定义表单字段保持原始名称",
+        "dataStorage": "**数据存储：**",
+        "oneRowPerSubmission": "• 每次提交 = 附加到工作表的一行新数据",
+        "dataPreserved": "• 数据完全按提交时的形式保存（无转换）",
+        "fullFunctionality": "• 可使用 Google Sheets 的全部功能进行分析",
+        "realtimeUpdates": "• 表单提交时实时更新"
+      },
+      "setupSteps": {
+        "title": "设置步骤：",
+        "openGoogleSheets": "1. **打开 Google Sheets：** 创建新电子表格或打开现有电子表格",
+        "openAppsScript": "2. **打开 Apps Script：** 前往扩展程序 → Apps Script",
+        "addCode": "3. **添加代码：** 粘贴 webhook 脚本（见下文）",
+        "deploy": "4. **部署：** 点击部署 → 新部署 → 执行身份：我，访问权限：任何人",
+        "copyUrl": "5. **复制 URL：** 复制部署的 webhook URL",
+        "addToFormshive": "6. **添加到 Formshive：** 使用此 URL 创建新的 webhook 集成"
+      },
+      "appsScriptCode": {
+        "title": "Google Apps Script 代码：",
+        "code": "function doPost(e) {\n  const sheet = SpreadsheetApp.getActiveSheet();\n  const data = JSON.parse(e.postData.contents);\n  \n  // Add headers if first row\n  if (sheet.getLastRow() === 0) {\n    const headers = ['Timestamp', 'Form Title'];\n    Object.keys(data.data || {}).forEach(key => headers.push(key));\n    sheet.getRange(1, 1, 1, headers.length).setValues([headers]);\n  }\n  \n  // Add form data as new row\n  const row = [\n    new Date(data.submitted_at),\n    data.form_title || 'Untitled Form'\n  ];\n  \n  Object.values(data.data || {}).forEach(value => row.push(value));\n  sheet.appendRow(row);\n  \n  return ContentService.createTextOutput('Success');\n}"
+      },
+      "whatYouGet": {
+        "title": "您将获得",
+        "automaticSpreadsheet": "• 带时间戳的自动电子表格",
+        "fieldColumns": "• 每个表单字段成为一列",
+        "realtimeUpdates": "• 实时数据更新",
+        "fullFunctionality": "• 完整的 Google Sheets 分析功能"
+      }
+    },
+    "webhook": {
+      "title": "自定义 Webhook 集成",
+      "subtitle": "将数据发送到任何 API 或 webhook 端点",
+      "description": "为开发者和高级用户提供：将表单提交发送到任何 HTTP 端点。非常适合自定义集成、内部 API 或其他集成类型未涵盖的服务。",
+      "howItWorks": {
+        "title": "工作原理",
+        "description": "当有人提交您的表单时，Formshive 将向您的 webhook URL 发出 POST 请求，将表单数据作为 JSON 发送。您的端点可以根据需要处理这些数据。"
+      },
+      "fieldHandling": {
+        "title": "字段处理和数据格式：",
+        "completeFormData": "**包含完整表单数据：**",
+        "allFieldsSent": "• 发送所有表单字段的原始名称和值",
+        "formMetadata": "• 表单元数据（ID、标题、提交时间戳）",
+        "integrationDetails": "• 用于跟踪和处理的集成详细信息",
+        "standardHttpPost": "**标准 HTTP POST：**",
+        "contentTypeHeader": "• `Content-Type: application/json` 标头",
+        "jsonBody": "• 包含结构化表单数据的 JSON 主体",
+        "successResponse": "• 您的端点必须返回 200-299 状态码表示成功",
+        "flexibleProcessing": "**灵活处理：**",
+        "parseJson": "• 解析 JSON 以按名称访问任何表单字段",
+        "integrateAnyApi": "• 与任何 API、数据库或服务集成",
+        "customLogic": "• 自定义验证、转换和路由逻辑",
+        "businessWorkflows": "• 适用于复杂的业务工作流程"
+      },
+      "payloadFormat": {
+        "title": "JSON 载荷格式：",
+        "examplePayload": "{\n  \"form_id\": \"your-form-id\",\n  \"form_title\": \"Contact Form\",\n  \"submitted_at\": \"2024-06-28T10:30:00Z\",\n  \"data\": {\n    \"name\": \"John Doe\",\n    \"email\": \"john@example.com\",\n    \"message\": \"Hello world\"\n  },\n  \"integration\": {\n    \"id\": \"integration-id\",\n    \"title\": \"My Webhook\"\n  }\n}"
+      },
+      "requirements": {
+        "title": "要求：",
+        "acceptPost": "• 您的端点必须接受 POST 请求",
+        "responseStatus": "• 必须返回 HTTP 200-299 状态码表示成功",
+        "handleJson": "• 应该处理 JSON 内容类型",
+        "httpsRecommended": "• 出于安全考虑建议使用 HTTPS URL"
+      }
+    }
+  }
+}

@@ -11,12 +11,14 @@ import {
   IconShield,
   IconFileCode,
 } from '@tabler/icons-react';
+import { useTranslation } from 'react-i18next';
 
 export interface DocsProps {
   colorScheme?: 'light' | 'dark' | undefined;
 }
 
 export function Docs() {
+  const { t } = useTranslation();
   return (
     <Stack gap="xl">
       {/* Getting Started */}
@@ -28,9 +30,9 @@ export function Docs() {
                 <IconForms size={20} />
               </ThemeIcon>
               <div>
-                <Text fw={500}>What is Formshive?</Text>
+                <Text fw={500}>{t('docs.whatIsFormshive.title')}</Text>
                 <Text size="sm" c="dimmed" fw={400}>
-                  Learn the basics of Formshive
+                  {t('docs.whatIsFormshive.subtitle')}
                 </Text>
               </div>
             </Group>
@@ -38,19 +40,17 @@ export function Docs() {
           <Accordion.Panel>
             <Stack gap="md">
               <Text>
-                Formshive is a simple tool that helps you create web forms and collect submissions
-                from your website visitors. Think of it like a digital mailbox - people fill out
-                your forms, and you receive their messages.
+                {t('docs.whatIsFormshive.description')}
               </Text>
 
-              <Alert icon={<IconInfoCircle size={16} />} title="Key Benefits" color="blue">
+              <Alert icon={<IconInfoCircle size={16} />} title={t('docs.whatIsFormshive.keyBenefits.title')} color="blue">
                 <Text size="sm">
-                  • No coding required for basic forms
+                  • {t('docs.whatIsFormshive.keyBenefits.noCoding')}
                   <br />
-                  • Multiple ways to integrate with your website
+                  • {t('docs.whatIsFormshive.keyBenefits.multipleWays')}
                   <br />
-                  • Automatic spam protection
-                  <br />• Email notifications when someone submits
+                  • {t('docs.whatIsFormshive.keyBenefits.spamProtection')}
+                  <br />• {t('docs.whatIsFormshive.keyBenefits.emailNotifications')}
                 </Text>
               </Alert>
             </Stack>
@@ -64,9 +64,9 @@ export function Docs() {
                 <IconSettings size={20} />
               </ThemeIcon>
               <div>
-                <Text fw={500}>Forms With & Without Fields</Text>
+                <Text fw={500}>{t('docs.formsWithWithoutFields.title')}</Text>
                 <Text size="sm" c="dimmed" fw={400}>
-                  Understanding how Formshive handles different types of forms
+                  {t('docs.formsWithWithoutFields.subtitle')}
                 </Text>
               </div>
             </Group>
@@ -75,50 +75,46 @@ export function Docs() {
             <Stack gap="lg">
               <div>
                 <Text fw={500} mb="xs">
-                  Forms WITH Fields (Structured)
+                  {t('docs.formsWithWithoutFields.withFields.title')}
                 </Text>
                 <Text size="sm" mb="md">
-                  When you define specific fields (like "Name", "Email", "Message"), Formshive knows
-                  exactly what to expect. This gives you more features like validation, required
-                  fields, and prettier form layouts.
+                  {t('docs.formsWithWithoutFields.withFields.description')}
                 </Text>
                 <Card withBorder p="sm" bg="green.0">
                   <Text size="sm" fw={500} mb="xs">
-                    ✅ Benefits:
+                    {t('docs.formsWithWithoutFields.withFields.benefits.title')}
                   </Text>
                   <Text size="xs">
-                    • Professional-looking forms
+                    • {t('docs.formsWithWithoutFields.withFields.benefits.professionalLooking')}
                     <br />
-                    • Email validation
+                    • {t('docs.formsWithWithoutFields.withFields.benefits.emailValidation')}
                     <br />
-                    • Required field checking
+                    • {t('docs.formsWithWithoutFields.withFields.benefits.requiredFields')}
                     <br />
-                    • Dropdown menus and checkboxes
-                    <br />• Better spam protection
+                    • {t('docs.formsWithWithoutFields.withFields.benefits.dropdowns')}
+                    <br />• {t('docs.formsWithWithoutFields.withFields.benefits.spamProtection')}
                   </Text>
                 </Card>
               </div>
 
               <div>
                 <Text fw={500} mb="xs">
-                  Forms WITHOUT Fields (Flexible)
+                  {t('docs.formsWithWithoutFields.withoutFields.title')}
                 </Text>
                 <Text size="sm" mb="md">
-                  You can also create a form that accepts ANY content - whatever someone sends,
-                  you'll receive. This is perfect for simple contact forms or when you want maximum
-                  flexibility.
+                  {t('docs.formsWithWithoutFields.withoutFields.description')}
                 </Text>
                 <Card withBorder p="sm" bg="yellow.0">
                   <Text size="sm" fw={500} mb="xs">
-                    ⚡ Best for:
+                    {t('docs.formsWithWithoutFields.withoutFields.bestFor.title')}
                   </Text>
                   <Text size="xs">
-                    • Quick contact forms
+                    • {t('docs.formsWithWithoutFields.withoutFields.bestFor.quickContact')}
                     <br />
-                    • Existing HTML forms
+                    • {t('docs.formsWithWithoutFields.withoutFields.bestFor.existingHtml')}
                     <br />
-                    • When you need maximum flexibility
-                    <br />• Simple feedback collection
+                    • {t('docs.formsWithWithoutFields.withoutFields.bestFor.maxFlexibility')}
+                    <br />• {t('docs.formsWithWithoutFields.withoutFields.bestFor.feedback')}
                   </Text>
                 </Card>
               </div>
@@ -133,9 +129,9 @@ export function Docs() {
                 <IconCode size={20} />
               </ThemeIcon>
               <div>
-                <Text fw={500}>Form Submission</Text>
+                <Text fw={500}>{t('docs.formSubmission.title')}</Text>
                 <Text size="sm" c="dimmed" fw={400}>
-                  How form submissions work and what happens after users submit
+                  {t('docs.formSubmission.subtitle')}
                 </Text>
               </div>
             </Group>
@@ -143,73 +139,69 @@ export function Docs() {
           <Accordion.Panel>
             <Stack gap="lg">
               <Text>
-                When someone submits your form, Formshive processes the data through several validation
-                steps and then responds based on your form configuration and the type of request.
-                \              </Text>
+                {t('docs.formSubmission.description')}
+              </Text>
 
               <Box>
                 <Text fw={500} mb="xs">
-                  Validation Process
+                  {t('docs.formSubmission.validation.title')}
                 </Text>
                 <Text size="sm" mb="md">
-                  Every form submission goes through comprehensive validation to ensure data quality
-                  and security. If validation fails, users receive detailed error messages.
+                  {t('docs.formSubmission.validation.description')}
                 </Text>
                 <Card withBorder p="sm" bg="blue.0">
                   <Text size="sm" fw={500} mb="xs">
-                    Validation Steps:
+                    {t('docs.formSubmission.validation.steps.title')}
                   </Text>
                   <Text size="xs">
-                    1. <strong>Form exists:</strong> Verifies the form ID is valid
+                    {t('docs.formSubmission.validation.steps.formExists')}
                     <br />
-                    2. <strong>CAPTCHA check:</strong> Validates anti-spam challenge (if enabled)
+                    {t('docs.formSubmission.validation.steps.captcha')}
                     <br />
-                    3. <strong>Field validation:</strong> Checks required fields, email format, etc. (if enabled)
+                    {t('docs.formSubmission.validation.steps.fieldValidation')}
                     <br />
-                    4. <strong>Spam detection:</strong> Analyzes content for spam patterns (if enabled)
+                    {t('docs.formSubmission.validation.steps.spamDetection')}
                   </Text>
                 </Card>
               </Box>
 
               <Box>
                 <Text fw={500} mb="xs">
-                  User-Friendly Error Handling
+                  {t('docs.formSubmission.errorHandling.title')}
                 </Text>
                 <Text size="sm" mb="md">
-                  When someone makes a mistake filling out your form, Formshive provides helpful,
-                  clear error messages. Instead of losing their work, users see exactly what needs
-                  to be fixed, with their original input preserved.
+                  {t('docs.formSubmission.errorHandling.description')}
                 </Text>
                 <Grid>
                   <Grid.Col span={{ base: 12, md: 6 }}>
                     <Card withBorder p="sm">
                       <Text fw={500} size="sm" mb="xs">
-                        HTML Forms (Website Visitors):
+                        {t('docs.formSubmission.errorHandling.htmlForms.title')}
                       </Text>
                       <Text size="xs">
-                        • See a friendly error page with the form
+                        • {t('docs.formSubmission.errorHandling.htmlForms.seeErrorPage')}
                         <br />
-                        • Their input is preserved - no retyping!
+                        • {t('docs.formSubmission.errorHandling.htmlForms.inputPreserved')}
                         <br />
-                        • Specific field errors highlighted in red
+                        • {t('docs.formSubmission.errorHandling.htmlForms.fieldErrors')}
                         <br />
-                        • Clear explanation of what went wrong
+                        • {t('docs.formSubmission.errorHandling.htmlForms.clearExplanation')}
                       </Text>
                     </Card>
                   </Grid.Col>
                   <Grid.Col span={{ base: 12, md: 6 }}>
                     <Card withBorder p="sm">
                       <Text fw={500} size="sm" mb="xs">
-                        API/JSON Requests (Developers):
+                        {t('docs.formSubmission.errorHandling.apiRequests.title')}
                       </Text>
                       <Text size="xs">
-                        • Detailed error information in JSON format
+                        • {t('docs.formSubmission.errorHandling.apiRequests.detailedError')}
                         <br />
-                        • Field-specific error codes and messages
+                        • {t('docs.formSubmission.errorHandling.apiRequests.fieldSpecific')}
                         <br />
-                        • Machine-readable for custom error handling
+                        • {t('docs.formSubmission.errorHandling.apiRequests.machineReadable')}
                         <br />
-                        • Perfect for dynamic forms and apps
+                        • {t('docs.formSubmission.errorHandling.apiRequests.perfectForDynamic')}
                       </Text>
                     </Card>
                   </Grid.Col>
@@ -218,22 +210,20 @@ export function Docs() {
 
               <Box>
                 <Text fw={500} mb="xs">
-                  What Happens After Someone Submits Your Form
+                  {t('docs.formSubmission.afterSubmission.title')}
                 </Text>
                 <Text size="sm" mb="md">
-                  When someone successfully submits your form, Formshive decides what to show them next.
-                  This depends on how your form is set up and how it's being used on your website.
-                  <br /><small>If you prefer to see a diagram: <Anchor size='xs' target='_blank' href="https://mermaid.live/edit#pako:eNqNlF9vmzAUxb-K5eckBZuUPw-b2pBomtZuavKykWjy4CYwgc1soywj-e5zzJrRilblAYE4v3PvuVxocSoywBHelmKf5kxqtIrXHJnjJlkIWaFl86MqlCoE36Dx-B26bSVkhYRUo5pJVoEG-f7UId359qw75roqj2iW3JR7dlDow-ruE3oAVQuuYNMJZ9Zw5ibLJk1BqcioVl8QcVy0L3TeMap7ZortnnEkWbCibCT84zzH6XEgpZB9qt8cFxyOKG5twpwp9JjpeyPLxzSxlX4FZZRDPX5cfr7vCvbpTR--F4YlAyxUtT4Y7sk8LINiOpDL1rKRBtNopEAf0fz1QPP_geZuYr2pQy5SpMVQkvklyaJ9gF8NKI1mgmvgerw61PD05S-smtV1WaRMm625-qkEN6z71im86EDePpfOY2uGMc6YZlcmzRj4edUzY0QHWnlp11538gZaer59eIR3sshwtGWlghGuQFbsfI_bc4k11jlUsMaRuSyLXa7XeM1PhqoZ_yZEhSMtG8NJ0ezyi0tTm3YgLtjOfIMXCfAM5Ew0XOMopFPrgaMW_8aR6wSTwPVDbxq61L-mhI7wAUfEoxM_oNPw2vNJ4HnkNMJ_bFVnElASGiEJCJn6TjDCZjm0kHfdH8P-OE5_AYJ6VO0">Form Submission Flow (mermaid.live/edit)</Anchor></small>
+                  {t('docs.formSubmission.afterSubmission.description')}
+                  <br /><small>{t('docs.formSubmission.afterSubmission.diagramNote')} <Anchor size='xs' target='_blank' href="https://mermaid.live/edit#pako:eNqNlF9vmzAUxb-K5eckBZuUPw-b2pBomtZuavKykWjy4CYwgc1soywj-e5zzJrRilblAYE4v3PvuVxocSoywBHelmKf5kxqtIrXHJnjJlkIWaFl86MqlCoE36Dx-B26bSVkhYRUo5pJVoEG-f7UId359qw75roqj2iW3JR7dlDow-ruE3oAVQuuYNMJZ9Zw5ibLJk1BqcioVl8QcVy0L3TeMap7ZortnnEkWbCibCT84zzH6XEgpZB9qt8cFxyOKG5twpwp9JjpeyPLxzSxlX4FZZRDPX5cfr7vCvbpTR--F4YlAyxUtT4Y7sk8LINiOpDL1rKRBtNopEAf0fz1QPP_geZuYr2pQy5SpMVQkvklyaJ9gF8NKI1mgmvgerw61PD05S-smtV1WaRMm625-qkEN6z71im86EDePpfOY2uGMc6YZlcmzRj4edUzY0QHWnlp11538gZaer59eIR3sshwtGWlghGuQFbsfI_bc4k11jlUsMaRuSyLXa7XeM1PhqoZ_yZEhSMtG8NJ0ezyi0tTm3YgLtjOfIMXCfAM5Ew0XOMopFPrgaMW_8aR6wSTwPVDbxq61L-mhI7wAUfEoxM_oNPw2vNJ4HnkNMJ_bFVnElASGiEJCJn6TjDCZjm0kHfdH8P-OE5_AYJ6VO0">{t('docs.formSubmission.afterSubmission.diagramLink')}</Anchor></small>
                 </Text>
                 <Grid>
                   <Grid.Col span={{ base: 12, md: 4 }}>
                     <Card withBorder p="sm" bg="green.0">
                       <Text fw={500} size="sm" mb="xs">
-                        Custom Thank You Page:
+                        {t('docs.formSubmission.afterSubmission.customThankYou.title')}
                       </Text>
                       <Text size="xs">
-                        If you set a "Redirect URL" in your form settings, visitors go directly to your
-                        custom thank you page. Perfect for special offers or detailed next steps.
+                        {t('docs.formSubmission.afterSubmission.customThankYou.description')}
                       </Text>
                     </Card>
                   </Grid.Col>
@@ -241,11 +231,10 @@ export function Docs() {
                   <Grid.Col span={{ base: 12, md: 4 }}>
                     <Card withBorder p="sm" bg="blue.0">
                       <Text fw={500} size="sm" mb="xs">
-                        Built-in Success Page:
+                        {t('docs.formSubmission.afterSubmission.builtInSuccess.title')}
                       </Text>
                       <Text size="xs">
-                        If no redirect URL is set, visitors see a simple "Thank you, your message
-                        was received" page. Clean and professional, works great for most forms.
+                        {t('docs.formSubmission.afterSubmission.builtInSuccess.description')}
                       </Text>
                     </Card>
                   </Grid.Col>
@@ -253,37 +242,36 @@ export function Docs() {
                   <Grid.Col span={{ base: 12, md: 4 }}>
                     <Card withBorder p="sm" bg="gray.0">
                       <Text fw={500} size="sm" mb="xs">
-                        For Developers (API):
+                        {t('docs.formSubmission.afterSubmission.forDevelopers.title')}
                       </Text>
                       <Text size="xs">
-                        JavaScript/AJAX requests get JSON responses instead of page redirects.
-                        Perfect for dynamic forms that don't reload the page.
+                        {t('docs.formSubmission.afterSubmission.forDevelopers.description')}
                       </Text>
                     </Card>
                   </Grid.Col>
                 </Grid>
 
-                <Alert icon={<IconInfoCircle size={16} />} title="Advanced: Override Options" color="blue" mt="sm">
+                <Alert icon={<IconInfoCircle size={16} />} title={t('docs.formSubmission.afterSubmission.overrideOptions.title')} color="blue" mt="sm">
                   <Text size="sm">
-                    You can add special parameters to your form URL to control what happens:
-                    <br />• <strong>?redirect=html</strong> - Always show the built-in success page
-                    <br />• <strong>?redirect=none</strong> - For developers: return JSON instead of redirecting
+                    {t('docs.formSubmission.afterSubmission.overrideOptions.description')}
+                    <br />{t('docs.formSubmission.afterSubmission.overrideOptions.redirectHtml')}
+                    <br />{t('docs.formSubmission.afterSubmission.overrideOptions.redirectNone')}
                   </Text>
                 </Alert>
               </Box>
 
               <Box>
                 <Text fw={500} mb="xs">
-                  Integration Examples
+                  {t('docs.formSubmission.integrationExamples.title')}
                 </Text>
                 <Text size="sm" mb="md">
-                  Here are examples of how different integration methods handle form submissions:
+                  {t('docs.formSubmission.integrationExamples.description')}
                 </Text>
                 <Grid>
                   <Grid.Col span={{ base: 12, md: 6 }}>
                     <Card withBorder p="sm">
                       <Text fw={500} size="sm" mb="xs">
-                        JavaScript (AJAX):
+                        {t('docs.formSubmission.integrationExamples.javascript.title')}
                       </Text>
                       <Code block>
                         {`fetch('/v1/digest/form-id', {
@@ -298,8 +286,8 @@ export function Docs() {
 })`}
                       </Code>
                       <Text size="xs" mt="xs" c="blue">
-                        ✅ Success: Gets JSON response<br />
-                        ❌ Error: Gets detailed error JSON for custom handling
+                        {t('docs.formSubmission.integrationExamples.javascript.success')}<br />
+                        {t('docs.formSubmission.integrationExamples.javascript.error')}
                       </Text>
                     </Card>
                   </Grid.Col>
@@ -307,7 +295,7 @@ export function Docs() {
                   <Grid.Col span={{ base: 12, md: 6 }}>
                     <Card withBorder p="sm">
                       <Text fw={500} size="sm" mb="xs">
-                        HTML Form:
+                        {t('docs.formSubmission.integrationExamples.htmlForm.title')}
                       </Text>
                       <Code block>
                         {`<form action="/v1/digest/form-id" 
@@ -318,23 +306,23 @@ export function Docs() {
 </form>`}
                       </Code>
                       <Text size="xs" mt="xs" c="green">
-                        ✅ Success: Redirects to thank you page or custom URL<br />
-                        ❌ Error: Shows user-friendly error page with form
+                        {t('docs.formSubmission.integrationExamples.htmlForm.success')}<br />
+                        {t('docs.formSubmission.integrationExamples.htmlForm.error')}
                       </Text>
                     </Card>
                   </Grid.Col>
                 </Grid>
               </Box>
 
-              <Alert icon={<IconInfoCircle size={16} />} title="Pro Tips for Better User Experience" color="blue">
+              <Alert icon={<IconInfoCircle size={16} />} title={t('docs.formSubmission.proTips.title')} color="blue">
                 <Text size="sm">
-                  • <strong>Set a redirect URL</strong> to send visitors to a custom thank-you page with next steps
+                  {t('docs.formSubmission.proTips.setRedirect')}
                   <br />
-                  • <strong>Test your forms</strong> by filling them out incorrectly to see the error experience
+                  {t('docs.formSubmission.proTips.testForms')}
                   <br />
-                  • <strong>Keep error messages helpful</strong> - users appreciate clear guidance on how to fix problems
+                  {t('docs.formSubmission.proTips.helpfulErrors')}
                   <br />
-                  • <strong>Monitor submissions</strong> in the Messages tab to spot patterns or common user issues
+                  {t('docs.formSubmission.proTips.monitor')}
                 </Text>
               </Alert>
             </Stack>
@@ -348,9 +336,9 @@ export function Docs() {
                 <IconCode size={20} />
               </ThemeIcon>
               <div>
-                <Text fw={500}>Integration Methods</Text>
+                <Text fw={500}>{t('docs.integrationMethods.title')}</Text>
                 <Text size="sm" c="dimmed" fw={400}>
-                  Different ways to add forms to your website
+                  {t('docs.integrationMethods.subtitle')}
                 </Text>
               </div>
             </Group>
@@ -358,8 +346,7 @@ export function Docs() {
           <Accordion.Panel>
             <Stack gap="lg">
               <Text>
-                Formshive offers several ways to integrate forms into your website, from simple
-                copy-paste solutions to advanced customization.
+                {t('docs.integrationMethods.description')}
               </Text>
 
               <Grid>
@@ -368,23 +355,22 @@ export function Docs() {
                     <Group mb="sm">
                       <IconCode size={20} />
                       <Text fw={500} size="sm">
-                        Manual HTML
+                        {t('docs.integrationMethods.manual.title')}
                       </Text>
                     </Group>
                     <Group gap="xs" mb="sm">
                       <Text size="xs" px="xs" py={2} bg="blue.1" c="blue.8" style={{ borderRadius: '12px', fontWeight: 500 }}>
-                        Existing Forms
+                        {t('docs.integrationMethods.manual.tags.existingForms')}
                       </Text>
                       <Text size="xs" px="xs" py={2} bg="green.1" c="green.8" style={{ borderRadius: '12px', fontWeight: 500 }}>
-                        Very Flexible
+                        {t('docs.integrationMethods.manual.tags.veryFlexible')}
                       </Text>
                       <Text size="xs" px="xs" py={2} bg="purple.1" c="purple.8" style={{ borderRadius: '12px', fontWeight: 500 }}>
-                        Custom Design
+                        {t('docs.integrationMethods.manual.tags.customDesign')}
                       </Text>
                     </Group>
                     <Text size="xs" mb="sm">
-                      Write your own HTML form and point it to Formshive. Perfect if you're
-                      comfortable with HTML or have an existing form.
+                      {t('docs.integrationMethods.manual.description')}
                     </Text>
                     <Code block>
                       {`<form action="your-form-url" method="POST">
@@ -394,12 +380,12 @@ export function Docs() {
                     </Code>
                     <Alert color="green" mt="sm">
                       <Text size="xs">
-                        <strong>✅ Success:</strong> Follows redirect behavior from "Form Submission" - custom URL redirect or built-in success page.
+                        {t('docs.integrationMethods.manual.success')}
                       </Text>
                     </Alert>
                     <Alert color="yellow" mt="xs">
                       <Text size="xs">
-                        <strong>⚠️ Validation errors:</strong> Only for forms WITH defined fields (see "Forms With & Without Fields") - shows user-friendly error page with preserved input and highlighted field errors.
+                        {t('docs.integrationMethods.manual.validation')}
                       </Text>
                     </Alert>
                   </Card>
@@ -410,23 +396,22 @@ export function Docs() {
                     <Group mb="sm">
                       <IconBox size={20} />
                       <Text fw={500} size="sm">
-                        JavaScript Embed
+                        {t('docs.integrationMethods.javascript.title')}
                       </Text>
                     </Group>
                     <Group gap="xs" mb="sm">
                       <Text size="xs" px="xs" py={2} bg="orange.1" c="orange.8" style={{ borderRadius: '12px', fontWeight: 500 }}>
-                        Best UX
+                        {t('docs.integrationMethods.javascript.tags.bestUx')}
                       </Text>
                       <Text size="xs" px="xs" py={2} bg="teal.1" c="teal.8" style={{ borderRadius: '12px', fontWeight: 500 }}>
-                        No Page Reloads
+                        {t('docs.integrationMethods.javascript.tags.noPageReloads')}
                       </Text>
                       <Text size="xs" px="xs" py={2} bg="pink.1" c="pink.8" style={{ borderRadius: '12px', fontWeight: 500 }}>
-                        Dynamic
+                        {t('docs.integrationMethods.javascript.tags.dynamic')}
                       </Text>
                     </Group>
                     <Text size="xs" mb="sm">
-                      Add a small script to your website and Formshive creates the form
-                      automatically. Works great with defined fields.
+                      {t('docs.integrationMethods.javascript.description')}
                     </Text>
                     <Code block>
                       {`<div id="formshive" form-id="your-id">
@@ -436,12 +421,12 @@ export function Docs() {
                     </Code>
                     <Alert color="green" mt="sm">
                       <Text size="xs">
-                        <strong>✅ Success:</strong> With redirect URL - redirects page. Without redirect URL - shows inline success message and clears form.
+                        {t('docs.integrationMethods.javascript.success')}
                       </Text>
                     </Alert>
                     <Alert color="yellow" mt="xs">
                       <Text size="xs">
-                        <strong>⚠️ Validation errors:</strong> For forms WITH defined fields - highlights specific field errors directly in the form with red styling and error messages. Much more user-friendly than page reloads!
+                        {t('docs.integrationMethods.javascript.validation')}
                       </Text>
                     </Alert>
                   </Card>
@@ -452,23 +437,22 @@ export function Docs() {
                     <Group mb="sm">
                       <IconFrame size={20} />
                       <Text fw={500} size="sm">
-                        IFrame
+                        {t('docs.integrationMethods.iframe.title')}
                       </Text>
                     </Group>
                     <Group gap="xs" mb="sm">
                       <Text size="xs" px="xs" py={2} bg="green.1" c="green.8" style={{ borderRadius: '12px', fontWeight: 500 }}>
-                        Very Easy
+                        {t('docs.integrationMethods.iframe.tags.veryEasy')}
                       </Text>
                       <Text size="xs" px="xs" py={2} bg="blue.1" c="blue.8" style={{ borderRadius: '12px', fontWeight: 500 }}>
-                        Works Everywhere
+                        {t('docs.integrationMethods.iframe.tags.worksEverywhere')}
                       </Text>
                       <Text size="xs" px="xs" py={2} bg="gray.1" c="gray.8" style={{ borderRadius: '12px', fontWeight: 500 }}>
-                        Copy & Paste
+                        {t('docs.integrationMethods.iframe.tags.copyPaste')}
                       </Text>
                     </Group>
                     <Text size="xs" mb="sm">
-                      Embed a complete form as a frame on your page. Easy to add, works everywhere,
-                      with different styling options.
+                      {t('docs.integrationMethods.iframe.description')}
                     </Text>
                     <Code block>
                       {`<iframe 
@@ -478,12 +462,12 @@ export function Docs() {
                     </Code>
                     <Alert color="green" mt="sm">
                       <Text size="xs">
-                        <strong>✅ Success:</strong> Shows built-in success page within the iframe. Users stay on your website.
+                        {t('docs.integrationMethods.iframe.success')}
                       </Text>
                     </Alert>
                     <Alert color="yellow" mt="xs">
                       <Text size="xs">
-                        <strong>⚠️ Validation errors:</strong> For forms WITH defined fields - shows error page within iframe with preserved input and field highlighting. Users stay on your site while fixing errors.
+                        {t('docs.integrationMethods.iframe.validation')}
                       </Text>
                     </Alert>
                   </Card>
@@ -494,23 +478,22 @@ export function Docs() {
                     <Group mb="sm">
                       <IconLink size={20} />
                       <Text fw={500} size="sm">
-                        Direct Link
+                        {t('docs.integrationMethods.directLink.title')}
                       </Text>
                     </Group>
                     <Group gap="xs" mb="sm">
                       <Text size="xs" px="xs" py={2} bg="green.1" c="green.8" style={{ borderRadius: '12px', fontWeight: 500 }}>
-                        Very Easy
+                        {t('docs.integrationMethods.directLink.tags.veryEasy')}
                       </Text>
                       <Text size="xs" px="xs" py={2} bg="violet.1" c="violet.8" style={{ borderRadius: '12px', fontWeight: 500 }}>
-                        Social Media
+                        {t('docs.integrationMethods.directLink.tags.socialMedia')}
                       </Text>
                       <Text size="xs" px="xs" py={2} bg="indigo.1" c="indigo.8" style={{ borderRadius: '12px', fontWeight: 500 }}>
-                        Standalone
+                        {t('docs.integrationMethods.directLink.tags.standalone')}
                       </Text>
                     </Group>
                     <Text size="xs" mb="sm">
-                      Share a direct link to your form. Great for emails, social media, or when you
-                      want a standalone form page.
+                      {t('docs.integrationMethods.directLink.description')}
                     </Text>
                     <Code block>
                       {`https://formshive.com/link.html
@@ -519,12 +502,12 @@ export function Docs() {
                     </Code>
                     <Alert color="green" mt="sm">
                       <Text size="xs">
-                        <strong>✅ Success:</strong> Full-page experience - follows your form's redirect settings from "Form Submission" (custom URL or success page).
+                        {t('docs.integrationMethods.directLink.success')}
                       </Text>
                     </Alert>
                     <Alert color="yellow" mt="xs">
                       <Text size="xs">
-                        <strong>⚠️ Validation errors:</strong> For forms WITH defined fields - shows full-page error experience with preserved input and field highlighting. Users can easily fix and resubmit.
+                        {t('docs.integrationMethods.directLink.validation')}
                       </Text>
                     </Alert>
                   </Card>
@@ -533,16 +516,15 @@ export function Docs() {
 
               <Alert
                 icon={<IconInfoCircle size={16} />}
-                title="Which method should I choose?"
+                title={t('docs.integrationMethods.whichMethod.title')}
                 color="violet"
               >
                 <Text size="sm">
-                  <strong>Beginners:</strong> Start with IFrame or Direct Link - they're the
-                  easiest!
+                  {t('docs.integrationMethods.whichMethod.beginners')}
                   <br />
-                  <strong>Existing forms:</strong> Use Manual HTML to keep your current design
+                  {t('docs.integrationMethods.whichMethod.existingForms')}
                   <br />
-                  <strong>Advanced users:</strong> JavaScript Embed gives you the most flexibility
+                  {t('docs.integrationMethods.whichMethod.advancedUsers')}
                 </Text>
               </Alert>
             </Stack>
@@ -556,9 +538,9 @@ export function Docs() {
                 <IconMail size={20} />
               </ThemeIcon>
               <div>
-                <Text fw={500}>Email Recipients</Text>
+                <Text fw={500}>{t('docs.emailSetup.title')}</Text>
                 <Text size="sm" c="dimmed" fw={400}>
-                  Getting notified when someone submits your form
+                  {t('docs.emailSetup.subtitle')}
                 </Text>
               </div>
             </Group>
@@ -566,44 +548,40 @@ export function Docs() {
           <Accordion.Panel>
             <Stack gap="md">
               <Text>
-                When someone fills out your form, Formshive can send you an email notification. You
-                can add multiple email addresses to receive these notifications.
+                {t('docs.emailSetup.description')}
               </Text>
 
               <Alert
                 icon={<IconInfoCircle size={16} />}
-                title="Email Verification Required"
+                title={t('docs.emailSetup.verification.title')}
                 color="orange"
               >
                 <Text size="sm">
-                  For security, you'll need to verify your email address before you can receive form
-                  submissions. This prevents spam and ensures you actually own the email address.
+                  {t('docs.emailSetup.verification.description')}
                 </Text>
               </Alert>
 
               <Card withBorder p="md">
                 <Text fw={500} size="sm" mb="xs">
-                  How it works:
+                  {t('docs.emailSetup.howItWorks.title')}
                 </Text>
                 <Text size="sm">
-                  1. <strong>Add your email:</strong> Enter the email address where you want to
-                  receive notifications
+                  {t('docs.emailSetup.howItWorks.addEmail')}
                   <br />
-                  2. <strong>Check your inbox:</strong> Look for a verification email from Formshive
+                  {t('docs.emailSetup.howItWorks.checkInbox')}
                   <br />
-                  3. <strong>Click to verify:</strong> Click the verification link in the email
+                  {t('docs.emailSetup.howItWorks.clickVerify')}
                   <br />
-                  4. <strong>You're ready!</strong> Start receiving form submissions immediately
+                  {t('docs.emailSetup.howItWorks.ready')}
                 </Text>
               </Card>
 
               <div>
                 <Text fw={500} size="sm" mb="xs">
-                  Multiple Recipients
+                  {t('docs.emailSetup.multipleRecipients.title')}
                 </Text>
                 <Text size="sm">
-                  You can add multiple verified email addresses to a single form. This is great for
-                  teams where multiple people need to see form submissions.
+                  {t('docs.emailSetup.multipleRecipients.description')}
                 </Text>
               </div>
             </Stack>
@@ -617,9 +595,9 @@ export function Docs() {
                 <IconShield size={20} />
               </ThemeIcon>
               <div>
-                <Text fw={500}>CAPTCHA Setup</Text>
+                <Text fw={500}>{t('docs.captchaSetup.title')}</Text>
                 <Text size="sm" c="dimmed" fw={400}>
-                  Protect your forms from spam and bots
+                  {t('docs.captchaSetup.subtitle')}
                 </Text>
               </div>
             </Group>
@@ -627,66 +605,57 @@ export function Docs() {
           <Accordion.Panel>
             <Stack gap="md">
               <Text>
-                CAPTCHA is like a security guard for your forms. It helps block spam messages and
-                ensures that real people are filling out your forms, not automated bots.
+                {t('docs.captchaSetup.description')}
               </Text>
 
-              <Alert icon={<IconInfoCircle size={16} />} title="How CAPTCHA Works" color="blue">
+              <Alert icon={<IconInfoCircle size={16} />} title={t('docs.captchaSetup.howItWorks.title')} color="blue">
                 <Text size="sm">
-                  When someone tries to submit your form, they'll need to solve a simple math
-                  problem. This takes just a few seconds for humans but stops most spam bots
-                  completely.
+                  {t('docs.captchaSetup.howItWorks.description')}
                 </Text>
               </Alert>
 
               <Card withBorder p="md">
                 <Text fw={500} size="sm" mb="xs">
-                  Setting up CAPTCHA (3 easy steps):
+                  {t('docs.captchaSetup.setup.title')}
                 </Text>
                 <Text size="sm">
-                  1. <strong>Enable CAPTCHA:</strong> Go to your form settings and turn on "Check
-                  Challenge"
+                  {t('docs.captchaSetup.setup.enable')}
                   <br />
-                  2. <strong>Update your website:</strong> Your website needs a small script to show
-                  the CAPTCHA
+                  {t('docs.captchaSetup.setup.updateWebsite')}
                   <br />
-                  3. <strong>Test it:</strong> Try submitting your form to make sure it works
+                  {t('docs.captchaSetup.setup.test')}
                 </Text>
               </Card>
 
               <div>
                 <Text fw={500} size="sm" mb="xs">
-                  Benefits of Using CAPTCHA:
+                  {t('docs.captchaSetup.benefits.title')}
                 </Text>
                 <Grid>
                   <Grid.Col span={{ base: 12, md: 6 }}>
                     <Card withBorder p="sm" bg="green.0">
                       <Text size="xs">
-                        ✅ <strong>Blocks spam:</strong> Dramatically reduces unwanted messages
-                        <br />✅ <strong>No tracking:</strong> Privacy-friendly and GDPR compliant
-                        <br />✅ <strong>Free to use:</strong> No extra charges for blocked spam
+                        {t('docs.captchaSetup.benefits.left.blocksSpam')}
+                        <br />{t('docs.captchaSetup.benefits.left.noTracking')}
+                        <br />{t('docs.captchaSetup.benefits.left.free')}
                       </Text>
                     </Card>
                   </Grid.Col>
                   <Grid.Col span={{ base: 12, md: 6 }}>
                     <Card withBorder p="sm" bg="blue.0">
                       <Text size="xs">
-                        ⚡ <strong>Quick for users:</strong> Takes just 2-3 seconds to complete
-                        <br />⚡ <strong>Works everywhere:</strong> Compatible with all integration
-                        methods
-                        <br />⚡ <strong>Always improving:</strong> Automatically updated for better
-                        protection
+                        {t('docs.captchaSetup.benefits.right.quickForUsers')}
+                        <br />{t('docs.captchaSetup.benefits.right.worksEverywhere')}
+                        <br />{t('docs.captchaSetup.benefits.right.alwaysImproving')}
                       </Text>
                     </Card>
                   </Grid.Col>
                 </Grid>
               </div>
 
-              <Alert icon={<IconInfoCircle size={16} />} title="Need Technical Help?" color="red">
+              <Alert icon={<IconInfoCircle size={16} />} title={t('docs.captchaSetup.technicalHelp.title')} color="red">
                 <Text size="sm">
-                  For detailed setup instructions and code examples, check the{' '}
-                  <strong>Integration</strong> tab when editing your form. It has all the technical
-                  details and copy-paste code you need.
+                  {t('docs.captchaSetup.technicalHelp.description')}
                 </Text>
               </Alert>
             </Stack>
@@ -700,9 +669,9 @@ export function Docs() {
                 <IconSettings size={20} />
               </ThemeIcon>
               <div>
-                <Text fw={500}>Field Configuration</Text>
+                <Text fw={500}>{t('docs.fieldConfiguration.title')}</Text>
                 <Text size="sm" c="dimmed" fw={400}>
-                  Customizing your form fields
+                  {t('docs.fieldConfiguration.subtitle')}
                 </Text>
               </div>
             </Group>
@@ -710,28 +679,27 @@ export function Docs() {
           <Accordion.Panel>
             <Stack gap="md">
               <Text>
-                When you create forms with defined fields, you can customize each field to behave
-                exactly how you want.
+                {t('docs.fieldConfiguration.description')}
               </Text>
 
               <Grid>
                 <Grid.Col span={{ base: 12, md: 6 }}>
                   <Card withBorder p="sm">
                     <Text fw={500} size="sm" mb="xs">
-                      Field Types Available:
+                      {t('docs.fieldConfiguration.fieldTypes.title')}
                     </Text>
                     <Text size="xs">
-                      • <strong>Text:</strong> Single line text input
-                      <br />• <strong>Email:</strong> Email with automatic validation
-                      <br />• <strong>Textarea:</strong> Multi-line text for longer messages
-                      <br />• <strong>Number:</strong> Only accepts numbers
-                      <br />• <strong>Phone:</strong> Phone number input
-                      <br />• <strong>URL:</strong> Website links with validation
-                      <br />• <strong>Date:</strong> Date picker
-                      <br />• <strong>File:</strong> File upload
-                      <br />• <strong>Select:</strong> Dropdown menu
-                      <br />• <strong>Radio:</strong> Choose one option
-                      <br />• <strong>Checkbox:</strong> Multiple selections
+                      {t('docs.fieldConfiguration.fieldTypes.text')}
+                      <br />{t('docs.fieldConfiguration.fieldTypes.email')}
+                      <br />{t('docs.fieldConfiguration.fieldTypes.textarea')}
+                      <br />{t('docs.fieldConfiguration.fieldTypes.number')}
+                      <br />{t('docs.fieldConfiguration.fieldTypes.phone')}
+                      <br />{t('docs.fieldConfiguration.fieldTypes.url')}
+                      <br />{t('docs.fieldConfiguration.fieldTypes.date')}
+                      <br />{t('docs.fieldConfiguration.fieldTypes.file')}
+                      <br />{t('docs.fieldConfiguration.fieldTypes.select')}
+                      <br />{t('docs.fieldConfiguration.fieldTypes.radio')}
+                      <br />{t('docs.fieldConfiguration.fieldTypes.checkbox')}
                     </Text>
                   </Card>
                 </Grid.Col>
@@ -739,24 +707,23 @@ export function Docs() {
                 <Grid.Col span={{ base: 12, md: 6 }}>
                   <Card withBorder p="sm">
                     <Text fw={500} size="sm" mb="xs">
-                      Validation Options:
+                      {t('docs.fieldConfiguration.validationOptions.title')}
                     </Text>
                     <Text size="xs">
-                      • <strong>Required fields:</strong> Must be filled out
-                      <br />• <strong>Email validation:</strong> Checks for valid email format
-                      <br />• <strong>URL validation:</strong> Ensures proper web links
-                      <br />• <strong>Custom options:</strong> For dropdowns and selections
-                      <br />• <strong>Help text:</strong> Instructions for users
-                      <br />• <strong>Placeholders:</strong> Example text in fields
+                      {t('docs.fieldConfiguration.validationOptions.required')}
+                      <br />{t('docs.fieldConfiguration.validationOptions.emailValidation')}
+                      <br />{t('docs.fieldConfiguration.validationOptions.urlValidation')}
+                      <br />{t('docs.fieldConfiguration.validationOptions.customOptions')}
+                      <br />{t('docs.fieldConfiguration.validationOptions.helpText')}
+                      <br />{t('docs.fieldConfiguration.validationOptions.placeholders')}
                     </Text>
                   </Card>
                 </Grid.Col>
               </Grid>
 
-              <Alert icon={<IconInfoCircle size={16} />} title="Pro Tip" color="teal">
+              <Alert icon={<IconInfoCircle size={16} />} title={t('docs.fieldConfiguration.proTip.title')} color="teal">
                 <Text size="sm">
-                  Start simple with just a few fields like Name, Email, and Message. You can always
-                  add more fields later as your needs grow!
+                  {t('docs.fieldConfiguration.proTip.description')}
                 </Text>
               </Alert>
             </Stack>
@@ -770,9 +737,9 @@ export function Docs() {
                 <IconFileCode size={20} />
               </ThemeIcon>
               <div>
-                <Text fw={500}>Programmatic Field Configuration (TOML)</Text>
+                <Text fw={500}>{t('docs.tomlConfiguration.title')}</Text>
                 <Text size="sm" c="dimmed" fw={400}>
-                  Advanced form configuration using code
+                  {t('docs.tomlConfiguration.subtitle')}
                 </Text>
               </div>
             </Group>
@@ -781,27 +748,21 @@ export function Docs() {
             <Stack gap="md">
               <Alert
                 icon={<IconInfoCircle size={16} />}
-                title="For Advanced Users Only"
+                title={t('docs.tomlConfiguration.advancedOnly.title')}
                 color="grape"
               >
                 <Text size="sm">
-                  This section is for developers and advanced users who prefer to configure forms
-                  using code. If you're comfortable with the visual form builder, you can skip this
-                  section entirely.
+                  {t('docs.tomlConfiguration.advancedOnly.description')}
                 </Text>
               </Alert>
 
               <Text>
-                Instead of using the visual form builder, you can define your form fields using TOML
-                configuration. This gives you more precise control and makes it easier to version
-                control your form specifications. TOML (Tom's Obvious, Minimal Language) is a simple
-                configuration format that lets you define form fields, validation rules, and
-                behavior using structured text instead of clicking through menus.
+                {t('docs.tomlConfiguration.description')}
               </Text>
 
               <Card withBorder p="md">
                 <Text fw={500} size="sm" mb="xs">
-                  Basic Example:
+                  {t('docs.tomlConfiguration.basicExample.title')}
                 </Text>
                 <Code block>
                   {`[field]
@@ -826,15 +787,15 @@ is_min = 10`}
                 <Grid.Col span={{ base: 12, md: 6 }}>
                   <Card withBorder p="sm">
                     <Text fw={500} size="sm" mb="xs">
-                      Field Types Available:
+                      {t('docs.tomlConfiguration.fieldTypesAvailable.title')}
                     </Text>
                     <Text size="xs">
-                      • <strong>text:</strong> Single line text input
-                      <br />• <strong>email:</strong> Email with validation
-                      <br />• <strong>textarea:</strong> Multi-line text area
-                      <br />• <strong>select:</strong> Dropdown menu
-                      <br />• <strong>checkbox:</strong> Multiple choice options
-                      <br />• <strong>number:</strong> Numeric input
+                      {t('docs.tomlConfiguration.fieldTypesAvailable.text')}
+                      <br />{t('docs.tomlConfiguration.fieldTypesAvailable.email')}
+                      <br />{t('docs.tomlConfiguration.fieldTypesAvailable.textarea')}
+                      <br />{t('docs.tomlConfiguration.fieldTypesAvailable.select')}
+                      <br />{t('docs.tomlConfiguration.fieldTypesAvailable.checkbox')}
+                      <br />{t('docs.tomlConfiguration.fieldTypesAvailable.number')}
                     </Text>
                   </Card>
                 </Grid.Col>
@@ -842,15 +803,15 @@ is_min = 10`}
                 <Grid.Col span={{ base: 12, md: 6 }}>
                   <Card withBorder p="sm">
                     <Text fw={500} size="sm" mb="xs">
-                      Validation Options:
+                      {t('docs.tomlConfiguration.validationOptions.title')}
                     </Text>
                     <Text size="xs">
-                      • <strong>required:</strong> Field must be filled
-                      <br />• <strong>is_email:</strong> Validates email format
-                      <br />• <strong>is_min:</strong> Minimum length/value
-                      <br />• <strong>is_max:</strong> Maximum length/value
-                      <br />• <strong>options:</strong> Valid choices for select/checkbox
-                      <br />• <strong>check_spam:</strong> Enable spam detection
+                      {t('docs.tomlConfiguration.validationOptions.required')}
+                      <br />{t('docs.tomlConfiguration.validationOptions.isEmail')}
+                      <br />{t('docs.tomlConfiguration.validationOptions.isMin')}
+                      <br />{t('docs.tomlConfiguration.validationOptions.isMax')}
+                      <br />{t('docs.tomlConfiguration.validationOptions.options')}
+                      <br />{t('docs.tomlConfiguration.validationOptions.checkSpam')}
                     </Text>
                   </Card>
                 </Grid.Col>
@@ -858,26 +819,22 @@ is_min = 10`}
 
               <div>
                 <Text fw={500} size="sm" mb="xs">
-                  Benefits of TOML Configuration:
+                  {t('docs.tomlConfiguration.benefits.title')}
                 </Text>
                 <Card withBorder p="sm" bg="grape.0">
                   <Text size="xs">
-                    ✨ <strong>Version Control:</strong> Track changes to your forms over time
-                    <br />✨ <strong>Reusable:</strong> Copy configurations between forms easily
-                    <br />✨ <strong>Precise Control:</strong> Fine-tune validation and behavior
-                    <br />✨ <strong>Team Collaboration:</strong> Share form specs without account
-                    access
-                    <br />✨ <strong>Advanced Features:</strong> Access to all validation options
+                    {t('docs.tomlConfiguration.benefits.versionControl')}
+                    <br />{t('docs.tomlConfiguration.benefits.reusable')}
+                    <br />{t('docs.tomlConfiguration.benefits.preciseControl')}
+                    <br />{t('docs.tomlConfiguration.benefits.teamCollaboration')}
+                    <br />{t('docs.tomlConfiguration.benefits.advancedFeatures')}
                   </Text>
                 </Card>
               </div>
 
-              <Alert icon={<IconInfoCircle size={16} />} title="Getting Started" color="grape">
+              <Alert icon={<IconInfoCircle size={16} />} title={t('docs.tomlConfiguration.gettingStarted.title')} color="grape">
                 <Text size="sm">
-                  To use TOML configuration, go to your form's{' '}
-                  <strong>Form Fields (Optional)</strong> section and paste your TOML specification
-                  into the text area. The system will validate your configuration and show any
-                  errors that need to be fixed.
+                  {t('docs.tomlConfiguration.gettingStarted.description')}
                 </Text>
               </Alert>
             </Stack>
