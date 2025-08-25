@@ -32,6 +32,7 @@ import { PricingPage } from '../../pages/Pricing.page';
 import { useRustyState } from '../../state';
 import classes from '../Common/Title.module.css';
 import { Footer } from './Footer';
+import { useMantineColorScheme } from '@mantine/core';
 
 interface LanguageRoutesProps {
   languagePrefix?: string;
@@ -39,6 +40,8 @@ interface LanguageRoutesProps {
 
 export function LanguageRoutes({ languagePrefix }: LanguageRoutesProps) {
   const { i18n } = useTranslation();
+  const { colorScheme } = useMantineColorScheme();
+  const isDark = colorScheme === 'dark';
 
   // Update language when language prefix changes
   React.useEffect(() => {
@@ -77,6 +80,7 @@ export function LanguageRoutes({ languagePrefix }: LanguageRoutesProps) {
             }}
             loginChallenge={useRustyState.getState().loginChallenge}
             titleClassName={classes.title}
+            backgroundImage={isDark ? '/login-background_dark.jpg' : '/login-background.jpg'}
           />
         }
       />
@@ -102,7 +106,9 @@ export function LanguageRoutes({ languagePrefix }: LanguageRoutesProps) {
         path="/terms"
         element={<TermsPage supportEmail="support@formshive.com" footer={<Footer />} />}
       />
-      <Route path="/signup" element={<SignupPage />} />
+      <Route path="/signup" element={<SignupPage
+        backgroundImage={isDark ? '/login-background_dark.jpg' : '/login-background.jpg'}
+      />} />
       <Route path="/account" element={<AccountHomePage />} />
       <Route path="/account/forms" element={<AccountFormsStartPage />} />
       <Route path="/account/forms/create" element={<AccountFormCreatePage />} />
@@ -123,7 +129,7 @@ export function LanguageRoutes({ languagePrefix }: LanguageRoutesProps) {
       />
       <Route
         path="/account/support"
-        element={<SupportPage session={useRustyState.getState().api?.auth?.getSession()} />}
+        element={<SupportPage session={useRustyState.getState().api?.auth?.getSession()} serviceName="Formshive" />}
       />
     </Routes>
   );

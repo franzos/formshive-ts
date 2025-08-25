@@ -31,23 +31,8 @@ export function AccountLayout({ children, isLoggedIn }: AccountLayoutProps) {
   });
 
   return (
-    <Box
-      bg={
-        isDark
-          ? 'linear-gradient(135deg,rgba(233, 87, 111, 0.09),rgba(245, 150, 34, 0.09)'
-          : 'linear-gradient(135deg,#fff,#F2F6F8'
-      }
-    >
-      <BackgroundImage
-        src={isDark ? '/augustine-wong-PxypFiQMkIk_dark.jpg' : '/alexander-shatov-PHH_0uw9-Qw.png'}
-        radius={10}
-        style={{
-          backgroundSize: '100px',
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'bottom 20px right 20px',
-        }}
-      >
-        <AppShell
+    <Box>
+      <AppShell
           header={{ height: 60 }}
           navbar={{
             width: 300,
@@ -70,8 +55,7 @@ export function AccountLayout({ children, isLoggedIn }: AccountLayoutProps) {
           </AppShell.Header>
           <AccountNavigation />
           <AppShell.Main>{children}</AppShell.Main>
-        </AppShell>
-      </BackgroundImage>
+      </AppShell>
     </Box>
   );
 }
