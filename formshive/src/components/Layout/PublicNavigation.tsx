@@ -9,7 +9,7 @@ import {
   Image,
   Menu,
   Stack,
-  useMantineColorScheme,
+  useComputedColorScheme,
   useMantineTheme,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
@@ -20,11 +20,11 @@ import { LanguageSelector } from '../LanguageSelector/LanguageSelector';
 export function PublicNavigation() {
   const { t } = useTranslation();
   const theme = useMantineTheme();
-  const { colorScheme } = useMantineColorScheme();
+  const computedColorScheme = useComputedColorScheme('light');
   const { createLanguageURL, isActive } = useLanguageAwareRouting();
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
 
-  const isDark = colorScheme === 'dark';
+  const isDark = computedColorScheme === 'dark';
 
   return (
     <Box

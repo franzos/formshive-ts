@@ -32,7 +32,7 @@ import { PricingPage } from '../../pages/Pricing.page';
 import { useRustyState } from '../../state';
 import classes from '../Common/Title.module.css';
 import { Footer } from './Footer';
-import { useMantineColorScheme } from '@mantine/core';
+import { useComputedColorScheme } from '@mantine/core';
 
 interface LanguageRoutesProps {
   languagePrefix?: string;
@@ -40,8 +40,8 @@ interface LanguageRoutesProps {
 
 export function LanguageRoutes({ languagePrefix }: LanguageRoutesProps) {
   const { i18n } = useTranslation();
-  const { colorScheme } = useMantineColorScheme();
-  const isDark = colorScheme === 'dark';
+  const computedColorScheme = useComputedColorScheme('light');
+  const isDark = computedColorScheme === 'dark';
 
   // Update language when language prefix changes
   React.useEffect(() => {

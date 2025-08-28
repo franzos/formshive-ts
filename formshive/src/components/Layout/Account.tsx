@@ -1,11 +1,9 @@
 import { ColorSchemeToggle, useSessionCheck } from '@gofranz/common-components';
 import {
   AppShell,
-  BackgroundImage,
   Box,
   Burger,
   Group,
-  useMantineColorScheme,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { useRustyState } from '../../state';
@@ -18,7 +16,6 @@ export interface AccountLayoutProps {
 }
 
 export function AccountLayout({ children, isLoggedIn }: AccountLayoutProps) {
-  const isDark = useMantineColorScheme().colorScheme === 'dark';
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
   const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
 
