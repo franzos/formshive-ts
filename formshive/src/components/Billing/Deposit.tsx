@@ -1,4 +1,4 @@
-import { Button, NumberInput } from '@mantine/core';
+import { Button, NumberInput, Select, Stack, Group } from '@mantine/core';
 import { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js/pure';
 import { RedirectToCheckoutClientOptions } from '@stripe/stripe-js';
@@ -13,7 +13,14 @@ export interface NewDepositFormProps {
 export function NewDepositForm({ onCancelCb }: NewDepositFormProps) {
   const { api } = useRustyState.getState();
   const [isBusy, setIsBusy] = useState(false);
-  const [amount, setAmount] = useState(15);
+  const [amount, setAmount] = useState(15.00);
+  const [provider, setProvider] = useState<DepositProvider>(DepositProvider.STRIPE);
+  
+  // Helper to get the appropriate currency for the selected provider
+  const getCurrencyForProvider = (provider: DepositProvider) => {
+    // Both providers use EUR for consistency
+    return Currency.EUR;
+  };
 
   const openStripe = async (sessionId: string, options?: RedirectToCheckoutClientOptions) => {
     if (!STRIPE_PUBLIC_KEY) {
@@ -33,16 +40,23 @@ export function NewDepositForm({ onCancelCb }: NewDepositFormProps) {
   const startDeposit = async () => {
     setIsBusy(true);
     try {
+      const currency = getCurrencyForProvider(provider);
       const newDeposit: NewDepositHttp = {
-        amount,
-        currency: Currency.EUR,
-        provider: DepositProvider.STRIPE,
+        amount: Math.round(amount * 100), // Convert to cents
+        currency,
+        provider,
       };
       const res = await api.newDeposit(newDeposit);
       if (!res) {
-        throw new Error('Failed to start deposit: Could not get Stripe checkout session.');
+        throw new Error('Failed to start deposit: Could not create deposit.');
       }
-      openStripe(res.checkout_session_id);
+
+      if (res.type === 'STRIPE') {
+        await openStripe(res.content.checkout_session_id);
+      } else if (res.type === 'COINBASE') {
+        // Redirect to Coinbase hosted payment page
+        window.location.href = res.content.hosted_url;
+      }
     } catch (e) {
       console.error(e);
     }
@@ -50,23 +64,46 @@ export function NewDepositForm({ onCancelCb }: NewDepositFormProps) {
   };
 
   return (
-    <>
+    <Stack>
       <NumberInput
+        label="Amount (EUR)"
         prefix="€"
         maw={300}
         mb="xs"
         allowNegative={false}
         allowLeadingZeros={false}
-        allowDecimal={false}
+        allowDecimal={true}
+        step={0.01}
+        decimalScale={2}
+        min={0.01}
         value={amount}
         onChange={(e) => setAmount(e as number)}
       />
-      <Button loading={isBusy} onClick={startDeposit}>
-        Pay with Stripe
-      </Button>
-      <Button ml="sm" variant="light" onClick={onCancelCb}>
-        Cancel
-      </Button>
-    </>
+
+      <Select
+        label="Payment Method"
+        value={provider}
+        onChange={(value) => setProvider(value as DepositProvider)}
+        data={[
+          { value: DepositProvider.STRIPE, label: '💳 Credit Card (Stripe)' },
+          { value: DepositProvider.COINBASE, label: '₿ Cryptocurrency (Coinbase)' },
+        ]}
+        maw={300}
+        mb="md"
+      />
+
+      <Group>
+        <Button
+          loading={isBusy}
+          onClick={startDeposit}
+          variant="filled"
+        >
+          {provider === DepositProvider.STRIPE ? 'Pay with Stripe' : 'Pay with Coinbase'}
+        </Button>
+        <Button variant="light" onClick={onCancelCb}>
+          Cancel
+        </Button>
+      </Group>
+    </Stack>
   );
 }
