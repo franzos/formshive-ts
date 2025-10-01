@@ -1,7 +1,7 @@
 {
   "name": "@gofranz/formshive-frontend",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "author": "Franz Geffke <mail@gofranz.com>",
   "license": "MIT",
@@ -54,6 +54,7 @@
     "recharts": "^2.15.3",
     "rss-parser": "^3.13.0",
     "smol-toml": "^1.3.4",
+    "workbox-window": "^7.3.0",
     "zustand": "^4.5.6"
   },
   "devDependencies": {
@@ -83,6 +84,7 @@
     "stylelint-config-standard-scss": "^12.0.0",
     "typescript": "^5.8.3",
     "uuid": "^11.1.0",
-    "vite": "^6.3.3"
+    "vite": "^6.3.3",
+    "vite-plugin-pwa": "^1.0.3"
   }
 }

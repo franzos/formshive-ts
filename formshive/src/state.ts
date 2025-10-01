@@ -1,6 +1,5 @@
 import {
   CommonQueryParams,
-  getErrorTitle,
   LOGIN_METHOD,
   LoginChallengeUserResponse,
   RustyAuth,
@@ -9,47 +8,35 @@ import {
   VerifiedEmail,
   VerifiedEmailsResponse
 } from '@gofranz/common';
-import { showApiErrorNotification, showSuccessNotification } from '@gofranz/common-components';
+import { createErrorHandler, createSuccessHandler } from '@gofranz/common-components';
 import { File, Form, FormRecipientsQueryParams, FormsQueryParams, FormsRecipientsResponse, FormsResponse, Message, MessageQueryParams, RustyFormsApi } from '@gofranz/formshive-common';
 import { notifications } from '@mantine/notifications';
 import * as Sentry from '@sentry/react';
-import type { AxiosError, AxiosResponse } from "axios";
+import type { AxiosError } from "axios";
 import { create } from 'zustand';
 import { API_BASE_URL, LOCAL_STORAGE_KEY } from './constants';
 
-const errorHandler = (error: AxiosError) => {
-  // Don't show notifications for aborted requests or network timeouts during development
-  if (error.code === 'ECONNABORTED' || error.message === 'Network Error') {
-    return;
+
+// Create notification handlers using shared factories
+const errorHandler = createErrorHandler({
+  notifications,
+  onError: (error: AxiosError) => {
+    Sentry.captureException(error, {
+      extra: {
+        url: error.config?.url,
+        method: error.config?.method,
+        status: error.response?.status,
+        data: error.response?.data,
+      },
+    });
+
+    console.log('API Error:', error);
   }
+});
 
-  Sentry.captureException(error, {
-    extra: {
-      url: error.config?.url,
-      method: error.config?.method,
-      status: error.response?.status,
-      data: error.response?.data,
-    },
-  });
-
-  console.log('API Error:', error);
-
-  const title = getErrorTitle(error);
-  showApiErrorNotification(error, notifications, title);
-};
-
-const successHandler = (response: AxiosResponse) => {
-  const accepted = ['post', 'put', 'patch']
-  if (!accepted.includes(response.config.method || '')) {
-    return;
-  }
-
-  showSuccessNotification(
-    `Request Successful`,
-    `Your ${response.config.method?.toUpperCase()} request to ${response.config.url} was successful.`,
-    notifications
-  );
-};
+const successHandler = createSuccessHandler({
+  notifications
+});
 
 // Helper function to update Sentry user context
 const updateSentryUserContext = (session: Session | undefined) => {

@@ -237,26 +237,77 @@
       "description": "Lorsque vous créez des formulaires avec des champs définis, vous pouvez personnaliser chaque champ pour qu'il se comporte exactement comme vous le souhaitez.",
       "fieldTypes": {
         "title": "Types de champs disponibles :",
-        "text": "• **Texte :** Saisie de texte sur une seule ligne",
-        "email": "• **E-mail :** E-mail avec validation automatique",
-        "textarea": "• **Zone de texte :** Texte multi-lignes pour des messages plus longs",
-        "number": "• **Nombre :** N'accepte que les nombres",
-        "phone": "• **Téléphone :** Saisie de numéro de téléphone",
-        "url": "• **URL :** Liens de sites web avec validation",
-        "date": "• **Date :** Sélecteur de date",
-        "file": "• **Fichier :** Téléchargement de fichier",
-        "select": "• **Sélection :** Menu déroulant",
-        "radio": "• **Radio :** Choisir une option",
-        "checkbox": "• **Case à cocher :** Sélections multiples"
+        "text": {
+          "name": "Texte",
+          "description": "Saisie de texte sur une seule ligne"
+        },
+        "email": {
+          "name": "E-mail",
+          "description": "E-mail avec validation automatique"
+        },
+        "textarea": {
+          "name": "Zone de texte",
+          "description": "Texte multi-lignes pour des messages plus longs"
+        },
+        "number": {
+          "name": "Nombre",
+          "description": "N'accepte que les nombres"
+        },
+        "phone": {
+          "name": "Téléphone",
+          "description": "Saisie de numéro de téléphone"
+        },
+        "url": {
+          "name": "URL",
+          "description": "Liens de sites web avec validation"
+        },
+        "date": {
+          "name": "Date",
+          "description": "Sélecteur de date"
+        },
+        "file": {
+          "name": "Fichier",
+          "description": "Téléchargement de fichier"
+        },
+        "select": {
+          "name": "Sélection",
+          "description": "Menu déroulant"
+        },
+        "radio": {
+          "name": "Radio",
+          "description": "Choisir une option"
+        },
+        "checkbox": {
+          "name": "Case à cocher",
+          "description": "Sélections multiples"
+        }
       },
       "validationOptions": {
         "title": "Options de validation :",
-        "required": "• **Champs obligatoires :** Doivent être remplis",
-        "emailValidation": "• **Validation d'e-mail :** Vérifie le format d'e-mail valide",
-        "urlValidation": "• **Validation d'URL :** Assure des liens web appropriés",
-        "customOptions": "• **Options personnalisées :** Pour les menus déroulants et sélections",
-        "helpText": "• **Texte d'aide :** Instructions pour les utilisateurs",
-        "placeholders": "• **Espaces réservés :** Texte d'exemple dans les champs"
+        "required": {
+          "name": "Champs obligatoires",
+          "description": "Doivent être remplis"
+        },
+        "emailValidation": {
+          "name": "Validation d'e-mail",
+          "description": "Vérifie le format d'e-mail valide"
+        },
+        "urlValidation": {
+          "name": "Validation d'URL",
+          "description": "Assure des liens web appropriés"
+        },
+        "customOptions": {
+          "name": "Options personnalisées",
+          "description": "Pour les menus déroulants et sélections"
+        },
+        "helpText": {
+          "name": "Texte d'aide",
+          "description": "Instructions pour les utilisateurs"
+        },
+        "placeholders": {
+          "name": "Espaces réservés",
+          "description": "Texte d'exemple dans les champs"
+        }
       },
       "proTip": {
         "title": "Conseil pro",
@@ -277,29 +328,85 @@
       },
       "fieldTypesAvailable": {
         "title": "Types de champs disponibles :",
-        "text": "• **text :** Saisie de texte sur une seule ligne",
-        "email": "• **email :** E-mail avec validation",
-        "textarea": "• **textarea :** Zone de texte multi-lignes",
-        "select": "• **select :** Menu déroulant",
-        "checkbox": "• **checkbox :** Options de choix multiples",
-        "number": "• **number :** Saisie numérique"
+        "text": {
+          "name": "text",
+          "description": "Saisie de texte sur une seule ligne"
+        },
+        "email": {
+          "name": "email",
+          "description": "E-mail avec validation"
+        },
+        "textarea": {
+          "name": "textarea",
+          "description": "Zone de texte multi-lignes"
+        },
+        "select": {
+          "name": "select",
+          "description": "Menu déroulant"
+        },
+        "checkbox": {
+          "name": "checkbox",
+          "description": "Options de choix multiples"
+        },
+        "number": {
+          "name": "number",
+          "description": "Saisie numérique"
+        }
       },
       "validationOptions": {
         "title": "Options de validation :",
-        "required": "• **required :** Le champ doit être rempli",
-        "isEmail": "• **is_email :** Valide le format d'e-mail",
-        "isMin": "• **is_min :** Longueur/valeur minimale",
-        "isMax": "• **is_max :** Longueur/valeur maximale",
-        "options": "• **options :** Choix valides pour select/checkbox",
-        "checkSpam": "• **check_spam :** Activer la détection de spam"
+        "required": {
+          "name": "required",
+          "description": "Le champ doit être rempli"
+        },
+        "isEmail": {
+          "name": "is_email",
+          "description": "Valide le format d'e-mail"
+        },
+        "isMin": {
+          "name": "is_min",
+          "description": "Longueur/valeur minimale"
+        },
+        "isMax": {
+          "name": "is_max",
+          "description": "Longueur/valeur maximale"
+        },
+        "options": {
+          "name": "options",
+          "description": "Choix valides pour select/checkbox"
+        },
+        "checkSpam": {
+          "name": "check_spam",
+          "description": "Activer la détection de spam"
+        }
       },
       "benefits": {
         "title": "Avantages de la configuration TOML :",
-        "versionControl": "✨ **Contrôle de version :** Suivez les changements de vos formulaires au fil du temps",
-        "reusable": "✨ **Réutilisable :** Copiez facilement les configurations entre formulaires",
-        "preciseControl": "✨ **Contrôle précis :** Affinez la validation et le comportement",
-        "teamCollaboration": "✨ **Collaboration d'équipe :** Partagez les spécifications de formulaires sans accès au compte",
-        "advancedFeatures": "✨ **Fonctionnalités avancées :** Accès à toutes les options de validation"
+        "versionControl": {
+          "icon": "✨",
+          "feature": "Contrôle de version",
+          "description": "Suivez les changements de vos formulaires au fil du temps"
+        },
+        "reusable": {
+          "icon": "✨",
+          "feature": "Réutilisable",
+          "description": "Copiez facilement les configurations entre formulaires"
+        },
+        "preciseControl": {
+          "icon": "✨",
+          "feature": "Contrôle précis",
+          "description": "Affinez la validation et le comportement"
+        },
+        "teamCollaboration": {
+          "icon": "✨",
+          "feature": "Collaboration d'équipe",
+          "description": "Partagez les spécifications de formulaires sans accès au compte"
+        },
+        "advancedFeatures": {
+          "icon": "✨",
+          "feature": "Fonctionnalités avancées",
+          "description": "Accès à toutes les options de validation"
+        }
       },
       "gettingStarted": {
         "title": "Commencer",

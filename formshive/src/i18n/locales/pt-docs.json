@@ -237,26 +237,77 @@
       "description": "Quando você cria formulários com campos definidos, pode personalizar cada campo para se comportar exatamente como você quer.",
       "fieldTypes": {
         "title": "Tipos de Campo Disponíveis:",
-        "text": "• **Texto:** Entrada de texto de linha única",
-        "email": "• **E-mail:** E-mail com validação automática",
-        "textarea": "• **Área de texto:** Texto de múltiplas linhas para mensagens mais longas",
-        "number": "• **Número:** Aceita apenas números",
-        "phone": "• **Telefone:** Entrada de número de telefone",
-        "url": "• **URL:** Links de sites com validação",
-        "date": "• **Data:** Seletor de data",
-        "file": "• **Arquivo:** Upload de arquivo",
-        "select": "• **Seleção:** Menu dropdown",
-        "radio": "• **Radio:** Escolha uma opção",
-        "checkbox": "• **Checkbox:** Múltiplas seleções"
+        "text": {
+          "name": "Texto",
+          "description": "Entrada de texto de linha única"
+        },
+        "email": {
+          "name": "E-mail",
+          "description": "E-mail com validação automática"
+        },
+        "textarea": {
+          "name": "Área de texto",
+          "description": "Texto de múltiplas linhas para mensagens mais longas"
+        },
+        "number": {
+          "name": "Número",
+          "description": "Aceita apenas números"
+        },
+        "phone": {
+          "name": "Telefone",
+          "description": "Entrada de número de telefone"
+        },
+        "url": {
+          "name": "URL",
+          "description": "Links de sites com validação"
+        },
+        "date": {
+          "name": "Data",
+          "description": "Seletor de data"
+        },
+        "file": {
+          "name": "Arquivo",
+          "description": "Upload de arquivo"
+        },
+        "select": {
+          "name": "Seleção",
+          "description": "Menu dropdown"
+        },
+        "radio": {
+          "name": "Radio",
+          "description": "Escolha uma opção"
+        },
+        "checkbox": {
+          "name": "Checkbox",
+          "description": "Múltiplas seleções"
+        }
       },
       "validationOptions": {
         "title": "Opções de Validação:",
-        "required": "• **Campos obrigatórios:** Devem ser preenchidos",
-        "emailValidation": "• **Validação de e-mail:** Verifica formato de e-mail válido",
-        "urlValidation": "• **Validação de URL:** Garante links web adequados",
-        "customOptions": "• **Opções personalizadas:** Para dropdowns e seleções",
-        "helpText": "• **Texto de ajuda:** Instruções para usuários",
-        "placeholders": "• **Placeholders:** Texto de exemplo nos campos"
+        "required": {
+          "name": "Campos obrigatórios",
+          "description": "Devem ser preenchidos"
+        },
+        "emailValidation": {
+          "name": "Validação de e-mail",
+          "description": "Verifica formato de e-mail válido"
+        },
+        "urlValidation": {
+          "name": "Validação de URL",
+          "description": "Garante links web adequados"
+        },
+        "customOptions": {
+          "name": "Opções personalizadas",
+          "description": "Para dropdowns e seleções"
+        },
+        "helpText": {
+          "name": "Texto de ajuda",
+          "description": "Instruções para usuários"
+        },
+        "placeholders": {
+          "name": "Placeholders",
+          "description": "Texto de exemplo nos campos"
+        }
       },
       "proTip": {
         "title": "Dica Profissional",
@@ -277,29 +328,85 @@
       },
       "fieldTypesAvailable": {
         "title": "Tipos de Campo Disponíveis:",
-        "text": "• **text:** Entrada de texto de linha única",
-        "email": "• **email:** E-mail com validação",
-        "textarea": "• **textarea:** Área de texto de múltiplas linhas",
-        "select": "• **select:** Menu dropdown",
-        "checkbox": "• **checkbox:** Opções de múltipla escolha",
-        "number": "• **number:** Entrada numérica"
+        "text": {
+          "name": "text",
+          "description": "Entrada de texto de linha única"
+        },
+        "email": {
+          "name": "email",
+          "description": "E-mail com validação"
+        },
+        "textarea": {
+          "name": "textarea",
+          "description": "Área de texto de múltiplas linhas"
+        },
+        "select": {
+          "name": "select",
+          "description": "Menu dropdown"
+        },
+        "checkbox": {
+          "name": "checkbox",
+          "description": "Opções de múltipla escolha"
+        },
+        "number": {
+          "name": "number",
+          "description": "Entrada numérica"
+        }
       },
       "validationOptions": {
         "title": "Opções de Validação:",
-        "required": "• **required:** Campo deve ser preenchido",
-        "isEmail": "• **is_email:** Valida formato de e-mail",
-        "isMin": "• **is_min:** Comprimento/valor mínimo",
-        "isMax": "• **is_max:** Comprimento/valor máximo",
-        "options": "• **options:** Escolhas válidas para select/checkbox",
-        "checkSpam": "• **check_spam:** Habilita detecção de spam"
+        "required": {
+          "name": "required",
+          "description": "Campo deve ser preenchido"
+        },
+        "isEmail": {
+          "name": "is_email",
+          "description": "Valida formato de e-mail"
+        },
+        "isMin": {
+          "name": "is_min",
+          "description": "Comprimento/valor mínimo"
+        },
+        "isMax": {
+          "name": "is_max",
+          "description": "Comprimento/valor máximo"
+        },
+        "options": {
+          "name": "options",
+          "description": "Escolhas válidas para select/checkbox"
+        },
+        "checkSpam": {
+          "name": "check_spam",
+          "description": "Habilita detecção de spam"
+        }
       },
       "benefits": {
         "title": "Benefícios da Configuração TOML:",
-        "versionControl": "✨ **Controle de Versão:** Rastreie mudanças em seus formulários ao longo do tempo",
-        "reusable": "✨ **Reutilizável:** Copie configurações entre formulários facilmente",
-        "preciseControl": "✨ **Controle Preciso:** Ajuste fino de validação e comportamento",
-        "teamCollaboration": "✨ **Colaboração em Equipe:** Compartilhe especificações de formulário sem acesso à conta",
-        "advancedFeatures": "✨ **Recursos Avançados:** Acesso a todas as opções de validação"
+        "versionControl": {
+          "icon": "✨",
+          "feature": "Controle de Versão",
+          "description": "Rastreie mudanças em seus formulários ao longo do tempo"
+        },
+        "reusable": {
+          "icon": "✨",
+          "feature": "Reutilizável",
+          "description": "Copie configurações entre formulários facilmente"
+        },
+        "preciseControl": {
+          "icon": "✨",
+          "feature": "Controle Preciso",
+          "description": "Ajuste fino de validação e comportamento"
+        },
+        "teamCollaboration": {
+          "icon": "✨",
+          "feature": "Colaboração em Equipe",
+          "description": "Compartilhe especificações de formulário sem acesso à conta"
+        },
+        "advancedFeatures": {
+          "icon": "✨",
+          "feature": "Recursos Avançados",
+          "description": "Acesso a todas as opções de validação"
+        }
       },
       "gettingStarted": {
         "title": "Começando",

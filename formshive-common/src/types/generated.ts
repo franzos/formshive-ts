@@ -119,24 +119,60 @@ export interface FormAnalyticsResponse {
 	data: FormAnalyticsByDay[];
 }
 
+/** CSS frameworks supported for form styling and response formatting */
 export enum CssFramework {
+	/** Bulma CSS framework - Modern CSS framework based on Flexbox */
 	Bulma = "bulma",
+	/** Bootstrap CSS framework - Popular responsive front-end framework */
 	Bootstrap = "bootstrap",
+	/** Formshive custom CSS framework - Lightweight, form-focused styling */
 	Formshive = "formshive",
 }
 
-/** * Default:
- * - If redirect URL is set, redirect to that URL */
+/**
+ * Override options for form submission redirect behavior.
+ * By default, if a redirect URL is set on the form, submissions will redirect to that URL.
+ * These options allow overriding that default behavior on a per-request basis.
+ */
 export enum FormRedirectOverride {
+	/**
+	 * Force redirect to a success HTML page instead of the form's configured redirect URL.
+	 * Useful for showing a confirmation message instead of redirecting elsewhere.
+	 */
 	RedirectToSuccessHtml = "html",
+	/**
+	 * Disable any redirect and return a JSON response instead.
+	 * Useful for API clients or AJAX submissions that need structured response data.
+	 */
 	NoRedirect = "none",
 }
 
+/** Query parameters for customizing form submission behavior and HTML rendering */
 export interface FormHtmlOptions {
+	/**
+	 * CSS framework to use for styling the form response. Options: 'bulma', 'bootstrap', or 'formshive'.
+	 * When specified, applies framework-specific CSS classes to form elements and error messages.
+	 */
 	css_framework?: CssFramework;
+	/**
+	 * Whether to embed CSS styles directly in the HTML response instead of using external links.
+	 * Useful for self-contained HTML responses or when external CSS may not be accessible.
+	 */
 	css_embed?: boolean;
+	/**
+	 * Indicates if the form is being displayed within an iframe.
+	 * May affect how responses are formatted or styled for iframe compatibility.
+	 */
 	iframe?: boolean;
+	/**
+	 * Enable analytics tracking for this form submission.
+	 * When true, captures additional metrics like submission timing and user behavior data.
+	 */
 	track?: boolean;
+	/**
+	 * Override the form's default redirect behavior after successful submission.
+	 * Options: 'html' - Show success HTML page, 'none' - Return JSON response without redirect.
+	 */
 	redirect?: FormRedirectOverride;
 }
 

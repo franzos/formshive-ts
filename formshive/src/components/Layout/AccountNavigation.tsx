@@ -6,6 +6,7 @@ import {
   IconForms,
   IconHelp,
   IconHome2,
+  IconKey,
   IconLogout,
   IconMessage,
   IconRouteAltLeft,
@@ -18,7 +19,7 @@ import { useRustyState } from '../../state';
 
 export function AccountNavigation() {
   const { t } = useTranslation();
-  const { createLanguageURL } = useLanguageAwareRouting();
+  const { createLanguageURL, isActive } = useLanguageAwareRouting();
 
   const logout = async () => {
     await useRustyState.getState().logout();
@@ -32,35 +33,45 @@ export function AccountNavigation() {
         to={createLanguageURL('/account')}
         label={t('glob_navigation.home')}
         leftSection={<IconHome2 size="18" stroke={1.5} />}
+        active={isActive('/account')}
       />
       <NavLink
         component={Link}
         to={createLanguageURL('/account/forms')}
         label={t('glob_navigation.forms')}
         leftSection={<IconForms size="18" stroke={1.5} />}
+        active={isActive('/account/forms')}
       />
       <NavLink
         component={Link}
         to={createLanguageURL('/account/integrations')}
         label={t('glob_navigation.integrations')}
         leftSection={<IconRouteAltLeft size="18" stroke={1.5} />}
+        active={isActive('/account/integrations')}
       />
       <NavLink
         component={Link}
         to={createLanguageURL('/account/messages')}
         label={t('glob_navigation.messages')}
         leftSection={<IconMessage size="18" stroke={1.5} />}
+        active={isActive('/account/messages')}
       />
-      <NavLink label="Billing" leftSection={<IconCreditCard size="18" stroke={1.5} />}>
+      <NavLink
+        label="Billing"
+        leftSection={<IconCreditCard size="18" stroke={1.5} />}
+        active={isActive('/account/billing/usage') || isActive('/account/billing/subscriptions')}
+      >
         <NavLink
           component={Link}
           to={createLanguageURL('/account/billing/usage')}
           label="Usage & Credits"
+          active={isActive('/account/billing/usage')}
         />
         <NavLink
           component={Link}
           to={createLanguageURL('/account/billing/subscriptions')}
           label="Subscriptions"
+          active={isActive('/account/billing/subscriptions')}
         />
       </NavLink>
       <NavLink
@@ -68,24 +79,35 @@ export function AccountNavigation() {
         to={createLanguageURL('/account/referrals')}
         label="Referrals"
         leftSection={<IconUsers size="18" stroke={1.5} />}
+        active={isActive('/account/referrals')}
+      />
+      <NavLink
+        component={Link}
+        to={createLanguageURL('/account/api-keys')}
+        label="API Keys"
+        leftSection={<IconKey size="18" stroke={1.5} />}
+        active={isActive('/account/api-keys')}
       />
       <NavLink
         component={Link}
         to={createLanguageURL('/account/profile')}
         label={t('glob_navigation.profile')}
         leftSection={<IconSettings size="18" stroke={1.5} />}
+        active={isActive('/account/profile')}
       />
       <NavLink
         component={Link}
         to={createLanguageURL('/account/docs')}
         label="Docs"
         leftSection={<IconBook size="18" stroke={1.5} />}
+        active={isActive('/account/docs')}
       />
       <NavLink
         component={Link}
         to={createLanguageURL('/account/support')}
         label={t('glob_navigation.support')}
         leftSection={<IconHelp size="18" stroke={1.5} />}
+        active={isActive('/account/support')}
       />
       <NavLink
         onClick={logout}

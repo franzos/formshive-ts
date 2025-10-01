@@ -48,10 +48,26 @@
         "description": "Every form submission goes through comprehensive validation to ensure data quality and security. If validation fails, users receive detailed error messages.",
         "steps": {
           "title": "Validation Steps:",
-          "formExists": "1. **Form exists:** Verifies the form ID is valid",
-          "captcha": "2. **CAPTCHA check:** Validates anti-spam challenge (if enabled)",
-          "fieldValidation": "3. **Field validation:** Checks required fields, email format, etc. (if enabled)",
-          "spamDetection": "4. **Spam detection:** Analyzes content for spam patterns (if enabled)"
+          "formExists": {
+            "number": "1",
+            "label": "Form exists",
+            "description": "Verifies the form ID is valid"
+          },
+          "captcha": {
+            "number": "2",
+            "label": "CAPTCHA check",
+            "description": "Validates anti-spam challenge (if enabled)"
+          },
+          "fieldValidation": {
+            "number": "3",
+            "label": "Field validation",
+            "description": "Checks required fields, email format, etc. (if enabled)"
+          },
+          "spamDetection": {
+            "number": "4",
+            "label": "Spam detection",
+            "description": "Analyzes content for spam patterns (if enabled)"
+          }
         }
       },
       "errorHandling": {
@@ -92,8 +108,14 @@
         "overrideOptions": {
           "title": "Advanced: Override Options",
           "description": "You can add special parameters to your form URL to control what happens:",
-          "redirectHtml": "• **?redirect=html** - Always show the built-in success page",
-          "redirectNone": "• **?redirect=none** - For developers: return JSON instead of redirecting"
+          "redirectHtml": {
+            "param": "?redirect=html",
+            "description": "Always show the built-in success page"
+          },
+          "redirectNone": {
+            "param": "?redirect=none",
+            "description": "For developers: return JSON instead of redirecting"
+          }
         }
       },
       "integrationExamples": {
@@ -114,10 +136,22 @@
       },
       "proTips": {
         "title": "Pro Tips for Better User Experience",
-        "setRedirect": "• **Set a redirect URL** to send visitors to a custom thank-you page with next steps",
-        "testForms": "• **Test your forms** by filling them out incorrectly to see the error experience",
-        "helpfulErrors": "• **Keep error messages helpful** - users appreciate clear guidance on how to fix problems",
-        "monitor": "• **Monitor submissions** in the Messages tab to spot patterns or common user issues"
+        "setRedirect": {
+          "action": "Set a redirect URL",
+          "description": "to send visitors to a custom thank-you page with next steps"
+        },
+        "testForms": {
+          "action": "Test your forms",
+          "description": "by filling them out incorrectly to see the error experience"
+        },
+        "helpfulErrors": {
+          "action": "Keep error messages helpful",
+          "description": "users appreciate clear guidance on how to fix problems"
+        },
+        "monitor": {
+          "action": "Monitor submissions",
+          "description": "in the Messages tab to spot patterns or common user issues"
+        }
       }
     },
     "integrationMethods": {
@@ -133,8 +167,16 @@
         },
         "description": "Write your own HTML form and point it to Formshive. Perfect if you're comfortable with HTML or have an existing form.",
         "code": "<form action=\"your-form-url\" method=\"POST\">\n  <input name=\"email\" type=\"email\">\n  <button type=\"submit\">Send</button>\n</form>",
-        "success": "**✅ Success:** Follows redirect behavior from \"Form Submission\" - custom URL redirect or built-in success page.",
-        "validation": "**⚠️ Validation errors:** Only for forms WITH defined fields (see \"Forms With & Without Fields\") - shows user-friendly error page with preserved input and highlighted field errors."
+        "success": {
+          "icon": "✅",
+          "type": "Success",
+          "description": "Follows redirect behavior from \"Form Submission\" - custom URL redirect or built-in success page."
+        },
+        "validation": {
+          "icon": "⚠️",
+          "type": "Validation errors",
+          "description": "Only for forms WITH defined fields (see \"Forms With & Without Fields\") - shows user-friendly error page with preserved input and highlighted field errors."
+        }
       },
       "javascript": {
         "title": "JavaScript Embed",
@@ -145,8 +187,16 @@
         },
         "description": "Add a small script to your website and Formshive creates the form automatically. Works great with defined fields.",
         "code": "<div id=\"formshive\" form-id=\"your-id\">\n</div>\n<script src=\"formshive-embed.js\">\n</script>",
-        "success": "**✅ Success:** With redirect URL - redirects page. Without redirect URL - shows inline success message and clears form.",
-        "validation": "**⚠️ Validation errors:** For forms WITH defined fields - highlights specific field errors directly in the form with red styling and error messages. Much more user-friendly than page reloads!"
+        "success": {
+          "icon": "✅",
+          "type": "Success",
+          "description": "With redirect URL - redirects page. Without redirect URL - shows inline success message and clears form."
+        },
+        "validation": {
+          "icon": "⚠️",
+          "type": "Validation errors",
+          "description": "For forms WITH defined fields - highlights specific field errors directly in the form with red styling and error messages. Much more user-friendly than page reloads!"
+        }
       },
       "iframe": {
         "title": "IFrame",
@@ -157,8 +207,16 @@
         },
         "description": "Embed a complete form as a frame on your page. Easy to add, works everywhere, with different styling options.",
         "code": "<iframe \n  src=\"your-form-url\"\n  width=\"100%\" height=\"350\">\n</iframe>",
-        "success": "**✅ Success:** Shows built-in success page within the iframe. Users stay on your website.",
-        "validation": "**⚠️ Validation errors:** For forms WITH defined fields - shows error page within iframe with preserved input and field highlighting. Users stay on your site while fixing errors."
+        "success": {
+          "icon": "✅",
+          "type": "Success",
+          "description": "Shows built-in success page within the iframe. Users stay on your website."
+        },
+        "validation": {
+          "icon": "⚠️",
+          "type": "Validation errors",
+          "description": "For forms WITH defined fields - shows error page within iframe with preserved input and field highlighting. Users stay on your site while fixing errors."
+        }
       },
       "directLink": {
         "title": "Direct Link",
@@ -169,14 +227,31 @@
         },
         "description": "Share a direct link to your form. Great for emails, social media, or when you want a standalone form page.",
         "code": "https://formshive.com/link.html\n?form_id=your-form-id\n&title=Contact%20Us",
-        "success": "**✅ Success:** Full-page experience - follows your form's redirect settings from \"Form Submission\" (custom URL or success page).",
-        "validation": "**⚠️ Validation errors:** For forms WITH defined fields - shows full-page error experience with preserved input and field highlighting. Users can easily fix and resubmit."
+        "success": {
+          "icon": "✅",
+          "type": "Success",
+          "description": "Full-page experience - follows your form's redirect settings from \"Form Submission\" (custom URL or success page)."
+        },
+        "validation": {
+          "icon": "⚠️",
+          "type": "Validation errors",
+          "description": "For forms WITH defined fields - shows full-page error experience with preserved input and field highlighting. Users can easily fix and resubmit."
+        }
       },
       "whichMethod": {
         "title": "Which method should I choose?",
-        "beginners": "**Beginners:** Start with IFrame or Direct Link - they're the easiest!",
-        "existingForms": "**Existing forms:** Use Manual HTML to keep your current design",
-        "advancedUsers": "**Advanced users:** JavaScript Embed gives you the most flexibility"
+        "beginners": {
+          "audience": "Beginners",
+          "description": "Start with IFrame or Direct Link - they're the easiest!"
+        },
+        "existingForms": {
+          "audience": "Existing forms",
+          "description": "Use Manual HTML to keep your current design"
+        },
+        "advancedUsers": {
+          "audience": "Advanced users",
+          "description": "JavaScript Embed gives you the most flexibility"
+        }
       }
     },
     "emailSetup": {
@@ -189,10 +264,26 @@
       },
       "howItWorks": {
         "title": "How it works:",
-        "addEmail": "1. **Add your email:** Enter the email address where you want to receive notifications",
-        "checkInbox": "2. **Check your inbox:** Look for a verification email from Formshive",
-        "clickVerify": "3. **Click to verify:** Click the verification link in the email",
-        "ready": "4. **You're ready!** Start receiving form submissions immediately"
+        "addEmail": {
+          "number": "1",
+          "action": "Add your email",
+          "description": "Enter the email address where you want to receive notifications"
+        },
+        "checkInbox": {
+          "number": "2",
+          "action": "Check your inbox",
+          "description": "Look for a verification email from Formshive"
+        },
+        "clickVerify": {
+          "number": "3",
+          "action": "Click to verify",
+          "description": "Click the verification link in the email"
+        },
+        "ready": {
+          "number": "4",
+          "action": "You're ready!",
+          "description": "Start receiving form submissions immediately"
+        }
       },
       "multipleRecipients": {
         "title": "Multiple Recipients",
@@ -209,26 +300,63 @@
       },
       "setup": {
         "title": "Setting up CAPTCHA (3 easy steps):",
-        "enable": "1. **Enable CAPTCHA:** Go to your form settings and turn on \"Check Challenge\"",
-        "updateWebsite": "2. **Update your website:** Your website needs a small script to show the CAPTCHA",
-        "test": "3. **Test it:** Try submitting your form to make sure it works"
+        "enable": {
+          "number": "1",
+          "action": "Enable CAPTCHA",
+          "description": "Go to your form settings and turn on \"Check Challenge\""
+        },
+        "updateWebsite": {
+          "number": "2",
+          "action": "Update your website",
+          "description": "Your website needs a small script to show the CAPTCHA"
+        },
+        "test": {
+          "number": "3",
+          "action": "Test it",
+          "description": "Try submitting your form to make sure it works"
+        }
       },
       "benefits": {
         "title": "Benefits of Using CAPTCHA:",
         "left": {
-          "blocksSpam": "✅ **Blocks spam:** Dramatically reduces unwanted messages",
-          "noTracking": "✅ **No tracking:** Privacy-friendly and GDPR compliant",
-          "free": "✅ **Free to use:** No extra charges for blocked spam"
+          "blocksSpam": {
+            "icon": "✅",
+            "feature": "Blocks spam",
+            "description": "Dramatically reduces unwanted messages"
+          },
+          "noTracking": {
+            "icon": "✅",
+            "feature": "No tracking",
+            "description": "Privacy-friendly and GDPR compliant"
+          },
+          "free": {
+            "icon": "✅",
+            "feature": "Free to use",
+            "description": "No extra charges for blocked spam"
+          }
         },
         "right": {
-          "quickForUsers": "⚡ **Quick for users:** Takes just 2-3 seconds to complete",
-          "worksEverywhere": "⚡ **Works everywhere:** Compatible with all integration methods",
-          "alwaysImproving": "⚡ **Always improving:** Automatically updated for better protection"
+          "quickForUsers": {
+            "icon": "⚡",
+            "feature": "Quick for users",
+            "description": "Takes just 2-3 seconds to complete"
+          },
+          "worksEverywhere": {
+            "icon": "⚡",
+            "feature": "Works everywhere",
+            "description": "Compatible with all integration methods"
+          },
+          "alwaysImproving": {
+            "icon": "⚡",
+            "feature": "Always improving",
+            "description": "Automatically updated for better protection"
+          }
         }
       },
       "technicalHelp": {
         "title": "Need Technical Help?",
-        "description": "For detailed setup instructions and code examples, check the **Integration** tab when editing your form. It has all the technical details and copy-paste code you need."
+        "description": "For detailed setup instructions and code examples, check the Integration tab when editing your form. It has all the technical details and copy-paste code you need.",
+        "integrationTab": "Integration"
       }
     },
     "fieldConfiguration": {
@@ -237,26 +365,77 @@
       "description": "When you create forms with defined fields, you can customize each field to behave exactly how you want.",
       "fieldTypes": {
         "title": "Field Types Available:",
-        "text": "• **Text:** Single line text input",
-        "email": "• **Email:** Email with automatic validation",
-        "textarea": "• **Textarea:** Multi-line text for longer messages",
-        "number": "• **Number:** Only accepts numbers",
-        "phone": "• **Phone:** Phone number input",
-        "url": "• **URL:** Website links with validation",
-        "date": "• **Date:** Date picker",
-        "file": "• **File:** File upload",
-        "select": "• **Select:** Dropdown menu",
-        "radio": "• **Radio:** Choose one option",
-        "checkbox": "• **Checkbox:** Multiple selections"
+        "text": {
+          "name": "Text",
+          "description": "Single line text input"
+        },
+        "email": {
+          "name": "Email",
+          "description": "Email with automatic validation"
+        },
+        "textarea": {
+          "name": "Textarea",
+          "description": "Multi-line text for longer messages"
+        },
+        "number": {
+          "name": "Number",
+          "description": "Only accepts numbers"
+        },
+        "phone": {
+          "name": "Phone",
+          "description": "Phone number input"
+        },
+        "url": {
+          "name": "URL",
+          "description": "Website links with validation"
+        },
+        "date": {
+          "name": "Date",
+          "description": "Date picker"
+        },
+        "file": {
+          "name": "File",
+          "description": "File upload"
+        },
+        "select": {
+          "name": "Select",
+          "description": "Dropdown menu"
+        },
+        "radio": {
+          "name": "Radio",
+          "description": "Choose one option"
+        },
+        "checkbox": {
+          "name": "Checkbox",
+          "description": "Multiple selections"
+        }
       },
       "validationOptions": {
         "title": "Validation Options:",
-        "required": "• **Required fields:** Must be filled out",
-        "emailValidation": "• **Email validation:** Checks for valid email format",
-        "urlValidation": "• **URL validation:** Ensures proper web links",
-        "customOptions": "• **Custom options:** For dropdowns and selections",
-        "helpText": "• **Help text:** Instructions for users",
-        "placeholders": "• **Placeholders:** Example text in fields"
+        "required": {
+          "name": "Required fields",
+          "description": "Must be filled out"
+        },
+        "emailValidation": {
+          "name": "Email validation",
+          "description": "Checks for valid email format"
+        },
+        "urlValidation": {
+          "name": "URL validation",
+          "description": "Ensures proper web links"
+        },
+        "customOptions": {
+          "name": "Custom options",
+          "description": "For dropdowns and selections"
+        },
+        "helpText": {
+          "name": "Help text",
+          "description": "Instructions for users"
+        },
+        "placeholders": {
+          "name": "Placeholders",
+          "description": "Example text in fields"
+        }
       },
       "proTip": {
         "title": "Pro Tip",
@@ -277,33 +456,90 @@
       },
       "fieldTypesAvailable": {
         "title": "Field Types Available:",
-        "text": "• **text:** Single line text input",
-        "email": "• **email:** Email with validation",
-        "textarea": "• **textarea:** Multi-line text area",
-        "select": "• **select:** Dropdown menu",
-        "checkbox": "• **checkbox:** Multiple choice options",
-        "number": "• **number:** Numeric input"
+        "text": {
+          "name": "text",
+          "description": "Single line text input"
+        },
+        "email": {
+          "name": "email",
+          "description": "Email with validation"
+        },
+        "textarea": {
+          "name": "textarea",
+          "description": "Multi-line text area"
+        },
+        "select": {
+          "name": "select",
+          "description": "Dropdown menu"
+        },
+        "checkbox": {
+          "name": "checkbox",
+          "description": "Multiple choice options"
+        },
+        "number": {
+          "name": "number",
+          "description": "Numeric input"
+        }
       },
       "validationOptions": {
         "title": "Validation Options:",
-        "required": "• **required:** Field must be filled",
-        "isEmail": "• **is_email:** Validates email format",
-        "isMin": "• **is_min:** Minimum length/value",
-        "isMax": "• **is_max:** Maximum length/value",
-        "options": "• **options:** Valid choices for select/checkbox",
-        "checkSpam": "• **check_spam:** Enable spam detection"
+        "required": {
+          "name": "required",
+          "description": "Field must be filled"
+        },
+        "isEmail": {
+          "name": "is_email",
+          "description": "Validates email format"
+        },
+        "isMin": {
+          "name": "is_min",
+          "description": "Minimum length/value"
+        },
+        "isMax": {
+          "name": "is_max",
+          "description": "Maximum length/value"
+        },
+        "options": {
+          "name": "options",
+          "description": "Valid choices for select/checkbox"
+        },
+        "checkSpam": {
+          "name": "check_spam",
+          "description": "Enable spam detection"
+        }
       },
       "benefits": {
         "title": "Benefits of TOML Configuration:",
-        "versionControl": "✨ **Version Control:** Track changes to your forms over time",
-        "reusable": "✨ **Reusable:** Copy configurations between forms easily",
-        "preciseControl": "✨ **Precise Control:** Fine-tune validation and behavior",
-        "teamCollaboration": "✨ **Team Collaboration:** Share form specs without account access",
-        "advancedFeatures": "✨ **Advanced Features:** Access to all validation options"
+        "versionControl": {
+          "icon": "✨",
+          "feature": "Version Control",
+          "description": "Track changes to your forms over time"
+        },
+        "reusable": {
+          "icon": "✨",
+          "feature": "Reusable",
+          "description": "Copy configurations between forms easily"
+        },
+        "preciseControl": {
+          "icon": "✨",
+          "feature": "Precise Control",
+          "description": "Fine-tune validation and behavior"
+        },
+        "teamCollaboration": {
+          "icon": "✨",
+          "feature": "Team Collaboration",
+          "description": "Share form specs without account access"
+        },
+        "advancedFeatures": {
+          "icon": "✨",
+          "feature": "Advanced Features",
+          "description": "Access to all validation options"
+        }
       },
       "gettingStarted": {
         "title": "Getting Started",
-        "description": "To use TOML configuration, go to your form's **Form Fields (Optional)** section and paste your TOML specification into the text area. The system will validate your configuration and show any errors that need to be fixed."
+        "description": "To use TOML configuration, go to your form's Form Fields (Optional) section and paste your TOML specification into the text area. The system will validate your configuration and show any errors that need to be fixed.",
+        "formFieldsSection": "Form Fields (Optional)"
       }
     }
   }

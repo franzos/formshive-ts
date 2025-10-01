@@ -13,11 +13,12 @@ import {
   Button,
   Group,
   List,
-  LoadingOverlay,
   Paper,
+  Skeleton,
   Stack,
   Text,
   ThemeIcon,
+  useComputedColorScheme,
 } from '@mantine/core';
 import { notifications } from '@mantine/notifications';
 import { IconBuilding, IconCheck, IconCrown, IconRocket, IconStar } from '@tabler/icons-react';
@@ -39,6 +40,7 @@ export function SubscriptionPlans({ mode = 'private', ...boxProps }: Subscriptio
 
   const [loading, setLoading] = useState(false);
   const [subscribingToPlan, setSubscribingToPlan] = useState<string | null>(null);
+  const colorScheme = useComputedColorScheme();
 
   useEffect(() => {
     const loadData = async () => {
@@ -73,8 +75,40 @@ export function SubscriptionPlans({ mode = 'private', ...boxProps }: Subscriptio
     }
   };
 
-  if (loading) {
-    return <LoadingOverlay visible />;
+  // Render skeleton loaders while loading
+  if (loading || !subscriptionPlans) {
+    return (
+      <Box
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+          gap: '1.5rem',
+        }}
+        {...boxProps}
+      >
+        {Array.from({ length: 3 }).map((_, index) => (
+          <Paper key={index} shadow="sm" p="xl" radius="lg" withBorder>
+            <Stack gap="md">
+              <Group justify="space-between" align="flex-start">
+                <Group gap="xs">
+                  <Skeleton height={24} width={24} radius="sm" />
+                  <Skeleton height={20} width={80} />
+                </Group>
+                <Skeleton height={18} width={50} />
+              </Group>
+              <Skeleton height={40} width={100} />
+              <Stack gap="xs">
+                <Skeleton height={16} width={120} />
+                <Skeleton height={14} width="100%" />
+                <Skeleton height={14} width="80%" />
+                <Skeleton height={14} width="90%" />
+              </Stack>
+              <Skeleton height={36} width="100%" />
+            </Stack>
+          </Paper>
+        ))}
+      </Box>
+    );
   }
 
   return (
@@ -122,7 +156,9 @@ export function SubscriptionPlans({ mode = 'private', ...boxProps }: Subscriptio
                   : undefined,
               background:
                 isPremium && !isCurrent && !isUpcoming
-                  ? `linear-gradient(135deg, var(--mantine-color-${tierConfig.color}-0) 0%, var(--mantine-color-white) 100%)`
+                  ? colorScheme === 'dark'
+                    ? `linear-gradient(135deg, var(--mantine-color-${tierConfig.color}-9) 0%, var(--mantine-color-dark-6) 100%)`
+                    : `linear-gradient(135deg, var(--mantine-color-${tierConfig.color}-0) 0%, var(--mantine-color-white) 100%)`
                   : undefined,
             }}
           >
@@ -169,7 +205,7 @@ export function SubscriptionPlans({ mode = 'private', ...boxProps }: Subscriptio
               </Box>
 
               <Box>
-                <Text size="sm" fw={500} c="dark" mb="xs">
+                <Text size="sm" fw={500} mb="xs">
                   What's included:
                 </Text>
                 <List size="sm" spacing="xs">
@@ -212,7 +248,7 @@ export function SubscriptionPlans({ mode = 'private', ...boxProps }: Subscriptio
                 {/* Features section */}
                 {plan.features && plan.features.length > 0 && (
                   <Box mt="md">
-                    <Text size="sm" fw={500} c="dark" mb="xs">
+                    <Text size="sm" fw={500} mb="xs">
                       Integrations:
                     </Text>
                     <List size="sm" spacing="xs">

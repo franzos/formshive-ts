@@ -3,7 +3,6 @@ import { DataTable } from 'mantine-datatable';
 import { useTranslation } from 'react-i18next';
 import { Badge, Box, Button, Code, Group, Slider, Text, Tooltip, NavLink } from '@mantine/core';
 import { IconCapture, IconDownload, IconTrash, IconWorld } from '@tabler/icons-react';
-import { notifications } from '@mantine/notifications';
 import { Link } from 'react-router-dom';
 import { useRustyState } from '../../state';
 import { CommonTableProps } from '../../lib/table';
@@ -116,7 +115,15 @@ export function MessagesTable(
       alert(t('messageTable.couldNotToggleSpam'));
       return;
     }
-    await props.updateCb(message.id, { user_marked_spam: !message.is_spam });
+
+    const customNotification = {
+      onSuccess: {
+        title: t('messageTable.messageUpdated'),
+        message: `Message ${message.is_spam ? t('messageTable.markedAsHam') : t('messageTable.markedAsSpam')}`,
+      }
+    };
+
+    await props.updateCb(message.id, { user_marked_spam: !message.is_spam }, customNotification);
     setRecords((prev) =>
       prev.map((m) => {
         if (m.id === message.id) {
@@ -126,11 +133,6 @@ export function MessagesTable(
       })
     );
     setIsBusy(false);
-    notifications.show({
-      title: t('messageTable.messageUpdated'),
-      message: `Message ${message.is_spam ? t('messageTable.markedAsHam') : t('messageTable.markedAsSpam')}`,
-      autoClose: 15000,
-    });
   };
 
   const deleteCb = async (id: string) => {
@@ -471,25 +473,38 @@ export function MessagesTable(
     return SPAM_FILTER.find((mark) => mark.value === value)?.label || t('messageTable.spamAndHam');
   }
 
+  // Handle perPage change triggered from parent
+  useEffect(() => {
+    if (props.perPage) {
+      page.current = 1;
+      loadRecords();
+    }
+  }, [props.perPage]);
+
   return (
     <Box>
-      <Slider
-        labelAlwaysOn
-        p="xl"
-        maw={400}
-        label={(val) => getSpamFilterLabelOrDefault(val)}
-        defaultValue={0}
-        step={1}
-        min={0}
-        max={2}
-        marks={SPAM_FILTER}
-        styles={{ markLabel: { display: 'none' } }}
-        onChange={(value) => {
-          page.current = 1;
-          spamFilter.current = value;
-          loadRecords();
-        }}
-      />
+      <Box style={{ position: 'relative' }}>
+        <Slider
+          labelAlwaysOn
+          p="xl"
+          maw={400}
+          label={(val) => getSpamFilterLabelOrDefault(val)}
+          defaultValue={0}
+          step={1}
+          min={0}
+          max={2}
+          marks={SPAM_FILTER}
+          styles={{ markLabel: { display: 'none' } }}
+          onChange={(value) => {
+            page.current = 1;
+            spamFilter.current = value;
+            loadRecords();
+          }}
+        />
+        <Box style={{ position: 'absolute', top: '20px', right: '0' }}>
+          {props.headerActions}
+        </Box>
+      </Box>
       <DataTable
         withTableBorder
         borderRadius="md"

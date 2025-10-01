@@ -38,7 +38,7 @@ export function Welcome() {
               inherit
               variant="gradient"
               component="span"
-              gradient={{ from: theme.colors['brand-blue'][6], to: theme.colors['brand-blue'][6] }}
+              gradient={{ from: theme.colors['brand-secondary'][6], to: theme.colors['brand-secondary'][6] }}
             >
               {t('brand.name')}
             </Text>
@@ -46,7 +46,7 @@ export function Welcome() {
               inherit
               variant="gradient"
               component="span"
-              gradient={{ from: theme.colors['brand-gold'][6], to: theme.colors['brand-gold'][6] }}
+              gradient={{ from: theme.colors['brand-primary'][6], to: theme.colors['brand-primary'][6] }}
             >
               {t('brand.nameSecond')}
             </Text>
@@ -62,57 +62,60 @@ export function Welcome() {
         </Text>
       </Container>
 
-      {/* <Container mt="xl">
-        <Group justify="center">
-          <Box maw={340}>
-            <Title order={2} mb="xs">
-              Example Contact Form
-            </Title>
-            <Switch
-              defaultChecked={showHtml}
-              onChange={() => setShowHtml((prev) => !prev)}
-              label="Show HTML"
-              mb="xs"
-            />
-            {showHtml ? (
-              <Code block>
-                {exampleFormHtmlSimpleWithCaptcha(exampleFormUrlCaptcha, exampleFormChallengeUrl)}
-              </Code>
-            ) : (
-              <form action={exampleFormUrlCaptcha} method="POST">
-                <TextInput
-                  label="Email"
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="your-email@gmail.com"
-                  required
-                />
-                <TextInput
-                  label="Name"
-                  type="text"
-                  id="name"
-                  name="name"
-                  placeholder="Mike"
-                  required
-                />
-                <Textarea
-                  label="Message"
-                  id="message"
-                  name="message"
-                  placeholder="Hi there, I'm looking to renovate my living room and was told you're the person to contact. Let's have a call to discuss."
-                  mb="md"
-                  required
-                />
-                <altcha-widget challengeurl={exampleFormChallengeUrl} hidefooter hidelogo />
-                <Button type="submit" value="Submit" mt="xs">
-                  Submit
-                </Button>
-              </form>
-            )}
+      {/* Social Proof Stats Section */}
+      <Container mt="xl" mb="xl">
+        <Title order={3} ta="center" mb="lg" fw={600}>
+          {t('welcome.stats.title')}
+        </Title>
+        <SimpleGrid cols={{ base: 2, sm: 4 }} spacing="xl">
+          <Box ta="center">
+            <Text size="2.5rem" fw={700} c={theme.colors['brand-secondary'][6]}>
+              {t('welcome.stats.activeUsers')}
+            </Text>
+            <Text size="sm" c="dimmed" fw={500}>
+              {t('welcome.stats.activeUsersLabel')}
+            </Text>
           </Box>
-        </Group>
-      </Container> */}
+          <Box ta="center">
+            <Text size="2.5rem" fw={700} c={theme.colors['brand-primary'][6]}>
+              {t('welcome.stats.formsProcessed')}
+            </Text>
+            <Text size="sm" c="dimmed" fw={500}>
+              {t('welcome.stats.formsProcessedLabel')}
+            </Text>
+          </Box>
+          <Box ta="center">
+            <Text size="2.5rem" fw={700} c={theme.colors['brand-secondary'][6]}>
+              {t('welcome.stats.uptime')}
+            </Text>
+            <Text size="sm" c="dimmed" fw={500}>
+              {t('welcome.stats.uptimeLabel')}
+            </Text>
+          </Box>
+          <Box ta="center">
+            <Text size="2.5rem" fw={700} c={theme.colors['brand-primary'][6]}>
+              {t('welcome.stats.responseTime')}
+            </Text>
+            <Text size="sm" c="dimmed" fw={500}>
+              {t('welcome.stats.responseTimeLabel')}
+            </Text>
+          </Box>
+        </SimpleGrid>
+
+        {/* Additional CTA after stats */}
+        <Box ta="center" mt="xl">
+          <Button
+            size="lg"
+            variant="outline"
+            component={Link}
+            to={createLanguageURL('/signup')}
+            radius="md"
+            px={40}
+          >
+            {t('welcome.cta.buttonAlt')}
+          </Button>
+        </Box>
+      </Container>
 
       {/* <Image
         src={isDark ? '/glen-carrie-_oNISBwMTwo_dark.jpg' : '/glen-carrie-_oNISBwMTwo.jpg'}
@@ -127,47 +130,147 @@ export function Welcome() {
 
       <Divider mt="md" mb="md" />
 
+      {/* Use Cases Section */}
       <Container mt="xl" mb="xl">
-        <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="xl">
-          <Box>
-            <Title order={4}>{t('welcome.features.noFields.title')}</Title>
-            <Text>{t('welcome.features.noFields.description')}</Text>
-          </Box>
-
-          <Box>
-            <Title order={4}>{t('welcome.features.flexible.title')}</Title>
-            <Text>{t('welcome.features.flexible.description')}</Text>
-          </Box>
-
-          <Box>
-            <Title order={4}>{t('welcome.features.protection.title')}</Title>
-            <Text>{t('welcome.features.protection.description')}</Text>
-          </Box>
-
-          <Box>
-            <Title order={4}>{t('welcome.features.privacy.title')}</Title>
-            <Text>
-              Your data stays yours. We don’t collect personal info, with secure EU hosting focused
-              on your privacy and trust.
+        <Title order={3} ta="center" mb="md" fw={600}>
+          {t('welcome.useCases.title')}
+        </Title>
+        <Text c="dimmed" ta="center" size="lg" mb="xl">
+          {t('welcome.useCases.subtitle')}
+        </Text>
+        <SimpleGrid cols={{ base: 2, sm: 3, md: 6 }} spacing="lg">
+          <Box ta="center">
+            <Text fw={600} size="sm" mb="xs">
+              {t('welcome.useCases.contactForms')}
             </Text>
           </Box>
-
-          <Box>
-            <Title order={4}>{t('welcome.features.integrations.title')}</Title>
-            <Text>
-              Connect instantly with email notifications, webhooks, and more — keeping your
-              workflows flowing smoothly.
+          <Box ta="center">
+            <Text fw={600} size="sm" mb="xs">
+              {t('welcome.useCases.surveys')}
             </Text>
           </Box>
-
-          <Box>
-            <Title order={4}>{t('welcome.features.pricing.title')}</Title>
-            <Text>
-              Start at just €0.005 per submission or self-host for €590/year. No hidden fees, no
-              investors, no upsells.
+          <Box ta="center">
+            <Text fw={600} size="sm" mb="xs">
+              {t('welcome.useCases.fileUploads')}
+            </Text>
+          </Box>
+          <Box ta="center">
+            <Text fw={600} size="sm" mb="xs">
+              {t('welcome.useCases.aiAgents')}
+            </Text>
+          </Box>
+          <Box ta="center">
+            <Text fw={600} size="sm" mb="xs">
+              {t('welcome.useCases.webhooks')}
+            </Text>
+          </Box>
+          <Box ta="center">
+            <Text fw={600} size="sm" mb="xs">
+              {t('welcome.useCases.apis')}
             </Text>
           </Box>
         </SimpleGrid>
+      </Container>
+
+      <Divider my="xl" />
+
+      {/* Enhanced Features Section */}
+      <Container mt="xl" mb="xl">
+        <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="xl">
+          <Box>
+            <Title order={4} mb="sm">{t('welcome.features.instant.title')}</Title>
+            <Text>{t('welcome.features.instant.description')}</Text>
+          </Box>
+
+          <Box>
+            <Title order={4} mb="sm">{t('welcome.features.developer.title')}</Title>
+            <Text>{t('welcome.features.developer.description')}</Text>
+          </Box>
+
+          <Box>
+            <Title order={4} mb="sm">{t('welcome.features.security.title')}</Title>
+            <Text>{t('welcome.features.security.description')}</Text>
+          </Box>
+
+          <Box>
+            <Title order={4} mb="sm">{t('welcome.features.pricing.title')}</Title>
+            <Text>{t('welcome.features.pricing.description')}</Text>
+          </Box>
+
+          <Box>
+            <Title order={4} mb="sm">{t('welcome.features.freedom.title')}</Title>
+            <Text>{t('welcome.features.freedom.description')}</Text>
+          </Box>
+
+          <Box>
+            <Title order={4} mb="sm">{t('welcome.features.features.title')}</Title>
+            <Text>{t('welcome.features.features.description')}</Text>
+          </Box>
+        </SimpleGrid>
+      </Container>
+
+      <Divider my="xl" />
+
+      {/* Comparison Section */}
+      <Container mt="xl" mb="xl" maw={800} mx="auto">
+        <Title order={3} ta="center" mb="md" fw={600}>
+          {t('welcome.comparison.title')}
+        </Title>
+        <Text c="dimmed" ta="center" size="lg" mb="xl">
+          {t('welcome.comparison.subtitle')}
+        </Text>
+
+        <Stack>
+          <SimpleGrid cols={3} spacing="lg">
+            <Text fw={600} size="sm">{t('welcome.comparison.feature')}</Text>
+            <Text fw={600} size="sm" ta="center" c={theme.colors['brand-secondary'][6]}>
+              {t('welcome.comparison.formshive')}
+            </Text>
+            <Text fw={600} size="sm" ta="center">{t('welcome.comparison.others')}</Text>
+          </SimpleGrid>
+
+          <Divider size="xs" />
+
+          <SimpleGrid cols={3} spacing="lg">
+            <Text size="sm">Pricing</Text>
+            <Text size="sm" ta="center" fw={600} c={theme.colors['brand-primary'][6]}>
+              {t('welcome.comparison.pricing')}
+            </Text>
+            <Text size="sm" ta="center" c="dimmed">{t('welcome.comparison.pricingOthers')}</Text>
+          </SimpleGrid>
+
+          <SimpleGrid cols={3} spacing="lg">
+            <Text size="sm">Setup Time</Text>
+            <Text size="sm" ta="center" fw={600} c={theme.colors['brand-primary'][6]}>
+              {t('welcome.comparison.setup')}
+            </Text>
+            <Text size="sm" ta="center" c="dimmed">{t('welcome.comparison.setupOthers')}</Text>
+          </SimpleGrid>
+
+          <SimpleGrid cols={3} spacing="lg">
+            <Text size="sm">Self-Hosting</Text>
+            <Text size="sm" ta="center" fw={600} c={theme.colors['brand-primary'][6]}>
+              {t('welcome.comparison.selfHost')}
+            </Text>
+            <Text size="sm" ta="center" c="dimmed">{t('welcome.comparison.selfHostOthers')}</Text>
+          </SimpleGrid>
+
+          <SimpleGrid cols={3} spacing="lg">
+            <Text size="sm">Privacy</Text>
+            <Text size="sm" ta="center" fw={600} c={theme.colors['brand-primary'][6]}>
+              {t('welcome.comparison.privacy')}
+            </Text>
+            <Text size="sm" ta="center" c="dimmed">{t('welcome.comparison.privacyOthers')}</Text>
+          </SimpleGrid>
+
+          <SimpleGrid cols={3} spacing="lg">
+            <Text size="sm">Support</Text>
+            <Text size="sm" ta="center" fw={600} c={theme.colors['brand-primary'][6]}>
+              {t('welcome.comparison.support')}
+            </Text>
+            <Text size="sm" ta="center" c="dimmed">{t('welcome.comparison.supportOthers')}</Text>
+          </SimpleGrid>
+        </Stack>
       </Container>
 
       <Container ta="center" mt="xl" mb="xl">
@@ -189,18 +292,21 @@ export function Welcome() {
         <Title order={3} mb="sm" fw={600} ta="center">
           {t('welcome.cta.title')}
         </Title>
+        <Text c="dimmed" mt="sm" mb="lg" size="md" fw={500} ta="center">
+          {t('welcome.cta.descriptionUrgent')}
+        </Text>
         <Button
-          size="lg"
+          size="xl"
           variant="gradient"
-          gradient={{ from: theme.colors['brand-gold'][6], to: theme.colors['brand-blue'][6] }}
+          gradient={{ from: theme.colors['brand-primary'][6], to: theme.colors['brand-secondary'][6] }}
           component={Link}
           to={createLanguageURL('/signup')}
           radius="md"
-          px={40}
+          px={50}
           mx="auto"
           style={{ display: 'block' }}
         >
-          {t('welcome.cta.button')}
+          {t('welcome.cta.buttonAlt')}
         </Button>
         <Text c="dimmed" mt="sm" size="sm" fw={500} ta="center">
           <Text component="span" c="#FFB800" fw={700}>

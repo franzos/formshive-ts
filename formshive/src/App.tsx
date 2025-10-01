@@ -12,9 +12,11 @@ import { detectAndSetLanguage } from '../../common-components/src/lib/languageDe
 import './assets/layout.css';
 import { GeneralLayout } from './components/Layout/General';
 import { LanguageRoutes } from './components/Layout/LanguageRoutes';
+import { InstallPrompt } from './components/PWA/InstallPrompt';
+import { PWAStatus } from './components/PWA/PWAStatus';
 import { SEOHead } from './components/SEO/SEOHead';
 import './i18n';
-import { theme } from './theme';
+import { cssVariablesResolver, theme } from './theme';
 
 export default function App() {
   const { i18n } = useTranslation();
@@ -36,7 +38,7 @@ export default function App() {
   return (
     <HelmetProvider>
       <DirectionProvider>
-        <MantineProvider theme={theme} defaultColorScheme="auto">
+        <MantineProvider theme={theme} defaultColorScheme="auto" cssVariablesResolver={cssVariablesResolver}>
           <SEOHead />
           <HashRouter>
             <GeneralLayout>
@@ -62,6 +64,10 @@ export default function App() {
                 <Route path="/th/*" element={<LanguageRoutes languagePrefix="th" />} />
                 <Route path="/ar/*" element={<LanguageRoutes languagePrefix="ar" />} />
               </Routes>
+
+              {/* PWA Components */}
+              <PWAStatus />
+              <InstallPrompt />
             </GeneralLayout>
           </HashRouter>
         </MantineProvider>

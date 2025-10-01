@@ -7,40 +7,81 @@
     "email": "hello@formshive.com"
   },
   "welcome": {
-    "tagline": "Gestión de datos de formularios sin esfuerzo y flexible",
+    "tagline": "Convierte cualquier formulario en un pipeline de datos inteligente",
     "description": "Captura, valida, transforma y enruta datos — desde cualquier formulario, script o agente de IA.",
-    "subDescription": "Ultrarrápido, privacidad primero, y diseñado para mantener tus datos fluyendo de forma segura y simple.",
+    "subDescription": "Configuración en 30 segundos. No requiere backend. Ultrarrápido, privacidad primero y seguro.",
+    "stats": {
+      "title": "Confiado por desarrolladores en todo el mundo",
+      "activeUsers": "1,000+",
+      "activeUsersLabel": "Usuarios Activos",
+      "formsProcessed": "1M+",
+      "formsProcessedLabel": "Formularios Procesados",
+      "uptime": "99.9%",
+      "uptimeLabel": "Tiempo Activo",
+      "responseTime": "< 100ms",
+      "responseTimeLabel": "Tiempo de Respuesta"
+    },
+    "useCases": {
+      "title": "Perfecto para cualquier proyecto",
+      "subtitle": "Desde formularios de contacto simples hasta flujos de trabajo complejos de recolección de datos",
+      "contactForms": "Formularios de Contacto",
+      "surveys": "Encuestas y Comentarios",
+      "fileUploads": "Subida de Archivos",
+      "aiAgents": "Recolección de Datos IA",
+      "webhooks": "Endpoints Webhook",
+      "apis": "Integración API"
+    },
+    "comparison": {
+      "title": "¿Por qué elegir Formshive?",
+      "subtitle": "Ve cómo nos comparamos con otros backends de formularios",
+      "feature": "Característica",
+      "formshive": "Formshive",
+      "others": "Otros",
+      "pricing": "Pago por uso desde €0.005",
+      "pricingOthers": "Planes mensuales desde €15+",
+      "setup": "Configuración en 30 segundos",
+      "setupOthers": "Incorporación compleja",
+      "selfHost": "Opción de auto-hosting disponible",
+      "selfHostOthers": "Solo SaaS",
+      "privacy": "Hosting EU, cumple GDPR",
+      "privacyOthers": "Hosting US, privacidad limitada",
+      "support": "Soporte humano",
+      "supportOthers": "Soporte chatbot"
+    },
     "features": {
-      "noFields": {
-        "title": "No Requiere Campos",
-        "description": "Envía cualquier dato de formulario—incluso sin campos predefinidos. Personaliza validaciones y transformaciones solo cuando las necesites."
+      "instant": {
+        "title": "Configuración Instantánea",
+        "description": "Funciona con tus formularios existentes en segundos. Solo apunta la acción de tu formulario a nuestro endpoint — no requiere backend."
       },
-      "flexible": {
-        "title": "Creación de Formularios Flexible",
-        "description": "Construye formularios con nuestra interfaz intuitiva o configuraciones TOML simples. Incrusta, enlaza o crea formularios completamente personalizados — sin esfuerzo."
+      "developer": {
+        "title": "Amigable para Desarrolladores",
+        "description": "API simple, webhooks, soporte JSON e integraciones con tus herramientas favoritas. Hecho por desarrolladores, para desarrolladores."
       },
-      "protection": {
-        "title": "Protección Inteligente contra Spam y CAPTCHA",
-        "description": "Desafíos CAPTCHA amigables y automatizados mantienen tus envíos limpios sin frustrar a tus usuarios."
-      },
-      "privacy": {
-        "title": "Privacidad por Diseño",
-        "description": "Tus datos siguen siendo tuyos. No recopilamos información personal, con hosting seguro en la UE enfocado en tu privacidad y confianza."
-      },
-      "integrations": {
-        "title": "Integraciones Perfectas",
-        "description": "Conecta instantáneamente con notificaciones por email, webhooks y más — manteniendo tus flujos de trabajo funcionando sin problemas."
+      "security": {
+        "title": "Seguridad Probada en Batalla",
+        "description": "Cumple GDPR, protección anti-spam, hosting EU y seguridad nivel empresarial. Tus datos se mantienen privados y seguros."
       },
       "pricing": {
-        "title": "Precios Simples y Transparentes",
-        "description": "Comienza desde solo €0.005 por envío o auto-hostea por €590/año. Sin tarifas ocultas, sin inversores, sin ventas adicionales."
+        "title": "Precios Justos",
+        "description": "Paga por uso desde €0.005 — sin mínimos mensuales, sin tarifas sorpresa. Opción de auto-hosting para control total."
+      },
+      "freedom": {
+        "title": "Cero Bloqueo de Proveedor",
+        "description": "Exporta tus datos en cualquier momento, opción de auto-hosting disponible, arquitectura abierta. Tus formularios, tus reglas."
+      },
+      "features": {
+        "title": "Funciones Inteligentes",
+        "description": "Subida de archivos, respuestas automáticas, validación de campos, filtrado anti-spam y más. Todo lo que necesitas listo para usar."
       }
     },
     "cta": {
-      "title": "¿Listo para dar vida a tus formularios?",
+      "title": "Únete a 1,000+ desarrolladores que ahorran horas en la gestión de formularios",
+      "titleAlt": "¿Listo para dar vida a tus formularios?",
       "button": "Comenzar con Formshive",
+      "buttonAlt": "Crear Cuenta Gratuita",
       "credit": "€0.25 Crédito de Bienvenida",
       "description": "Sin incorporación compleja — solo gestión perfecta de datos de formularios.",
+      "descriptionUrgent": "Configura tu primer formulario en menos de 30 segundos. Únete a desarrolladores que ya han procesado más de 1M de envíos.",
       "loginTitle": "¿Tienes una cuenta?",
       "loginDescription": "¿Ya eres parte de la familia Formshive? Inicia sesión para gestionar tus formularios.",
       "loginButton": "Iniciar Sesión"

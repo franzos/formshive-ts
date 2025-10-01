@@ -4,12 +4,17 @@ import { CurrentSubscription } from '../../../components/Billing/CurrentSubscrip
 
 export function AccountBillingSubscriptionsPage() {
   return (
-    <Stack gap="xl">
-      <CurrentSubscription />
-      <Title order={3} fw={600}>
-        Subscription Plans
+    <>
+      <Title order={2} mb="md">
+        Subscriptions
       </Title>
-      <SubscriptionPlans />
-    </Stack>
+      <Stack>
+        <CurrentSubscription />
+        <Title order={3} fw={600}>
+          Subscription Plans
+        </Title>
+        <SubscriptionPlans />
+      </Stack>
+    </>
   );
 }

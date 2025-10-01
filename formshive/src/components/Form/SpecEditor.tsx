@@ -12,6 +12,7 @@ import {
   ActionIcon,
   Paper,
   ScrollArea,
+  useComputedColorScheme,
 } from '@mantine/core';
 import {
   IconBorderBottom,
@@ -93,6 +94,8 @@ function SortableFieldItem({
   onDelete,
 }: SortableFieldItemProps) {
   const { t } = useTranslation();
+  const computedColorScheme = useComputedColorScheme('light');
+  const isDark = computedColorScheme === 'dark';
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
     id: fieldKey,
   });
@@ -109,11 +112,13 @@ function SortableFieldItem({
       style={{
         ...style,
         cursor: 'pointer',
-        backgroundColor: isSelected ? 'var(--mantine-color-blue-0)' : undefined,
+        backgroundColor: isSelected
+          ? isDark ? 'var(--mantine-color-blue-9)' : 'var(--mantine-color-blue-0)'
+          : undefined,
         borderColor: isSelected
-          ? 'var(--mantine-color-blue-3)'
+          ? isDark ? 'var(--mantine-color-blue-4)' : 'var(--mantine-color-blue-3)'
           : hasError
-            ? 'var(--mantine-color-red-3)'
+            ? isDark ? 'var(--mantine-color-red-4)' : 'var(--mantine-color-red-3)'
             : undefined,
       }}
       p="sm"
@@ -126,7 +131,7 @@ function SortableFieldItem({
           {...listeners}
           style={{ cursor: 'grab', display: 'flex', alignItems: 'center' }}
         >
-          <IconGripVertical size={16} style={{ color: 'var(--mantine-color-gray-5)' }} />
+          <IconGripVertical size={16} style={{ color: isDark ? 'var(--mantine-color-gray-6)' : 'var(--mantine-color-gray-5)' }} />
         </Box>
 
         {/* Field Preview */}
@@ -138,7 +143,6 @@ function SortableFieldItem({
             transform: 'scale(0.85)',
             transformOrigin: 'top left',
           }}
-          onClick={(e) => e.stopPropagation()} // Prevent triggering field selection
         >
           <Box
             className="rusty-form"

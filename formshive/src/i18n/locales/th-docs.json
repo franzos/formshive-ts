@@ -237,26 +237,77 @@
       "description": "เมื่อคุณสร้างฟอร์มที่มีฟิลด์ที่กำหนดไว้ คุณสามารถปรับแต่งฟิลด์แต่ละอันให้ทำงานตามที่คุณต้องการได้",
       "fieldTypes": {
         "title": "ประเภทฟิลด์ที่มี:",
-        "text": "• **Text:** การป้อนข้อความบรรทัดเดียว",
-        "email": "• **Email:** อีเมลพร้อมการตรวจสอบอัตโนมัติ",
-        "textarea": "• **Textarea:** ข้อความหลายบรรทัดสำหรับข้อความยาว",
-        "number": "• **Number:** รับเฉพาะตัวเลข",
-        "phone": "• **Phone:** การป้อนหมายเลขโทรศัพท์",
-        "url": "• **URL:** ลิงก์เว็บไซต์พร้อมการตรวจสอบ",
-        "date": "• **Date:** ตัวเลือกวันที่",
-        "file": "• **File:** การอัปโหลดไฟล์",
-        "select": "• **Select:** เมนูดรอปดาวน์",
-        "radio": "• **Radio:** เลือกตัวเลือกเดียว",
-        "checkbox": "• **Checkbox:** การเลือกหลายตัวเลือก"
+        "text": {
+          "name": "Text",
+          "description": "การป้อนข้อความบรรทัดเดียว"
+        },
+        "email": {
+          "name": "Email",
+          "description": "อีเมลพร้อมการตรวจสอบอัตโนมัติ"
+        },
+        "textarea": {
+          "name": "Textarea",
+          "description": "ข้อความหลายบรรทัดสำหรับข้อความยาว"
+        },
+        "number": {
+          "name": "Number",
+          "description": "รับเฉพาะตัวเลข"
+        },
+        "phone": {
+          "name": "Phone",
+          "description": "การป้อนหมายเลขโทรศัพท์"
+        },
+        "url": {
+          "name": "URL",
+          "description": "ลิงก์เว็บไซต์พร้อมการตรวจสอบ"
+        },
+        "date": {
+          "name": "Date",
+          "description": "ตัวเลือกวันที่"
+        },
+        "file": {
+          "name": "File",
+          "description": "การอัปโหลดไฟล์"
+        },
+        "select": {
+          "name": "Select",
+          "description": "เมนูดรอปดาวน์"
+        },
+        "radio": {
+          "name": "Radio",
+          "description": "เลือกตัวเลือกเดียว"
+        },
+        "checkbox": {
+          "name": "Checkbox",
+          "description": "การเลือกหลายตัวเลือก"
+        }
       },
       "validationOptions": {
         "title": "ตัวเลือกการตรวจสอบ:",
-        "required": "• **ฟิลด์บังคับ:** ต้องกรอกให้สมบูรณ์",
-        "emailValidation": "• **การตรวจสอบอีเมล:** ตรวจสอบรูปแบบอีเมลที่ถูกต้อง",
-        "urlValidation": "• **การตรวจสอบ URL:** ให้แน่ใจว่าเป็นลิงก์เว็บที่เหมาะสม",
-        "customOptions": "• **ตัวเลือกแบบกำหนดเอง:** สำหรับดรอปดาวน์และการเลือก",
-        "helpText": "• **ข้อความช่วยเหลือ:** คำแนะนำสำหรับผู้ใช้",
-        "placeholders": "• **Placeholders:** ข้อความตัวอย่างในฟิลด์"
+        "required": {
+          "name": "ฟิลด์บังคับ",
+          "description": "ต้องกรอกให้สมบูรณ์"
+        },
+        "emailValidation": {
+          "name": "การตรวจสอบอีเมล",
+          "description": "ตรวจสอบรูปแบบอีเมลที่ถูกต้อง"
+        },
+        "urlValidation": {
+          "name": "การตรวจสอบ URL",
+          "description": "ให้แน่ใจว่าเป็นลิงก์เว็บที่เหมาะสม"
+        },
+        "customOptions": {
+          "name": "ตัวเลือกแบบกำหนดเอง",
+          "description": "สำหรับดรอปดาวน์และการเลือก"
+        },
+        "helpText": {
+          "name": "ข้อความช่วยเหลือ",
+          "description": "คำแนะนำสำหรับผู้ใช้"
+        },
+        "placeholders": {
+          "name": "Placeholders",
+          "description": "ข้อความตัวอย่างในฟิลด์"
+        }
       },
       "proTip": {
         "title": "เคล็ดลับโปร",
@@ -277,29 +328,85 @@
       },
       "fieldTypesAvailable": {
         "title": "ประเภทฟิลด์ที่มี:",
-        "text": "• **text:** การป้อนข้อความบรรทัดเดียว",
-        "email": "• **email:** อีเมลพร้อมการตรวจสอบ",
-        "textarea": "• **textarea:** พื้นที่ข้อความหลายบรรทัด",
-        "select": "• **select:** เมนูดรอปดาวน์",
-        "checkbox": "• **checkbox:** ตัวเลือกหลายทางเลือก",
-        "number": "• **number:** การป้อนตัวเลข"
+        "text": {
+          "name": "text",
+          "description": "การป้อนข้อความบรรทัดเดียว"
+        },
+        "email": {
+          "name": "email",
+          "description": "อีเมลพร้อมการตรวจสอบ"
+        },
+        "textarea": {
+          "name": "textarea",
+          "description": "พื้นที่ข้อความหลายบรรทัด"
+        },
+        "select": {
+          "name": "select",
+          "description": "เมนูดรอปดาวน์"
+        },
+        "checkbox": {
+          "name": "checkbox",
+          "description": "ตัวเลือกหลายทางเลือก"
+        },
+        "number": {
+          "name": "number",
+          "description": "การป้อนตัวเลข"
+        }
       },
       "validationOptions": {
         "title": "ตัวเลือกการตรวจสอบ:",
-        "required": "• **required:** ฟิลด์ต้องกรอก",
-        "isEmail": "• **is_email:** ตรวจสอบรูปแบบอีเมล",
-        "isMin": "• **is_min:** ความยาว/ค่าต่ำสุด",
-        "isMax": "• **is_max:** ความยาว/ค่าสูงสุด",
-        "options": "• **options:** ตัวเลือกที่ถูกต้องสำหรับ select/checkbox",
-        "checkSpam": "• **check_spam:** เปิดใช้งานการตรวจจับสแปม"
+        "required": {
+          "name": "required",
+          "description": "ฟิลด์ต้องกรอก"
+        },
+        "isEmail": {
+          "name": "is_email",
+          "description": "ตรวจสอบรูปแบบอีเมล"
+        },
+        "isMin": {
+          "name": "is_min",
+          "description": "ความยาว/ค่าต่ำสุด"
+        },
+        "isMax": {
+          "name": "is_max",
+          "description": "ความยาว/ค่าสูงสุด"
+        },
+        "options": {
+          "name": "options",
+          "description": "ตัวเลือกที่ถูกต้องสำหรับ select/checkbox"
+        },
+        "checkSpam": {
+          "name": "check_spam",
+          "description": "เปิดใช้งานการตรวจจับสแปม"
+        }
       },
       "benefits": {
         "title": "ประโยชน์ของการกำหนดค่า TOML:",
-        "versionControl": "✨ **Version Control:** ติดตามการเปลี่ยนแปลงฟอร์มของคุณตลอดเวลา",
-        "reusable": "✨ **นำกลับมาใช้ได้:** คัดลอกการกำหนดค่าระหว่างฟอร์มได้ง่าย",
-        "preciseControl": "✨ **การควบคุมที่แม่นยำ:** ปรับแต่งการตรวจสอบและพฤติกรรมอย่างละเอียด",
-        "teamCollaboration": "✨ **การทำงานร่วมกันของทีม:** แชร์ข้อกำหนดฟอร์มโดยไม่ต้องเข้าถึงบัญชี",
-        "advancedFeatures": "✨ **คุณสมบัติขั้นสูง:** เข้าถึงตัวเลือกการตรวจสอบทั้งหมด"
+        "versionControl": {
+          "icon": "✨",
+          "feature": "Version Control",
+          "description": "ติดตามการเปลี่ยนแปลงฟอร์มของคุณตลอดเวลา"
+        },
+        "reusable": {
+          "icon": "✨",
+          "feature": "นำกลับมาใช้ได้",
+          "description": "คัดลอกการกำหนดค่าระหว่างฟอร์มได้ง่าย"
+        },
+        "preciseControl": {
+          "icon": "✨",
+          "feature": "การควบคุมที่แม่นยำ",
+          "description": "ปรับแต่งการตรวจสอบและพฤติกรรมอย่างละเอียด"
+        },
+        "teamCollaboration": {
+          "icon": "✨",
+          "feature": "การทำงานร่วมกันของทีม",
+          "description": "แชร์ข้อกำหนดฟอร์มโดยไม่ต้องเข้าถึงบัญชี"
+        },
+        "advancedFeatures": {
+          "icon": "✨",
+          "feature": "คุณสมบัติขั้นสูง",
+          "description": "เข้าถึงตัวเลือกการตรวจสอบทั้งหมด"
+        }
       },
       "gettingStarted": {
         "title": "การเริ่มต้น",

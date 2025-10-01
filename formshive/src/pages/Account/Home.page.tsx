@@ -1,6 +1,7 @@
 import { News } from '@gofranz/common-components';
 import {
   Anchor,
+  Box,
   Button,
   Card,
   Center,
@@ -133,7 +134,7 @@ export function AccountHomePage() {
             inherit
             variant="gradient"
             component="span"
-            gradient={{ from: theme.colors['brand-blue'][6], to: theme.colors['brand-blue'][6] }}
+            gradient={{ from: theme.colors['brand-secondary'][6], to: theme.colors['brand-secondary'][6] }}
           >
             {t('brand.name')}
           </Text>
@@ -141,16 +142,16 @@ export function AccountHomePage() {
             inherit
             variant="gradient"
             component="span"
-            gradient={{ from: theme.colors['brand-gold'][6], to: theme.colors['brand-gold'][6] }}
+            gradient={{ from: theme.colors['brand-primary'][6], to: theme.colors['brand-primary'][6] }}
           >
             {t('brand.nameSecond')}!
           </Text>
         </>
       </Title>
       <GetStarted />
-      <Card shadow="xs" padding="lg" radius="md" mb="lg" withBorder>
+      <Box mb="lg">
         <Docs />
-      </Card>
+      </Box>
       <QuickActions />
       <Card shadow="xs" padding="lg" radius="md" withBorder>
         <News blogBaseUrl="https://blog.formshive.com" />

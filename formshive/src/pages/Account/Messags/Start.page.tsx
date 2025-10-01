@@ -1,8 +1,8 @@
 import { useLanguageAwareRouting, usePagination } from '@gofranz/common-components';
 import { Form, FormAnalyticsResponse, FormAnalyticsAggregateResponse, Message } from '@gofranz/formshive-common';
 import { LineChart } from '@mantine/charts';
-import { Anchor, Card, Collapse, Flex, Group, LoadingOverlay, SimpleGrid, Stack, Text } from '@mantine/core';
-import { useEffect, useState } from 'react';
+import { Anchor, Card, Collapse, Flex, Group, LoadingOverlay, SimpleGrid, Stack, Text, Select, Title } from '@mantine/core';
+import { useEffect, useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { MessagesTable } from '../../../components/Message/Table';
@@ -23,6 +23,16 @@ export function AccountMessagesStartPage(props: AccountFormsStartPageProps) {
   const [aggregateAnalytics, setAggregateAnalytics] = useState<FormAnalyticsAggregateResponse | null>(null);
   const [showAnalyticsBreakdown, setShowAnalyticsBreakdown] = useState(false);
   const [loadingAggregateAnalytics, setLoadingAggregateAnalytics] = useState(false);
+
+  const [perPage, setPerPage] = useState(() => {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      const saved = localStorage.getItem('formshive.messages.pagination');
+      return saved ? parseInt(saved, 10) : 10;
+    }
+    return 10;
+  });
+
+  const perPageRef = useRef(perPage);
 
   const getAnalytics = async (params?: { is_spam?: boolean }) => {
     const formId = props.formId ? [props.formId] : undefined;
@@ -82,9 +92,10 @@ export function AccountMessagesStartPage(props: AccountFormsStartPageProps) {
 
   const fetchMessages = async (params: { nextPage: number; [key: string]: any }) => {
     const { nextPage, ...otherParams } = params;
+    const currentPerPage = perPageRef.current;
     const apiParams: any = {
-      offset: nextPage === 1 ? 0 : 10 * (nextPage - 1),
-      limit: 10,
+      offset: nextPage === 1 ? 0 : currentPerPage * (nextPage - 1),
+      limit: currentPerPage,
       ...otherParams,
     };
 
@@ -92,15 +103,17 @@ export function AccountMessagesStartPage(props: AccountFormsStartPageProps) {
       apiParams.form_id = props.formId;
     }
 
-    const [, messagesResult] = await Promise.all([
-      getAnalytics({ is_spam: params.is_spam }),
-      useRustyState.getState().getMessagesWithForms(apiParams),
-    ]);
-
-    // Update aggregate analytics if breakdown is currently shown
+    // Run analytics calls in parallel (these don't return data, they update state)
+    const analyticsPromises = [getAnalytics({ is_spam: params.is_spam })];
     if (showAnalyticsBreakdown) {
-      await getAggregateAnalytics({ is_spam: params.is_spam });
+      analyticsPromises.push(getAggregateAnalytics({ is_spam: params.is_spam }));
     }
+
+    // Get messages data and run analytics in parallel
+    const [messagesResult] = await Promise.all([
+      useRustyState.getState().getMessagesWithForms(apiParams),
+      ...analyticsPromises,
+    ]);
 
     return {
       data: messagesResult.data,
@@ -109,13 +122,16 @@ export function AccountMessagesStartPage(props: AccountFormsStartPageProps) {
   };
 
   const pagination = usePagination({
-    perPage: 10,
+    perPage,
     fetchData: fetchMessages,
   });
 
   useEffect(() => {
-    api.getForms({ limit: 25, offset: 0 });
-    getAnalytics();
+    // Run initial data fetching in parallel
+    Promise.all([
+      api.getForms({ limit: 25, offset: 0 }),
+      getAnalytics(),
+    ]);
   }, []);
 
   const openForm = (data: { msg: Message; form: Form | undefined }) => {
@@ -126,8 +142,28 @@ export function AccountMessagesStartPage(props: AccountFormsStartPageProps) {
     return await pagination.loadPage(params.nextPage, params);
   };
 
+  const handlePerPageChange = (newPerPage: number) => {
+    setPerPage(newPerPage);
+    perPageRef.current = newPerPage; // Update ref immediately
+    if (typeof window !== 'undefined' && window.localStorage) {
+      localStorage.setItem('formshive.messages.pagination', newPerPage.toString());
+    }
+  };
+
+  const paginationOptions = [
+    { value: '10', label: '10' },
+    { value: '20', label: '20' },
+    { value: '30', label: '30' },
+    { value: '40', label: '40' },
+    { value: '50', label: '50' },
+  ];
+
+
   return (
     <>
+      <Title order={2} mb="md">
+        Messages
+      </Title>
       <Stack gap="md">
         {analyticsResponse && (
           <SimpleGrid cols={3}>
@@ -279,6 +315,20 @@ export function AccountMessagesStartPage(props: AccountFormsStartPageProps) {
         openRowPage={openForm}
         updateCb={api.updateMessage}
         deleteCb={api.deleteMessage}
+        perPage={perPage}
+        onPerPageChange={handlePerPageChange}
+        headerActions={
+          <Select
+            data={paginationOptions}
+            value={perPage.toString()}
+            onChange={(value) => {
+              const newPerPage = parseInt(value || '10', 10);
+              handlePerPageChange(newPerPage);
+            }}
+            size="sm"
+            w={80}
+          />
+        }
       />
     </>
   );

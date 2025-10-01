@@ -7,40 +7,81 @@
     "email": "hello@formshive.com"
   },
   "welcome": {
-    "tagline": "轻松、灵活的表单数据处理",
+    "tagline": "将任何表单转化为智能数据管道",
     "description": "从任何表单、脚本或AI代理中捕获、验证、转换和路由数据。",
-    "subDescription": "闪电般快速、隐私优先，构建安全而简单的数据流动体验。",
+    "subDescription": "30秒内完成设置。无需后端。闪电般快速、隐私优先且安全。",
+    "stats": {
+      "title": "全球开发者信赖选择",
+      "activeUsers": "1,000+",
+      "activeUsersLabel": "活跃用户",
+      "formsProcessed": "1M+",
+      "formsProcessedLabel": "已处理表单",
+      "uptime": "99.9%",
+      "uptimeLabel": "运行时间",
+      "responseTime": "< 100ms",
+      "responseTimeLabel": "响应时间"
+    },
+    "useCases": {
+      "title": "适用于任何项目",
+      "subtitle": "从简单的联系表单到复杂的数据收集工作流",
+      "contactForms": "联系表单",
+      "surveys": "调查和反馈",
+      "fileUploads": "文件上传",
+      "aiAgents": "AI代理数据收集",
+      "webhooks": "Webhook端点",
+      "apis": "API集成"
+    },
+    "comparison": {
+      "title": "为什么选择 Formshive？",
+      "subtitle": "看看我们与其他表单后端的比较",
+      "feature": "功能",
+      "formshive": "Formshive",
+      "others": "其他",
+      "pricing": "按使用量付费，从€0.005起",
+      "pricingOthers": "月度套餐从€15+起",
+      "setup": "30秒完成设置",
+      "setupOthers": "复杂的入门流程",
+      "selfHost": "提供自托管选项",
+      "selfHostOthers": "仅SaaS",
+      "privacy": "EU托管，符合GDPR",
+      "privacyOthers": "美国托管，隐私有限",
+      "support": "人工支持",
+      "supportOthers": "聊天机器人支持"
+    },
     "features": {
-      "noFields": {
-        "title": "无需预定义字段",
-        "description": "发送任何表单数据——即使没有预定义字段。仅在需要时自定义验证和转换。"
+      "instant": {
+        "title": "即时设置",
+        "description": "在几秒钟内与您现有的表单配合使用。只需将您的表单动作指向我们的端点——无需后端。"
       },
-      "flexible": {
-        "title": "灵活的表单创建", 
-        "description": "使用我们直观的GUI或简单的TOML配置构建表单。轻松嵌入、链接或创建完全自定义的表单。"
+      "developer": {
+        "title": "开发者友好",
+        "description": "简单的API、webhook、JSON支持和与您喜爱工具的集成。由开发者打造，为开发者服务。"
       },
-      "protection": {
-        "title": "智能垃圾邮件和CAPTCHA保护",
-        "description": "友好的自动化CAPTCHA挑战让您的提交保持清洁，而不会让用户感到沮丧。"
-      },
-      "privacy": {
-        "title": "隐私设计",
-        "description": "您的数据属于您。我们不收集个人信息，安全的欧盟托管专注于您的隐私和信任。"
-      },
-      "integrations": {
-        "title": "无缝集成",
-        "description": "通过电子邮件通知、webhook等即时连接——让您的工作流程顺畅运行。"
+      "security": {
+        "title": "久经考验的安全性",
+        "description": "符合GDPR、反垃圾邮件保护、EU托管和企业级安全。您的数据保持私密和安全。"
       },
       "pricing": {
-        "title": "简单、透明的定价",
-        "description": "每次提交仅€0.005起或自托管€590/年。无隐藏费用，无投资者，无追加销售。"
+        "title": "公平定价",
+        "description": "按使用量付费，从€0.005起——无月度最低消费，无意外费用。提供自托管选项以实现全面控制。"
+      },
+      "freedom": {
+        "title": "零供应商锁定",
+        "description": "随时导出您的数据，提供自托管选项，开放架构。您的表单，您的规则。"
+      },
+      "features": {
+        "title": "智能功能",
+        "description": "文件上传、自动回复、字段验证、反垃圾邮件过滤等。开箱即用的一切功能。"
       }
     },
     "cta": {
-      "title": "准备让您的表单焕发生机？",
+      "title": "加入1,000+在表单处理上节省时间的开发者",
+      "titleAlt": "准备让您的表单焕发生机？",
       "button": "开始使用 Formshive",
+      "buttonAlt": "创建免费账户",
       "credit": "€0.25 欢迎积分",
       "description": "无复杂入门流程——只有无缝的表单数据处理。",
+      "descriptionUrgent": "在30秒内设置您的第一个表单。加入已经处理超过100万次提交的开发者行列。",
       "loginTitle": "已有账户？",
       "loginDescription": "已经是Formshive大家庭的一员？登录管理您的表单。",
       "loginButton": "登录"

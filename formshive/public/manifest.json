@@ -1,0 +1,68 @@
+{
+  "name": "Formshive - Online Form Builder | Create Custom Forms",
+  "short_name": "Formshive",
+  "description": "Create custom forms in minutes. Registration forms, application forms, surveys, contact forms and more. Sign up free!",
+  "theme_color": "#228be6",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/",
+  "id": "/",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["productivity", "utilities", "business"],
+  "shortcuts": [
+    {
+      "name": "Create Form",
+      "short_name": "New Form",
+      "description": "Create a new form",
+      "url": "/forms/new",
+      "icons": [
+        {
+          "src": "/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "View Forms",
+      "short_name": "My Forms",
+      "description": "View your forms",
+      "url": "/forms",
+      "icons": [
+        {
+          "src": "/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/banner.png",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Formshive Form Builder Interface"
+    }
+  ]
+}

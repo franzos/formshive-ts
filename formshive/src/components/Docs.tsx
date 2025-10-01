@@ -1,4 +1,4 @@
-import { Text, Stack, Accordion, Group, ThemeIcon, Alert, Card, Grid, Code, Box, Anchor } from '@mantine/core';
+import { Text, Stack, Accordion, Group, ThemeIcon, Alert, Card, Grid, Code, Box, Anchor, useComputedColorScheme } from '@mantine/core';
 import {
   IconForms,
   IconInfoCircle,
@@ -19,6 +19,8 @@ export interface DocsProps {
 
 export function Docs() {
   const { t } = useTranslation();
+  const computedColorScheme = useComputedColorScheme('light');
+  const isDark = computedColorScheme === 'dark';
   return (
     <Stack gap="xl">
       {/* Getting Started */}
@@ -80,7 +82,7 @@ export function Docs() {
                 <Text size="sm" mb="md">
                   {t('docs.formsWithWithoutFields.withFields.description')}
                 </Text>
-                <Card withBorder p="sm" bg="green.0">
+                <Card withBorder p="sm" bg={isDark ? "green.9" : "green.0"}>
                   <Text size="sm" fw={500} mb="xs">
                     {t('docs.formsWithWithoutFields.withFields.benefits.title')}
                   </Text>
@@ -104,7 +106,7 @@ export function Docs() {
                 <Text size="sm" mb="md">
                   {t('docs.formsWithWithoutFields.withoutFields.description')}
                 </Text>
-                <Card withBorder p="sm" bg="yellow.0">
+                <Card withBorder p="sm" bg={isDark ? "yellow.9" : "yellow.0"}>
                   <Text size="sm" fw={500} mb="xs">
                     {t('docs.formsWithWithoutFields.withoutFields.bestFor.title')}
                   </Text>
@@ -149,18 +151,18 @@ export function Docs() {
                 <Text size="sm" mb="md">
                   {t('docs.formSubmission.validation.description')}
                 </Text>
-                <Card withBorder p="sm" bg="blue.0">
+                <Card withBorder p="sm" bg={isDark ? "blue.9" : "blue.0"}>
                   <Text size="sm" fw={500} mb="xs">
                     {t('docs.formSubmission.validation.steps.title')}
                   </Text>
                   <Text size="xs">
-                    {t('docs.formSubmission.validation.steps.formExists')}
+                    {t('docs.formSubmission.validation.steps.formExists.number')}. <Text span fw={600}>{t('docs.formSubmission.validation.steps.formExists.label')}:</Text> {t('docs.formSubmission.validation.steps.formExists.description')}
                     <br />
-                    {t('docs.formSubmission.validation.steps.captcha')}
+                    {t('docs.formSubmission.validation.steps.captcha.number')}. <Text span fw={600}>{t('docs.formSubmission.validation.steps.captcha.label')}:</Text> {t('docs.formSubmission.validation.steps.captcha.description')}
                     <br />
-                    {t('docs.formSubmission.validation.steps.fieldValidation')}
+                    {t('docs.formSubmission.validation.steps.fieldValidation.number')}. <Text span fw={600}>{t('docs.formSubmission.validation.steps.fieldValidation.label')}:</Text> {t('docs.formSubmission.validation.steps.fieldValidation.description')}
                     <br />
-                    {t('docs.formSubmission.validation.steps.spamDetection')}
+                    {t('docs.formSubmission.validation.steps.spamDetection.number')}. <Text span fw={600}>{t('docs.formSubmission.validation.steps.spamDetection.label')}:</Text> {t('docs.formSubmission.validation.steps.spamDetection.description')}
                   </Text>
                 </Card>
               </Box>
@@ -218,7 +220,7 @@ export function Docs() {
                 </Text>
                 <Grid>
                   <Grid.Col span={{ base: 12, md: 4 }}>
-                    <Card withBorder p="sm" bg="green.0">
+                    <Card withBorder p="sm" bg={isDark ? "green.9" : "green.0"}>
                       <Text fw={500} size="sm" mb="xs">
                         {t('docs.formSubmission.afterSubmission.customThankYou.title')}
                       </Text>
@@ -229,7 +231,7 @@ export function Docs() {
                   </Grid.Col>
 
                   <Grid.Col span={{ base: 12, md: 4 }}>
-                    <Card withBorder p="sm" bg="blue.0">
+                    <Card withBorder p="sm" bg={isDark ? "blue.9" : "blue.0"}>
                       <Text fw={500} size="sm" mb="xs">
                         {t('docs.formSubmission.afterSubmission.builtInSuccess.title')}
                       </Text>
@@ -240,7 +242,7 @@ export function Docs() {
                   </Grid.Col>
 
                   <Grid.Col span={{ base: 12, md: 4 }}>
-                    <Card withBorder p="sm" bg="gray.0">
+                    <Card withBorder p="sm" bg={isDark ? "gray.9" : "gray.0"}>
                       <Text fw={500} size="sm" mb="xs">
                         {t('docs.formSubmission.afterSubmission.forDevelopers.title')}
                       </Text>
@@ -254,8 +256,8 @@ export function Docs() {
                 <Alert icon={<IconInfoCircle size={16} />} title={t('docs.formSubmission.afterSubmission.overrideOptions.title')} color="blue" mt="sm">
                   <Text size="sm">
                     {t('docs.formSubmission.afterSubmission.overrideOptions.description')}
-                    <br />{t('docs.formSubmission.afterSubmission.overrideOptions.redirectHtml')}
-                    <br />{t('docs.formSubmission.afterSubmission.overrideOptions.redirectNone')}
+                    <br />• <Code>{t('docs.formSubmission.afterSubmission.overrideOptions.redirectHtml.param')}</Code> - {t('docs.formSubmission.afterSubmission.overrideOptions.redirectHtml.description')}
+                    <br />• <Code>{t('docs.formSubmission.afterSubmission.overrideOptions.redirectNone.param')}</Code> - {t('docs.formSubmission.afterSubmission.overrideOptions.redirectNone.description')}
                   </Text>
                 </Alert>
               </Box>
@@ -316,13 +318,13 @@ export function Docs() {
 
               <Alert icon={<IconInfoCircle size={16} />} title={t('docs.formSubmission.proTips.title')} color="blue">
                 <Text size="sm">
-                  {t('docs.formSubmission.proTips.setRedirect')}
+                  • <Text span fw={600}>{t('docs.formSubmission.proTips.setRedirect.action')}</Text> {t('docs.formSubmission.proTips.setRedirect.description')}
                   <br />
-                  {t('docs.formSubmission.proTips.testForms')}
+                  • <Text span fw={600}>{t('docs.formSubmission.proTips.testForms.action')}</Text> {t('docs.formSubmission.proTips.testForms.description')}
                   <br />
-                  {t('docs.formSubmission.proTips.helpfulErrors')}
+                  • <Text span fw={600}>{t('docs.formSubmission.proTips.helpfulErrors.action')}</Text> - {t('docs.formSubmission.proTips.helpfulErrors.description')}
                   <br />
-                  {t('docs.formSubmission.proTips.monitor')}
+                  • <Text span fw={600}>{t('docs.formSubmission.proTips.monitor.action')}</Text> {t('docs.formSubmission.proTips.monitor.description')}
                 </Text>
               </Alert>
             </Stack>
@@ -359,13 +361,13 @@ export function Docs() {
                       </Text>
                     </Group>
                     <Group gap="xs" mb="sm">
-                      <Text size="xs" px="xs" py={2} bg="blue.1" c="blue.8" style={{ borderRadius: '12px', fontWeight: 500 }}>
+                      <Text size="xs" px="xs" py={2} bg={isDark ? "blue.9" : "blue.1"} c={isDark ? "blue.1" : "blue.8"} style={{ borderRadius: '12px', fontWeight: 500 }}>
                         {t('docs.integrationMethods.manual.tags.existingForms')}
                       </Text>
-                      <Text size="xs" px="xs" py={2} bg="green.1" c="green.8" style={{ borderRadius: '12px', fontWeight: 500 }}>
+                      <Text size="xs" px="xs" py={2} bg={isDark ? "green.9" : "green.1"} c={isDark ? "green.1" : "green.8"} style={{ borderRadius: '12px', fontWeight: 500 }}>
                         {t('docs.integrationMethods.manual.tags.veryFlexible')}
                       </Text>
-                      <Text size="xs" px="xs" py={2} bg="purple.1" c="purple.8" style={{ borderRadius: '12px', fontWeight: 500 }}>
+                      <Text size="xs" px="xs" py={2} bg={isDark ? "purple.9" : "purple.1"} c={isDark ? "purple.1" : "purple.8"} style={{ borderRadius: '12px', fontWeight: 500 }}>
                         {t('docs.integrationMethods.manual.tags.customDesign')}
                       </Text>
                     </Group>
@@ -380,12 +382,12 @@ export function Docs() {
                     </Code>
                     <Alert color="green" mt="sm">
                       <Text size="xs">
-                        {t('docs.integrationMethods.manual.success')}
+                        {t('docs.integrationMethods.manual.success.icon')} <Text span fw={600}>{t('docs.integrationMethods.manual.success.type')}:</Text> {t('docs.integrationMethods.manual.success.description')}
                       </Text>
                     </Alert>
                     <Alert color="yellow" mt="xs">
                       <Text size="xs">
-                        {t('docs.integrationMethods.manual.validation')}
+                        {t('docs.integrationMethods.manual.validation.icon')} <Text span fw={600}>{t('docs.integrationMethods.manual.validation.type')}:</Text> {t('docs.integrationMethods.manual.validation.description')}
                       </Text>
                     </Alert>
                   </Card>
@@ -400,13 +402,13 @@ export function Docs() {
                       </Text>
                     </Group>
                     <Group gap="xs" mb="sm">
-                      <Text size="xs" px="xs" py={2} bg="orange.1" c="orange.8" style={{ borderRadius: '12px', fontWeight: 500 }}>
+                      <Text size="xs" px="xs" py={2} bg={isDark ? "orange.9" : "orange.1"} c={isDark ? "orange.1" : "orange.8"} style={{ borderRadius: '12px', fontWeight: 500 }}>
                         {t('docs.integrationMethods.javascript.tags.bestUx')}
                       </Text>
-                      <Text size="xs" px="xs" py={2} bg="teal.1" c="teal.8" style={{ borderRadius: '12px', fontWeight: 500 }}>
+                      <Text size="xs" px="xs" py={2} bg={isDark ? "teal.9" : "teal.1"} c={isDark ? "teal.1" : "teal.8"} style={{ borderRadius: '12px', fontWeight: 500 }}>
                         {t('docs.integrationMethods.javascript.tags.noPageReloads')}
                       </Text>
-                      <Text size="xs" px="xs" py={2} bg="pink.1" c="pink.8" style={{ borderRadius: '12px', fontWeight: 500 }}>
+                      <Text size="xs" px="xs" py={2} bg={isDark ? "pink.9" : "pink.1"} c={isDark ? "pink.1" : "pink.8"} style={{ borderRadius: '12px', fontWeight: 500 }}>
                         {t('docs.integrationMethods.javascript.tags.dynamic')}
                       </Text>
                     </Group>
@@ -421,12 +423,12 @@ export function Docs() {
                     </Code>
                     <Alert color="green" mt="sm">
                       <Text size="xs">
-                        {t('docs.integrationMethods.javascript.success')}
+                        {t('docs.integrationMethods.javascript.success.icon')} <Text span fw={600}>{t('docs.integrationMethods.javascript.success.type')}:</Text> {t('docs.integrationMethods.javascript.success.description')}
                       </Text>
                     </Alert>
                     <Alert color="yellow" mt="xs">
                       <Text size="xs">
-                        {t('docs.integrationMethods.javascript.validation')}
+                        {t('docs.integrationMethods.javascript.validation.icon')} <Text span fw={600}>{t('docs.integrationMethods.javascript.validation.type')}:</Text> {t('docs.integrationMethods.javascript.validation.description')}
                       </Text>
                     </Alert>
                   </Card>
@@ -441,13 +443,13 @@ export function Docs() {
                       </Text>
                     </Group>
                     <Group gap="xs" mb="sm">
-                      <Text size="xs" px="xs" py={2} bg="green.1" c="green.8" style={{ borderRadius: '12px', fontWeight: 500 }}>
+                      <Text size="xs" px="xs" py={2} bg={isDark ? "green.9" : "green.1"} c={isDark ? "green.1" : "green.8"} style={{ borderRadius: '12px', fontWeight: 500 }}>
                         {t('docs.integrationMethods.iframe.tags.veryEasy')}
                       </Text>
-                      <Text size="xs" px="xs" py={2} bg="blue.1" c="blue.8" style={{ borderRadius: '12px', fontWeight: 500 }}>
+                      <Text size="xs" px="xs" py={2} bg={isDark ? "blue.9" : "blue.1"} c={isDark ? "blue.1" : "blue.8"} style={{ borderRadius: '12px', fontWeight: 500 }}>
                         {t('docs.integrationMethods.iframe.tags.worksEverywhere')}
                       </Text>
-                      <Text size="xs" px="xs" py={2} bg="gray.1" c="gray.8" style={{ borderRadius: '12px', fontWeight: 500 }}>
+                      <Text size="xs" px="xs" py={2} bg={isDark ? "gray.9" : "gray.1"} c={isDark ? "gray.1" : "gray.8"} style={{ borderRadius: '12px', fontWeight: 500 }}>
                         {t('docs.integrationMethods.iframe.tags.copyPaste')}
                       </Text>
                     </Group>
@@ -462,12 +464,12 @@ export function Docs() {
                     </Code>
                     <Alert color="green" mt="sm">
                       <Text size="xs">
-                        {t('docs.integrationMethods.iframe.success')}
+                        {t('docs.integrationMethods.iframe.success.icon')} <Text span fw={600}>{t('docs.integrationMethods.iframe.success.type')}:</Text> {t('docs.integrationMethods.iframe.success.description')}
                       </Text>
                     </Alert>
                     <Alert color="yellow" mt="xs">
                       <Text size="xs">
-                        {t('docs.integrationMethods.iframe.validation')}
+                        {t('docs.integrationMethods.iframe.validation.icon')} <Text span fw={600}>{t('docs.integrationMethods.iframe.validation.type')}:</Text> {t('docs.integrationMethods.iframe.validation.description')}
                       </Text>
                     </Alert>
                   </Card>
@@ -482,13 +484,13 @@ export function Docs() {
                       </Text>
                     </Group>
                     <Group gap="xs" mb="sm">
-                      <Text size="xs" px="xs" py={2} bg="green.1" c="green.8" style={{ borderRadius: '12px', fontWeight: 500 }}>
+                      <Text size="xs" px="xs" py={2} bg={isDark ? "green.9" : "green.1"} c={isDark ? "green.1" : "green.8"} style={{ borderRadius: '12px', fontWeight: 500 }}>
                         {t('docs.integrationMethods.directLink.tags.veryEasy')}
                       </Text>
-                      <Text size="xs" px="xs" py={2} bg="violet.1" c="violet.8" style={{ borderRadius: '12px', fontWeight: 500 }}>
+                      <Text size="xs" px="xs" py={2} bg={isDark ? "violet.9" : "violet.1"} c={isDark ? "violet.1" : "violet.8"} style={{ borderRadius: '12px', fontWeight: 500 }}>
                         {t('docs.integrationMethods.directLink.tags.socialMedia')}
                       </Text>
-                      <Text size="xs" px="xs" py={2} bg="indigo.1" c="indigo.8" style={{ borderRadius: '12px', fontWeight: 500 }}>
+                      <Text size="xs" px="xs" py={2} bg={isDark ? "indigo.9" : "indigo.1"} c={isDark ? "indigo.1" : "indigo.8"} style={{ borderRadius: '12px', fontWeight: 500 }}>
                         {t('docs.integrationMethods.directLink.tags.standalone')}
                       </Text>
                     </Group>
@@ -502,12 +504,12 @@ export function Docs() {
                     </Code>
                     <Alert color="green" mt="sm">
                       <Text size="xs">
-                        {t('docs.integrationMethods.directLink.success')}
+                        {t('docs.integrationMethods.directLink.success.icon')} <Text span fw={600}>{t('docs.integrationMethods.directLink.success.type')}:</Text> {t('docs.integrationMethods.directLink.success.description')}
                       </Text>
                     </Alert>
                     <Alert color="yellow" mt="xs">
                       <Text size="xs">
-                        {t('docs.integrationMethods.directLink.validation')}
+                        {t('docs.integrationMethods.directLink.validation.icon')} <Text span fw={600}>{t('docs.integrationMethods.directLink.validation.type')}:</Text> {t('docs.integrationMethods.directLink.validation.description')}
                       </Text>
                     </Alert>
                   </Card>
@@ -520,11 +522,11 @@ export function Docs() {
                 color="violet"
               >
                 <Text size="sm">
-                  {t('docs.integrationMethods.whichMethod.beginners')}
+                  <Text span fw={600}>{t('docs.integrationMethods.whichMethod.beginners.audience')}:</Text> {t('docs.integrationMethods.whichMethod.beginners.description')}
                   <br />
-                  {t('docs.integrationMethods.whichMethod.existingForms')}
+                  <Text span fw={600}>{t('docs.integrationMethods.whichMethod.existingForms.audience')}:</Text> {t('docs.integrationMethods.whichMethod.existingForms.description')}
                   <br />
-                  {t('docs.integrationMethods.whichMethod.advancedUsers')}
+                  <Text span fw={600}>{t('docs.integrationMethods.whichMethod.advancedUsers.audience')}:</Text> {t('docs.integrationMethods.whichMethod.advancedUsers.description')}
                 </Text>
               </Alert>
             </Stack>
@@ -566,13 +568,13 @@ export function Docs() {
                   {t('docs.emailSetup.howItWorks.title')}
                 </Text>
                 <Text size="sm">
-                  {t('docs.emailSetup.howItWorks.addEmail')}
+                  {t('docs.emailSetup.howItWorks.addEmail.number')}. <Text span fw={600}>{t('docs.emailSetup.howItWorks.addEmail.action')}:</Text> {t('docs.emailSetup.howItWorks.addEmail.description')}
                   <br />
-                  {t('docs.emailSetup.howItWorks.checkInbox')}
+                  {t('docs.emailSetup.howItWorks.checkInbox.number')}. <Text span fw={600}>{t('docs.emailSetup.howItWorks.checkInbox.action')}:</Text> {t('docs.emailSetup.howItWorks.checkInbox.description')}
                   <br />
-                  {t('docs.emailSetup.howItWorks.clickVerify')}
+                  {t('docs.emailSetup.howItWorks.clickVerify.number')}. <Text span fw={600}>{t('docs.emailSetup.howItWorks.clickVerify.action')}:</Text> {t('docs.emailSetup.howItWorks.clickVerify.description')}
                   <br />
-                  {t('docs.emailSetup.howItWorks.ready')}
+                  {t('docs.emailSetup.howItWorks.ready.number')}. <Text span fw={600}>{t('docs.emailSetup.howItWorks.ready.action')}</Text> {t('docs.emailSetup.howItWorks.ready.description')}
                 </Text>
               </Card>
 
@@ -619,11 +621,11 @@ export function Docs() {
                   {t('docs.captchaSetup.setup.title')}
                 </Text>
                 <Text size="sm">
-                  {t('docs.captchaSetup.setup.enable')}
+                  {t('docs.captchaSetup.setup.enable.number')}. <Text span fw={600}>{t('docs.captchaSetup.setup.enable.action')}:</Text> {t('docs.captchaSetup.setup.enable.description')}
                   <br />
-                  {t('docs.captchaSetup.setup.updateWebsite')}
+                  {t('docs.captchaSetup.setup.updateWebsite.number')}. <Text span fw={600}>{t('docs.captchaSetup.setup.updateWebsite.action')}:</Text> {t('docs.captchaSetup.setup.updateWebsite.description')}
                   <br />
-                  {t('docs.captchaSetup.setup.test')}
+                  {t('docs.captchaSetup.setup.test.number')}. <Text span fw={600}>{t('docs.captchaSetup.setup.test.action')}:</Text> {t('docs.captchaSetup.setup.test.description')}
                 </Text>
               </Card>
 
@@ -633,20 +635,20 @@ export function Docs() {
                 </Text>
                 <Grid>
                   <Grid.Col span={{ base: 12, md: 6 }}>
-                    <Card withBorder p="sm" bg="green.0">
+                    <Card withBorder p="sm" bg={isDark ? "green.9" : "green.0"}>
                       <Text size="xs">
-                        {t('docs.captchaSetup.benefits.left.blocksSpam')}
-                        <br />{t('docs.captchaSetup.benefits.left.noTracking')}
-                        <br />{t('docs.captchaSetup.benefits.left.free')}
+                        {t('docs.captchaSetup.benefits.left.blocksSpam.icon')} <Text span fw={600}>{t('docs.captchaSetup.benefits.left.blocksSpam.feature')}:</Text> {t('docs.captchaSetup.benefits.left.blocksSpam.description')}
+                        <br />{t('docs.captchaSetup.benefits.left.noTracking.icon')} <Text span fw={600}>{t('docs.captchaSetup.benefits.left.noTracking.feature')}:</Text> {t('docs.captchaSetup.benefits.left.noTracking.description')}
+                        <br />{t('docs.captchaSetup.benefits.left.free.icon')} <Text span fw={600}>{t('docs.captchaSetup.benefits.left.free.feature')}:</Text> {t('docs.captchaSetup.benefits.left.free.description')}
                       </Text>
                     </Card>
                   </Grid.Col>
                   <Grid.Col span={{ base: 12, md: 6 }}>
-                    <Card withBorder p="sm" bg="blue.0">
+                    <Card withBorder p="sm" bg={isDark ? "blue.9" : "blue.0"}>
                       <Text size="xs">
-                        {t('docs.captchaSetup.benefits.right.quickForUsers')}
-                        <br />{t('docs.captchaSetup.benefits.right.worksEverywhere')}
-                        <br />{t('docs.captchaSetup.benefits.right.alwaysImproving')}
+                        {t('docs.captchaSetup.benefits.right.quickForUsers.icon')} <Text span fw={600}>{t('docs.captchaSetup.benefits.right.quickForUsers.feature')}:</Text> {t('docs.captchaSetup.benefits.right.quickForUsers.description')}
+                        <br />{t('docs.captchaSetup.benefits.right.worksEverywhere.icon')} <Text span fw={600}>{t('docs.captchaSetup.benefits.right.worksEverywhere.feature')}:</Text> {t('docs.captchaSetup.benefits.right.worksEverywhere.description')}
+                        <br />{t('docs.captchaSetup.benefits.right.alwaysImproving.icon')} <Text span fw={600}>{t('docs.captchaSetup.benefits.right.alwaysImproving.feature')}:</Text> {t('docs.captchaSetup.benefits.right.alwaysImproving.description')}
                       </Text>
                     </Card>
                   </Grid.Col>
@@ -689,17 +691,17 @@ export function Docs() {
                       {t('docs.fieldConfiguration.fieldTypes.title')}
                     </Text>
                     <Text size="xs">
-                      {t('docs.fieldConfiguration.fieldTypes.text')}
-                      <br />{t('docs.fieldConfiguration.fieldTypes.email')}
-                      <br />{t('docs.fieldConfiguration.fieldTypes.textarea')}
-                      <br />{t('docs.fieldConfiguration.fieldTypes.number')}
-                      <br />{t('docs.fieldConfiguration.fieldTypes.phone')}
-                      <br />{t('docs.fieldConfiguration.fieldTypes.url')}
-                      <br />{t('docs.fieldConfiguration.fieldTypes.date')}
-                      <br />{t('docs.fieldConfiguration.fieldTypes.file')}
-                      <br />{t('docs.fieldConfiguration.fieldTypes.select')}
-                      <br />{t('docs.fieldConfiguration.fieldTypes.radio')}
-                      <br />{t('docs.fieldConfiguration.fieldTypes.checkbox')}
+                      <Text span fw={600}>{t('docs.fieldConfiguration.fieldTypes.text.name')}</Text> - {t('docs.fieldConfiguration.fieldTypes.text.description')}
+                      <br /><Text span fw={600}>{t('docs.fieldConfiguration.fieldTypes.email.name')}</Text> - {t('docs.fieldConfiguration.fieldTypes.email.description')}
+                      <br /><Text span fw={600}>{t('docs.fieldConfiguration.fieldTypes.textarea.name')}</Text> - {t('docs.fieldConfiguration.fieldTypes.textarea.description')}
+                      <br /><Text span fw={600}>{t('docs.fieldConfiguration.fieldTypes.number.name')}</Text> - {t('docs.fieldConfiguration.fieldTypes.number.description')}
+                      <br /><Text span fw={600}>{t('docs.fieldConfiguration.fieldTypes.phone.name')}</Text> - {t('docs.fieldConfiguration.fieldTypes.phone.description')}
+                      <br /><Text span fw={600}>{t('docs.fieldConfiguration.fieldTypes.url.name')}</Text> - {t('docs.fieldConfiguration.fieldTypes.url.description')}
+                      <br /><Text span fw={600}>{t('docs.fieldConfiguration.fieldTypes.date.name')}</Text> - {t('docs.fieldConfiguration.fieldTypes.date.description')}
+                      <br /><Text span fw={600}>{t('docs.fieldConfiguration.fieldTypes.file.name')}</Text> - {t('docs.fieldConfiguration.fieldTypes.file.description')}
+                      <br /><Text span fw={600}>{t('docs.fieldConfiguration.fieldTypes.select.name')}</Text> - {t('docs.fieldConfiguration.fieldTypes.select.description')}
+                      <br /><Text span fw={600}>{t('docs.fieldConfiguration.fieldTypes.radio.name')}</Text> - {t('docs.fieldConfiguration.fieldTypes.radio.description')}
+                      <br /><Text span fw={600}>{t('docs.fieldConfiguration.fieldTypes.checkbox.name')}</Text> - {t('docs.fieldConfiguration.fieldTypes.checkbox.description')}
                     </Text>
                   </Card>
                 </Grid.Col>
@@ -710,12 +712,12 @@ export function Docs() {
                       {t('docs.fieldConfiguration.validationOptions.title')}
                     </Text>
                     <Text size="xs">
-                      {t('docs.fieldConfiguration.validationOptions.required')}
-                      <br />{t('docs.fieldConfiguration.validationOptions.emailValidation')}
-                      <br />{t('docs.fieldConfiguration.validationOptions.urlValidation')}
-                      <br />{t('docs.fieldConfiguration.validationOptions.customOptions')}
-                      <br />{t('docs.fieldConfiguration.validationOptions.helpText')}
-                      <br />{t('docs.fieldConfiguration.validationOptions.placeholders')}
+                      <Text span fw={600}>{t('docs.fieldConfiguration.validationOptions.required.name')}</Text> - {t('docs.fieldConfiguration.validationOptions.required.description')}
+                      <br /><Text span fw={600}>{t('docs.fieldConfiguration.validationOptions.emailValidation.name')}</Text> - {t('docs.fieldConfiguration.validationOptions.emailValidation.description')}
+                      <br /><Text span fw={600}>{t('docs.fieldConfiguration.validationOptions.urlValidation.name')}</Text> - {t('docs.fieldConfiguration.validationOptions.urlValidation.description')}
+                      <br /><Text span fw={600}>{t('docs.fieldConfiguration.validationOptions.customOptions.name')}</Text> - {t('docs.fieldConfiguration.validationOptions.customOptions.description')}
+                      <br /><Text span fw={600}>{t('docs.fieldConfiguration.validationOptions.helpText.name')}</Text> - {t('docs.fieldConfiguration.validationOptions.helpText.description')}
+                      <br /><Text span fw={600}>{t('docs.fieldConfiguration.validationOptions.placeholders.name')}</Text> - {t('docs.fieldConfiguration.validationOptions.placeholders.description')}
                     </Text>
                   </Card>
                 </Grid.Col>
@@ -790,12 +792,12 @@ is_min = 10`}
                       {t('docs.tomlConfiguration.fieldTypesAvailable.title')}
                     </Text>
                     <Text size="xs">
-                      {t('docs.tomlConfiguration.fieldTypesAvailable.text')}
-                      <br />{t('docs.tomlConfiguration.fieldTypesAvailable.email')}
-                      <br />{t('docs.tomlConfiguration.fieldTypesAvailable.textarea')}
-                      <br />{t('docs.tomlConfiguration.fieldTypesAvailable.select')}
-                      <br />{t('docs.tomlConfiguration.fieldTypesAvailable.checkbox')}
-                      <br />{t('docs.tomlConfiguration.fieldTypesAvailable.number')}
+                      <Code>{t('docs.tomlConfiguration.fieldTypesAvailable.text.name')}</Code> - {t('docs.tomlConfiguration.fieldTypesAvailable.text.description')}
+                      <br /><Code>{t('docs.tomlConfiguration.fieldTypesAvailable.email.name')}</Code> - {t('docs.tomlConfiguration.fieldTypesAvailable.email.description')}
+                      <br /><Code>{t('docs.tomlConfiguration.fieldTypesAvailable.textarea.name')}</Code> - {t('docs.tomlConfiguration.fieldTypesAvailable.textarea.description')}
+                      <br /><Code>{t('docs.tomlConfiguration.fieldTypesAvailable.select.name')}</Code> - {t('docs.tomlConfiguration.fieldTypesAvailable.select.description')}
+                      <br /><Code>{t('docs.tomlConfiguration.fieldTypesAvailable.checkbox.name')}</Code> - {t('docs.tomlConfiguration.fieldTypesAvailable.checkbox.description')}
+                      <br /><Code>{t('docs.tomlConfiguration.fieldTypesAvailable.number.name')}</Code> - {t('docs.tomlConfiguration.fieldTypesAvailable.number.description')}
                     </Text>
                   </Card>
                 </Grid.Col>
@@ -806,12 +808,12 @@ is_min = 10`}
                       {t('docs.tomlConfiguration.validationOptions.title')}
                     </Text>
                     <Text size="xs">
-                      {t('docs.tomlConfiguration.validationOptions.required')}
-                      <br />{t('docs.tomlConfiguration.validationOptions.isEmail')}
-                      <br />{t('docs.tomlConfiguration.validationOptions.isMin')}
-                      <br />{t('docs.tomlConfiguration.validationOptions.isMax')}
-                      <br />{t('docs.tomlConfiguration.validationOptions.options')}
-                      <br />{t('docs.tomlConfiguration.validationOptions.checkSpam')}
+                      <Code>{t('docs.tomlConfiguration.validationOptions.required.name')}</Code> - {t('docs.tomlConfiguration.validationOptions.required.description')}
+                      <br /><Code>{t('docs.tomlConfiguration.validationOptions.isEmail.name')}</Code> - {t('docs.tomlConfiguration.validationOptions.isEmail.description')}
+                      <br /><Code>{t('docs.tomlConfiguration.validationOptions.isMin.name')}</Code> - {t('docs.tomlConfiguration.validationOptions.isMin.description')}
+                      <br /><Code>{t('docs.tomlConfiguration.validationOptions.isMax.name')}</Code> - {t('docs.tomlConfiguration.validationOptions.isMax.description')}
+                      <br /><Code>{t('docs.tomlConfiguration.validationOptions.options.name')}</Code> - {t('docs.tomlConfiguration.validationOptions.options.description')}
+                      <br /><Code>{t('docs.tomlConfiguration.validationOptions.checkSpam.name')}</Code> - {t('docs.tomlConfiguration.validationOptions.checkSpam.description')}
                     </Text>
                   </Card>
                 </Grid.Col>
@@ -821,13 +823,13 @@ is_min = 10`}
                 <Text fw={500} size="sm" mb="xs">
                   {t('docs.tomlConfiguration.benefits.title')}
                 </Text>
-                <Card withBorder p="sm" bg="grape.0">
+                <Card withBorder p="sm" bg={isDark ? "grape.9" : "grape.0"}>
                   <Text size="xs">
-                    {t('docs.tomlConfiguration.benefits.versionControl')}
-                    <br />{t('docs.tomlConfiguration.benefits.reusable')}
-                    <br />{t('docs.tomlConfiguration.benefits.preciseControl')}
-                    <br />{t('docs.tomlConfiguration.benefits.teamCollaboration')}
-                    <br />{t('docs.tomlConfiguration.benefits.advancedFeatures')}
+                    {t('docs.tomlConfiguration.benefits.versionControl.icon')} <Text span fw={600}>{t('docs.tomlConfiguration.benefits.versionControl.feature')}</Text> - {t('docs.tomlConfiguration.benefits.versionControl.description')}
+                    <br />{t('docs.tomlConfiguration.benefits.reusable.icon')} <Text span fw={600}>{t('docs.tomlConfiguration.benefits.reusable.feature')}</Text> - {t('docs.tomlConfiguration.benefits.reusable.description')}
+                    <br />{t('docs.tomlConfiguration.benefits.preciseControl.icon')} <Text span fw={600}>{t('docs.tomlConfiguration.benefits.preciseControl.feature')}</Text> - {t('docs.tomlConfiguration.benefits.preciseControl.description')}
+                    <br />{t('docs.tomlConfiguration.benefits.teamCollaboration.icon')} <Text span fw={600}>{t('docs.tomlConfiguration.benefits.teamCollaboration.feature')}</Text> - {t('docs.tomlConfiguration.benefits.teamCollaboration.description')}
+                    <br />{t('docs.tomlConfiguration.benefits.advancedFeatures.icon')} <Text span fw={600}>{t('docs.tomlConfiguration.benefits.advancedFeatures.feature')}</Text> - {t('docs.tomlConfiguration.benefits.advancedFeatures.description')}
                   </Text>
                 </Card>
               </div>

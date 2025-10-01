@@ -237,26 +237,77 @@
       "description": "Wenn Sie Formulare mit definierten Feldern erstellen, können Sie jedes Feld so anpassen, dass es sich genau so verhält, wie Sie es möchten.",
       "fieldTypes": {
         "title": "Verfügbare Feldtypen:",
-        "text": "• **Text:** Einzeilige Texteingabe",
-        "email": "• **E-Mail:** E-Mail mit automatischer Validierung",
-        "textarea": "• **Textbereich:** Mehrzeilige Texteingabe für längere Nachrichten",
-        "number": "• **Zahl:** Akzeptiert nur Zahlen",
-        "phone": "• **Telefon:** Telefonnummer-Eingabe",
-        "url": "• **URL:** Website-Links mit Validierung",
-        "date": "• **Datum:** Datumsauswahl",
-        "file": "• **Datei:** Datei-Upload",
-        "select": "• **Auswahl:** Dropdown-Menü",
-        "radio": "• **Radio:** Eine Option wählen",
-        "checkbox": "• **Checkbox:** Mehrfachauswahl"
+        "text": {
+          "name": "Text",
+          "description": "Einzeilige Texteingabe"
+        },
+        "email": {
+          "name": "E-Mail",
+          "description": "E-Mail mit automatischer Validierung"
+        },
+        "textarea": {
+          "name": "Textbereich",
+          "description": "Mehrzeilige Texteingabe für längere Nachrichten"
+        },
+        "number": {
+          "name": "Zahl",
+          "description": "Akzeptiert nur Zahlen"
+        },
+        "phone": {
+          "name": "Telefon",
+          "description": "Telefonnummer-Eingabe"
+        },
+        "url": {
+          "name": "URL",
+          "description": "Website-Links mit Validierung"
+        },
+        "date": {
+          "name": "Datum",
+          "description": "Datumsauswahl"
+        },
+        "file": {
+          "name": "Datei",
+          "description": "Datei-Upload"
+        },
+        "select": {
+          "name": "Auswahl",
+          "description": "Dropdown-Menü"
+        },
+        "radio": {
+          "name": "Radio",
+          "description": "Eine Option wählen"
+        },
+        "checkbox": {
+          "name": "Checkbox",
+          "description": "Mehrfachauswahl"
+        }
       },
       "validationOptions": {
         "title": "Validierungsoptionen:",
-        "required": "• **Pflichtfelder:** Müssen ausgefüllt werden",
-        "emailValidation": "• **E-Mail-Validierung:** Überprüft gültiges E-Mail-Format",
-        "urlValidation": "• **URL-Validierung:** Stellt ordnungsgemäße Web-Links sicher",
-        "customOptions": "• **Benutzerdefinierte Optionen:** Für Dropdowns und Auswahl",
-        "helpText": "• **Hilfetext:** Anweisungen für Benutzer",
-        "placeholders": "• **Platzhalter:** Beispieltext in Feldern"
+        "required": {
+          "name": "Pflichtfelder",
+          "description": "Müssen ausgefüllt werden"
+        },
+        "emailValidation": {
+          "name": "E-Mail-Validierung",
+          "description": "Überprüft gültiges E-Mail-Format"
+        },
+        "urlValidation": {
+          "name": "URL-Validierung",
+          "description": "Stellt ordnungsgemäße Web-Links sicher"
+        },
+        "customOptions": {
+          "name": "Benutzerdefinierte Optionen",
+          "description": "Für Dropdowns und Auswahl"
+        },
+        "helpText": {
+          "name": "Hilfetext",
+          "description": "Anweisungen für Benutzer"
+        },
+        "placeholders": {
+          "name": "Platzhalter",
+          "description": "Beispieltext in Feldern"
+        }
       },
       "proTip": {
         "title": "Profi-Tipp",
@@ -277,29 +328,85 @@
       },
       "fieldTypesAvailable": {
         "title": "Verfügbare Feldtypen:",
-        "text": "• **text:** Einzeilige Texteingabe",
-        "email": "• **email:** E-Mail mit Validierung",
-        "textarea": "• **textarea:** Mehrzeiliger Textbereich",
-        "select": "• **select:** Dropdown-Menü",
-        "checkbox": "• **checkbox:** Mehrfachauswahl-Optionen",
-        "number": "• **number:** Numerische Eingabe"
+        "text": {
+          "name": "text",
+          "description": "Einzeilige Texteingabe"
+        },
+        "email": {
+          "name": "email",
+          "description": "E-Mail mit Validierung"
+        },
+        "textarea": {
+          "name": "textarea",
+          "description": "Mehrzeiliger Textbereich"
+        },
+        "select": {
+          "name": "select",
+          "description": "Dropdown-Menü"
+        },
+        "checkbox": {
+          "name": "checkbox",
+          "description": "Mehrfachauswahl-Optionen"
+        },
+        "number": {
+          "name": "number",
+          "description": "Numerische Eingabe"
+        }
       },
       "validationOptions": {
         "title": "Validierungsoptionen:",
-        "required": "• **required:** Feld muss ausgefüllt werden",
-        "isEmail": "• **is_email:** Validiert E-Mail-Format",
-        "isMin": "• **is_min:** Mindestlänge/-wert",
-        "isMax": "• **is_max:** Maximale Länge/Wert",
-        "options": "• **options:** Gültige Auswahl für select/checkbox",
-        "checkSpam": "• **check_spam:** Spam-Erkennung aktivieren"
+        "required": {
+          "name": "required",
+          "description": "Feld muss ausgefüllt werden"
+        },
+        "isEmail": {
+          "name": "is_email",
+          "description": "Validiert E-Mail-Format"
+        },
+        "isMin": {
+          "name": "is_min",
+          "description": "Mindestlänge/-wert"
+        },
+        "isMax": {
+          "name": "is_max",
+          "description": "Maximale Länge/Wert"
+        },
+        "options": {
+          "name": "options",
+          "description": "Gültige Auswahl für select/checkbox"
+        },
+        "checkSpam": {
+          "name": "check_spam",
+          "description": "Spam-Erkennung aktivieren"
+        }
       },
       "benefits": {
         "title": "Vorteile der TOML-Konfiguration:",
-        "versionControl": "✨ **Versionskontrolle:** Verfolgen Sie Änderungen an Ihren Formularen über die Zeit",
-        "reusable": "✨ **Wiederverwendbar:** Kopieren Sie Konfigurationen einfach zwischen Formularen",
-        "preciseControl": "✨ **Präzise Kontrolle:** Feinabstimmung von Validierung und Verhalten",
-        "teamCollaboration": "✨ **Team-Zusammenarbeit:** Teilen Sie Formular-Spezifikationen ohne Kontozugang",
-        "advancedFeatures": "✨ **Erweiterte Funktionen:** Zugang zu allen Validierungsoptionen"
+        "versionControl": {
+          "icon": "✨",
+          "feature": "Versionskontrolle",
+          "description": "Verfolgen Sie Änderungen an Ihren Formularen über die Zeit"
+        },
+        "reusable": {
+          "icon": "✨",
+          "feature": "Wiederverwendbar",
+          "description": "Kopieren Sie Konfigurationen einfach zwischen Formularen"
+        },
+        "preciseControl": {
+          "icon": "✨",
+          "feature": "Präzise Kontrolle",
+          "description": "Feinabstimmung von Validierung und Verhalten"
+        },
+        "teamCollaboration": {
+          "icon": "✨",
+          "feature": "Team-Zusammenarbeit",
+          "description": "Teilen Sie Formular-Spezifikationen ohne Kontozugang"
+        },
+        "advancedFeatures": {
+          "icon": "✨",
+          "feature": "Erweiterte Funktionen",
+          "description": "Zugang zu allen Validierungsoptionen"
+        }
       },
       "gettingStarted": {
         "title": "Erste Schritte",

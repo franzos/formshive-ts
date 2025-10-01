@@ -1,7 +1,7 @@
 import { VerifiedEmailsResponse } from '@gofranz/common';
 import { Form, FormsIntegrationsQueryParams, FormsIntegrationsResponse, IntegrationsApiResponse, IntegrationsQueryParams, NewFormsIntegration, NewFormsRecipient, UpdateForm } from '@gofranz/formshive-common';
 import { Title } from '@mantine/core';
-import { useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { API_BASE_URL } from '../../constants';
 import { generateCurlFormData, generateCurlJson } from '../../lib/form-spec-to-curl';
 import { generateHtmlFromSpecV2, generateLLMPrompt } from '../../lib/form-spec-to-html';
@@ -14,11 +14,16 @@ import {
   exampleFormHtmlFileUpload,
   exampleLLMPrompt,
 } from '../../lib/forms';
-import { AccountMessagesStartPage } from '../../pages/Account/Messags/Start.page';
 import { useRustyState } from '../../state';
 import { EditForm } from './Edit';
 import './form.module.scss';
 import { IntegrationHelp } from './Integration';
+
+const AccountMessagesStartPage = lazy(() =>
+  import('../../pages/Account/Messags/Start.page').then(module => ({
+    default: module.AccountMessagesStartPage
+  }))
+);
 
 export interface FormDetailProps {
   form: Form;
@@ -161,7 +166,9 @@ export function FormDetail(props: FormDetailProps) {
       <Title order={2} mt="xl" mb="xs">
         Messages
       </Title>
-      <AccountMessagesStartPage formId={props.form.id} />
+      <Suspense fallback={<div>Loading messages...</div>}>
+        <AccountMessagesStartPage formId={props.form.id} />
+      </Suspense>
     </>
   );
 }

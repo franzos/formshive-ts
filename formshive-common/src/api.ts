@@ -1,4 +1,8 @@
 import {
+  ApiKeyCreateRequest,
+  ApiKeyResponse,
+  ApiKeyUpdateRequest,
+  ApiKeyUsageResponse,
   ApiProps,
   CommonQueryParams,
   CustomerPortalResponse,
@@ -7,9 +11,12 @@ import {
   makeUrl,
   NewDepositHttp,
   NewSubscriptionResponse,
+  NotificationConfig,
   ReferralCodeResponse,
   ReferralHistoryItem,
   ReferralStatsResponse,
+  RustyApiKeys,
+  RustyApiKeysSpec,
   RustyAuthSpec,
   RustyDeposit,
   RustyDepositSpec,
@@ -118,6 +125,8 @@ export class RustyFormsApi {
 
   private getReferralApi = (): RustyReferralSpec => new RustyReferral({ client: this.client });
 
+  private getApiKeysApi = (): RustyApiKeysSpec => new RustyApiKeys({ client: this.client });
+
   private getAccessToken = () => this.getAuthApi().getAccessToken();
 
   private getAuthHeaders = () => makeAuthHeaders(this.getAccessToken());
@@ -165,6 +174,25 @@ export class RustyFormsApi {
 
   getReferralHistory = async (): Promise<ListResponse<ReferralHistoryItem>> =>
     this.getReferralApi().getReferralHistory(this.getAccessToken());
+
+  // API Keys endpoints
+  createApiKey = async (request: ApiKeyCreateRequest): Promise<ApiKeyResponse> =>
+    this.getApiKeysApi().createApiKey(request, this.getAccessToken());
+
+  listApiKeys = async (): Promise<ApiKeyResponse[]> =>
+    this.getApiKeysApi().listApiKeys(this.getAccessToken());
+
+  updateApiKey = async (
+    id: string,
+    request: ApiKeyUpdateRequest
+  ): Promise<{ success: boolean }> =>
+    this.getApiKeysApi().updateApiKey(id, request, this.getAccessToken());
+
+  deleteApiKey = async (id: string): Promise<{ success: boolean }> =>
+    this.getApiKeysApi().deleteApiKey(id, this.getAccessToken());
+
+  getApiKeyUsage = async (id: string): Promise<ApiKeyUsageResponse> =>
+    this.getApiKeysApi().getApiKeyUsage(id, this.getAccessToken());
 
   // Forms endpoints
   newForm = async (data: HttpNewForm): Promise<Form> => {
@@ -244,8 +272,16 @@ export class RustyFormsApi {
     return response.data;
   };
 
-  updateMessage = async (id: string, data: HttpUpdateMessage): Promise<void> => {
-    await this.client.patch(`/a/messages/${id}`, data, this.getAxiosConfig());
+  updateMessage = async (
+    id: string,
+    data: HttpUpdateMessage,
+    notification?: NotificationConfig | { title: string; message: string }
+  ): Promise<void> => {
+    const config = this.getAxiosConfig();
+    if (notification) {
+      (config as any).notification = notification;
+    }
+    await this.client.patch(`/a/messages/${id}`, data, config);
   };
 
   deleteMessage = async (id: string): Promise<void> => {

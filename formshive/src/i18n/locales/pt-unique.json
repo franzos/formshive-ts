@@ -7,40 +7,81 @@
     "email": "hello@formshive.com"
   },
   "welcome": {
-    "tagline": "Tratamento de dados de formulários sem esforço e flexível",
+    "tagline": "Transforme qualquer formulário em um pipeline de dados inteligente",
     "description": "Capture, valide, transforme e roteie dados — de qualquer formulário, script ou agente de IA.",
-    "subDescription": "Ultra-rápido, privacidade em primeiro lugar, e construído para manter seus dados fluindo de forma segura e simples.",
+    "subDescription": "Configuração em 30 segundos. Nenhum backend necessário. Ultra-rápido, privacidade em primeiro lugar e seguro.",
+    "stats": {
+      "title": "Confiável por desenvolvedores em todo o mundo",
+      "activeUsers": "1.000+",
+      "activeUsersLabel": "Usuários Ativos",
+      "formsProcessed": "1M+",
+      "formsProcessedLabel": "Formulários Processados",
+      "uptime": "99,9%",
+      "uptimeLabel": "Tempo de Atividade",
+      "responseTime": "< 100ms",
+      "responseTimeLabel": "Tempo de Resposta"
+    },
+    "useCases": {
+      "title": "Perfeito para qualquer projeto",
+      "subtitle": "De formulários de contato simples a fluxos de trabalho complexos de coleta de dados",
+      "contactForms": "Formulários de Contato",
+      "surveys": "Pesquisas e Feedback",
+      "fileUploads": "Upload de Arquivos",
+      "aiAgents": "Coleta de Dados IA",
+      "webhooks": "Endpoints Webhook",
+      "apis": "Integração API"
+    },
+    "comparison": {
+      "title": "Por que escolher o Formshive?",
+      "subtitle": "Veja como nos comparamos com outros backends de formulários",
+      "feature": "Recurso",
+      "formshive": "Formshive",
+      "others": "Outros",
+      "pricing": "Pagamento por uso a partir de €0,005",
+      "pricingOthers": "Planos mensais a partir de €15+",
+      "setup": "Configuração em 30 segundos",
+      "setupOthers": "Integração complexa",
+      "selfHost": "Opção de auto-hospedagem disponível",
+      "selfHostOthers": "Apenas SaaS",
+      "privacy": "Hospedagem UE, compatível com GDPR",
+      "privacyOthers": "Hospedagem EUA, privacidade limitada",
+      "support": "Suporte humano",
+      "supportOthers": "Suporte chatbot"
+    },
     "features": {
-      "noFields": {
-        "title": "Nenhum Campo Obrigatório",
-        "description": "Envie qualquer dado de formulário—mesmo sem campos predefinidos. Personalize validações e transformações apenas quando necessário."
+      "instant": {
+        "title": "Configuração Instantânea",
+        "description": "Funciona com seus formulários existentes em segundos. Apenas aponte a ação do seu formulário para nosso endpoint — nenhum backend necessário."
       },
-      "flexible": {
-        "title": "Criação Flexível de Formulários", 
-        "description": "Construa formulários com nossa interface intuitiva ou configurações TOML simples. Incorpore, vincule ou crie formulários totalmente personalizados — sem esforço."
+      "developer": {
+        "title": "Amigável ao Desenvolvedor",
+        "description": "API simples, webhooks, suporte JSON e integrações com suas ferramentas favoritas. Feito por desenvolvedores, para desenvolvedores."
       },
-      "protection": {
-        "title": "Proteção Inteligente contra Spam e CAPTCHA",
-        "description": "Desafios CAPTCHA amigáveis e automatizados mantêm seus envios limpos sem frustrar seus usuários."
-      },
-      "privacy": {
-        "title": "Privacidade por Design",
-        "description": "Seus dados permanecem seus. Não coletamos informações pessoais, com hospedagem segura na UE focada em sua privacidade e confiança."
-      },
-      "integrations": {
-        "title": "Integrações Perfeitas",
-        "description": "Conecte-se instantaneamente com notificações por email, webhooks e muito mais — mantendo seus fluxos de trabalho funcionando suavemente."
+      "security": {
+        "title": "Segurança Testada em Batalha",
+        "description": "Compatível com GDPR, proteção anti-spam, hospedagem UE e segurança nível empresarial. Seus dados permanecem privados e seguros."
       },
       "pricing": {
-        "title": "Preços Simples e Transparentes",
-        "description": "Comece por apenas €0,005 por envio ou hospede você mesmo por €590/ano. Sem taxas ocultas, sem investidores, sem vendas adicionais."
+        "title": "Preços Justos",
+        "description": "Pague por uso a partir de €0,005 — sem mínimos mensais, sem taxas surpresa. Opção de auto-hospedagem para controle total."
+      },
+      "freedom": {
+        "title": "Zero Bloqueio de Fornecedor",
+        "description": "Exporte seus dados a qualquer momento, opção de auto-hospedagem disponível, arquitetura aberta. Seus formulários, suas regras."
+      },
+      "features": {
+        "title": "Recursos Inteligentes",
+        "description": "Upload de arquivos, respostas automáticas, validação de campos, filtragem anti-spam e mais. Tudo que você precisa pronto para usar."
       }
     },
     "cta": {
-      "title": "Pronto para dar vida aos seus formulários?",
+      "title": "Junte-se a 1.000+ desenvolvedores que economizam horas no tratamento de formulários",
+      "titleAlt": "Pronto para dar vida aos seus formulários?",
       "button": "Comece com o Formshive",
+      "buttonAlt": "Criar Conta Gratuita",
       "credit": "€0,25 de Crédito de Boas-vindas",
       "description": "Sem integração complexa — apenas tratamento perfeito de dados de formulários.",
+      "descriptionUrgent": "Configure seu primeiro formulário em menos de 30 segundos. Junte-se aos desenvolvedores que já processaram mais de 1M de envios.",
       "loginTitle": "Tem uma conta?",
       "loginDescription": "Já faz parte da família Formshive? Faça login para gerenciar seus formulários.",
       "loginButton": "Entrar"

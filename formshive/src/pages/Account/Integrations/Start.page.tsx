@@ -1,5 +1,5 @@
 import { useLanguageAwareRouting, usePagination } from '@gofranz/common-components';
-import { Button, Card, Group, SimpleGrid, Stack, Text, ThemeIcon, Title } from '@mantine/core';
+import { Box, Button, Card, Group, SimpleGrid, Stack, Text, ThemeIcon, Title } from '@mantine/core';
 import {
   IconBrandGoogle,
   IconBrandSlack,
@@ -58,7 +58,7 @@ export function AccountIntegrationsStartPage() {
 
   return (
     <Stack gap="xl">
-      <div>
+      <Box>
         <Title order={2} mb="md">
           Integrations
         </Title>
@@ -204,7 +204,7 @@ export function AccountIntegrationsStartPage() {
         <Group mb="lg">
           <Button onClick={() => openCreate()}>{t('accountPages.newIntegration')}</Button>
         </Group>
-      </div>
+      </Box>
 
       <div>
         <Title order={3} mb="md">

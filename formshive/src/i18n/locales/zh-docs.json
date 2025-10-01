@@ -237,26 +237,77 @@
       "description": "当您创建带有定义字段的表单时，您可以自定义每个字段，使其完全按照您想要的方式运行。",
       "fieldTypes": {
         "title": "可用字段类型：",
-        "text": "• **文本：** 单行文本输入",
-        "email": "• **邮箱：** 带自动验证的邮箱",
-        "textarea": "• **文本区域：** 用于较长消息的多行文本",
-        "number": "• **数字：** 只接受数字",
-        "phone": "• **电话：** 电话号码输入",
-        "url": "• **URL：** 带验证的网站链接",
-        "date": "• **日期：** 日期选择器",
-        "file": "• **文件：** 文件上传",
-        "select": "• **选择：** 下拉菜单",
-        "radio": "• **单选：** 选择一个选项",
-        "checkbox": "• **复选框：** 多选"
+        "text": {
+          "name": "文本",
+          "description": "单行文本输入"
+        },
+        "email": {
+          "name": "邮箱",
+          "description": "带自动验证的邮箱"
+        },
+        "textarea": {
+          "name": "文本区域",
+          "description": "用于较长消息的多行文本"
+        },
+        "number": {
+          "name": "数字",
+          "description": "只接受数字"
+        },
+        "phone": {
+          "name": "电话",
+          "description": "电话号码输入"
+        },
+        "url": {
+          "name": "URL",
+          "description": "带验证的网站链接"
+        },
+        "date": {
+          "name": "日期",
+          "description": "日期选择器"
+        },
+        "file": {
+          "name": "文件",
+          "description": "文件上传"
+        },
+        "select": {
+          "name": "选择",
+          "description": "下拉菜单"
+        },
+        "radio": {
+          "name": "单选",
+          "description": "选择一个选项"
+        },
+        "checkbox": {
+          "name": "复选框",
+          "description": "多选"
+        }
       },
       "validationOptions": {
         "title": "验证选项：",
-        "required": "• **必填字段：** 必须填写",
-        "emailValidation": "• **邮箱验证：** 检查有效的邮箱格式",
-        "urlValidation": "• **URL 验证：** 确保正确的网页链接",
-        "customOptions": "• **自定义选项：** 用于下拉菜单和选择",
-        "helpText": "• **帮助文本：** 用户说明",
-        "placeholders": "• **占位符：** 字段中的示例文本"
+        "required": {
+          "name": "必填字段",
+          "description": "必须填写"
+        },
+        "emailValidation": {
+          "name": "邮箱验证",
+          "description": "检查有效的邮箱格式"
+        },
+        "urlValidation": {
+          "name": "URL 验证",
+          "description": "确保正确的网页链接"
+        },
+        "customOptions": {
+          "name": "自定义选项",
+          "description": "用于下拉菜单和选择"
+        },
+        "helpText": {
+          "name": "帮助文本",
+          "description": "用户说明"
+        },
+        "placeholders": {
+          "name": "占位符",
+          "description": "字段中的示例文本"
+        }
       },
       "proTip": {
         "title": "专业提示",
@@ -277,29 +328,85 @@
       },
       "fieldTypesAvailable": {
         "title": "可用字段类型：",
-        "text": "• **text：** 单行文本输入",
-        "email": "• **email：** 带验证的邮箱",
-        "textarea": "• **textarea：** 多行文本区域",
-        "select": "• **select：** 下拉菜单",
-        "checkbox": "• **checkbox：** 多选选项",
-        "number": "• **number：** 数字输入"
+        "text": {
+          "name": "text",
+          "description": "单行文本输入"
+        },
+        "email": {
+          "name": "email",
+          "description": "带验证的邮箱"
+        },
+        "textarea": {
+          "name": "textarea",
+          "description": "多行文本区域"
+        },
+        "select": {
+          "name": "select",
+          "description": "下拉菜单"
+        },
+        "checkbox": {
+          "name": "checkbox",
+          "description": "多选选项"
+        },
+        "number": {
+          "name": "number",
+          "description": "数字输入"
+        }
       },
       "validationOptions": {
         "title": "验证选项：",
-        "required": "• **required：** 字段必须填写",
-        "isEmail": "• **is_email：** 验证邮箱格式",
-        "isMin": "• **is_min：** 最小长度/值",
-        "isMax": "• **is_max：** 最大长度/值",
-        "options": "• **options：** 选择/复选框的有效选项",
-        "checkSpam": "• **check_spam：** 启用垃圾邮件检测"
+        "required": {
+          "name": "required",
+          "description": "字段必须填写"
+        },
+        "isEmail": {
+          "name": "is_email",
+          "description": "验证邮箱格式"
+        },
+        "isMin": {
+          "name": "is_min",
+          "description": "最小长度/值"
+        },
+        "isMax": {
+          "name": "is_max",
+          "description": "最大长度/值"
+        },
+        "options": {
+          "name": "options",
+          "description": "选择/复选框的有效选项"
+        },
+        "checkSpam": {
+          "name": "check_spam",
+          "description": "启用垃圾邮件检测"
+        }
       },
       "benefits": {
         "title": "TOML 配置的好处：",
-        "versionControl": "✨ **版本控制：** 跟踪表单的变化",
-        "reusable": "✨ **可重用：** 轻松在表单之间复制配置",
-        "preciseControl": "✨ **精确控制：** 微调验证和行为",
-        "teamCollaboration": "✨ **团队协作：** 无需账户访问即可共享表单规范",
-        "advancedFeatures": "✨ **高级功能：** 访问所有验证选项"
+        "versionControl": {
+          "icon": "✨",
+          "feature": "版本控制",
+          "description": "跟踪表单的变化"
+        },
+        "reusable": {
+          "icon": "✨",
+          "feature": "可重用",
+          "description": "轻松在表单之间复制配置"
+        },
+        "preciseControl": {
+          "icon": "✨",
+          "feature": "精确控制",
+          "description": "微调验证和行为"
+        },
+        "teamCollaboration": {
+          "icon": "✨",
+          "feature": "团队协作",
+          "description": "无需账户访问即可共享表单规范"
+        },
+        "advancedFeatures": {
+          "icon": "✨",
+          "feature": "高级功能",
+          "description": "访问所有验证选项"
+        }
       },
       "gettingStarted": {
         "title": "开始使用",

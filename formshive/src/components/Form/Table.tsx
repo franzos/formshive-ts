@@ -19,22 +19,23 @@ export function FormsTable(props: CommonTableProps<Form, UpdateForm>) {
   const [records, setRecords] = useState<Form[] | []>([]);
   const [page, setPage] = useState(1);
 
+  const loadData = async (pageNumber: number) => {
+    setIsBusy(true);
+    try {
+      const newRecords = await props.onChange({
+        nextPage: pageNumber,
+      });
+      setRecords(newRecords);
+    } catch (e) {
+      console.error('Failed to load forms:', e);
+      // Keep existing records on error instead of clearing them
+    } finally {
+      setIsBusy(false);
+    }
+  };
+
   useEffect(() => {
-    const doIt = async () => {
-      setIsBusy(true);
-      try {
-        const newRecords = await props.onChange({
-          nextPage: page,
-        });
-        setRecords(newRecords);
-      } catch (e) {
-        alert(e);
-        console.error(e);
-      } finally {
-        setIsBusy(false);
-      }
-    };
-    doIt();
+    loadData(page);
   }, [page]);
 
   const deleteCb = async (id: string) => {
@@ -144,6 +145,14 @@ export function FormsTable(props: CommonTableProps<Form, UpdateForm>) {
       ),
     },
   ];
+
+  // Handle perPage change triggered from parent
+  useEffect(() => {
+    if (props.perPage) {
+      setPage(1);
+      loadData(1);
+    }
+  }, [props.perPage]);
 
   return (
     <DataTable

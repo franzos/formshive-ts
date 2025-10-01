@@ -1,15 +1,13 @@
-import { Card, Title } from '@mantine/core';
+import { Title } from '@mantine/core';
 import { Docs } from '../../components/Docs';
 
 export function AccountDocsPage() {
   return (
     <>
-      <Title order={1} mb="lg">
+      <Title order={2} mb="md">
         Documentation
       </Title>
-      <Card shadow="xs" padding="lg" radius="md" withBorder>
-        <Docs />
-      </Card>
+      <Docs />
     </>
   );
 }

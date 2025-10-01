@@ -7,40 +7,81 @@
     "email": "hello@formshive.com"
   },
   "welcome": {
-    "tagline": "Effortless, flexible form data handling",
+    "tagline": "Turn Any Form Into a Smart Data Pipeline",
     "description": "Capture, validate, transform, and route data — from any form, script, or AI agent.",
-    "subDescription": "Lightning-fast, privacy-first, and built to keep your data flowing securely and simply.",
+    "subDescription": "Set up in 30 seconds. No backend required. Lightning-fast, privacy-first, and built to keep your data flowing securely.",
+    "stats": {
+      "title": "Trusted by Developers Worldwide",
+      "activeUsers": "1,000+",
+      "activeUsersLabel": "Active Users",
+      "formsProcessed": "1M+",
+      "formsProcessedLabel": "Forms Processed",
+      "uptime": "99.9%",
+      "uptimeLabel": "Uptime",
+      "responseTime": "< 100ms",
+      "responseTimeLabel": "Response Time"
+    },
+    "useCases": {
+      "title": "Perfect For Any Project",
+      "subtitle": "From simple contact forms to complex data collection workflows",
+      "contactForms": "Contact Forms",
+      "surveys": "Surveys & Feedback",
+      "fileUploads": "File Uploads",
+      "aiAgents": "AI Agent Data Collection",
+      "webhooks": "Webhook Endpoints",
+      "apis": "API Integration"
+    },
+    "comparison": {
+      "title": "Why Choose Formshive?",
+      "subtitle": "See how we compare to other form backends",
+      "feature": "Feature",
+      "formshive": "Formshive",
+      "others": "Others",
+      "pricing": "Pay-per-use from €0.005",
+      "pricingOthers": "Monthly plans from €15+",
+      "setup": "30 seconds setup",
+      "setupOthers": "Complex onboarding",
+      "selfHost": "Self-host option available",
+      "selfHostOthers": "SaaS only",
+      "privacy": "EU hosting, GDPR compliant",
+      "privacyOthers": "US hosting, limited privacy",
+      "support": "Human support team",
+      "supportOthers": "Chatbot support"
+    },
     "features": {
-      "noFields": {
-        "title": "No Fields Required",
-        "description": "Send any form data—even without predefined fields. Customize validations and transformations only when you need them."
+      "instant": {
+        "title": "Instant Setup",
+        "description": "Works with your existing forms in seconds. Just point your form action to our endpoint — no backend required."
       },
-      "flexible": {
-        "title": "Flexible Form Creation", 
-        "description": "Build forms with our intuitive GUI or simple TOML configs. Embed, link, or create fully custom forms — effortlessly."
+      "developer": {
+        "title": "Developer-Friendly",
+        "description": "Simple API, webhooks, JSON support, and integrations with your favorite tools. Built by developers, for developers."
       },
-      "protection": {
-        "title": "Smart Spam & Captcha Protection",
-        "description": "Friendly, automated CAPTCHA challenges keep your submissions clean without frustrating your users."
-      },
-      "privacy": {
-        "title": "Privacy by Design",
-        "description": "Your data stays yours. We don't collect personal info, with secure EU hosting focused on your privacy and trust."
-      },
-      "integrations": {
-        "title": "Seamless Integrations",
-        "description": "Connect instantly with email notifications, webhooks, and more — keeping your workflows flowing smoothly."
+      "security": {
+        "title": "Battle-Tested Security",
+        "description": "GDPR-compliant, spam protection, EU hosting, and enterprise-grade security. Your data stays private and secure."
       },
       "pricing": {
-        "title": "Simple, Transparent Pricing",
-        "description": "Start at just €0.005 per submission or self-host for €590/year. No hidden fees, no investors, no upsells."
+        "title": "Fair Pricing",
+        "description": "Pay per use from €0.005 — no monthly minimums, no surprise fees. Self-host option available for full control."
+      },
+      "freedom": {
+        "title": "Zero Vendor Lock-in",
+        "description": "Export your data anytime, self-host option available, and open architecture. Your forms, your rules."
+      },
+      "features": {
+        "title": "Smart Features",
+        "description": "File uploads, auto-responses, field validation, spam filtering, and more. Everything you need out of the box."
       }
     },
     "cta": {
-      "title": "Ready to bring your forms to life?",
+      "title": "Join 1,000+ Developers Saving Hours on Form Handling",
+      "titleAlt": "Ready to bring your forms to life?",
       "button": "Get Started with Formshive",
+      "buttonAlt": "Start Your Free Account",
       "credit": "€0.25 Welcome Credit",
       "description": "No complex onboarding — just seamless form data handling.",
+      "descriptionUrgent": "Set up your first form in under 30 seconds. Join developers who've already processed over 1M submissions.",
       "loginTitle": "Have an account?",
       "loginDescription": "Already part of the Formshive family? Log in to manage your forms.",
       "loginButton": "Login"

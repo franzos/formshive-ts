@@ -237,26 +237,77 @@
       "description": "عندما تنشئ نماذج بحقول محددة، يمكنك تخصيص كل حقل ليتصرف بالضبط كما تريد.",
       "fieldTypes": {
         "title": "أنواع الحقول المتاحة:",
-        "text": "• **نص:** إدخال نص سطر واحد",
-        "email": "• **بريد إلكتروني:** بريد إلكتروني مع تحقق تلقائي",
-        "textarea": "• **منطقة نص:** نص متعدد الأسطر للرسائل الأطول",
-        "number": "• **رقم:** يقبل الأرقام فقط",
-        "phone": "• **هاتف:** إدخال رقم هاتف",
-        "url": "• **رابط:** روابط مواقع إلكترونية مع تحقق",
-        "date": "• **تاريخ:** منتقي تاريخ",
-        "file": "• **ملف:** رفع ملف",
-        "select": "• **اختيار:** قائمة منسدلة",
-        "radio": "• **راديو:** اختر خيار واحد",
-        "checkbox": "• **مربع اختيار:** اختيارات متعددة"
+        "text": {
+          "name": "نص",
+          "description": "إدخال نص سطر واحد"
+        },
+        "email": {
+          "name": "بريد إلكتروني",
+          "description": "بريد إلكتروني مع تحقق تلقائي"
+        },
+        "textarea": {
+          "name": "منطقة نص",
+          "description": "نص متعدد الأسطر للرسائل الأطول"
+        },
+        "number": {
+          "name": "رقم",
+          "description": "يقبل الأرقام فقط"
+        },
+        "phone": {
+          "name": "هاتف",
+          "description": "إدخال رقم هاتف"
+        },
+        "url": {
+          "name": "رابط",
+          "description": "روابط مواقع إلكترونية مع تحقق"
+        },
+        "date": {
+          "name": "تاريخ",
+          "description": "منتقي تاريخ"
+        },
+        "file": {
+          "name": "ملف",
+          "description": "رفع ملف"
+        },
+        "select": {
+          "name": "اختيار",
+          "description": "قائمة منسدلة"
+        },
+        "radio": {
+          "name": "راديو",
+          "description": "اختر خيار واحد"
+        },
+        "checkbox": {
+          "name": "مربع اختيار",
+          "description": "اختيارات متعددة"
+        }
       },
       "validationOptions": {
         "title": "خيارات التحقق:",
-        "required": "• **الحقول المطلوبة:** يجب ملؤها",
-        "emailValidation": "• **تحقق البريد الإلكتروني:** يفحص تنسيق البريد الإلكتروني الصحيح",
-        "urlValidation": "• **تحقق الرابط:** يضمن روابط الويب الصحيحة",
-        "customOptions": "• **خيارات مخصصة:** للقوائم المنسدلة والاختيارات",
-        "helpText": "• **نص المساعدة:** تعليمات للمستخدمين",
-        "placeholders": "• **نصوص تلميحية:** نص المثال في الحقول"
+        "required": {
+          "name": "الحقول المطلوبة",
+          "description": "يجب ملؤها"
+        },
+        "emailValidation": {
+          "name": "تحقق البريد الإلكتروني",
+          "description": "يفحص تنسيق البريد الإلكتروني الصحيح"
+        },
+        "urlValidation": {
+          "name": "تحقق الرابط",
+          "description": "يضمن روابط الويب الصحيحة"
+        },
+        "customOptions": {
+          "name": "خيارات مخصصة",
+          "description": "للقوائم المنسدلة والاختيارات"
+        },
+        "helpText": {
+          "name": "نص المساعدة",
+          "description": "تعليمات للمستخدمين"
+        },
+        "placeholders": {
+          "name": "نصوص تلميحية",
+          "description": "نص المثال في الحقول"
+        }
       },
       "proTip": {
         "title": "نصيحة احترافية",
@@ -277,29 +328,85 @@
       },
       "fieldTypesAvailable": {
         "title": "أنواع الحقول المتاحة:",
-        "text": "• **text:** إدخال نص سطر واحد",
-        "email": "• **email:** بريد إلكتروني مع تحقق",
-        "textarea": "• **textarea:** منطقة نص متعددة الأسطر",
-        "select": "• **select:** قائمة منسدلة",
-        "checkbox": "• **checkbox:** خيارات متعددة الاختيار",
-        "number": "• **number:** إدخال رقمي"
+        "text": {
+          "name": "text",
+          "description": "إدخال نص سطر واحد"
+        },
+        "email": {
+          "name": "email",
+          "description": "بريد إلكتروني مع تحقق"
+        },
+        "textarea": {
+          "name": "textarea",
+          "description": "منطقة نص متعددة الأسطر"
+        },
+        "select": {
+          "name": "select",
+          "description": "قائمة منسدلة"
+        },
+        "checkbox": {
+          "name": "checkbox",
+          "description": "خيارات متعددة الاختيار"
+        },
+        "number": {
+          "name": "number",
+          "description": "إدخال رقمي"
+        }
       },
       "validationOptions": {
         "title": "خيارات التحقق:",
-        "required": "• **required:** الحقل يجب أن يُملأ",
-        "isEmail": "• **is_email:** يتحقق من تنسيق البريد الإلكتروني",
-        "isMin": "• **is_min:** الحد الأدنى للطول/القيمة",
-        "isMax": "• **is_max:** الحد الأقصى للطول/القيمة",
-        "options": "• **options:** الخيارات الصحيحة للاختيار/مربع الاختيار",
-        "checkSpam": "• **check_spam:** تفعيل كشف الرسائل المزعجة"
+        "required": {
+          "name": "required",
+          "description": "الحقل يجب أن يُملأ"
+        },
+        "isEmail": {
+          "name": "is_email",
+          "description": "يتحقق من تنسيق البريد الإلكتروني"
+        },
+        "isMin": {
+          "name": "is_min",
+          "description": "الحد الأدنى للطول/القيمة"
+        },
+        "isMax": {
+          "name": "is_max",
+          "description": "الحد الأقصى للطول/القيمة"
+        },
+        "options": {
+          "name": "options",
+          "description": "الخيارات الصحيحة للاختيار/مربع الاختيار"
+        },
+        "checkSpam": {
+          "name": "check_spam",
+          "description": "تفعيل كشف الرسائل المزعجة"
+        }
       },
       "benefits": {
         "title": "فوائد إعداد TOML:",
-        "versionControl": "✨ **التحكم في الإصدارات:** تتبع التغييرات على نماذجك عبر الوقت",
-        "reusable": "✨ **قابل لإعادة الاستخدام:** نسخ الإعدادات بين النماذج بسهولة",
-        "preciseControl": "✨ **تحكم دقيق:** ضبط دقيق للتحقق والسلوك",
-        "teamCollaboration": "✨ **تعاون الفريق:** مشاركة مواصفات النماذج بدون الوصول للحساب",
-        "advancedFeatures": "✨ **ميزات متقدمة:** الوصول لجميع خيارات التحقق"
+        "versionControl": {
+          "icon": "✨",
+          "feature": "التحكم في الإصدارات",
+          "description": "تتبع التغييرات على نماذجك عبر الوقت"
+        },
+        "reusable": {
+          "icon": "✨",
+          "feature": "قابل لإعادة الاستخدام",
+          "description": "نسخ الإعدادات بين النماذج بسهولة"
+        },
+        "preciseControl": {
+          "icon": "✨",
+          "feature": "تحكم دقيق",
+          "description": "ضبط دقيق للتحقق والسلوك"
+        },
+        "teamCollaboration": {
+          "icon": "✨",
+          "feature": "تعاون الفريق",
+          "description": "مشاركة مواصفات النماذج بدون الوصول للحساب"
+        },
+        "advancedFeatures": {
+          "icon": "✨",
+          "feature": "ميزات متقدمة",
+          "description": "الوصول لجميع خيارات التحقق"
+        }
       },
       "gettingStarted": {
         "title": "البدء",

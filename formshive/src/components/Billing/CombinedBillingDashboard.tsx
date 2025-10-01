@@ -61,10 +61,6 @@ export function CombinedBillingDashboard() {
 
   return (
     <Stack gap="md">
-      <Text size="xl" fw={600}>
-        {t('glob_billing.billingOverview')}
-      </Text>
-
       <div
         style={{
           display: 'grid',

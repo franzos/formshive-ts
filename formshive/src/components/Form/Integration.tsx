@@ -15,6 +15,7 @@ import {
   TextInput,
   Title,
   Tooltip,
+  useComputedColorScheme,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import {
@@ -272,6 +273,8 @@ export function IntegrationHelp({
 }: IntegrationProps) {
   const { t } = useTranslation();
   const [integrationExampleIsOpen, { toggle }] = useDisclosure(false);
+  const computedColorScheme = useComputedColorScheme('light');
+  const isDark = computedColorScheme === 'dark';
 
   // Create preview versions of form examples using no-track challenge URL for rendered previews
   const formExamplePreview = challengeUrlNoTrack && challengeUrl
@@ -305,10 +308,10 @@ export function IntegrationHelp({
             <Box>
               <Text size="sm" fw={500}>{t('formIntegration.manual')}</Text>
               <Group gap="4px" mt="2px">
-                <Text size="xs" px="4px" py="1px" bg="blue.1" c="blue.8" style={{ borderRadius: '8px', fontSize: '10px', fontWeight: 500 }}>
+                <Text size="xs" px="4px" py="1px" bg={isDark ? "blue.9" : "blue.1"} c={isDark ? "blue.1" : "blue.8"} style={{ borderRadius: '8px', fontSize: '10px', fontWeight: 500 }}>
                   Existing Forms
                 </Text>
-                <Text size="xs" px="4px" py="1px" bg="green.1" c="green.8" style={{ borderRadius: '8px', fontSize: '10px', fontWeight: 500 }}>
+                <Text size="xs" px="4px" py="1px" bg={isDark ? "green.9" : "green.1"} c={isDark ? "green.1" : "green.8"} style={{ borderRadius: '8px', fontSize: '10px', fontWeight: 500 }}>
                   Very Flexible
                 </Text>
               </Group>
@@ -318,10 +321,10 @@ export function IntegrationHelp({
             <Box>
               <Text size="sm" fw={500}>{t('formIntegration.javascript')}</Text>
               <Group gap="4px" mt="2px">
-                <Text size="xs" px="4px" py="1px" bg="orange.1" c="orange.8" style={{ borderRadius: '8px', fontSize: '10px', fontWeight: 500 }}>
+                <Text size="xs" px="4px" py="1px" bg={isDark ? "orange.9" : "orange.1"} c={isDark ? "orange.1" : "orange.8"} style={{ borderRadius: '8px', fontSize: '10px', fontWeight: 500 }}>
                   Best UX
                 </Text>
-                <Text size="xs" px="4px" py="1px" bg="teal.1" c="teal.8" style={{ borderRadius: '8px', fontSize: '10px', fontWeight: 500 }}>
+                <Text size="xs" px="4px" py="1px" bg={isDark ? "teal.9" : "teal.1"} c={isDark ? "teal.1" : "teal.8"} style={{ borderRadius: '8px', fontSize: '10px', fontWeight: 500 }}>
                   Dynamic
                 </Text>
               </Group>
@@ -331,10 +334,10 @@ export function IntegrationHelp({
             <Box>
               <Text size="sm" fw={500}>{t('formIntegration.iframe')}</Text>
               <Group gap="4px" mt="2px">
-                <Text size="xs" px="4px" py="1px" bg="green.1" c="green.8" style={{ borderRadius: '8px', fontSize: '10px', fontWeight: 500 }}>
+                <Text size="xs" px="4px" py="1px" bg={isDark ? "green.9" : "green.1"} c={isDark ? "green.1" : "green.8"} style={{ borderRadius: '8px', fontSize: '10px', fontWeight: 500 }}>
                   Very Easy
                 </Text>
-                <Text size="xs" px="4px" py="1px" bg="gray.1" c="gray.8" style={{ borderRadius: '8px', fontSize: '10px', fontWeight: 500 }}>
+                <Text size="xs" px="4px" py="1px" bg={isDark ? "gray.9" : "gray.1"} c={isDark ? "gray.1" : "gray.8"} style={{ borderRadius: '8px', fontSize: '10px', fontWeight: 500 }}>
                   Copy & Paste
                 </Text>
               </Group>
@@ -344,10 +347,10 @@ export function IntegrationHelp({
             <Box>
               <Text size="sm" fw={500}>{t('formIntegration.link')}</Text>
               <Group gap="4px" mt="2px">
-                <Text size="xs" px="4px" py="1px" bg="green.1" c="green.8" style={{ borderRadius: '8px', fontSize: '10px', fontWeight: 500 }}>
+                <Text size="xs" px="4px" py="1px" bg={isDark ? "green.9" : "green.1"} c={isDark ? "green.1" : "green.8"} style={{ borderRadius: '8px', fontSize: '10px', fontWeight: 500 }}>
                   Very Easy
                 </Text>
-                <Text size="xs" px="4px" py="1px" bg="violet.1" c="violet.8" style={{ borderRadius: '8px', fontSize: '10px', fontWeight: 500 }}>
+                <Text size="xs" px="4px" py="1px" bg={isDark ? "violet.9" : "violet.1"} c={isDark ? "violet.1" : "violet.8"} style={{ borderRadius: '8px', fontSize: '10px', fontWeight: 500 }}>
                   Social Media
                 </Text>
               </Group>

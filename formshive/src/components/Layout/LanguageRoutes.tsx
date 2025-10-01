@@ -24,6 +24,7 @@ import { AccountIntegrationsStartPage } from '../../pages/Account/Integrations/S
 import { AccountIntegrationViewPage } from '../../pages/Account/Integrations/View.page';
 import { AccountMessagesStartPage } from '../../pages/Account/Messags/Start.page';
 import { AccountProfilePage } from '../../pages/Account/Profile.page';
+import { AccountApiKeysPage } from '../../pages/Account/ApiKeys.page';
 import { AccountReferralsPage } from '../../pages/Account/Referrals.page';
 import { DocsPage } from '../../pages/Docs.page';
 import { HomePage } from '../../pages/Home.page';
@@ -120,6 +121,7 @@ export function LanguageRoutes({ languagePrefix }: LanguageRoutesProps) {
       <Route path="/account/billing/subscriptions" element={<AccountBillingSubscriptionsPage />} />
       <Route path="/account/billing/usage" element={<AccountBillingUsagePage />} />
       <Route path="/account/referrals" element={<AccountReferralsPage />} />
+      <Route path="/account/api-keys" element={<AccountApiKeysPage />} />
       <Route path="/account/docs" element={<AccountDocsPage />} />
       <Route
         path="/account/profile"

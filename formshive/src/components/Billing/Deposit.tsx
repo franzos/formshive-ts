@@ -17,7 +17,7 @@ export function NewDepositForm({ onCancelCb }: NewDepositFormProps) {
   const [provider, setProvider] = useState<DepositProvider>(DepositProvider.STRIPE);
   
   // Helper to get the appropriate currency for the selected provider
-  const getCurrencyForProvider = (provider: DepositProvider) => {
+  const getCurrencyForProvider = () => {
     // Both providers use EUR for consistency
     return Currency.EUR;
   };
@@ -40,7 +40,7 @@ export function NewDepositForm({ onCancelCb }: NewDepositFormProps) {
   const startDeposit = async () => {
     setIsBusy(true);
     try {
-      const currency = getCurrencyForProvider(provider);
+      const currency = getCurrencyForProvider();
       const newDeposit: NewDepositHttp = {
         amount: Math.round(amount * 100), // Convert to cents
         currency,

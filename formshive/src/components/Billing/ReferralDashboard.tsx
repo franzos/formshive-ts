@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Card, Text, Group, CopyButton, ActionIcon, Tooltip, Stack } from '@mantine/core';
+import { Card, Text, Group, CopyButton, ActionIcon, Tooltip, Stack, useComputedColorScheme, Skeleton } from '@mantine/core';
 import { IconCopy, IconCheck } from '@tabler/icons-react';
 import { useTranslation } from 'react-i18next';
 import { useRustyState } from '../../state';
@@ -9,6 +9,8 @@ export function ReferralDashboard() {
   const { referralCode, referralStats, getAndSetReferralCode, getAndSetReferralStats } =
     useRustyState();
   const { t } = useTranslation();
+  const computedColorScheme = useComputedColorScheme('light');
+  const isDark = computedColorScheme === 'dark';
 
   useEffect(() => {
     const loadData = async () => {
@@ -21,9 +23,6 @@ export function ReferralDashboard() {
     loadData();
   }, []);
 
-  if (!referralCode) {
-    return <Text>{t('glob_billing.loadingReferralInfo')}</Text>;
-  }
 
   return (
     <Stack gap="md">
@@ -39,18 +38,18 @@ export function ReferralDashboard() {
             ff="monospace"
             p="sm"
             style={{
-              backgroundColor: 'var(--mantine-color-gray-1)',
+              backgroundColor: isDark ? 'var(--mantine-color-gray-9)' : 'var(--mantine-color-gray-1)',
               borderRadius: '6px',
-              border: '1px solid var(--mantine-color-gray-3)',
+              border: isDark ? '1px solid var(--mantine-color-gray-6)' : '1px solid var(--mantine-color-gray-3)',
             }}
           >
-            {referralCode.code}
+            {referralCode?.code || <Skeleton height={24} width={120} />}
           </Text>
 
-          <CopyButton value={referralCode.code} timeout={2000}>
+          <CopyButton value={referralCode?.code || ''} timeout={2000}>
             {({ copied, copy }) => (
               <Tooltip label={copied ? t('glob_billing.copied') : t('glob_billing.copy')} withArrow position="right">
-                <ActionIcon color={copied ? 'teal' : 'gray'} onClick={copy} size="lg">
+                <ActionIcon color={copied ? 'teal' : 'gray'} onClick={copy} size="lg" disabled={!referralCode?.code}>
                   {copied ? <IconCheck size="1rem" /> : <IconCopy size="1rem" />}
                 </ActionIcon>
               </Tooltip>
@@ -68,23 +67,23 @@ export function ReferralDashboard() {
             ff="monospace"
             p="sm"
             style={{
-              backgroundColor: 'var(--mantine-color-blue-0)',
+              backgroundColor: isDark ? 'var(--mantine-color-blue-9)' : 'var(--mantine-color-blue-0)',
               borderRadius: '6px',
-              border: '1px solid var(--mantine-color-blue-3)',
+              border: isDark ? '1px solid var(--mantine-color-blue-6)' : '1px solid var(--mantine-color-blue-3)',
               wordBreak: 'break-all',
               flexGrow: 1,
             }}
           >
-            {`${window.location.origin}/#/?ref=${referralCode.code}`}
+            {referralCode?.code ? `${window.location.origin}/#/?ref=${referralCode.code}` : <Skeleton height={20} width="80%" />}
           </Text>
 
           <CopyButton
-            value={`${window.location.origin}/#/?ref=${referralCode.code}`}
+            value={referralCode?.code ? `${window.location.origin}/#/?ref=${referralCode.code}` : ''}
             timeout={2000}
           >
             {({ copied, copy }) => (
               <Tooltip label={copied ? t('glob_billing.linkCopied') : t('glob_billing.copyLink')} withArrow position="right">
-                <ActionIcon color={copied ? 'teal' : 'blue'} onClick={copy} size="lg">
+                <ActionIcon color={copied ? 'teal' : 'blue'} onClick={copy} size="lg" disabled={!referralCode?.code}>
                   {copied ? <IconCheck size="1rem" /> : <IconCopy size="1rem" />}
                 </ActionIcon>
               </Tooltip>

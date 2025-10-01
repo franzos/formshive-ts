@@ -46,30 +46,6 @@ export function AccountProfilePage({ serviceEmail }: AccountProfilePageProps) {
     getBalance();
   }, []);
 
-  // const getPrivateKey = () => {
-  //   if (loginMethod === LOGIN_METHOD.PRIVATE_KEY) {
-  //     const pk = getLsPrivateKey(LOCAL_STORAGE_KEY);
-  //     if (pk) {
-  //       setPrivateKey(pk);
-  //     }
-  //   }
-  //   return '';
-  // };
-
-  // const downloadKeypair = () => {
-  //   const data = `public_key: ${publicKey}\nprivate_key: ${privateKey}\n\nLogin at https://${serviceDomain} and select 'Private Key'`;
-  //   const element = document.createElement('a');
-  //   const file = new Blob([data], { type: 'text/plain' });
-  //   element.href = URL.createObjectURL(file);
-  //   element.download = 'rusty-forms-keypair.txt';
-  //   document.body.appendChild(element); // Required for this to work in FireFox
-  //   element.click();
-  // };
-
-  // useEffect(() => {
-  //   getPrivateKey();
-  // }, []);
-
   const BalanceComponent = (props: { bal: Balance }) => <Text>{formatCurrency(props.bal)}</Text>;
 
   const Balances = (props: { balances?: Balance[] }) => {
@@ -87,43 +63,6 @@ export function AccountProfilePage({ serviceEmail }: AccountProfilePageProps) {
 
   const LoginMethodInfo = () => {
     switch (loginMethod) {
-      // case LOGIN_METHOD.PRIVATE_KEY:
-      //   return (
-      //     <>
-      //       <Alert icon={<IconAlertCircle size={16} />} color="primary" mt="md" mb="md">
-      //         {t('profile.saveKeysAlert')}
-      //         <br />
-      //         <br />
-      //         <Button onClick={downloadKeypair} size="sm">
-      //           {t('profile.downloadKeys')}
-      //         </Button>
-      //       </Alert>
-      //       <TextInput
-      //         label={t('profile.publicKey')}
-      //         type="text"
-      //         id="publicKey"
-      //         name="publicKey"
-      //         value={publicKey}
-      //         readOnly
-      //       />
-      //       <Text size="sm" mb="xs" color="gray">
-      //         {t('profile.publicKeyDescription')}
-      //       </Text>
-
-      //       <PasswordInput
-      //         label={t('profile.privateKey')}
-      //         type="text"
-      //         id="privateKey"
-      //         name="privateKey"
-      //         value={privateKey}
-      //         readOnly
-      //         withAsterisk
-      //       />
-      //       <Text size="sm" mb="xs" color="gray">
-      //         {t('profile.privateKeyDescription')}
-      //       </Text>
-      //     </>
-      //   );
       case LOGIN_METHOD.NOSTR:
         return (
           <>
