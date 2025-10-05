@@ -3,7 +3,6 @@ import {
   ActionIcon,
   Alert,
   Badge,
-  Box,
   Button,
   Card,
   CopyButton,
@@ -302,6 +301,10 @@ export function ApiKeysManager() {
           fetching={loading}
           loadingText="Loading API keys..."
           noRecordsText="No API keys found. Create your first one!"
+          page={1}
+          onPageChange={() => {}}
+          totalRecords={apiKeys.length}
+          recordsPerPage={apiKeys.length || 10}
         />
       </Card>
 

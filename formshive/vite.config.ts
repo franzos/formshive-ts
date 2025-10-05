@@ -122,6 +122,6 @@ export default defineConfig({
     sourcemap: true,
   },
   optimizeDeps: {
-    exclude: ['@gofranz/common'],
+    exclude: ['@gofranz/common', '@gofranz/common-components', '@gofranz/formshive-common'],
   },
 });

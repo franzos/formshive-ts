@@ -34,6 +34,7 @@ import { useRustyState } from '../../state';
 import classes from '../Common/Title.module.css';
 import { Footer } from './Footer';
 import { useComputedColorScheme } from '@mantine/core';
+import { LOGIN_METHOD } from '@gofranz/common';
 
 interface LanguageRoutesProps {
   languagePrefix?: string;
@@ -82,6 +83,7 @@ export function LanguageRoutes({ languagePrefix }: LanguageRoutesProps) {
             loginChallenge={useRustyState.getState().loginChallenge}
             titleClassName={classes.title}
             backgroundImage={isDark ? '/login-background_dark.jpg' : '/login-background.jpg'}
+            loginMethods={[LOGIN_METHOD.NOSTR, LOGIN_METHOD.GITHUB, LOGIN_METHOD.EMAIL_MAGIC_LINK, LOGIN_METHOD.GOOGLE]}
           />
         }
       />
@@ -109,6 +111,7 @@ export function LanguageRoutes({ languagePrefix }: LanguageRoutesProps) {
       />
       <Route path="/signup" element={<SignupPage
         backgroundImage={isDark ? '/login-background_dark.jpg' : '/login-background.jpg'}
+        loginMethods={[LOGIN_METHOD.NOSTR, LOGIN_METHOD.GITHUB, LOGIN_METHOD.EMAIL_MAGIC_LINK]}
       />} />
       <Route path="/account" element={<AccountHomePage />} />
       <Route path="/account/forms" element={<AccountFormsStartPage />} />

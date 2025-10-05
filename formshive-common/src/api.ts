@@ -236,6 +236,10 @@ export class RustyFormsApi {
     await this.client.delete(`/a/emails/${id}`, this.getAxiosConfig());
   };
 
+  setAccountEmail = async (id: string): Promise<void> => {
+    await this.client.put(`/a/emails/${id}/set-account-email`, {}, this.getAxiosConfig());
+  };
+
   getVerifiedEmails = async (): Promise<VerifiedEmailsResponse> => {
     const response = await this.client.get<VerifiedEmailsResponse>(
       '/a/emails'
